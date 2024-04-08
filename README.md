@@ -309,6 +309,46 @@ Desenvolver uma solução completa para aprimorar a Gestão de Chamadas de Servi
   </tbody>
 </table>
 
+<h2>Documentação de Requisitos (DoR)</h2>
+
+<h3>Documentação Completa do Projeto:</h3>
+<ul>
+    <li>A documentação do projeto está completa, incluindo escopo, objetivos e requisitos.</li>
+    <li>Todos os membros da equipe têm acesso à documentação do projeto.</li>
+</ul>
+
+<h3>Visualização de Wireframes:</h3>
+<ul>
+    <li>Os wireframes das principais páginas/componentes do projeto estão prontos e acessíveis.</li>
+    <li>Os wireframes refletem uma compreensão preliminar da interface do usuário, da experiência do usuário e da funcionalidade proposta.</li>
+</ul>
+
+<h3>Interagir com Protótipo Navegável:</h3>
+<ul>
+    <li>Um protótipo navegável, baseado nos wireframes aprovados.</li>
+    <li>O protótipo demonstra a funcionalidade proposta e a usabilidade da interface.</li>
+</ul>
+
+<h2>Definição de Conclusão (DoD)</h2>
+
+<h3>Documentação Completa do Projeto:</h3>
+<ul>
+    <li>A documentação do projeto foi revisada e aprovada pelo cliente.</li>
+    <li>As alterações ou atualizações necessárias, com base no feedback do cliente, foram incorporadas à documentação.</li>
+</ul>
+
+<h3>Visualização de Wireframes:</h3>
+<ul>
+    <li>Os wireframes das principais páginas/componentes foram revisados e aprovados pelo cliente.</li>
+    <li>Alterações necessárias com base no feedback do cliente foram aplicadas aos wireframes.</li>
+</ul>
+
+<h3>Interagir com Protótipo Navegável:</h3>
+<ul>
+    <li>O protótipo navegável foi testado com usuários finais.</li>
+    <li>O feedback do teste do protótipo foi coletado, analisado e implementado conforme necessário.</li>
+</ul>
+
 
 
 <h2>:pushpin: Relatórios </h2>
