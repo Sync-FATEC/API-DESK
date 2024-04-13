@@ -5,6 +5,14 @@ Desenvolver uma solução completa para aprimorar a Gestão de Chamadas de Servi
 
 <h2>:movie_camera: MVP </h2>
 
+<h3>Cliente</h3>
+<img src="https://github.com/Sync-FATEC/API-DESK/raw/main/assets/53847691/9d698358-a8b8-48e3-855d-7a27a4322234" 
+alt="MVP">
+
+<h3>Administrador</h3>
+<img src="https://github.com/Sync-FATEC/API-DESK/raw/main/assets/53847691/a064a6e9-9f9c-436d-bc3e-2c5f90f4bc36" 
+alt="MVP">
+
 <h2>💻Tecnologias: </h2>
 
 <div align="center">
@@ -330,6 +338,9 @@ Desenvolver uma solução completa para aprimorar a Gestão de Chamadas de Servi
   </tbody>
 </table>
 
+<h3>Modelo de Dados</h3>
+<img src="https://github.com/Sync-FATEC/API-DESK/blob/main/doc/docs_sprints/sprint01/BDLogico.jpg">
+
 <h2>DoR (Definition of Ready):</h2>
 
 <h3>User Stories</h3>
@@ -379,7 +390,6 @@ Desenvolver uma solução completa para aprimorar a Gestão de Chamadas de Servi
 <h3>Mockups</h3>
 <ul>
     <li>Mockups na interface funcionam conforme esperado.</li>
-    <li>Testado em todos os navegadores e dispositivos suportados.</li>
     <li>Experiência do usuário corresponde aos critérios definidos.</li>
 </ul>
 <h3>Manual do Usuário (Online)</h3>
@@ -411,7 +421,7 @@ Desenvolver uma solução completa para aprimorar a Gestão de Chamadas de Servi
   <tr>
     <td align="center">01</td>
     <td>14/04/2023</td>
-    <td align="center"><a href="https://github.com/Sync-FATEC/API-DESK/blob/main/doc/docs_sprints/sprint01.md">Relatório</a></td> 
+    <td align="center"><a href="https://github.com/Sync-FATEC/API-DESK/blob/main/doc/docs_sprints/sprint01/sprint01.md">Relatório</a></td> 
     <td align="center">🔄</td>
   </tr>
   <tr>
