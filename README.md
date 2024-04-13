@@ -66,7 +66,7 @@ alt="MVP">
   </tr>
 </table>
 
-<h2>:clipboard: Blacklog do produto</h2>
+<h2>:clipboard: Backlog do Produto</h2>
 
 <table>
   <thead>
@@ -402,10 +402,7 @@ alt="MVP">
 <ul>
     <li>O guia de instalação detalha todos os passos necessários para configurar e instalar o software em diferentes plataformas ou ambientes.</li>
     <li>Inclui requisitos de sistema, dependências e configurações de software/hardware.</li>
-   
 </ul>
-
-
 
 <h2>:pushpin: Relatórios </h2>
 <table>
@@ -467,25 +464,6 @@ alt="MVP">
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <td>
-                <a href="https://github.com/maiconsso">
-                    <img src="https://avatars.githubusercontent.com/u/53847691?s=400&u=f3a98c19b124cc997a5ddcab63ae00f590d81a19&v=4"alt="fotoperfil" width="45">
-                </a>
-            </td>
-            <td>Scrum Master</td>
-            <td>Michael Souza</td>
-            <td>
-                <a href="https://www.linkedin.com/in/michael-ssouza/">
-                    <img src='https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white&color=000000' />
-                </a>
-            </td>
-            <td>
-                <a href="https://github.com/maiconsso">
-                    <img src='https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white&color=000000' />
-                </a>
-            </td>
-        </tr>
       <tr>
     <td>
         <a href="https://github.com/Ana-Laura-Moratelli">
@@ -505,6 +483,25 @@ alt="MVP">
         </a>
     </td>
 </tr>
+        <tr>
+            <td>
+                <a href="https://github.com/maiconsso">
+                    <img src="https://avatars.githubusercontent.com/u/53847691?s=400&u=f3a98c19b124cc997a5ddcab63ae00f590d81a19&v=4"alt="fotoperfil" width="45">
+                </a>
+            </td>
+            <td>Scrum Master</td>
+            <td>Michael Souza</td>
+            <td>
+                <a href="https://www.linkedin.com/in/michael-ssouza/">
+                    <img src='https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white&color=000000' />
+                </a>
+            </td>
+            <td>
+                <a href="https://github.com/maiconsso">
+                    <img src='https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white&color=000000' />
+                </a>
+            </td>
+        </tr>
 <tr>
     <td>
         <a href="https://github.com/SavioMessias">
