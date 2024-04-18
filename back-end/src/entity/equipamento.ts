@@ -1,4 +1,5 @@
-import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, ManyToOne, Column } from 'typeorm';
+import { Categorias } from './categorias';
 
 @Entity()
 export class Equipamento {
@@ -7,6 +8,10 @@ export class Equipamento {
 
     @Column({ length: 255 })
     descricao: string;
+
+    @ManyToOne( () => Categorias)
+    categoria_id: Categorias
+
 
     constructor(descricao: string) {
         this.descricao = descricao;
