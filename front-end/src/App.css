@@ -1,16 +1,15 @@
+header{
+  background-color: #0072BB;
+}
 .App {
-  height: 30vw; 
-  max-width: 500px; /* Máxima largura definida como 500px */
-  margin: auto; /* Isso centralizará o quadrado horizontalmente */
+  
   padding: 20px;
-  background-color: #f5f5f5;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #ffff;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center; 
-  justify-content: center; 
+  justify-content:space-around; 
+  
 }
 
 nav a {

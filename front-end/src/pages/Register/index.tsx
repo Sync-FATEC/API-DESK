@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link } from "react-router-dom";
+
 import './register.css'
 
 export const Register = () => {
@@ -30,7 +30,8 @@ export const Register = () => {
     return (
         <div className="auth-container"> 
             <div className="auth-form">
-                <h2 className="auth-title">Criar conta</h2>
+                <h2 className="auth-title">Crie sua conta</h2>
+                <h3>Cadastre seus dados</h3>
 
                 <div className="auth-input-group">
                     <input
@@ -68,13 +69,8 @@ export const Register = () => {
                 <div className="auth-container-btn">
                     <button className="auth-btn" onClick={handleSubmit}>Cadastrar</button>
                 </div>
-
-                <div className="text-center">
-                    <span className="auth-txt1">Já possui conta? </span>
-                    <Link className="auth-txt2" to="/login">
-                        Acessar com email e Senha
-                    </Link>
-                </div>
+            
+                
             </div>
         </div>
     );

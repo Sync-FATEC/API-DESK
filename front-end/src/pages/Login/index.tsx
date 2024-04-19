@@ -32,7 +32,8 @@ export const Login = () => {
     return (
         <div className="auth-container">
           <div className="auth-form">
-            <h2 className="auth-title">Bem vindo</h2>
+            <h2 className="auth-title">Entre na sua conta</h2>
+            <h3>Insira seus dados</h3>
       
             <div className="auth-input-group">
               <input

@@ -31,12 +31,12 @@ function App() {
         </nav>
 
       </header>
-      <hr />
-      <Routes>
+      
+      <Routes >
+
         <Route path="/" element={<RequireAuth><Home /></RequireAuth>} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-
       </Routes>
     </div>
   );
