@@ -6,9 +6,14 @@ export const Register = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [name, setName] = useState("");
+    const [cpf, setCpf] = useState("");
 
     const handleNameInput = (event: React.ChangeEvent<HTMLInputElement>) => {
         setName(event.target.value);
+    }
+
+    const handleCpfInput = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setCpf(event.target.value);
     }
 
     const handleEmailInput = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -23,6 +28,7 @@ export const Register = () => {
         event.preventDefault();
         // adicionar a lógica para enviar os dados
         console.log("Nome:", name);
+        console.log("Cpf:", cpf);
         console.log("E-mail:", email);
         console.log("Senha:", password);
     }
@@ -31,7 +37,7 @@ export const Register = () => {
         <div className="auth-container"> 
             <div className="auth-form">
                 <h2 className="auth-title">Crie sua conta</h2>
-                <h3>Cadastre seus dados</h3>
+                <h3 className='auth-title2'>Cadastre seus dados</h3>
 
                 <div className="auth-input-group">
                     <input
@@ -41,7 +47,17 @@ export const Register = () => {
                         onChange={handleNameInput}
                         placeholder="Nome"
                     />
-                    <span className="focus-input" data-placeholder="Nome"></span>
+                    <label className="auth-input-label" htmlFor="nome">Digite seu nome</label>
+                </div>
+                <div className="auth-input-group">
+                    <input
+                        className={cpf !== "" ? "has-val input" : "input"}
+                        type="text"
+                        value={cpf}
+                        onChange={handleCpfInput}
+                        placeholder="Cpf"
+                    />
+                   <label className="auth-input-label" htmlFor="cpf">Digite seu Cpf</label>
                 </div>
 
                 <div className="auth-input-group">
@@ -52,7 +68,7 @@ export const Register = () => {
                         onChange={handleEmailInput}
                         placeholder="Email"
                     />
-                    <span className="focus-input" data-placeholder="Email"></span>
+                   <label className="auth-input-label" htmlFor="email">Digite seu e-mail</label>
                 </div>
 
                 <div className="auth-input-group">
@@ -63,7 +79,7 @@ export const Register = () => {
                         onChange={handlePasswordInput}
                         placeholder="Password"
                     />
-                    <span className="focus-input" data-placeholder="Password"></span>
+                   <label className="auth-input-label" htmlFor="Password">Digite sua senha</label>
                 </div>
 
                 <div className="auth-container-btn">

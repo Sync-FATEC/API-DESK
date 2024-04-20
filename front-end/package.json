@@ -11,6 +11,7 @@
     "@types/react": "^18.2.67",
     "@types/react-dom": "^18.2.22",
     "axios": "^1.6.8",
+    "flowbite": "^2.3.0",
     "history": "^5.3.0",
     "init": "^0.1.2",
     "react": "^18.2.0",
