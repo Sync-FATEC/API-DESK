@@ -42,3 +42,21 @@ const mudarTecnico = async (ticketID: number, tipoTecID: number) => {
     console.log('Tecnico mudado com sucesso');
     return ticket
 };
+
+export const visualizarTicketsAbertos = async () => {
+    try {
+        const dataSource = await AppDataSource;
+        const ticketRepository = dataSource.getRepository(Tickets);
+        // Executa uma consulta para obter os tickets com status igual a 1 (aberto)
+        const ticketsAbertos = await ticketRepository.find({
+            where: {
+                status: '1'
+            }
+        });
+        
+        console.log("Tickets Abertos:");
+        console.table(ticketsAbertos);
+    } catch (error) {
+        console.error("Ocorreu um erro ao visualizar os tickets abertos:", error);
+    };
+};
