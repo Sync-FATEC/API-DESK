@@ -1,4 +1,6 @@
 import { log } from "console"
+import { DataSource } from "typeorm"
+import { AppDataSource } from "../../data-source"
 import { Tickets } from "../../entity/tickets"
 import { tiposTecRepositorio } from "../../entity/tiposTec"
 import { categoriaRepositorio, equipamentoRepositorio, problemasRepositorio, ticketRepositorio, usuariosRepositorio } from "./repositorios"
@@ -39,14 +41,4 @@ const mudarTecnico = async (ticketID: number, tipoTecID: number) => {
     await ticketRepositorio.save(ticket)
     console.log('Tecnico mudado com sucesso');
     return ticket
-}
-
-const lerTickeks = async (tipoTec: string) => {
-    const tecnico = await tiposTecRepositorio.findOneBy({ tipo_tec: tipoTec })
-    switch (tecnico.tipo_tec) {
-        case 'admin':
-            return await ticketRepositorio.find()
-        default:
-            return await ticketRepositorio.findBy({ tipotec: tecnico })
-    }
-}
+};

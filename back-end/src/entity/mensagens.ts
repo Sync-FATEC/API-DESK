@@ -1,28 +1,31 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from 'typeorm';
-import { Tickets } from './tickets';
-import { Usuarios } from './usuarios';
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn } from "typeorm";
+import { AppDataSource } from "../data-source";
+import { Categorias } from "./categorias";
 
 @Entity()
 export class Mensagens {
     @PrimaryGeneratedColumn()
-    id: number;
+    mensagemID: number;
 
-    @Column({ type: 'longtext' })
+    @Column({ enum: ['1', '2', '3']})
+    tipoMensagem: string;
+
+    @Column({ length: 255 })
+    titulo: string;
+
+    @Column({ length: 255 })
     mensagem: string;
 
-    @Column({ type: 'datetime' })
-    data: Date;
+    @ManyToOne(() => Categorias)
+    @JoinColumn({ name: 'categoriaID'})
+    categoria: Categorias
 
-    @ManyToOne(() => Tickets)
-    ticket: Tickets;
-
-    @ManyToOne(() => Usuarios)
-    usuario: Usuarios;
-
-    constructor(mensagem: string, data: Date, ticket: Tickets, usuario: Usuarios) {
+    constructor(tipoMensagem: string, titulo: string, mensagem: string, categoria: Categorias) {
+        this.tipoMensagem = tipoMensagem;
+        this.titulo = titulo;
         this.mensagem = mensagem;
-        this.data = data;
-        this.ticket = ticket;
-        this.usuario = usuario;
-    }
-}
+        this.categoria = categoria;
+    };
+};
+
+export const mensagensRepositorio = AppDataSource.getRepository(Mensagens);
