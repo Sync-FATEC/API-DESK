@@ -41,7 +41,7 @@ const mudarTecnico = async (ticketID: number, tipoTecID: number) => {
     await ticketRepositorio.save(ticket)
     console.log('Tecnico mudado com sucesso');
     return ticket
-};
+}
 
 export const visualizarTicketsAbertos = async () => {
     try {
