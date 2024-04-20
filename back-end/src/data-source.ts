@@ -1,26 +1,22 @@
-import "reflect-metadata"
-import { DataSource } from "typeorm"
-import { Usuarios } from "./entity/usuarios"
-import { BaseDeConhecimento } from "./entity/baseDeConhecimento"
+import 'reflect-metadata';
+import { DataSource } from "typeorm";
 import { Categorias } from "./entity/categorias"
-import { Equipamento } from "./entity/equipamento"
-import { FAQ } from "./entity/faq"
-import { Mensagens } from "./entity/mensagens"
-import { Problemas } from "./entity/problemas"
-import { Tecnicos } from "./entity/tecnicos"
-import { Templates } from "./entity/template"
-import { Tickets } from "./entity/tickets"
+import { Equipamentos } from './entity/equipamento';
+import { Mensagens } from './entity/mensagens';
+import { Salas } from './entity/salas';
+import { Tickets } from './entity/tickets';
+import { Usuarios } from './entity/usuarios';
 
 export const AppDataSource = new DataSource({
     type: "mysql",
     host: "localhost",
     port: 3306,
     username: "root",
-    password: "root",
+    password: "1234",
     database: "API",
     synchronize: true,
     logging: false,
-    entities: [Usuarios, BaseDeConhecimento, Categorias, Equipamento, FAQ, Mensagens, Problemas, Tecnicos, Templates, Tickets],
+    entities: [Usuarios, Tickets, Salas, Mensagens, Equipamentos, Categorias],
     migrations: [],
-    subscribers: [],
-})
+    subscribers: []
+});
