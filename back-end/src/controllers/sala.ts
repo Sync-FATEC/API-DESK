@@ -11,6 +11,7 @@ export const criarSalas = async (numeroSala: number, indentificacao: string) => 
         return novaSala
     } catch (error) {
         console.error('Erro na criação de uma nova sala\n', error);
+        return 'Erro na criação de uma nova sala'
     }
 }
 
@@ -23,10 +24,11 @@ export const excluirSalas = async (numeroSala: number) => {
             return 1
         } else { 
             console.log('Sala inexistente'); 
-            return 0
+            return 'Sala inexistente'
         }
     } catch (error) {
-        console.error('Erro na exclução de uma sala\n', error);        
+        console.error('Erro na exclução de uma sala\n', error);   
+        return 'Erro na exclusão de uma sala'     
     }
 }
 
@@ -36,5 +38,6 @@ export const visualizarSalas = async () => {
         return salas
     } catch (error) {
         console.error('Erro na visualização das salas\n', error);
+        return 'Erro na visualização das salas'
     }
 }

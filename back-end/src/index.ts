@@ -5,6 +5,7 @@ import bodyParser from 'body-parser';
 import usario from './routes/usuario';
 import categoria from './routes/categoria'
 import mensagens from './routes/mensagens'
+import salas from './routes/salas'
 
 const app = express();
 const port = 5555;
@@ -17,6 +18,7 @@ AppDataSource.initialize().then(async () => {
     app.use('/usuarios', usario);
     app.use('/categorias', categoria);
     app.use('/mensagens', mensagens);
+    app.use('/salas', salas);
 
     app.listen(port, () => {
         console.log(`Servidor rodando na porta ${port}`);
