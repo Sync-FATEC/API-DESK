@@ -2,7 +2,9 @@ import { AppDataSource } from "./data-source";
 import express from 'express';
 import bodyParser from 'body-parser';
 
-import usarioRota from './routes/usuarioRota';
+import usario from './routes/usuario';
+import categoria from './routes/categoria'
+import mensagens from './routes/mensagens'
 
 const app = express();
 const port = 5555;
@@ -12,7 +14,9 @@ AppDataSource.initialize().then(async () => {
     console.log('Conexão com o banco de dados estabelecida');
 
     app.use(bodyParser.urlencoded({ extended: true }));
-    app.use('/usuarios', usarioRota);
+    app.use('/usuarios', usario);
+    app.use('/categorias', categoria);
+    app.use('/mensagens', mensagens);
 
     app.listen(port, () => {
         console.log(`Servidor rodando na porta ${port}`);

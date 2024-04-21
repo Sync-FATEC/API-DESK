@@ -11,6 +11,7 @@ export const criarCategoria = async (categoria: string) => {
         return novaCategoria
     } catch (error) {
         console.error('Erro na criação de uma nova categoria', error);
+        return 0
     }
 }
 

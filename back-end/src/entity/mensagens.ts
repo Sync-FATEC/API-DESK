@@ -13,14 +13,14 @@ export class Mensagens {
     @Column({ length: 255 })
     titulo: string;
 
-    @Column({ length: 255 })
-    mensagem: string;
+    @Column({ length: 255, nullable: true})
+    mensagem: string | null;
 
     @ManyToOne(() => Categorias)
     @JoinColumn({ name: 'categoriaID'})
     categoria: Categorias
 
-    constructor(tipoMensagem: string, titulo: string, mensagem: string, categoria: Categorias) {
+    constructor(tipoMensagem: string, titulo: string, mensagem: string | null, categoria: Categorias) {
         this.tipoMensagem = tipoMensagem;
         this.titulo = titulo;
         this.mensagem = mensagem;
