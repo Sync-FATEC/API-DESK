@@ -8,16 +8,25 @@ router.post('/criar', async (req: Request, res: Response) => {
     if (mensagem === '') { 
         mensagem = null
     }
+    if (titulo === '' || titulo === '' || categoriaID === '') {
+        return res.status(400).json({ error: 'Preencha todos os campos' });
+    }
     res.json(await criarMensagem(tipoMensagem, titulo, mensagem, categoriaID));
 });
 
-router.post('/excluir', async (req: Request, res: Response) => {
+router.delete('/excluir', async (req: Request, res: Response) => {
     const { mensagemID } = req.body;
+    if (mensagemID === '') {
+        return res.status(400).json({ error: 'ID da mensagem não informado' });
+    }
     res.json(await excluirMensagem(mensagemID));
 });
 
-router.post('/visualizar', async (req: Request, res: Response) => {
+router.get('/visualizar', async (req: Request, res: Response) => {
     const { tipoMensagem } = req.body;
+    if (tipoMensagem === '') {
+        return res.status(400).json({ error: 'Tipo de mensagem não informado' });
+    }
     res.json(await visualizarMensagens(tipoMensagem));
 });
 

@@ -11,7 +11,7 @@ export const criarCategoria = async (categoria: string) => {
         return novaCategoria
     } catch (error) {
         console.error('Erro na criação de uma nova categoria', error);
-        return 0
+        return 'Erro na criação de uma nova categoria'
     }
 }
 
@@ -24,10 +24,11 @@ export const excluirCategoria = async (categoriaID: number) => {
             return 1
         } else { 
             console.log('Sala inexistente'); 
-            return 0
+            return 'Sala inexistente'
         }
     } catch (error) {
-        console.error('Erro na exclução de uma categorua\n', error);        
+        console.error('Erro na exclução de uma categorua\n', error);
+        return 'Erro na exclusão de uma categoria'        
     }
 }
 
@@ -37,5 +38,6 @@ export const visualizarCategorias = async () => {
         return categoria
     } catch (error) {
         console.error('Erro na visualização das categorias\n', error);
+        return 'Erro na visualização das categorias'
     }
 }

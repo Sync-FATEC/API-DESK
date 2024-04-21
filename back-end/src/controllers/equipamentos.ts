@@ -17,6 +17,7 @@ export const criarEquipamento = async (tipoEquipamento: string, equipamento: str
         return equipamentosRepositorio
     } catch (error) {
         console.error('Ocorreu um erro na criação do equipamento', error);
+        return 'Ocorreu um erro na criação do equipamento'
     }
 }
 
@@ -29,10 +30,11 @@ export const excluirEquipamento = async (equipamentoID: number) => {
             return 1
         } else {
             console.log('Equipamento inexistente');
-            return 0
+            return 'Equipamento inexistente'
         }
     } catch (error) {
         console.error('Ocorreu um erro para excluir o equipamento', error);
+        return 'Ocorreu um erro para excluir o equipamento'
     }
 }   
 
@@ -42,5 +44,6 @@ export const visualizarEquipamentos = async () => {
         return equipamentos
     } catch (error) {
         console.error('Ocorreu um erro para visualizar os equipamentos', error);
+        return 'Ocorreu um erro para visualizar os equipamentos'
     }
 }

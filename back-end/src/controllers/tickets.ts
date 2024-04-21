@@ -20,6 +20,7 @@ export const criarTicket = async (dataAbertura: Date, titulo: string, descricao:
         return novoTicket;
     } catch (error) {
         console.error('Erro na criação do ticket', error);
+        return 'Erro na criação do ticket'
     }
 }
 
@@ -32,10 +33,11 @@ export const excluirTicket = async (ticketID: number) => {
             return 1;
         } else {
             console.log('Ticket inexistente');
-            return 0;
+            return 'Ticket inexistente';
         }
     } catch (error) {
         console.error('Erro na exclusão do ticket', error);
+        return 'Erro na exclusão do ticket';
     }
 }
 
@@ -49,10 +51,11 @@ export const alterarStatusTicket = async (ticketID: number, status: string) => {
             return ticket;
         } else {
             console.log('Ticket inexistente');
-            return null;
+            return 'ticket inexistente';
         }
     } catch (error) {
         console.error('Erro na alteração do status do ticket', error);
+        return 'Erro na alteração do status do ticket';
     }
 }
 
@@ -73,5 +76,6 @@ export const listarTickets = async (usuarioID: number) => {
         }
     } catch (error) {
         console.error('Erro na listagem dos tickets', error);
+        return 'Erro na listagem dos tickets';
     }
 }

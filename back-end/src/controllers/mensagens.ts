@@ -10,7 +10,7 @@ export const criarMensagem = async (tipoMensagem: string, titulo: string, mensag
 
         if (!categoria) {
             console.log('Categoria inexistente');
-            return 0
+            return 'Categoria inexistente'
         }
 
         const novaMensagem = new Mensagens(tipoMensagem, titulo, mensagem, categoria)
@@ -19,7 +19,7 @@ export const criarMensagem = async (tipoMensagem: string, titulo: string, mensag
         return novaMensagem
     } catch (error) {
         console.error('Erro na criação da mensagem', error);
-        return 0
+        return 'Erro na criação da mensagem'
     }
 }
 
@@ -32,11 +32,11 @@ export const excluirMensagem = async (mensagemID: number) => {
             return 1
         } else {
             console.log('Mensagem inexistente');
-            return 0
+            return 'Mensagem inexistente'
         }
     } catch (error) {
         console.error('Erro na exclusão da mensagem', error);
-        return 0
+        return 'Erro na exclusão da mensagem'
     }
 }
 
@@ -46,6 +46,6 @@ export const visualizarMensagens = async (tipoMensagem: string) => {
         return mensagens
     } catch (error) {
         console.error('Erro na visualização das mensagens', error);
-        return 0
+        return 'Erro na visualização das mensagens'
     }
 }

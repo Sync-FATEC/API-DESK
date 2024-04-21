@@ -29,15 +29,15 @@ export const criarUsuario = async (nome: string, cpf: string, email: string, sen
     try {
         if (await usuariosRepositorio.findOneBy({ email: email })) {
             console.log('Usuário já cadastrado');
-            return 0;
+            return 'Usuário já cadastrado';
         }
         if (await usuariosRepositorio.findOneBy({ cpf: cpf })) {
             console.log('CPF já cadastrado');
-            return 0;
+            return 'CPF já cadastrado';
         }
         if (!validarCPF(cpf)) {
             console.log('CPF inválido');
-            return 0;
+            return 'CPF inválido';
         }
 
         const senhaCriptografada = await bcrypt.hash(senha, 10);
@@ -60,7 +60,7 @@ export const excluirUsuario = async (usuarioID: number) => {
             return 1;
         } else {
             console.log('Usuário inexistente');
-            return 0;
+            return 'Usuario inexistente';
         }
     } catch (error) {
         console.error('Erro na exclusão do usuário', error);
@@ -76,11 +76,11 @@ export const autenticarUsuario = async (email: string, senha: string) => {
                 return usuario;
             } else {
                 console.log('Senha incorreta');
-                return null;
+                return 'Senha incorreta';
             }
         } else {
             console.log('Usuário inexistente');
-            return null;
+            return 'Usuario inexistente';
         }
     } catch (error) {
         console.error('Erro na autenticação do usuário', error);
