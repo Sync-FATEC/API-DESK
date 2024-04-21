@@ -7,7 +7,7 @@ export const usuariosRepositorio = AppDataSource.getRepository(Usuarios)
 
 const validarCPF = (cpf: string) => {
     let soma = 0;
-    let resto;
+    let resto: number;
     if (cpf == "00000000000") return false;
 
     for (let i = 1; i <= 9; i++) soma = soma + parseInt(cpf.substring(i - 1, i)) * (11 - i);
