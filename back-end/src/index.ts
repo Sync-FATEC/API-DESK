@@ -1,7 +1,22 @@
 import { AppDataSource } from "./data-source";
+import express from 'express';
+import bodyParser from 'body-parser';
+
+import usarioRota from './routes/usuarioRota';
+
+const app = express();
+const port = 5555;
+app.use(express.json());
 
 AppDataSource.initialize().then(async () => {
     console.log('Conexão com o banco de dados estabelecida');
+
+    app.use(bodyParser.urlencoded({ extended: true }));
+    app.use('/usuarios', usarioRota);
+
+    app.listen(port, () => {
+        console.log(`Servidor rodando na porta ${port}`);
+    });
 }).catch(error => {
     throw error
 })
