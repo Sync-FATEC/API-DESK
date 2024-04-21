@@ -1,3 +1,9 @@
+.auth-container-principal{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
 .auth-container {
   display: flex;
   justify-content: center;

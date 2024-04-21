@@ -1,6 +1,6 @@
 import { useState } from 'react';
-
 import './register.css'
+import { Welcome } from '../../components/Welcome';
 
 export const Register = () => {
     const [email, setEmail] = useState("");
@@ -34,60 +34,67 @@ export const Register = () => {
     }
 
     return (
-        <div className="auth-container"> 
-            <div className="auth-form">
-                <h2 className="auth-title">Crie sua conta</h2>
-                <h3 className='auth-title2'>Cadastre seus dados</h3>
+        <div className='auth-container-principal'>
 
-                <div className="auth-input-group">
-                    <input
-                        className={name !== "" ? "has-val input" : "input"}
-                        type="text"
-                        value={name}
-                        onChange={handleNameInput}
-                        placeholder="Nome"
-                    />
-                    <label className="auth-input-label" htmlFor="nome">Digite seu nome</label>
-                </div>
-                <div className="auth-input-group">
-                    <input
-                        className={cpf !== "" ? "has-val input" : "input"}
-                        type="text"
-                        value={cpf}
-                        onChange={handleCpfInput}
-                        placeholder="Cpf"
-                    />
-                   <label className="auth-input-label" htmlFor="cpf">Digite seu Cpf</label>
-                </div>
+        <Welcome />
 
-                <div className="auth-input-group">
-                    <input
-                        className={email !== "" ? "has-val input" : "input"}
-                        type="email"
-                        value={email}
-                        onChange={handleEmailInput}
-                        placeholder="Email"
-                    />
-                   <label className="auth-input-label" htmlFor="email">Digite seu e-mail</label>
-                </div>
+            <div className="auth-container"> 
 
-                <div className="auth-input-group">
-                    <input
-                        className={password !== "" ? "has-val input" : "input"}
-                        type="password"
-                        value={password}
-                        onChange={handlePasswordInput}
-                        placeholder="Password"
-                    />
-                   <label className="auth-input-label" htmlFor="Password">Digite sua senha</label>
-                </div>
-
-                <div className="auth-container-btn">
-                    <button className="auth-btn" onClick={handleSubmit}>Cadastrar</button>
-                </div>
             
+                <div className="auth-form">
+                    <h2 className="auth-title">Crie sua conta</h2>
+                    <h3 className='auth-title2'>Cadastre seus dados</h3>
+
+                    <div className="auth-input-group">
+                        <input
+                            className={name !== "" ? "has-val input" : "input"}
+                            type="text"
+                            value={name}
+                            onChange={handleNameInput}
+                            placeholder="Nome"
+                        />
+                        <label className="auth-input-label" htmlFor="nome">Digite seu nome</label>
+                    </div>
+                    <div className="auth-input-group">
+                        <input
+                            className={cpf !== "" ? "has-val input" : "input"}
+                            type="text"
+                            value={cpf}
+                            onChange={handleCpfInput}
+                            placeholder="Cpf"
+                        />
+                    <label className="auth-input-label" htmlFor="cpf">Digite seu Cpf</label>
+                    </div>
+
+                    <div className="auth-input-group">
+                        <input
+                            className={email !== "" ? "has-val input" : "input"}
+                            type="email"
+                            value={email}
+                            onChange={handleEmailInput}
+                            placeholder="Email"
+                        />
+                    <label className="auth-input-label" htmlFor="email">Digite seu e-mail</label>
+                    </div>
+
+                    <div className="auth-input-group">
+                        <input
+                            className={password !== "" ? "has-val input" : "input"}
+                            type="password"
+                            value={password}
+                            onChange={handlePasswordInput}
+                            placeholder="Password"
+                        />
+                    <label className="auth-input-label" htmlFor="Password">Digite sua senha</label>
+                    </div>
+
+                    <div className="auth-container-btn">
+                        <button className="auth-btn" onClick={handleSubmit}>Cadastrar</button>
+                    </div>
                 
+                
+                </div>
             </div>
-        </div>
+        </div>   
     );
 };

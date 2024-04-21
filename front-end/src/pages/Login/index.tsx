@@ -2,6 +2,7 @@ import { ChangeEvent, useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/Auth/AuthContext";
 import './login.css'
+import { Welcome } from '../../components/Welcome';
 
 
 
@@ -24,7 +25,7 @@ export const Login = () => {
         if (email && password) {
             const isLogged = await auth.signin(email, password);
             if (isLogged) {
-                navigate('/');
+                navigate('/home');
             } else {
                 alert("Não deu certo.");
             }
@@ -32,8 +33,11 @@ export const Login = () => {
     }
 
     return (
-      
+      <div className='auth-container-principal'>
+
+        <Welcome />  
         <div className="auth-container">
+         
           <div className="auth-form">
             <h2 className="auth-title">Entre na sua conta</h2>
             <h3 className="auth-title2">Insira seus dados</h3>
@@ -62,5 +66,6 @@ export const Login = () => {
             <button className="auth-btn" onClick={handleLogin}>Logar</button>
           </div>
         </div>
+      </div>
       );
 }
