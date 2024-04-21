@@ -1,18 +1,19 @@
 import { Link, useLocation } from "react-router-dom";
 import logo from '../../assets/img/logo.svg';
+import'./aside.css'
 
 export const Aside = () => {
     const location = useLocation();
     let currentTitle = '';
 
     if (location.pathname === '/' || location.pathname === '/login') {
-        currentTitle = 'Cadastre sua conta agora mesmo';
+        currentTitle = 'Cadastre sua conta agora';
     } else if (location.pathname === '/cadastro') {
-        currentTitle = 'Acesse sua conta agora mesmo';
+        currentTitle = 'Acesse sua conta agora ';
     }
 
     return (
-        <header>
+        <aside>
             <img className='logo' src={logo} alt="" />
             <h1 className="title">Bem-vindo ao Service Desk</h1>
             {currentTitle && <h2 className="title">{currentTitle}</h2>}
@@ -23,6 +24,6 @@ export const Aside = () => {
                     {location.pathname === '/cadastro' && <Link to="/login">Login</Link>}
                 </button>
             </nav>
-        </header>
+        </aside>
     );
 }

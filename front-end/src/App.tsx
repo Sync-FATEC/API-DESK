@@ -1,4 +1,4 @@
-import './App.css';
+import './global.css';
 import { Route, Routes} from 'react-router-dom'; 
 import { Cliente } from './pages/Cliente';
 import { RequireAuth } from './contexts/Auth/RequireAuth';

@@ -1,0 +1,38 @@
+aside {
+    background-color: #0072BB;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  nav a {
+    color: #FFFFFF;
+    display: inline-block;
+    margin: 0 10px;
+  }
+  
+  nav a:hover {
+    text-decoration: none;
+  }
+  
+  .title {
+    padding: 64px 32px 0;
+    color: #ffff;
+  }
+  .botaoCadastro{
+    margin: 64px 0 0;
+    padding: 12px;
+    border: 2px solid #FFFFFF;
+    background-color: transparent;
+    text-decoration: none;
+    width: 200px;
+    font-size: 22px;
+    border-radius: 10px;
+  }
+  a{
+    text-decoration: none;
+  }
+  .logo{
+    padding: 64px 0 0;
+  }
