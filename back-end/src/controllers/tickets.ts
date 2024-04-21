@@ -79,6 +79,11 @@ export const listarTickets = async (usuarioID: number) => {
                 console.log('Tickets listados com sucesso');
                 return tickets;
             }
+            else if (usuario.tipoUsuario === '1' || usuario.tipoUsuario === '2' || usuario.tipoUsuario === '3') {
+                const tickets = await ticketsRepositorio.find({ where: { tipoTecnico: usuario.tipoUsuario } });
+                console.log('Tickets listados com sucesso');
+                return tickets;
+            }
         }
     } catch (error) {
         console.error('Erro na listagem dos tickets', error);
