@@ -1,5 +1,4 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn } from "typeorm";
-import { AppDataSource } from "../data-source";
 import { Salas } from "./salas";
 import { Categorias } from "./categorias";
 
@@ -37,5 +36,3 @@ export class Equipamentos {
         this.categoria = categoria;
     };
 };
-
-export const equipamentosRepositorio = AppDataSource.getRepository(Equipamentos);

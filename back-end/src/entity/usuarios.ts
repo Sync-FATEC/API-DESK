@@ -18,10 +18,10 @@ export class Usuarios {
     @Column({ length: 255 })
     senha: string;
 
-    @Column({ enum: ['1', '2', '3', '4', '5'] })
+    @Column({ length: 1 })
     tipoUsuario: string;
 
-    @Column({ enum: ['1', '2', '3'], nullable: true })
+    @Column({ length: 1, nullable: true })
     turno: string | null;
 
     constructor(nome: string, cpf: string, email: string, senha: string, tipoUsuario: string, turno: string | null) {
@@ -33,5 +33,3 @@ export class Usuarios {
         this.turno = turno;
     }
 }
-
-export const usuariosRepositorio = AppDataSource.getRepository(Usuarios);

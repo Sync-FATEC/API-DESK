@@ -7,7 +7,7 @@ export class Mensagens {
     @PrimaryGeneratedColumn()
     mensagemID: number;
 
-    @Column({ enum: ['1', '2', '3']})
+    @Column({ length: 1})
     tipoMensagem: string;
 
     @Column({ length: 255 })
@@ -27,5 +27,3 @@ export class Mensagens {
         this.categoria = categoria;
     };
 };
-
-export const mensagensRepositorio = AppDataSource.getRepository(Mensagens);

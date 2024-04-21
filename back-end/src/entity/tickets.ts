@@ -3,6 +3,7 @@ import { AppDataSource } from "../data-source";
 import { Categorias } from "./categorias";
 import { Equipamentos } from "./equipamento";
 import { Salas } from "./salas";
+import { Usuarios } from "./usuarios";
 
 @Entity()
 export class Tickets {
@@ -21,7 +22,7 @@ export class Tickets {
     @Column({ length: 255 })
     descricao: string;
 
-    @Column({ enum: ['1', '2', '3', '4'] })
+    @Column({ length: 1 })
     status: string;
 
     @ManyToOne(() => Categorias)
@@ -36,7 +37,11 @@ export class Tickets {
     @JoinColumn({ name: 'salaID' })
     sala: Salas;
 
-    constructor(dataAbertura: Date, titulo: string, descricao: string, status: string, categoria: Categorias, equipamentos: Equipamentos, sala: Salas) {
+    @ManyToOne(() => Usuarios)
+    @JoinColumn({ name: 'usuarioID' })
+    usuario: Usuarios;
+
+    constructor(dataAbertura: Date, titulo: string, descricao: string, status: string, categoria: Categorias, equipamentos: Equipamentos, sala: Salas, usuario: Usuarios) {
         this.dataAbertura = dataAbertura;
         this.titulo = titulo;
         this.descricao = descricao;
@@ -44,7 +49,6 @@ export class Tickets {
         this.categoria = categoria;
         this.equipamentos = equipamentos;
         this.sala = sala;
+        this.usuario = usuario;
     };
 };
-
-export const ticketsRepositorio = AppDataSource.getRepository(Tickets);

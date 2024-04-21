@@ -17,5 +17,3 @@ export class Salas {
         this.identificacao = identificacao;
     };
 };
-
-export const salasRepositorio = AppDataSource.getRepository(Salas);
