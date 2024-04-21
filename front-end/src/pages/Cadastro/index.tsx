@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import './register.css'
-import { Welcome } from '../../components/Welcome';
+import './cadastro.css'
+import { Aside } from '../../components/Aside';
 
-export const Register = () => {
+export const Cadastro = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [name, setName] = useState("");
@@ -36,11 +36,11 @@ export const Register = () => {
     return (
         <div className='auth-container-principal'>
 
-        <Welcome />
+            <Aside />
 
-            <div className="auth-container"> 
+            <div className="auth-container">
 
-            
+
                 <div className="auth-form">
                     <h2 className="auth-title">Crie sua conta</h2>
                     <h3 className='auth-title2'>Cadastre seus dados</h3>
@@ -63,7 +63,7 @@ export const Register = () => {
                             onChange={handleCpfInput}
                             placeholder="Cpf"
                         />
-                    <label className="auth-input-label" htmlFor="cpf">Digite seu Cpf</label>
+                        <label className="auth-input-label" htmlFor="cpf">Digite seu Cpf</label>
                     </div>
 
                     <div className="auth-input-group">
@@ -74,7 +74,7 @@ export const Register = () => {
                             onChange={handleEmailInput}
                             placeholder="Email"
                         />
-                    <label className="auth-input-label" htmlFor="email">Digite seu e-mail</label>
+                        <label className="auth-input-label" htmlFor="email">Digite seu e-mail</label>
                     </div>
 
                     <div className="auth-input-group">
@@ -85,16 +85,16 @@ export const Register = () => {
                             onChange={handlePasswordInput}
                             placeholder="Password"
                         />
-                    <label className="auth-input-label" htmlFor="Password">Digite sua senha</label>
+                        <label className="auth-input-label" htmlFor="Password">Digite sua senha</label>
                     </div>
 
                     <div className="auth-container-btn">
                         <button className="auth-btn" onClick={handleSubmit}>Cadastrar</button>
                     </div>
-                
-                
+
+
                 </div>
             </div>
-        </div>   
+        </div>
     );
 };
