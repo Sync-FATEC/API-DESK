@@ -7,14 +7,20 @@ import { usuariosRepositorio } from "./usuarios";
 
 export const ticketsRepositorio = AppDataSource.getRepository(Tickets)
 
-export const criarTicket = async (dataAbertura: Date, titulo: string, descricao: string, status: string, categoriaID: number, equipamentosID: number, numeroSala: number, usuarioID: number) => { 
+export const criarTicket = async (titulo: string, descricao: string, status: string, categoriaID: number, equipamentosID: number, numeroSala: number, usuarioID: number) => { 
     try {
         const categoria = await categoriaRepositorio.findOneBy({ categoriaID: categoriaID });
         const equipamento = await equipamentosRepositorio.findOneBy({ equipamentosID: equipamentosID });
         const sala = await salasRepositorio.findOneBy({ numeroSala: numeroSala });
         const usuario = await usuariosRepositorio.findOneBy({ usuarioID: usuarioID });
+        const dataAbertura = new Date();
 
-        const novoTicket = new Tickets(dataAbertura, titulo, descricao, status, categoria, equipamento, sala, usuario);
+        if (!categoria || !equipamento || !sala || !usuario) {
+            console.log('Categoria, equipamento, sala ou usuário inexistente');
+            return 'Categoria, equipamento, sala ou usuário inexistente';
+        }
+
+        const novoTicket = new Tickets(dataAbertura, titulo, descricao, status, categoria.tipoTecnico, categoria, equipamento, sala, usuario);
         await ticketsRepositorio.save(novoTicket);
         console.log('Ticket criado com sucesso');
         return novoTicket;
@@ -77,5 +83,23 @@ export const listarTickets = async (usuarioID: number) => {
     } catch (error) {
         console.error('Erro na listagem dos tickets', error);
         return 'Erro na listagem dos tickets';
+    }
+}
+
+export const alterarTecnico = async (ticketID: number, tipoTecnico: string) => {
+    try {
+        const ticket = await ticketsRepositorio.findOneBy({ ticketsID: ticketID });
+        if (ticket) {
+            ticket.tipoTecnico = tipoTecnico;
+            await ticketsRepositorio.save(ticket);
+            console.log('Técnico do ticket alterado com sucesso');
+            return ticket;
+        } else {
+            console.log('Ticket inexistente');
+            return 'Ticket inexistente';
+        }
+    } catch (error) {
+        console.error('Erro na alteração do técnico do ticket', error);
+        return 'Erro na alteração do técnico do ticket';
     }
 }

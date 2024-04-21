@@ -3,9 +3,9 @@ import { Categorias } from "../entity/categorias"
 
 export const categoriaRepositorio = AppDataSource.getRepository(Categorias)
 
-export const criarCategoria = async (categoria: string) => {
+export const criarCategoria = async (categoria: string, tipoTecnico: string) => {
     try {
-        const novaCategoria = new Categorias(categoria)
+        const novaCategoria = new Categorias(categoria, tipoTecnico)
         await categoriaRepositorio.save(novaCategoria)
         console.log('Nova categoria criada com sucesso');
         return novaCategoria

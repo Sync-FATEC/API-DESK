@@ -6,6 +6,8 @@ import usario from './routes/usuario';
 import categoria from './routes/categoria'
 import mensagens from './routes/mensagens'
 import salas from './routes/salas'
+import equipamentos from './routes/equipamentos'
+import tickets from './routes/tickets'
 
 const app = express();
 const port = 5555;
@@ -19,6 +21,8 @@ AppDataSource.initialize().then(async () => {
     app.use('/categorias', categoria);
     app.use('/mensagens', mensagens);
     app.use('/salas', salas);
+    app.use('/equipamentos', equipamentos);
+    app.use('/tickets', tickets);
 
     app.listen(port, () => {
         console.log(`Servidor rodando na porta ${port}`);

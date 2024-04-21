@@ -4,11 +4,11 @@ import { criarCategoria, excluirCategoria, visualizarCategorias } from '../contr
 const router = express.Router();
 
 router.post('/cadastrar', async (req: Request, res: Response) => {
-    const { nome } = req.body;
-    if (nome === '') {
+    const { categoria, tipoTecnico } = req.body;
+    if (categoria === '' || tipoTecnico === '') {
         return res.status(400).json({ error: 'Preencha todos os campos' });
     }
-    res.json(await criarCategoria(nome));
+    res.json(await criarCategoria(categoria, tipoTecnico));
 });
 
 router.delete('/excluir', async (req: Request, res: Response) => {

@@ -13,12 +13,13 @@ create table Usuarios (
 
 create table Categorias (
 	categoriaID int primary key auto_increment,
-    categoria varchar(255)
+    categoria varchar(255),
+    tipoTecnico varchar(1)
 );
 
 create table salas (
 	salaID int primary key auto_increment,
-    numeroSala int unique	,
+    numeroSala int unique,
     indentificacao varchar(255)
 );
 

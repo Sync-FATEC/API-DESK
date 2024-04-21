@@ -8,7 +8,11 @@ export class Categorias {
     @Column({ length: 255 })
     categoria: string;
 
-    constructor(categoria: string) {
+    @Column({ length: 1 })
+    tipoTecnico: string;
+
+    constructor(categoria: string, tipoTecnico: string) {
         this.categoria = categoria;
+        this.tipoTecnico = tipoTecnico;
     }
 }

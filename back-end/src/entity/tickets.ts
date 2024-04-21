@@ -13,8 +13,8 @@ export class Tickets {
     @Column({ type: 'datetime'})
     dataAbertura: Date;
 
-    @Column({ type: 'datetime'})
-    dataFechamento: Date | null;
+    @Column({ type: 'datetime', nullable: true})
+    dataFechamento: null | Date;
 
     @Column({ length: 255 })
     titulo: string
@@ -24,6 +24,9 @@ export class Tickets {
 
     @Column({ length: 1 })
     status: string;
+
+    @Column({ length: 1 })
+    tipoTecnico: string;
 
     @ManyToOne(() => Categorias)
     @JoinColumn({ name: 'categoriaID' })
@@ -41,11 +44,12 @@ export class Tickets {
     @JoinColumn({ name: 'usuarioID' })
     usuario: Usuarios;
 
-    constructor(dataAbertura: Date, titulo: string, descricao: string, status: string, categoria: Categorias, equipamentos: Equipamentos, sala: Salas, usuario: Usuarios) {
+    constructor(dataAbertura: Date, titulo: string, descricao: string, status: string, tipoTecnico: string, categoria: Categorias, equipamentos: Equipamentos, sala: Salas, usuario: Usuarios) {
         this.dataAbertura = dataAbertura;
         this.titulo = titulo;
         this.descricao = descricao;
         this.status = status;
+        this.tipoTecnico = tipoTecnico;
         this.categoria = categoria;
         this.equipamentos = equipamentos;
         this.sala = sala;
