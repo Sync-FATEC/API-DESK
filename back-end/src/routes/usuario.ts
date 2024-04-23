@@ -12,11 +12,7 @@ router.post('/cadastrar', async (req: Request, res: Response) => {
     if (turno === '') {
         turno = null;
     }
-    if (await criarUsuario(nome, cpf, email, senha, tipoUsuario, turno) !== 0) {
-        res.json('Usuário criado com sucesso');
-    } else {
-        res.json('Erro na criação do usuário');
-    }
+    res.json(await criarUsuario(nome, cpf, email, senha, tipoUsuario, turno))
 });
 
 router.delete('/excluir', async (req: Request, res: Response) => {
@@ -24,11 +20,10 @@ router.delete('/excluir', async (req: Request, res: Response) => {
     if (usuarioID === '') {
         return res.status(400).json({ error: 'ID do usuário não informado' });
     }
-    await excluirUsuario(usuarioID);
-    res.json('Usuário excluido com sucesso');
+    res.json(await excluirUsuario(usuarioID));
 });
 
-router.get('/autenticar', async (req: Request, res: Response) => {
+router.post('/autenticar', async (req: Request, res: Response) => {
     const { email, senha } = req.body;
     if (email === '' || senha === '') {
         return res.status(400).json({ error: 'Preencha todos os campos' });

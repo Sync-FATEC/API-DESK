@@ -1,6 +1,7 @@
 import { AppDataSource } from "./data-source";
 import express from 'express';
 import bodyParser from 'body-parser';
+import cors from 'cors'
 
 import usario from './routes/usuario';
 import categoria from './routes/categoria'
@@ -17,6 +18,7 @@ AppDataSource.initialize().then(async () => {
     console.log('Conexão com o banco de dados estabelecida');
 
     app.use(bodyParser.urlencoded({ extended: true }));
+    app.use(cors())
     app.use('/usuarios', usario);
     app.use('/categorias', categoria);
     app.use('/mensagens', mensagens);
