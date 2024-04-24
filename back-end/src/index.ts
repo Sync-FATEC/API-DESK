@@ -3,7 +3,7 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import cors from 'cors'
 
-import usario from './routes/usuario';
+import usuario from './routes/usuario';
 import categoria from './routes/categoria'
 import mensagens from './routes/mensagens'
 import salas from './routes/salas'
@@ -19,7 +19,7 @@ AppDataSource.initialize().then(async () => {
 
     app.use(bodyParser.urlencoded({ extended: true }));
     app.use(cors())
-    app.use('/usuarios', usario);
+    app.use('/usuarios', usuario);
     app.use('/categorias', categoria);
     app.use('/mensagens', mensagens);
     app.use('/salas', salas);

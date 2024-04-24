@@ -6,6 +6,8 @@ export const Aside = () => {
     const location = useLocation();
     let currentTitle = '';
 
+
+
     if (location.pathname === '/' || location.pathname === '/login') {
         currentTitle = 'Cadastre sua conta agora';
     } else if (location.pathname === '/cadastro') {

@@ -1,25 +1,24 @@
-import { useState } from "react"; //React para receber as informações do form
-import Swal from 'sweetalert2'; //Instalei este novo modulo para dar os alertas
-import axios from "axios"; //Modulo para ligar com o banco
+import { useState } from "react";
+import Swal from 'sweetalert2';
+import axios from "axios";
 import { Aside } from "../../components/Aside";
-import '../../pages/Cadastro/cadastro.css' //CSS da pagina
-import cadastroClienteInterface from "./interfaceUsuario";
+import '../../pages/Cadastro/cadastro.css';
 import { useNavigate } from "react-router-dom";
 
-export function Cadastro(props: cadastroClienteInterface ){ //função pra captar o cadastro do interface criado, além das validações
-    const [nome, setNome] = useState(props.nome || '');
-    const [cpf, setCpf] = useState(props.cpf || '');
-    const [email, setEmail] = useState(props.email || '');
-    const [senha, setSenha] = useState(props.senha || '');
-    const [isValid, setIsValid] = useState(true);
-    const [nomeError, setNomeError] = useState('');
-    const [cpfError, setCpfError] = useState('');
-    const [emailError, setEmailError] = useState('');
-    const [senhaError, setSenhaError] = useState('')
-    
-    const navigate = useNavigate()
+export const Cadastro =() => { 
+  const [nome, setNome] = useState('');
+  const [cpf, setCpf] = useState('');
+  const [email, setEmail] = useState('');
+  const [senha, setSenha] = useState('');
+  const [isValid, setIsValid] = useState(true);
+  const [nomeError, setNomeError] = useState('');
+  const [cpfError, setCpfError] = useState('');
+  const [emailError, setEmailError] = useState('');
+  const [senhaError, setSenhaError] = useState('');
 
-    const handleNome = (e: React.ChangeEvent<HTMLInputElement>) => { //Função para passar o nome e verificar
+  const navigate = useNavigate();
+
+    const handleNome = (e: React.ChangeEvent<HTMLInputElement>) => {
         const newNome = e.target.value;
    
         if (!newNome || !validateNome(newNome)) {
@@ -33,7 +32,7 @@ export function Cadastro(props: cadastroClienteInterface ){ //função pra capta
         }
     };  
  
-    const handleEmail = (e: React.ChangeEvent<HTMLInputElement>) => { //Função para passar o email e verificar
+    const handleEmail = (e: React.ChangeEvent<HTMLInputElement>) => { 
         const newEmail = e.target.value;
         setEmail(newEmail);
    
@@ -46,7 +45,7 @@ export function Cadastro(props: cadastroClienteInterface ){ //função pra capta
         }
     };
    
-    const handleSenha = (e: React.ChangeEvent<HTMLInputElement>) => { //Função para passar a senha e verificar
+    const handleSenha = (e: React.ChangeEvent<HTMLInputElement>) => {
         const newSenha = e.target.value;
         setSenha(newSenha);
    
@@ -73,33 +72,33 @@ export function Cadastro(props: cadastroClienteInterface ){ //função pra capta
         };
     };
  
-    const validateNome = (nome: string): boolean => { //Função de validação do nome
+    const validateNome = (nome: string): boolean => { 
         const nomeRegex = /^[a-zA-ZÀ-ÖØ-öø-ÿ\s]*$/i;
         return nomeRegex.test(nome);
     };
  
-    const validateEmail = (email: string): boolean => { //Função de validação do email
+    const validateEmail = (email: string): boolean => { 
         const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
         return emailRegex.test(email);
     };
  
-    const validateCpf = (cpf: string): boolean => { //Função de validação do CPF
+    const validateCpf = (cpf: string): boolean => { 
         const cpfRegex = /^\d{3}\.\d{3}\.\d{3}-\d{2}$/;
         return cpfRegex.test(cpf);
     };
  
-    const formatCPF = (cpf: string): string => { //Função de validação do Formato do CPF
+    const formatCPF = (cpf: string): string => {
         const cleaned = cpf.replace(/\D/g, '');
         let formated = cleaned.replace(/(\d{3})(\d{3})(\d{3})(\d{2}).*/, '$1.$2.$3-$4');
         return formated;
     };
  
-    const validateSenha = (senha: string): boolean => { //Função de validação da senha
+    const validateSenha = (senha: string): boolean => {
         const senhaRegex = /^[a-zA-Z0-9!@#$%^&*()_+{}[\]:;<>,.?/~`|-]{1,20}$/;
         return senhaRegex.test(senha);
     };  
 
-    const cpfSemFormatacao = cpf.replace(/[^\d]/g, ''); // Remove todos os caracteres não numéricos
+    const cpfSemFormatacao = cpf.replace(/[^\d]/g, ''); 
 
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => { //Função para se enviar as informações captadas
         event.preventDefault();
@@ -135,9 +134,9 @@ export function Cadastro(props: cadastroClienteInterface ){ //função pra capta
             setCpfError('');
         };
  
-        if (formIsValid && isValid) { //Caso de bug, tire o isValid ou adicione o '||' no lugar do '&&'
-            try { // Verifica se o usuário já existe
-                const response = await axios.post('http://localhost:5555/usuarios/cadastrar', { //Coloca a URL do Route que vocês criaram pro cadastro
+        if (formIsValid && isValid) { 
+            try { 
+                const response = await axios.post('http://localhost:5555/usuarios/cadastrar', { 
                 'nome': nome,
                 'cpf': cpfSemFormatacao,
                 'email': email,
@@ -146,7 +145,7 @@ export function Cadastro(props: cadastroClienteInterface ){ //função pra capta
                 'Turno': ''
                 });
  
-                if (response.data === 'Usuário já cadastrado') { //Caso o usuário ja exista, exibe um alerta
+                if (response.data === 'Usuário já cadastrado') { 
                     Swal.fire({
                         title: 'Error!',
                         text: 'E-mail já existente!',

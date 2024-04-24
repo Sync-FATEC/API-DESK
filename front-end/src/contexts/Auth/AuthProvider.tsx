@@ -1,47 +1,59 @@
 import { useEffect, useState } from "react";
-import { useApi } from "../../hooks/useApi";
+import axios from "axios"; 
+import { AuthContextType, AuthContext } from "./AuthContext";
 import { User } from "../../types/User";
-import { AuthContext } from "./AuthContext";
 
 export const AuthProvider = ({ children }: { children: JSX.Element }) => {
     const [user, setUser] = useState<User | null>(null);
-    const api = useApi();
 
     useEffect(() => {
         const validateToken = async () => {
             const storageData = localStorage.getItem('authToken');
             if (storageData) {
-                const data = await api.validateToken(storageData);
-                if (data.user) {
-                    setUser(data.user);
+                try {
+                    const response = await axios.post('http://localhost:5555/usuarios/autenticar', { token: storageData });
+                    if (response.data.user) {
+                        setUser(response.data.user);
+                    }
+                } catch (error) {
+                    console.error("Erro ao validar token:", error);
                 }
             }
         }
         validateToken();
-    }, [api]);
+    }, []);
 
     const signin = async (email: string, password: string) => {
-        const data = await api.signin(email, password);
-        if (data.user && data.token) {
-            setUser(data.user);
-            setToken(data.token);
-            return true;
+        try {
+            const response = await axios.post('http://localhost:5555/usuarios/autenticar', { email, password });
+            if (response.data.user && response.data.token) {
+                setUser({ ...response.data.user, tipoUsuario: response.data.user.tipoUsuario }); 
+                setToken(response.data.token);
+                return true;
+            }
+        } catch (error) {
+            console.error("Erro ao fazer login:", error);
         }
         return false;
     }
-
-    const signout = async () => {
+    
+    const signout = () => {
         setUser(null);
-        setToken('');
-        await api.logout();
+        removeToken();
     }
 
     const setToken = (token: string) => {
         localStorage.setItem('authToken', token);
     }
 
+    const removeToken = () => {
+        localStorage.removeItem('authToken');
+    }
+
+    const contextValue: AuthContextType = { user, signin, signout };
+
     return (
-        <AuthContext.Provider value={{ user, signin, signout }}>
+        <AuthContext.Provider value={contextValue}>
             {children}
         </AuthContext.Provider>
     );
