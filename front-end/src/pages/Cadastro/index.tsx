@@ -3,9 +3,10 @@ import Swal from 'sweetalert2'; //Instalei este novo modulo para dar os alertas
 import axios from "axios"; //Modulo para ligar com o banco
 import { Aside } from "../../components/Aside";
 import '../../pages/Cadastro/cadastro.css' //CSS da pagina
-import { User } from "../../types/User"; //Interface do Usuario
- 
-export function Cadastro(props: User ){ //função pra captar o cadastro do interface criado, além das validações
+import cadastroClienteInterface from "./interfaceUsuario";
+import { useNavigate } from "react-router-dom";
+
+export function Cadastro(props: cadastroClienteInterface ){ //função pra captar o cadastro do interface criado, além das validações
     const [nome, setNome] = useState(props.nome || '');
     const [cpf, setCpf] = useState(props.cpf || '');
     const [email, setEmail] = useState(props.email || '');
@@ -15,7 +16,9 @@ export function Cadastro(props: User ){ //função pra captar o cadastro do inte
     const [cpfError, setCpfError] = useState('');
     const [emailError, setEmailError] = useState('');
     const [senhaError, setSenhaError] = useState('')
- 
+    
+    const navigate = useNavigate()
+
     const handleNome = (e: React.ChangeEvent<HTMLInputElement>) => { //Função para passar o nome e verificar
         const newNome = e.target.value;
    
@@ -146,29 +149,33 @@ export function Cadastro(props: User ){ //função pra captar o cadastro do inte
                 if (response.data === 'Usuário já cadastrado') { //Caso o usuário ja exista, exibe um alerta
                     Swal.fire({
                         title: 'Error!',
-                        text: 'Usuário já existente!',
-                        icon: 'error',
-                        confirmButtonText: 'OK'
-                    }).then(() => { //Tira todos os valores do formulario
-                        setNome('');
-                        setCpf('');
-                        setEmail('');
-                        setSenha('');
-                    });
-                } if (response.data === 'CPF inválido'){
-                    Swal.fire({
-                        title: 'Error!',
-                        text: 'CPF já existente',
+                        text: 'E-mail já existente!',
                         icon: 'error',
                         confirmButtonText: 'OK'
                     }).then(() => {
-                        setNome('');
-                        setCpf('');
                         setEmail('');
-                        setSenha('');
                     });
-                }else { //Mostrar sucesso caso o usuário não exista
+                } else if (response.data === 'CPF inválido'){
+                    Swal.fire({
+                        title: 'Error!',
+                        text: 'CPF já existente!',
+                        icon: 'error',
+                        confirmButtonText: 'OK'
+                    }).then(() => {
+                        setCpf('');
+                    });
+                } else if (response.data === 'CPF já cadastrado'){
+                    Swal.fire({
+                        title: 'Error!',
+                        text: 'CPF já cadastrado!',
+                        icon: 'error',
+                        confirmButtonText: 'OK'
+                    }).then(() => {
+                        setCpf('');
+                    });
+                } else { //Mostrar sucesso caso o usuário não exista
                     success();
+                    navigate('/login')
                 };
             } catch (error) { //Caso o try n funcione na criação do cliente ele ira aparecer este erro
                 console.log(error);
@@ -189,8 +196,8 @@ export function Cadastro(props: User ){ //função pra captar o cadastro do inte
  
     const success = () => { //Função da mensagem de sucesso quando conseguir criar o cliente
         Swal.fire({
-            title: "Enviada com sucesso!",
-            text: "Informações enviadas com sucesso!",
+            title: "Cadastro concluido!",
+            text: "Informações cadastradas com sucesso!",
             icon: "success",
             confirmButtonText: "OK"
         });
@@ -219,18 +226,7 @@ export function Cadastro(props: User ){ //função pra captar o cadastro do inte
                     <div className="">{nomeError}</div>
                     <label className="auth-input-label" htmlFor="nome">Digite seu nome</label>
                 </div>
-                <div className="auth-input-group">
-                    <input
-                        className={cpf !== "" ? "has-val input" : "input"}
-                        type="text"
-                        value={cpf}
-                        onChange={handleCpf}
-                        placeholder="CPF"
-                    />
-                    <div className="">{cpfError}</div>
-                    <label className="auth-input-label" htmlFor="cpf">Digite seu Cpf</label>
-                </div>
- 
+
                 <div className="auth-input-group">
                     <input
                         className={email !== "" ? "has-val input" : "input"}
@@ -241,6 +237,18 @@ export function Cadastro(props: User ){ //função pra captar o cadastro do inte
                     />
                     <div className="">{emailError}</div>
                     <label className="auth-input-label" htmlFor="email">Digite seu e-mail</label>
+                </div>
+
+                <div className="auth-input-group">
+                    <input
+                        className={cpf !== "" ? "has-val input" : "input"}
+                        type="text"
+                        value={cpf}
+                        onChange={handleCpf}
+                        placeholder="CPF"
+                    />
+                    <div className="">{cpfError}</div>
+                    <label className="auth-input-label" htmlFor="cpf">Digite seu CPF</label>
                 </div>
  
                 <div className="auth-input-group">
