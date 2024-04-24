@@ -25,7 +25,6 @@ export const Login = () => {
   const handleSubmitLogin = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    // Verifica se o email e a senha foram fornecidos
     if (!email || !senha) {
       warning('Preencha todos os campos');
       return;
@@ -43,10 +42,12 @@ export const Login = () => {
           case 'U':
             navigate('/cliente');
             break;
+          case '1':
           case '2':
+          case '3':
             navigate('/tecnicos');
             break;
-          case '3':
+          case 'A':
             navigate('/admin');
             break;
           default:
