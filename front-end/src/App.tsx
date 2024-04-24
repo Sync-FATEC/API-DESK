@@ -3,6 +3,7 @@ import { Route, Routes } from 'react-router-dom';
 import { Cliente } from './pages/Cliente';
 import { Login } from './pages/Login';
 import { Cadastro } from './pages/Cadastro';
+import { Admin } from './pages/Admin/CadastroTecnico/cadastroTecnico';
 function App() {
   return (
     <div className="App">
@@ -16,6 +17,7 @@ function App() {
               <Cliente />
           } 
         />
+        <Route path="/cadastroTecnico" element={< Admin />} />
       </Routes>
     </div>
   );
