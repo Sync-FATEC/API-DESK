@@ -2,15 +2,11 @@ import logo from '../../assets/img/logo-header.svg';
 import './header.css';
 import { useContext } from 'react';
 import { AuthContext } from '../../contexts/Auth/AuthContext';
-import { useNavigate } from 'react-router-dom';
-
 export const Header = () => {
     const auth = useContext(AuthContext);
-    const navigate = useNavigate();
 
     const handleLogout = async () => {
         await auth.signout();
-        navigate('/login'); 
     };
 
     return (
@@ -29,11 +25,13 @@ export const Header = () => {
 
                 <div className="header-divider" />
 
-                <button className="header-button" onClick={handleLogout}>
+                <button className="header-button">
                     <span className="material-symbols-outlined">account_circle</span>
+                    <div>{auth.user?.name}</div>
                 </button>
+                {auth.user && <button className='header-button' onClick={handleLogout}>Sair</button>}
 
-                {auth.user && <button onClick={handleLogout}>Sair</button>}
+
             </div>
         </header>
     );

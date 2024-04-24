@@ -86,4 +86,3 @@ export const autenticarUsuario = async (email: string, senha: string) => {
         console.error('Erro na autenticação do usuário', error);
     }
 }
-

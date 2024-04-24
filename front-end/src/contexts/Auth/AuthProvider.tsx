@@ -1,64 +1,48 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios"; 
-import { AuthContextType, AuthContext } from "./AuthContext";
+import { useEffect, useState } from "react";
+import { useApi } from "../../hooks/useApi";
 import { User } from "../../types/User";
+import { AuthContext } from "./AuthContext";
 
 export const AuthProvider = ({ children }: { children: JSX.Element }) => {
     const [user, setUser] = useState<User | null>(null);
+    const api = useApi();
 
     useEffect(() => {
         const validateToken = async () => {
             const storageData = localStorage.getItem('authToken');
             if (storageData) {
-                try {
-                    const response = await axios.post('http://localhost:5555/usuarios/autenticar', { token: storageData });
-                    if (response.data.user) {
-                        setUser(response.data.user);
-                    }
-                } catch (error) {
-                    console.error("Erro ao validar token:", error);
+                const data = await api.validateToken(storageData);
+                if (data.user) {
+                    setUser(data.user);
                 }
             }
         }
         validateToken();
-    }, []);
+    }, [api]);
 
     const signin = async (email: string, password: string) => {
-        try {
-            const response = await axios.post('http://localhost:5555/usuarios/autenticar', { email, password });
-            if (response.data.user && response.data.token) {
-                setUser({ ...response.data.user, tipoUsuario: response.data.user.tipoUsuario }); 
-                setToken(response.data.token);
-                return true;
-            }
-        } catch (error) {
-            console.error("Erro ao fazer login:", error);
+        const data = await api.signin(email, password);
+        if (data.user && data.token) {
+            setUser(data.user);
+            setToken(data.token); 
+            return true;
         }
         return false;
     }
-    
+
     const signout = async () => {
+        console.log("signout está sendo executada.");
         setUser(null);
-        removeToken(); 
-        try {
-            await axios.post('http://localhost:5555/usuarios/logout');
-        } catch (error) {
-            console.error("Erro ao fazer logout:", error);
-        }
+        setToken('');
+        await api.logout();
     }
 
     const setToken = (token: string) => {
         localStorage.setItem('authToken', token);
     }
 
-    const removeToken = () => {
-        localStorage.removeItem('authToken');
-    }
-
-    const contextValue: AuthContextType = { user, signin, signout };
-
     return (
-        <AuthContext.Provider value={contextValue}>
+        <AuthContext.Provider value={{ user, signin, signout }}>
             {children}
         </AuthContext.Provider>
     );

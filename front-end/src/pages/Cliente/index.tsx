@@ -1,6 +1,7 @@
 import { Header } from '../../components/Header';
 import './cliente.css';
 
+
 export const Cliente = () => {
     return (
         <div>

@@ -1,11 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import "./login.css";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import Swal from "sweetalert2";
 import { Aside } from "../../components/Aside";
+import { AuthContext } from "../../contexts/Auth/AuthContext";
+import Swal from "sweetalert2";
+import { useApi } from "../../hooks/useApi";
+
 
 export const Login = () => {
+  const api = useApi();
+  const auth = useContext(AuthContext);
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
   const [emailError, setEmailErrorText] = useState('');
@@ -13,45 +17,56 @@ export const Login = () => {
   const navigate = useNavigate();
 
   const handleEmailLogin = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setEmail(e.target.value);
-    setEmailErrorText('');
+    const value = e.target.value;
+    setEmail(value);
+    if (!value) {
+      setEmailErrorText('Campo de e-mail obrigatório');
+    } else {
+      setEmailErrorText('');
+    }
   };
 
   const handleSenhaLogin = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSenha(e.target.value);
-    setSenhaErrorText('');
+    const value = e.target.value;
+    setSenha(value);
+    if (!value) {
+      setSenhaErrorText('Campo de senha obrigatório');
+    } else {
+      setSenhaErrorText('');
+    }
   };
 
   const handleSubmitLogin = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-
+  
     if (!email || !senha) {
       warning('Preencha todos os campos');
       return;
     }
-
+  
     try {
-      const response = await axios.post('http://localhost:5555/usuarios/autenticar', {
-        email: email,
-        senha: senha
-      });
-
-      const data = response.data;
-      if (data && data.tipoUsuario) {
-        switch (data.tipoUsuario) {
-          case 'U':
-            navigate('/cliente');
-            break;
-          case '1':
-          case '2':
-          case '3':
-            navigate('/tecnicos');
-            break;
-          case 'A':
-            navigate('/admin');
-            break;
-          default:
-            break;
+      const isLogged = await auth.signin(email, senha);
+      if (isLogged) {
+        const data = await api.validateToken(localStorage.getItem('authToken') ?? '');
+        if (data && data.user.tipoUsuario) {
+          switch (data.user.tipoUsuario) {
+            case 'U':
+              navigate('/cliente');
+              break;
+            case '1':
+            case '2':
+            case '3':
+              navigate('/tecnicos');
+              break;
+            case 'A':
+              navigate('/admin');
+              break;
+            default:
+              break;
+          }
+        } else {
+          errorSwal('Usuário inexistente ou senha incorreta');
+          setSenha('');
         }
       } else {
         errorSwal('Usuário inexistente ou senha incorreta');
@@ -63,7 +78,7 @@ export const Login = () => {
       setSenha('');
     }
   };
-
+  
   const warning = (message: string) => {
     Swal.fire({
       title: 'Aviso!',
@@ -71,7 +86,7 @@ export const Login = () => {
       icon: 'warning'
     });
   };
-
+  
   const errorSwal = (message: string) => {
     Swal.fire({
       title: 'Error!',
@@ -79,6 +94,7 @@ export const Login = () => {
       icon: 'error'
     });
   };
+
 
   return (
     <div className='auth-container-principal'>
@@ -95,7 +111,7 @@ export const Login = () => {
                 onChange={handleEmailLogin}
                 placeholder=" "
               />
-              <div>{emailError}</div>
+              <div className="error-message">{emailError}</div>
               <label className="auth-input-label" htmlFor="email">Digite seu e-mail</label>
             </div>
             <div className="auth-input-group">
@@ -105,7 +121,7 @@ export const Login = () => {
                 onChange={handleSenhaLogin}
                 placeholder=" "
               />
-              <div>{senhaError}</div>
+              <div className="error-message">{senhaError}</div>
               <label className="auth-input-label" htmlFor="password">Digite sua senha</label>
             </div>
             <button className="auth-btn">Logar</button>

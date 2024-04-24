@@ -16,6 +16,7 @@
       "cors": "^2.8.5",
       "express": "^4.19.2",
       "init": "^0.1.2",
+      "jsonwebtoken": "^9.0.2",
       "mysql2": "^3.9.6",
       "reflect-metadata": "^0.1.13",
       "typeorm": "0.3.20",

@@ -1,9 +1,7 @@
-export type User = {
-    usuarioID?: number;
-    nome: string;
-    cpf: string;
+export interface User {
+    id: number;
+    name: string;
     email: string;
-    senha: string;
     tipoUsuario: string; 
-    turno?: string | null; 
-}
+  }
+  
