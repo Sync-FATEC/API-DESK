@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios"; 
 import { AuthContextType, AuthContext } from "./AuthContext";
 import { User } from "../../types/User";
@@ -37,9 +37,14 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
         return false;
     }
     
-    const signout = () => {
+    const signout = async () => {
         setUser(null);
-        removeToken();
+        removeToken(); 
+        try {
+            await axios.post('http://localhost:5555/usuarios/logout');
+        } catch (error) {
+            console.error("Erro ao fazer logout:", error);
+        }
     }
 
     const setToken = (token: string) => {

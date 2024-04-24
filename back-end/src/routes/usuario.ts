@@ -31,4 +31,8 @@ router.post('/autenticar', async (req: Request, res: Response) => {
     res.json(await autenticarUsuario(email, senha));
 });
 
+router.post('/logout', async (_, res: Response) => {
+        res.status(200).send('Logout realizado com sucesso');
+});
+
 export default router;

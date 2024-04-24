@@ -11,10 +11,11 @@ function App() {
         <Route path="/" element={<Login />} />
         <Route path="/login" element={<Login />} />
         <Route path="/cadastro" element={<Cadastro />} />
+        <Route path="/admin" element={<Admin />} />
         <Route 
           path="/cliente" 
           element={
-              <Cliente />
+                <Cliente />
           } 
         />
         <Route path="/cadastroTecnico" element={< Admin />} />
