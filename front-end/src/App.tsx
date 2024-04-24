@@ -7,7 +7,8 @@ import { Admin } from './pages/Admin';
 import { Tecnico } from './pages/Tecnico';
 import { Error } from './pages/Error';
 import { RequireAuth } from './contexts/Auth/RequireAuth';
-function App() {
+
+export const App =() =>{
   return (
     <div className="App">
         <Routes>
@@ -44,4 +45,3 @@ function App() {
   );
 }
 
-export default App;

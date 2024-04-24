@@ -2,7 +2,7 @@ import { Header } from '../../../components/Header';
 import './cadastroTecnico.css';
 import { AsideAdmin } from '../../../components/AsideAdmin';
 
-export const Admin = () => {
+export const CadastroTecnico = () => {
     return (
         <div>
             <Header />
