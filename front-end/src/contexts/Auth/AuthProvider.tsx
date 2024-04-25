@@ -22,13 +22,17 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
 
     const signin = async (email: string, password: string) => {
         const data = await api.signin(email, password);
-        if (data.user && data.token) {
-            setUser(data.user);
-            setToken(data.token); 
-            return true;
+        if (data === 'Senha incorreta') {
+            return false
         }
-        return false;
-    }
+        else if (data === 'Usuario inexistente'){
+            return false
+        }
+        console.log(data.token)
+        setUser(data.user);
+        setToken(data.usuarioID); 
+        return true;
+        }
 
     const signout = async () => {
         console.log("signout está sendo executada.");

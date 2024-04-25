@@ -1,5 +1,5 @@
 import express, { Request, Response } from 'express';
-import { autenticarUsuario, criarUsuario, excluirUsuario } from '../controllers/usuarios';
+import { autenticarUsuario, criarUsuario, excluirUsuario, procurarUsuario } from '../controllers/usuarios';
 
 const router = express.Router();
 
@@ -30,5 +30,14 @@ router.post('/autenticar', async (req: Request, res: Response) => {
     }
     res.json(await autenticarUsuario(email, senha));
 });
+
+router.get('/procurar', async (req: Request, res: Response) => {
+    const { id } = req.body;
+    if (id === '') {
+        return res.status(400).json({ error: 'Preencha todos os campos' });
+    }
+    res.json(await procurarUsuario(id))
+
+})
 
 export default router;

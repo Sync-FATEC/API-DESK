@@ -86,3 +86,16 @@ export const autenticarUsuario = async (email: string, senha: string) => {
         console.error('Erro na autenticação do usuário', error);
     }
 }
+
+export const procurarUsuario = async (usuarioID: number) => {
+    try {
+        const usuario = await usuariosRepositorio.findOneBy({ usuarioID: usuarioID })
+        if (usuario) {
+            return usuario
+        } else {
+            return 0
+        }
+    } catch (error) {
+        console.error("Erro na hora de procurar um usuario", error);
+    }
+}
