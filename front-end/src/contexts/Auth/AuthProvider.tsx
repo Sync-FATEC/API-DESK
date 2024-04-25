@@ -28,9 +28,9 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
         else if (data === 'Usuario inexistente'){
             return false
         }
-        console.log(data.token)
         setUser(data.user);
-        setToken(data.usuarioID); 
+        setToken(data.email);
+         
         return true;
         }
 
@@ -38,7 +38,6 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
         console.log("signout está sendo executada.");
         setUser(null);
         setToken('');
-        await api.logout();
     }
 
     const setToken = (token: string) => {

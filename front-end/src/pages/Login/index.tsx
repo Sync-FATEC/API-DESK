@@ -5,6 +5,7 @@ import { Aside } from "../../components/Aside";
 import { AuthContext } from "../../contexts/Auth/AuthContext";
 import Swal from "sweetalert2";
 import { useApi } from "../../hooks/useApi";
+import { log } from "console";
 
 
 export const Login = () => {
@@ -46,10 +47,10 @@ export const Login = () => {
   
     try {
       const isLogged = await auth.signin(email, senha);
-      if (isLogged) {
-        const data = await api.validateToken(localStorage.getItem('authToken') ?? '');
-        if (data && data.user.tipoUsuario) {
-          switch (data.user.tipoUsuario) {
+      if (isLogged) { 
+        const data = await api.validateToken(email);
+        if (data && data.tipoUsuario) {
+          switch (data.tipoUsuario) {
             case 'U':
               navigate('/cliente');
               break;

@@ -2,13 +2,12 @@ import axios from 'axios'
 
 export const useApi = () => ({
     validateToken: async (id: string) => {
-        try {
+        try {            
             const response = await axios.get('http://localhost:5555/usuarios/procurar', {
                 params: {
                     id: id
                 }
             });
-            console.log(response.data);
             return response.data;
         } catch (error) {
             console.error(error);
@@ -21,15 +20,10 @@ export const useApi = () => ({
                 email: email,
                 senha: senha
             });
-            console.log(response.data);
             return response.data;
         } catch (error) {
             console.error(error);
             throw error;
         }
-    }
-    ,
-    logout: async () => {
-        return { status: true };
     }
 });
