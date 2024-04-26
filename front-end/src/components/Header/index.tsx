@@ -1,12 +1,17 @@
+import React, { useState } from 'react';
 import logo from '../../assets/img/logo-header.svg';
 import './header.css';
-import { useContext } from 'react';
-import { AuthContext } from '../../contexts/Auth/AuthContext';
-export const Header = () => {
-    const auth = useContext(AuthContext);
+import { Perfil } from '../../pages/Perfil';
 
-    const handleLogout = async () => {
-        await auth.signout();
+export const Header = () => {
+    const [modalOpen, setModalOpen] = useState(false);
+
+    const handleOpenModal = () => {
+        setModalOpen(true);
+    };
+
+    const handleCloseModal = () => {
+        setModalOpen(false);
     };
 
     return (
@@ -25,14 +30,19 @@ export const Header = () => {
 
                 <div className="header-divider" />
 
-                <button className="header-button">
+                <button className="header-button" onClick={handleOpenModal}>
                     <span className="material-symbols-outlined">account_circle</span>
-                    <div>{auth.user?.name}</div>
                 </button>
-                {auth.user && <button className='header-button' onClick={handleLogout}>Sair</button>}
-
-
             </div>
+
+            {modalOpen && (
+                <div className="modal">
+                    <div className="modal-content">
+                        <span className="close" onClick={handleCloseModal}>&times;</span>
+                        <Perfil />
+                    </div>
+                </div>
+            )}
         </header>
     );
 };
