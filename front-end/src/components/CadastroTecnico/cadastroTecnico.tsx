@@ -1,11 +1,8 @@
-import { Header } from '../../../components/Header';
 import './cadastroTecnico.css';
-import { AsideAdmin } from '../../../components/AsideAdmin';
 
 export const CadastroTecnico = () => {
     return (
         <div>
-            <Header />
             <div className="titulo">
                 <div className="texto_titulo">
                     <h3>Configuração de cadastro Técnicos</h3>
@@ -13,7 +10,6 @@ export const CadastroTecnico = () => {
             </div>
 
             <div className="container">
-                <AsideAdmin/>
                 <div className="box_de_conteudo">
                     <div>
                         <h5 style={{ margin: '4%' }}>Técnico Cadastrado</h5>
