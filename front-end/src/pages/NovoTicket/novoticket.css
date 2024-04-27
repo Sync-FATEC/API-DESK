@@ -1,0 +1,38 @@
+.modal-ticket{
+    padding: 20px;
+}
+.Filter-tickets{
+    display: flex;
+    flex-direction: row;
+}
+.selectCategoria{
+    margin: 10px 2px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 2px solid var(--blue-color); /* Adiciona borda superior */
+    color: var(--blue-color);
+    font-size: 20px;
+     
+}
+.modal-content{
+    background-color: var(--branco-color);
+}
+
+.formInput-assunto{
+    margin: 10px 2px;
+    width: 100%;
+}
+.assunto{
+    width: calc(100% - 5px);
+    border-radius: 5px;
+    padding: 10px;
+    border: 2px solid var(--blue-color); 
+    color: var(--blue-color);
+    box-sizing: border-box;
+    font-size: 20px;
+}
+
+
+h1{
+    color: var(--blue-color);
+}
