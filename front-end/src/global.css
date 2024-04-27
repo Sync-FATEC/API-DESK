@@ -89,7 +89,7 @@
   padding: 0 5px;
   transition: 200ms ease-in-out;
   pointer-events: none;
-  font-weight: bold;
+  font-weight:600;
 
 }
 

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './AsideAdmin.css';
 import ClientesAdm from '../ClientesAdm';
 import {CadastroTecnico} from '../CadastroTecnico';
+import SalaAdm from '../SalaAdm';
 
 export const AsideAdmin: React.FC<{
     onPageChange: (title: string) => void;
@@ -36,6 +37,7 @@ export const AsideAdmin: React.FC<{
                     <div className="selected-content">
                         {selectedOption === 'Cadastro de Técnico' && <CadastroTecnico/>}
                         {selectedOption === 'Clientes' && <ClientesAdm />}
+                        {selectedOption === 'Salas' && <SalaAdm />}
                     </div>
                 )}
             </div>
