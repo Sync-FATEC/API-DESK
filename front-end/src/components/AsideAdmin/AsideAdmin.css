@@ -1,38 +1,40 @@
-
-.titulo_cadastrar_tecnico{
-    height: 125px;
-    background-color: white;
-    position: relative;   
-    display: flex; 
-    justify-content: flex-start; 
-    align-items: center; 
+:root {
+    --blue-color: #0072bbff;
+    --black-color: #212227;
+    --cinza-color: #d9d9d9;
+    --red-error-color: #ff0035ff;
+    --padding-global: 0 120px;
 }
-.texto_cadastrar_tecnico{
-    margin-left: 7%;
-}
-.container {
-    display: flex; /* Define o container como flexível */
-    height: 100%;
-}
-
-.box_de_links {
-    position: relative;
-    width: 20%; /* Cada div ocupará metade da largura do container */
-    border-left: 1px solid #000; /* Adiciona uma borda para visualização */
-    border-right: 1px solid #000;
-}
-.links_t    ecnico{
-    text-align: center;
-    margin-top: 10%;
-}
-
-.box_de_conteudo_tecnico{
-    width: 70%;
-    margin-left: 3%;
-}
-
-.select_tecnico{
+.containerAside{
     display: flex;
-    margin-top: 2%;
-    margin-bottom: 2%;
+    padding: var(--padding-global);
+    flex-direction: row;
+    width: 100%;
+}
+.asideLinks {
+    width: 200px; 
+    background-color: var(--cinza-color); 
+    padding: 20px;
+    border-radius: 5px;
+    min-height: 130%; 
+}
+
+.option {
+    color: var(--black-color);
+    padding: 8px 0;
+    cursor: pointer;
+    font-size: 18px; 
+}
+
+.selectedOption {
+    color: var(--black-color); 
+    padding: 8px 0;
+    cursor: pointer;
+    font-size: 18px; 
+
+}
+
+.content{
+    display: flex;
+    margin: 0px 20px;
 }
