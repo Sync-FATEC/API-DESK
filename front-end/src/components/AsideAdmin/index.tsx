@@ -3,6 +3,7 @@ import './AsideAdmin.css';
 import ClientesAdm from '../ClientesAdm';
 import {CadastroTecnico} from '../CadastroTecnico';
 import SalaAdm from '../SalaAdm';
+import EquipamentoAdm from '../EquipamentoAdm';
 
 export const AsideAdmin: React.FC<{
     onPageChange: (title: string) => void;
@@ -38,6 +39,7 @@ export const AsideAdmin: React.FC<{
                         {selectedOption === 'Cadastro de Técnico' && <CadastroTecnico/>}
                         {selectedOption === 'Clientes' && <ClientesAdm />}
                         {selectedOption === 'Salas' && <SalaAdm />}
+                        {selectedOption === 'Equipamento' && <EquipamentoAdm />}
                     </div>
                 )}
             </div>

@@ -1,16 +1,15 @@
-
-import './salaAdm.css';
+import './equipamentoAdm.css';
 import add from '../../assets/img/add.png';
 
-const SalaAdm = () => {
-    const sala = [
-        { nome: 'Sala 401'},
-        { nome: 'Sala 402' },
-        { nome: 'Sala 403'}
+const EquipamentoAdm = () => {
+    const equipamento = [
+        { nome: 'Notebook Lenovo Thinkpad E14'},
+        { nome: 'Teclado com fio USB Logitech K120' },
+        { nome: 'Mouse Essential Usb Lenovo'}
     ];
 
     const handleDeleteUser = () => {
-        // BackEnd logica para excluir e logica para pegar as salas
+        // BackEnd logica para excluir e logica para pegar as equipamentos
     };
     const handleAddUser = () => {
         // BackEnd logica para adicionar
@@ -21,9 +20,9 @@ const SalaAdm = () => {
             </div>
 
             <div className="container">
-                {sala.map((sala, index) => (
-                    <div className="numeroSala" key={index}>
-                            <p>{sala.nome}</p>
+                {equipamento.map((equipamento, index) => (
+                    <div className="nomeEquipamento" key={index}>
+                            <p>{equipamento.nome}</p>
                         <button className="excluir" onClick={handleDeleteUser}>
                             Excluir
                         </button>
@@ -31,8 +30,8 @@ const SalaAdm = () => {
                     
                     
                 ))}
-                <div className="numeroSala">
-                    <input type="text" className="inputSala" placeholder="Adicionar Sala"/>
+                <div className="nomeEquipamento">
+                    <input type="text" className="inputEquipamento" placeholder="Adicionar Equipamento"/>
                     <button onClick={handleAddUser} className="add">
                 <img src={add} alt="add" />
             </button>
@@ -42,4 +41,4 @@ const SalaAdm = () => {
         </div>
     )};
 
-export default SalaAdm;
+export default EquipamentoAdm;
