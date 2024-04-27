@@ -11,29 +11,38 @@
 .texto_cadastrar_tecnico{
     margin-left: 7%;
 }
-.container {
-    display: flex; /* Define o container como flexível */
-    height: 100%;
-}
 
 .box_de_links {
     position: relative;
+    padding: 1%;
     width: 20%; /* Cada div ocupará metade da largura do container */
     border-left: 1px solid #000; /* Adiciona uma borda para visualização */
     border-right: 1px solid #000;
 }
-.links_t    ecnico{
-    text-align: center;
-    margin-top: 10%;
+
+.container {
+    display: flex; /* Define o container como flexível */
+    height: 100%;
+    width: 100%;
+    margin: 0 5%;
 }
 
-.box_de_conteudo_tecnico{
+.titulo{
+    height: 125px;
+    background-color: white;
+    display: flex; 
+    align-items: center; 
+}
+.texto_titulo{
+    margin-left: 6%;
+}
+
+.box_de_conteudo{
     width: 70%;
     margin-left: 3%;
 }
 
-.select_tecnico{
-    display: flex;
-    margin-top: 2%;
-    margin-bottom: 2%;
+a{
+    text-decoration: none;
+    color: #000;
 }
