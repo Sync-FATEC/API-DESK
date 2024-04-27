@@ -6,15 +6,15 @@ export const CadastroTecnico = () => {
     return (
         <div>
             <Header />
-            <div className="titulo_cadastrar_tecnico">
-                <div className="texto_cadastrar_tecnico">
+            <div className="titulo">
+                <div className="texto_titulo">
                     <h3>Configuração de cadastro Técnicos</h3>
                 </div>
             </div>
 
             <div className="container">
                 <AsideAdmin/>
-                <div className="box_de_conteudo_tecnico">
+                <div className="box_de_conteudo">
                     <div>
                         <h5 style={{ margin: '4%' }}>Técnico Cadastrado</h5>
                     </div>

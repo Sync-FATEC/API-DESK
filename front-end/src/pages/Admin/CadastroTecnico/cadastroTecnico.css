@@ -1,37 +1,5 @@
 @import '~bootstrap/dist/css/bootstrap.min.css';
 
-.titulo_cadastrar_tecnico{
-    height: 125px;
-    background-color: white;
-    position: relative;   
-    display: flex; 
-    justify-content: flex-start; 
-    align-items: center; 
-}
-.texto_cadastrar_tecnico{
-    margin-left: 7%;
-}
-.container {
-    display: flex; /* Define o container como flexível */
-    height: 100%;
-}
-
-.box_de_links {
-    position: relative;
-    width: 20%; /* Cada div ocupará metade da largura do container */
-    border-left: 1px solid #000; /* Adiciona uma borda para visualização */
-    border-right: 1px solid #000;
-}
-.links_t    ecnico{
-    text-align: center;
-    margin-top: 10%;
-}
-
-.box_de_conteudo_tecnico{
-    width: 70%;
-    margin-left: 3%;
-}
-
 .select_tecnico{
     display: flex;
     margin-top: 2%;
