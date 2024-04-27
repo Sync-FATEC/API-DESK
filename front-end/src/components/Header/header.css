@@ -11,10 +11,9 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    color: var(--black);
+    color: var(--black-color);
     padding: var(--padding-global);
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-
 }
 
 .header-left{
@@ -33,11 +32,13 @@
 }
 
 .header-button {
-    margin-left: 10px;
-    padding: 8px 12px;
+    margin-left: 5px;
+    padding: 5px 10px;
     background-color: transparent;
     border: none;
-    
+    font-weight: bold;
+    font-size: 16px;
+  
 }
 
 .header-divider {

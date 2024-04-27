@@ -1,7 +1,54 @@
-@import '~bootstrap/dist/css/bootstrap.min.css';
 
-.select_tecnico{
+.selectCategoria {
+    border-radius: 10px;
+    border: 2px solid var(--cinza-color);
+    color: var(---cinza-color);
+    font-size: 18px;
+    width: 100%;
+    background: #fff;
+    flex: 1;
+}
+
+.formTecnico {
     display: flex;
-    margin-top: 2%;
-    margin-bottom: 2%;
+    flex-direction: column;
+}
+
+.formSelect {
+    display: flex;
+    justify-content: space-between;
+}
+
+.input {
+    border-radius: 10px;
+
+}
+
+.formInput {
+    flex: 1;
+}
+
+.tecnicoBtn {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.formBtn {
+    justify-content: center;
+}
+
+.labelInputTecnico {
+    position: absolute;
+    left: 10px;
+    top: 2px;
+    background: #fff;
+    font-size: 16px;
+    color: var(--black-color);
+    padding: 0 5px;
+    transition: 200ms ease-in-out;
+    pointer-events: none;
+    font-weight: bold;
+
+
 }

@@ -9,7 +9,6 @@
     display: flex;
     padding: var(--padding-global);
     flex-direction: row;
-    width: 100%;
 }
 .asideLinks {
     width: 200px; 
@@ -17,6 +16,8 @@
     padding: 20px;
     border-radius: 5px;
     min-height: 130%; 
+    font-weight: bold;
+
 }
 
 .option {
@@ -36,5 +37,5 @@
 
 .content{
     display: flex;
-    margin: 0px 20px;
+    margin: 0px 100px;
 }

@@ -9,7 +9,7 @@
     margin: 10px 2px;
     padding: 10px;
     border-radius: 5px;
-    border: 2px solid var(--blue-color); /* Adiciona borda superior */
+    border: 2px solid var(--blue-color);
     color: var(--blue-color);
     font-size: 20px;
      

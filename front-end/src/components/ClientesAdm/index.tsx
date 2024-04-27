@@ -12,13 +12,7 @@ const ClientesAdm = () => {
     };
 
     return (
-        <div className="clientesContainer">
-            <div className="titulo">
-                <div className="formTitle">
-                    Clientes cadastrados
-                </div>
-            </div>
-
+        <div className='adminContainer'>
             <div className="container">
                 {clientes.map((cliente, index) => (
                     <div className="clienteEmail" key={index}>

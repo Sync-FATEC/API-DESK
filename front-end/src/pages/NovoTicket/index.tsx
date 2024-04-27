@@ -19,7 +19,7 @@ export const NovoTicket = () => {
         setSelectedImage(null);
         const input = document.getElementById('image-upload') as HTMLInputElement;
         if (input) {
-            input.value = ''; // Limpa o campo de entrada do arquivo
+            input.value = ''; 
         }
     };
 

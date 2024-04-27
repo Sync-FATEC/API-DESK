@@ -1,12 +1,4 @@
-.clientesContainer {
-    width: 700px;
-    display: flex;
-    justify-content: center;
-    align-items: row;
-    padding: 0 120px;
-    flex-direction: column;
 
-}
 
 .container {
     display: flex;
@@ -24,6 +16,8 @@
     border: 2px solid var(--cinza-color);
     border-radius: 10px;
     width: 100%; 
+    font-weight: bold;
+
 }
 
 .excluir {
@@ -33,6 +27,8 @@
     background-color: transparent;
     border: none;
     margin-left: 20px; 
+    font-weight: bold;
+
 }
 
 .excluir:hover {
