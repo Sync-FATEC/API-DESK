@@ -9,7 +9,7 @@ export const Tecnico = () => {
         <div>
             <Header />
             <div className="ticket-container">
-                <div>Ola {auth.user?.name}</div>
+                <div>Ola {auth.signin.name}</div>
             </div>
         </div>
     );

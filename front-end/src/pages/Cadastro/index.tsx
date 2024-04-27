@@ -2,7 +2,6 @@ import { useState } from "react";
 import Swal from 'sweetalert2';
 import axios from "axios";
 import { Aside } from "../../components/Aside";
-import '../../pages/Cadastro/cadastro.css';
 import { useNavigate } from "react-router-dom";
 
 export const Cadastro =() => { 
@@ -100,12 +99,11 @@ export const Cadastro =() => {
 
     const cpfSemFormatacao = cpf.replace(/[^\d]/g, ''); 
 
-    const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => { //Função para se enviar as informações captadas
+    const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
  
         let formIsValid = true;
  
-        //Verifica se está tudo correto com o form para se enviar
         if (nome === '' || !validateNome(nome)) {
             setNomeError('Preencha seu nome.');
             formIsValid = false;
@@ -172,20 +170,20 @@ export const Cadastro =() => {
                     }).then(() => {
                         setCpf('');
                     });
-                } else { //Mostrar sucesso caso o usuário não exista
+                } else { 
                     success();
                     navigate('/login')
                 };
-            } catch (error) { //Caso o try n funcione na criação do cliente ele ira aparecer este erro
+            } catch (error) { 
                 console.log(error);
                 warning('Erro criando cliente!');
             };
-        } else { //Caso o formulario n esteja sendo enviado corretamente aparecera esta mensagem
+        } else { 
             warning('Corrija os campos!');
         };
     };
  
-    const warning = (message: string) => { //Função da mensagem de aviso que aparecera quando der algum erro
+    const warning = (message: string) => {
         Swal.fire({
             title: "Aviso!",
             text: message,
@@ -193,7 +191,7 @@ export const Cadastro =() => {
         });
     };
  
-    const success = () => { //Função da mensagem de sucesso quando conseguir criar o cliente
+    const success = () => { 
         Swal.fire({
             title: "Cadastro concluido!",
             text: "Informações cadastradas com sucesso!",
@@ -202,72 +200,65 @@ export const Cadastro =() => {
         });
     };
  
-    return ( // Falta criar as divs de função de erro, para que quando der um erro no form eu colocar a função de {nomeError} ou qualquer um de outro campo ali existente
-        <div className='auth-container-principal'>
- 
-        <Aside />
- 
-        <div className="auth-container">
- 
-        <form onSubmit={handleSubmit}>
-            <div className="auth-form">
-                <h2 className="auth-title">Crie sua conta</h2>
-                <h3 className='auth-title2'>Cadastre seus dados</h3>
- 
-                <div className="auth-input-group">
-                    <input
-                        className={nome !== "" ? "has-val input" : "input"}
-                        type="text"
-                        value={nome}
-                        onChange={handleNome}
-                        placeholder="Nome"
-                    />
-                    <div className="">{nomeError}</div>
-                    <label className="auth-input-label" htmlFor="nome">Digite seu nome</label>
-                </div>
-
-                <div className="auth-input-group">
-                    <input
-                        className={email !== "" ? "has-val input" : "input"}
-                        type="email"
-                        value={email}
-                        onChange={handleEmail}
-                        placeholder="Email"
-                    />
-                    <div className="">{emailError}</div>
-                    <label className="auth-input-label" htmlFor="email">Digite seu e-mail</label>
-                </div>
-
-                <div className="auth-input-group">
-                    <input
-                        className={cpf !== "" ? "has-val input" : "input"}
-                        type="text"
-                        value={cpf}
-                        onChange={handleCpf}
-                        placeholder="CPF"
-                    />
-                    <div className="">{cpfError}</div>
-                    <label className="auth-input-label" htmlFor="cpf">Digite seu CPF</label>
-                </div>
- 
-                <div className="auth-input-group">
-                    <input
-                        className={senha !== "" ? "has-val input" : "input"}
-                        type="password"
-                        value={senha}
-                        onChange={handleSenha}
-                        placeholder="Senha"
-                    />
-                    <div className="">{senhaError}</div>
-                    <label className="auth-input-label" htmlFor="Password">Digite sua senha</label>
-                </div>
- 
-                <div className="auth-container-btn">
-                    <button type="submit" value="Cadastrar" className="auth-btn">Cadastrar</button>
-                </div>
+    return (
+        <div className='containerPrincipal'>
+            <Aside />
+    
+            <div className="formContainer">
+                <form onSubmit={handleSubmit}>
+                    <div className="form">
+                        <h2 className="formTitle">Crie sua conta</h2>
+                        <h3 className='formTitle2'>Cadastre seus dados</h3>
+    
+                        <div className="formInput">
+                            <input
+                                className={nome !== "" ? "has-val input" : "input"}
+                                type="text"
+                                value={nome}
+                                onChange={handleNome}
+                            />
+                            <div className="">{nomeError}</div>
+                            <label className="labelInput" htmlFor="nome">Digite seu nome</label>
+                        </div>
+    
+                        <div className="formInput">
+                            <input
+                                className={email !== "" ? "has-val input" : "input"}
+                                type="email"
+                                value={email}
+                                onChange={handleEmail}
+                            />
+                            <div className="">{emailError}</div>
+                            <label className="labelInput" htmlFor="email">Digite seu e-mail</label>
+                        </div>
+    
+                        <div className="formInput">
+                            <input
+                                className={cpf !== "" ? "has-val input" : "input"}
+                                type="text"
+                                value={cpf}
+                                onChange={handleCpf}
+                            />
+                            <div className="">{cpfError}</div>
+                            <label className="labelInput" htmlFor="cpf">Digite seu CPF</label>
+                        </div>
+    
+                        <div className="formInput">
+                            <input
+                                className={senha !== "" ? "has-val input" : "input"}
+                                type="password"
+                                value={senha}
+                                onChange={handleSenha}
+                            />
+                            <div className="">{senhaError}</div>
+                            <label className="labelInput" htmlFor="Password">Digite sua senha</label>
+                        </div>
+    
+                            <button type="submit" value="Cadastrar" className="formBtn">Cadastrar</button>
+                    </div>
+                </form>
             </div>
-        </form>
         </div>
-    </div>
     );
+    
 };

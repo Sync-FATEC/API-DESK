@@ -1,17 +1,14 @@
+import { AsideAdmin } from '../../components/AsideAdmin';
 import { Header } from '../../components/Header';
-import { AuthContext } from "../../contexts/Auth/AuthContext";
-import { useContext } from "react";
 
 
 export const Admin = () => {
-    const auth = useContext(AuthContext);
 
     return (
         <div>
             <Header />
             <div className="ticket-container">
-                <div>Ola {auth.user?.name}</div>
-            </div>
+              <AsideAdmin /></div>
         </div>
     );
 };

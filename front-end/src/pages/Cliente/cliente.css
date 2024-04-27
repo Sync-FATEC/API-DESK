@@ -1,38 +1,47 @@
+:root {
+    --blue-color: #0072bbff;
+    --black-color: #212227;
+    --cinza-color: #ccdbdcff;
+    --red-error-color: #ff0035ff;
+    --padding-global: 0 120px;
+}
+
 .ticket-container {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    padding: 20px;
+    padding: var(--padding-global); 
+    margin-top: 20px;
 }
 
 .ticket-filters {
     display: flex;
     justify-content: space-between;
     margin-bottom: 20px;
+
 }
 
-.ticket-filters button,
-.new-ticket-button {
-    display: flex;
-    padding: 8px 12px;
-    background-color: transparent;
-    border: 1px solid #333;
+.filter-container {
+    flex: 1;
+    margin-right: 10px;
+    justify-content: center;
+}
+
+.ticket-filters .selectFilter,
+.ticket-filters .new-ticket-button {
+    padding: 6px 12px;
+    background-color: var(--blue-color);
+    border: 1px solid var(--blue-color);
     border-radius: 5px;
-    color: #333;
+    color: var(--cinza-color);
     font-size: 14px;
     cursor: pointer;
     transition: background-color 0.3s, border-color 0.3s, color 0.3s;
 }
 
-
-.ticket-filters button:hover,
-.new-ticket-button:hover {
-    background-color: #333;
-    color: #fff;
-}
-
-.new-ticket-button {
-    margin-left: auto;
+.ticket-filters .selectFilter:hover,
+.ticket-filters .new-ticket-button:hover {
+    background-color: var(--black-color);
+    color: var(--cinza-color);
 }
 
 .ticket-list {
@@ -43,10 +52,15 @@
     display: grid;
     grid-template-columns: 1fr 1fr 2fr 1fr;
     gap: 10px;
-    padding: 10px;
     font-weight: bold;
-    justify-content: space-around;
-    align-items: center;
+    background-color: var(--cinza-color);
+    justify-content: center;
+}
+
+.ticket-types div {
+    display: flex;
+    padding: 10px;
+    justify-content: center;
 }
 
 .ticket-item {
@@ -54,18 +68,20 @@
     grid-template-columns: 1fr 1fr 2fr 1fr;
     gap: 10px;
     padding: 10px;
-    border-radius: 5px;
     margin-bottom: 10px;
 }
 
 .ticket-item div {
     display: flex;
-    align-items: center;
-    justify-content: center;
+    justify-content: center; 
 }
 
-.ticket-types div {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.ticket-filters .selectFilter,
+.ticket-filters .new-ticket-button {
+    color: var(--cinza-color);
+}
+
+.ticket-filters .selectFilter:hover,
+.ticket-filters .new-ticket-button:hover {
+    color: var(--cinza-color);
 }

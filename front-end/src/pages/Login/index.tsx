@@ -1,11 +1,9 @@
 import React, { useState, useContext } from "react";
-import "./login.css";
 import { useNavigate } from "react-router-dom";
 import { Aside } from "../../components/Aside";
 import { AuthContext } from "../../contexts/Auth/AuthContext";
 import Swal from "sweetalert2";
 import { useApi } from "../../hooks/useApi";
-import { log } from "console";
 
 
 export const Login = () => {
@@ -98,34 +96,34 @@ export const Login = () => {
 
 
   return (
-    <div className='auth-container-principal'>
+    <div className='containerPrincipal'>
       <Aside />
-      <div className="auth-container">
+      <div className="formContainer">
         <form onSubmit={handleSubmitLogin}>
-          <div className="auth-form">
-            <h2 className="auth-title">Entre na sua conta</h2>
-            <h3 className="auth-title2">Insira seus dados</h3>
-            <div className="auth-input-group">
+          <div className="form">
+            <h2 className="formTitle">Entre na sua conta</h2>
+            <h3 className="formTitle2">Insira seus dados</h3>
+            <div className="formInput">
               <input
                 type="text"
                 value={email}
                 onChange={handleEmailLogin}
                 placeholder=" "
               />
-              <div className="error-message">{emailError}</div>
-              <label className="auth-input-label" htmlFor="email">Digite seu e-mail</label>
+              <div className="errorMessage">{emailError}</div>
+              <label className="labelInput" htmlFor="email">Digite seu e-mail</label>
             </div>
-            <div className="auth-input-group">
+            <div className="formInput">
               <input
                 type="password"
                 value={senha}
                 onChange={handleSenhaLogin}
                 placeholder=" "
               />
-              <div className="error-message">{senhaError}</div>
-              <label className="auth-input-label" htmlFor="password">Digite sua senha</label>
+              <div className="errorMessage">{senhaError}</div>
+              <label className="labelInput" htmlFor="password">Digite sua senha</label>
             </div>
-            <button className="auth-btn">Logar</button>
+            <button className="formBtn">Logar</button>
           </div>
         </form>
       </div>
