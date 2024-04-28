@@ -5,6 +5,7 @@ import {CadastroTecnico} from '../CadastroTecnico';
 import SalaAdm from '../SalaAdm';
 import EquipamentoAdm from '../EquipamentoAdm';
 import CategoriaAdm from '../CategoriaAdm/categoriaAdm';
+import FaqAdm from '../FaqAdm/faqAdm';
 
 export const AsideAdmin: React.FC<{
     onPageChange: (title: string) => void;
@@ -42,6 +43,7 @@ export const AsideAdmin: React.FC<{
                         {selectedOption === 'Salas' && <SalaAdm />}
                         {selectedOption === 'Equipamento' && <EquipamentoAdm />}
                         {selectedOption === 'Categoria' && <CategoriaAdm />}
+                        {selectedOption === 'FAQ' && <FaqAdm />}
                     </div>
                 )}
             </div>

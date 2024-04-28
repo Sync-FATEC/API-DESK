@@ -1,17 +1,34 @@
 import { Header } from '../../components/Header';
 import baner from '../../assets/img/faq.jpg';
 import './faq.css';
+import IMensagens from '../../types/IMensagens';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 
 
 export const Faq = () => {
-    const faqs = [
-        { titulo: 'Minha impressora não conecta a rede o que fazer?', descricao: 'Verifique a Conexão Física: Certifique-se de que a impressora está ligada e conectada à mesma rede que o dispositivo que você está tentando imprimir. Se for uma conexão com fio, verifique os cabos e o roteador.' },
-        { titulo: 'Meu monitor não liga', descricao: 'Verificar a Conexão Física: Certifique-se de que esta ligado na tomada.' },
-        { titulo: 'Mouse não funciona', descricao: 'Verificar a Conexão Física: Certifique-se de que esta conectado ao computador na porta usb.' }
-    ];
-    const handleShow = () => {
-        // BackEnd mostrar mais descrição
-    };
+    const [faqs, setFaqs] = useState<IMensagens[]>([]);
+    const [tipoMensagem, setTipoMensagem] = useState('');
+    const [titulo, setTitulo] = useState('');
+    const [mensagem, setMensagem] = useState('');
+    const [categoriaID, setCategoriaID] = useState(0);
+
+    useEffect(() => {
+        const fetchSalas = async () => {
+          try {
+            const response = await axios.get('http://localhost:5555/mensagens/visualizar', {
+                params: {
+                    tipoMensagem: 'F'
+                }
+            });
+            setFaqs(response.data);
+          } catch (error) {
+            console.error(error);
+          }
+        };
+    
+        fetchSalas();
+      }, []);
      
     return(
         <><Header />
@@ -24,13 +41,10 @@ export const Faq = () => {
             </div> 
                 {faqs.map((faq, index) => (
                     <div className="faq" key={index}>
-                        <div className="faqLinha">
-                        <div className="tituloFaq"> {faq.titulo} </div>
-                        <button onClick={handleShow}>
-                        <span className="material-symbols-outlined">add</span>
-                        </button>
-                        </div>
-                        <div className="textoFaq mostrar">{faq.descricao}</div>
+                        <details>
+                            <summary>{faq.titulo}</summary>
+                            <p>{faq.mensagem}</p>
+                        </details>
                     </div>
                 ))}
             </div>
