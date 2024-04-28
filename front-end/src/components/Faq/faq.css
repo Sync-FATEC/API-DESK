@@ -1,0 +1,48 @@
+.baner{
+    background-color: var(--cinza-color);
+    display: flex;
+    justify-content: center;
+    
+}
+.baner img{
+    width: 30vw;
+    height: 30vh;
+}
+
+.faqContainer{
+    width: 90vw;
+    height: 90vh;
+    margin: 0 auto;
+}
+
+.faq{
+    display: flex;
+    /* align-items: center; */
+    flex-direction: column;
+    border-top: 2px solid var(--black-color);
+    border-bottom: 2px solid var(--black-color); 
+    padding: 16px;
+    margin-bottom: 16px;
+    /* flex-wrap: nowrap; */
+    /* justify-content: space-between; */
+}
+.faqLinha{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* background-color: aquamarine; */
+    width: 100%;
+}
+.faqLinha button{
+    border: none;
+    background-color: var(--white-color) ;
+    padding: 1px;
+}
+
+.textoFaq{
+    display: none;
+}
+
+.mostrar{
+    display: block;
+}
