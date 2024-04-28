@@ -19,9 +19,7 @@ export const useApi = () => ({
             const response = await axios.post('http://localhost:5555/usuarios/autenticar', {
                 email: email,
                 senha: senha
-            });
-            console.log(email);
-            
+            });    
             return response.data;
         } catch (error) {
             console.error(error);

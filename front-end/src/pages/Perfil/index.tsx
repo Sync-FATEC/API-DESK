@@ -20,13 +20,13 @@ export const Perfil = () => {
                 </div>
                
                 <h2 className="info-name-perfil">Nome:</h2>
-                <p className="info-perfil">Ana{user.user?.name}</p>
+                <p className="info-perfil">{user.user?.nome}</p>
 
                 <h2 className="info-name-perfil">Email:</h2>
-                <p className="info-perfil">ana@gmail.com{user.user?.email}</p>
+                <p className="info-perfil">{user.user?.email}</p>
 
                 <h2 className="info-name-perfil">CPF:</h2>
-                <p className="info-perfil">123.456.789-09</p>
+                <p className="info-perfil">{user.user?.cpf}</p>
 
             </div>
         </div>

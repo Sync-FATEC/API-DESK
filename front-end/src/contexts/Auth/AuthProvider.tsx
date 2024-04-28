@@ -9,16 +9,22 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
 
     useEffect(() => {
         const validateToken = async () => {
-            const storageData = localStorage.getItem('authToken');
-            if (storageData) {
-                const data = await api.validateToken(storageData);
-                if (data.user) {
-                    setUser(data.user);
+            try {     
+                const storageData = localStorage.getItem('authToken');
+                if (storageData) {
+                    const userData = await api.validateToken(storageData);
+                    if (userData) {
+                        setUser(userData);          
+                    }
                 }
+            } catch (error) {
+                console.error('Erro ao validar token:', error);
             }
-        }
+        };
+    
         validateToken();
     }, [api]);
+    
 
     const signin = async (email: string, password: string) => {
         const data = await api.signin(email, password);
