@@ -1,0 +1,8 @@
+.ModalVisualizarTicket{
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+}
+.infoticket{
+    flex-direction: column;
+}

@@ -1,18 +1,20 @@
 import { Header } from '../../components/Header';
 import './cliente.css';
 import { NovoTicket } from '../../components/NovoTicket';
+import { VisualizarTicket } from '../../components/VisualizarTicket';
 import  { useState } from 'react';
 
 export const Cliente = () => {
-    const [modalOpen, setModalOpen] = useState(false);
-
-    const handleOpenModal = () => {
-        setModalOpen(true);
-    };
-
-    const handleCloseModal = () => {
-        setModalOpen(false);
-    };
+     
+     const [isNovoTicketModalOpen, setIsNovoTicketModalOpen] = useState(false);
+     const handleOpenNovoTicketModal = () => setIsNovoTicketModalOpen(true);
+     const handleCloseNovoTicketModal = () => setIsNovoTicketModalOpen(false);
+ 
+     
+     const [isVisualizarTicketModalOpen, setIsVisualizarTicketModalOpen] = useState(false);
+     const handleOpenVisualizarTicketModal = () => setIsVisualizarTicketModalOpen(true);
+     const handleCloseVisualizarTicketModal = () => setIsVisualizarTicketModalOpen(false);
+ 
     return (
         <div className="ticketContainer">
             <div className="formTicket">
@@ -33,14 +35,14 @@ export const Cliente = () => {
                             </select>
                         </div>
 
-                        <button className="btnTicket" onClick={handleOpenModal}>
+                        <button className="btnTicket" onClick={handleOpenNovoTicketModal}>
                            <span className="material-symbols-outlined">confirmation_number</span>
                            <p>Novo ticket</p>
                         </button>
-                        {modalOpen && (
+                        {isNovoTicketModalOpen  && (
             <div className="modal">
                 <div className="modal-content">
-                    <span className="close" onClick={handleCloseModal}>&times;</span>
+                    <span className="close" onClick={handleCloseNovoTicketModal}>&times;</span>
                     <NovoTicket />
                 </div>
             </div>
@@ -61,8 +63,26 @@ export const Cliente = () => {
                             <div>2024-04-25</div>
                             <div>Descrição do ticket 1...</div>
                             <div>Atendimento</div>
-                            <div><span className="material-symbols-outlined">
-                            mystery</span></div>
+                            
+                            <div>
+                            
+                                <span className="material-symbols-outlined"  onClick={handleOpenVisualizarTicketModal}>
+                                    mystery
+                                </span>
+                            
+                            
+                            </div>
+                            {isVisualizarTicketModalOpen  && (
+            <div className="modal">
+                <div className="modal-content">
+                    <span className="close" onClick={handleCloseVisualizarTicketModal}>&times;</span>
+                    <VisualizarTicket />
+                </div>
+            </div>
+        )}
+
+
+                            
                         </div>
                         <div className="ticket-item">
                             <div>2</div>
