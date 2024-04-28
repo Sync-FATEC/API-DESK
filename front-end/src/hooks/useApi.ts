@@ -1,11 +1,11 @@
 import axios from 'axios'
 
 export const useApi = () => ({
-    validateToken: async (id: string) => {
+    validateToken: async (email: string) => {
         try {            
             const response = await axios.get('http://localhost:5555/usuarios/procurar', {
                 params: {
-                    id: id
+                    email: email
                 }
             });
             return response.data;
@@ -20,6 +20,8 @@ export const useApi = () => ({
                 email: email,
                 senha: senha
             });
+            console.log(email);
+            
             return response.data;
         } catch (error) {
             console.error(error);

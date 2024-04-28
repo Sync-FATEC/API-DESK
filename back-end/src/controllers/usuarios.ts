@@ -89,7 +89,7 @@ export const autenticarUsuario = async (email: string, senha: string) => {
 
 export const procurarUsuario = async (email: string) => {
     try {
-        const usuario = await usuariosRepositorio.findOneBy({ email: email })
+        const usuario = await usuariosRepositorio.findOne({ where: { email: email }})
         if (usuario) {
             return usuario
         } else {

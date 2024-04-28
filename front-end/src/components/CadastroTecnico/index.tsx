@@ -3,6 +3,7 @@ import Swal from 'sweetalert2';
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import './cadastroTecnico.css'
+import { match } from "assert";
 
 export const CadastroTecnico = () => {
     const [nome, setNome] = useState('');
@@ -135,13 +136,12 @@ export const CadastroTecnico = () => {
 
         if (formIsValid && isValid) {
             try {
-                const response = await axios.post('http://localhost:5555/catergoria/cadastrar', {
+                const response = await axios.post('http://localhost:5555/usuarios/cadastrar', {
                     'nome': nome,
                     'cpf': cpfSemFormatacao,
                     'email': email,
                     'senha': senha,
-                    'tipoUsuario': 'T',
-                    'categoria': categoria,
+                    'tipoUsuario': categoria,
                     'turno': turno
                 });
 
@@ -256,9 +256,9 @@ export const CadastroTecnico = () => {
                             <label className="labelInputTecnico" htmlFor="categoria">Categoria do técnico</label>
                             <select className="selectCategoria" value={categoria} onChange={(e) => setCategoria(e.target.value)}>
                                 <option value=""></option>
-                                <option value="N1">Suport N1</option>
-                                <option value="N2">Suporte N2</option>
-                                <option value="N3">Suporte N3</option>
+                                <option value="1">Suport N1</option>
+                                <option value="2">Suporte N2</option>
+                                <option value="3">Suporte N3</option>
                             </select>
                         </div>
                         <div className="formInput">

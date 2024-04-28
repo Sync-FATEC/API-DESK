@@ -8,7 +8,7 @@ create table Usuarios (
     email varchar(255) unique,
     senha varchar(255),
     tipoUsuario varchar(1) default 1,
-    turno varchar(1) default NULL
+    turno varchar(5) default NULL
 );
 
 create table Categorias (

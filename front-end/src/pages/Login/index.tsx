@@ -46,7 +46,7 @@ export const Login = () => {
     try {
       const isLogged = await auth.signin(email, senha);
       if (isLogged) { 
-        const data = await api.validateToken(email);
+        const data = await api.validateToken(email);  
         if (data && data.tipoUsuario) {
           switch (data.tipoUsuario) {
             case 'U':

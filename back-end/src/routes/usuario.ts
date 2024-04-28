@@ -32,12 +32,15 @@ router.post('/autenticar', async (req: Request, res: Response) => {
 });
 
 router.get('/procurar', async (req: Request, res: Response) => {
-    const { id } = req.body;
-    if (id === '') {
-        return res.status(400).json({ error: 'Preencha todos os campos' });
+    const email = req.query.email;
+ 
+    if (!email || typeof email !== 'string') {
+        return res.status(400).json({ error: 'E-mail inválido' });
     }
-    res.json(await procurarUsuario(id))
 
-})
+    res.json(await procurarUsuario(email));
+});
+
+
 
 export default router;
