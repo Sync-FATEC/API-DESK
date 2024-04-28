@@ -2,13 +2,12 @@ import './novoticket.css';
 import React, { useState } from 'react';
 
 export const NovoTicket = () => {
-
     const [selectedImage, setSelectedImage] = useState<File | null>(null);
 
     const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
         const input = event.target;
         const file = input.files?.[0];
-        
+
         if (file) {
             console.log('Arquivo selecionado:', file.name);
             setSelectedImage(file);
@@ -17,19 +16,16 @@ export const NovoTicket = () => {
 
     const handleCancelUpload = () => {
         setSelectedImage(null);
-        const input = document.getElementById('image-upload') as HTMLInputElement;
+        const input = document.getElementById('imageUpload') as HTMLInputElement;
         if (input) {
-            input.value = ''; 
+            input.value = '';
         }
     };
 
     return (
-        <div className="modal-ticket">
-            
+        <div className="modalTicket">
             <h1>Novo Ticket</h1>
-            <hr />
-            <div className='Filter-tickets'>
-                
+            <div className='filterTickets'>
                 <select className="selectCategoria">
                     <option value="abertos">Categoria</option>
                     <option value="emAtendimento">Em Atendimento</option>
@@ -37,7 +33,7 @@ export const NovoTicket = () => {
                     <option value="finalizados">Finalizados</option>
                 </select>
                 <select className="selectCategoria">
-                    <option value="abertos">Tipo de problema</option>
+                    <option value="abertos">Tipo de Problema</option>
                     <option value="emAtendimento">Em Atendimento</option>
                     <option value="pendentes">Pendentes</option>
                     <option value="finalizados">Finalizados</option>
@@ -54,25 +50,31 @@ export const NovoTicket = () => {
                     <option value="pendentes">Pendentes</option>
                     <option value="finalizados">Finalizados</option>
                 </select>
+                <div className="formInputAssunto">
+                    <input className='inputAssunto' type="text" placeholder="Assunto do Ticket" />
+                </div>
+                <div className="formInputAssunto">
+                    <textarea className='inputAssunto' placeholder="Descrição do Ticket"></textarea>
+                </div>
             </div>
 
-            <div className="formInput-assunto">
-              <input className='assunto' type="text" placeholder="Assunto do ticket"/>
-             
+            <div className="containerTicket">
+                <div className="formInputImagem">
+                    <label htmlFor="imageUpload" className="btnUploadImage">Selecionar Imagem</label>
+                    <input id="imageUpload" type="file" accept="image/*" onChange={handleImageUpload} style={{ display: 'none' }} />
+                    <button className="btnTicket">Enviar Ticket</button>
+                </div>
+                <div className="imagePreview">
+                    {selectedImage && (
+                        <img src={URL.createObjectURL(selectedImage)} alt="Preview" />
+                    )}
+                    {selectedImage && (
+                        <button className="btnTicket" onClick={handleCancelUpload}>Cancelar</button>
+                    )}
+                </div>
             </div>
-            <div className="formInput-assunto">
-              <input className='assunto' type="text" placeholder="Descrição do ticket"/>
-            </div>
-            <div className="formInput-imagem">
-                <input id="image-upload" type="file" accept="image/*" onChange={handleImageUpload} />
-                {selectedImage && (
-                    
-                <button onClick={handleCancelUpload}>X</button>
-                   
-                )}
-            </div>
-            <button>Enviar Ticket</button>
-            </div>
-       
+
+
+        </div>
     );
 };

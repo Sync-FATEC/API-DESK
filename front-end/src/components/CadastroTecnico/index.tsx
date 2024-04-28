@@ -3,7 +3,6 @@ import Swal from 'sweetalert2';
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import './cadastroTecnico.css'
-import { match } from "assert";
 
 export const CadastroTecnico = () => {
     const [nome, setNome] = useState('');

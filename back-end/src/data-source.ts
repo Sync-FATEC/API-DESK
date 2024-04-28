@@ -12,7 +12,7 @@ export const AppDataSource = new DataSource({
     host: "localhost",
     port: 3306,
     username: "root",
-    password: "Nc321654987",
+    password: "fatec",
     database: "api",
     synchronize: true,
     logging: false,

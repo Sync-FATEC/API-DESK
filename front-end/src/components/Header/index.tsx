@@ -1,7 +1,7 @@
 import  { useState, useContext } from 'react';
 import logo from '../../assets/img/logo-header.svg';
 import './header.css';
-import { Perfil } from '../../pages/Perfil';
+import { Perfil } from '../Perfil';
 import { AuthContext } from '../../contexts/Auth/AuthContext'; 
 
 export const Header = () => {

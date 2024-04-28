@@ -1,0 +1,98 @@
+.modal-content {
+    background-color: var(--branco-color);
+}
+
+.modalTicket {
+    padding: 20px;
+}
+
+.modalTicket h1 {
+    border-bottom: 2px solid var(--blue-color);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    color: var(--blue-color);
+}
+
+.filterTickets {
+    display: flex;
+    margin-bottom: 20px;
+    flex-wrap: wrap; 
+    width: 800px;
+}
+
+.selectCategoria {
+    margin: 10px;
+    border-radius: 10px;
+    color: var(--black-color);
+    padding: 5px;
+}
+
+.inputAssunto {
+    display: flex;
+    text-align: left;
+    border: 2px solid rgba(0, 0, 0, 0.2); 
+    font-size: 20px;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.formInputAssunto {
+    width: 100%;
+    margin: 10px;
+}
+
+.containerTicket {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    flex-direction: column;
+}
+
+.formInputImagem {
+    display: flex;
+    justify-content: space-between;
+    margin-right: 10px;
+}
+
+.imagePreview {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.imagePreview img {
+    width: 300px;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+.imagePreview button {
+    padding: 10px 20px;
+    background-color: var(--blue-color);
+    border: none;
+    border-radius: 10px;
+    color: var(--cinza-color);
+    font-size: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+    margin-top: 10px;
+}
+
+.imagePreview button:hover {
+    background-color: var(--blue-hover-color);
+}
+
+.btnUploadImage {
+    padding: 10px 20px;
+    background-color: var(--blue-color);
+    border: none;
+    border-radius: 10px;
+    color: var(--branco-color);
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.btnUploadImage:hover {
+    background-color: var(--blue-color);
+}

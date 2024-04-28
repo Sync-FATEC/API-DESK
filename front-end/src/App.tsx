@@ -6,8 +6,6 @@ import { Cadastro } from './pages/Cadastro';
 import { Admin } from './pages/Admin';
 import { Tecnico } from './pages/Tecnico';
 import { RequireAuth } from './contexts/Auth/RequireAuth';
-import { Perfil } from './pages/Perfil';
-
 
 export const App = () => {
   return (
@@ -16,7 +14,6 @@ export const App = () => {
         <Route path="/" element={<Login />} />
         <Route path="/login" element={<Login />} />
         <Route path="/cadastro" element={<Cadastro />} />
-        <Route path="/perfil" element={<Perfil />} />
         <Route
             path="/admin"
             element={

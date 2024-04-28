@@ -1,6 +1,6 @@
 import { Header } from '../../components/Header';
 import './cliente.css';
-import { NovoTicket } from '../../pages/NovoTicket';
+import { NovoTicket } from '../../components/NovoTicket';
 import  { useState } from 'react';
 
 export const Cliente = () => {
@@ -33,7 +33,7 @@ export const Cliente = () => {
                             </select>
                         </div>
 
-                        <button className="new-ticket-button" onClick={handleOpenModal}>
+                        <button className="btnTicket" onClick={handleOpenModal}>
                            <span className="material-symbols-outlined">confirmation_number</span>
                            <p>Novo ticket</p>
                         </button>
