@@ -1,11 +1,11 @@
-import  { useState, useContext } from 'react';
+import  { useState } from 'react';
 import logo from '../../assets/img/logo-header.svg';
 import './header.css';
 import { Perfil } from '../Perfil';
-import { AuthContext } from '../../contexts/Auth/AuthContext'; 
+
 
 export const Header = () => {
-    const { signout } = useContext(AuthContext); 
+    
     const [modalOpen, setModalOpen] = useState(false);
 
     const handleOpenModal = () => {
@@ -16,9 +16,7 @@ export const Header = () => {
         setModalOpen(false);
     };
 
-    const handleSignout = () => {
-        signout(); 
-    };
+    
 
     return (
         <header className="header">
@@ -41,9 +39,7 @@ export const Header = () => {
                     <span className="material-symbols-outlined">account_circle</span>
                 </button>
                 
-                <button className="header-button" onClick={handleSignout}>
-                    Sair
-                </button>
+            
             </div>
 
             {modalOpen && (

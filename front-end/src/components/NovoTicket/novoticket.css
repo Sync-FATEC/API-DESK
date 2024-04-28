@@ -32,8 +32,9 @@
     text-align: left;
     border: 2px solid rgba(0, 0, 0, 0.2); 
     font-size: 20px;
-    border-radius: 5px;
-    width: 100%;
+    border-radius: 10px;
+    width: 97%;
+    padding: 0 10px;
 }
 
 .formInputAssunto {
@@ -44,25 +45,22 @@
 .containerTicket {
     display: flex;
     align-items: center;
+    flex-direction: row;
     justify-content: space-between;
-    margin-bottom: 20px;
-    flex-direction: column;
+    padding: 0 10px;
 }
 
-.formInputImagem {
-    display: flex;
-    justify-content: space-between;
-    margin-right: 10px;
-}
+
 
 .imagePreview {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    gap: 5px;
     align-items: center;
 }
 
 .imagePreview img {
-    width: 300px;
+    width: 100px;
     border-radius: 10px;
     margin-top: 10px;
 }
@@ -84,13 +82,14 @@
 }
 
 .btnUploadImage {
-    padding: 10px 20px;
+    padding: 6px 12px;
     background-color: var(--blue-color);
     border: none;
     border-radius: 10px;
     color: var(--branco-color);
-    font-size: 20px;
+    font-size: 22px;
     cursor: pointer;
+     border-radius: 10px
 }
 
 .btnUploadImage:hover {

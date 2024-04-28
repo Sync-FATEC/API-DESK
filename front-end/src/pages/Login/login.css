@@ -40,6 +40,7 @@
   width: 100%;
   box-shadow: none;
   transition: 200ms ease-in-out;
+  
 }
 
 .auth-input-group input:focus {
@@ -77,4 +78,3 @@
 .auth-btn:hover {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); 
 }
-

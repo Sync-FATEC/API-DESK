@@ -55,6 +55,7 @@
 .formInput {
   position: relative;
   margin-bottom: 20px;
+  
 }
 
 .formInput input {
@@ -68,6 +69,7 @@
   height: 40px;
   box-shadow: none;
   transition: 200ms ease-in-out;
+  border-radius: 10px;
 }
 
 
@@ -114,4 +116,7 @@
   align-items: row;
   padding: 0 120px;
   flex-direction: column;
+}
+.input {
+  border-radius: 10px;
 }

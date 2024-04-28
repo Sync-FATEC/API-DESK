@@ -4,6 +4,7 @@ import './perfil.css';
 
 export const Perfil = () => {
     const user = useContext(AuthContext);
+    const { signout } = useContext(AuthContext);
 
     if (!user) {
         return <div>Usuário não autenticado</div>;
@@ -12,6 +13,11 @@ export const Perfil = () => {
     const capitalizeFirstLetter = (str:any) => {
         return str.charAt(0).toUpperCase() + str.slice(1);
     };
+
+    const handleSignout = () => {
+        signout(); 
+    };
+
 
     return (
         <div>
@@ -22,16 +28,20 @@ export const Perfil = () => {
                      <span id="account" className="material-symbols-outlined">account_circle</span>
                 </div>
                
-                <p className="dadosPerfil">Nome:</p>
+                <span className="dadosPerfil">Nome:</span>
                 <p className="infoPerfil">{capitalizeFirstLetter(user.user?.nome)}</p>
 
-                <p className="dadosPerfil">Email:</p>
+                <span className="dadosPerfil">E-mail:</span>
                 <p className="infoPerfil">{user.user?.email}</p>
 
-                <p className="dadosPerfil">CPF:</p>
+                <span className="dadosPerfil">CPF:</span>
                 <p className="infoPerfil">{user.user?.cpf}</p>
 
             </div>
+
+            <button className="header-button" onClick={handleSignout}>
+                    Sair
+                </button>
         </div>
     );
 };

@@ -15,12 +15,14 @@
     position: relative;
     left: 10px; 
     top: 10px; 
-    background: #fff;
+    background-color: var(--branco-color);
     font-size: 18px; 
     color:var(--blue-color);
     padding: 0 5px;
     font-weight:600;
+    
 }
+
 .infoPerfil{
     text-align: left;
     padding: 10px;
