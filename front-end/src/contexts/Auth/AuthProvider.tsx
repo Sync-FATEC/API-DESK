@@ -14,7 +14,7 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
                 if (storageData) {
                     const userData = await api.validateToken(storageData);
                     if (userData) {
-                        setUser(userData);          
+                        setUser(userData);       
                     }
                 }
             } catch (error) {
@@ -34,7 +34,8 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
         else if (data === 'Usuario inexistente'){
             return false
         }
-        setUser(data.user);
+        
+        setUser(data);
         setToken(data.email);
          
         return true;
