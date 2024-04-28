@@ -31,7 +31,8 @@ export const Header = () => {
                 </button>
 
                 <button className="header-button">
-                    <span className="material-symbols-outlined">help</span>
+                    <a href="/faq"><span className="material-symbols-outlined">help</span></a>
+                    
                 </button>
 
                 <div className="header-divider" />
