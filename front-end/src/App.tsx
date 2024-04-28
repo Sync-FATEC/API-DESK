@@ -7,6 +7,7 @@ import { Admin } from './pages/Admin';
 import { Tecnico } from './pages/Tecnico';
 import { RequireAuth } from './contexts/Auth/RequireAuth';
 import { Perfil } from './pages/Perfil';
+import { Faq } from './pages/Faq';
 
 
 export const App = () => {
@@ -17,6 +18,7 @@ export const App = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/cadastro" element={<Cadastro />} />
         <Route path="/perfil" element={<Perfil />} />
+        <Route path="/faq" element={<Faq />} />
         <Route
             path="/admin"
             element={
