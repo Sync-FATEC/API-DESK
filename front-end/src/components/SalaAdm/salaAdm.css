@@ -1,3 +1,12 @@
+.salaContainer {
+    width: 700px;
+    display: flex;
+    justify-content: center;
+    align-items: row;
+    padding: 0 120px;
+    flex-direction: column;
+
+}
 
 .container {
     display: flex;
@@ -34,6 +43,7 @@
     border: none;
     outline: none;
     width: 100%;
+    white-space: nowrap;    
 }
 
 
@@ -44,3 +54,14 @@
 
 }
 
+.SalaSubmit {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    white-space: nowrap;
+    padding: 15px;
+    margin: 10px;
+    border: 2px solid var(--cinza-color);
+    border-radius: 10px;
+    width: 100%; 
+}

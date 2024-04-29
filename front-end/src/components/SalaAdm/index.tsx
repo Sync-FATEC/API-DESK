@@ -76,13 +76,12 @@ const SalaAdm = () => {
                         </button>
                     </div>
                 ))}
-                <div className="numeroSala">
+                <div className="SalaSubmit">
                     <form onSubmit={handleAddUser} method='post'>
                         <input onChange={handleNumeroSalaChange} type="number" className="inputSala" placeholder="Adicionar Sala"/>
                         <input onChange={handleIdentificacaoChange} type="text" className='inputSala' placeholder='Adicionar identificação'/>
-                        <button type='submit'>Criar nova sala</button>
+                        <button type='submit' className='add'><img src={add} alt="add" /></button>
                     </form>
-                <img src={add} alt="add" />
                 </div>
                 
             </div>
