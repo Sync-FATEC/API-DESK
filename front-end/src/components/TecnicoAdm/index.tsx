@@ -1,0 +1,59 @@
+import axios from 'axios';
+import React, { useState, useEffect } from 'react';
+import './tecnicoAdm.css';
+ 
+interface Tecnico {
+    email: string;
+    usuarioID: string;
+    nome: string;
+    turno: string;
+    tipoUsuario: string;
+    // adicione outras propriedades se necessário
+}
+ 
+const ClientesAdm = () => {
+    const [tecnicos, setTecnicos] = useState<Tecnico[]>([]);
+ 
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await axios.get<Tecnico[]>('http://localhost:5555/usuarios/listarTecnico');
+                setTecnicos(response.data);
+            } catch (error) {
+                console.error('Erro ao buscar técnicos:', error);
+            }
+        };
+ 
+        fetchData();
+    }, []);
+ 
+    const handleDeleteUser = async (usuarioID: string) => {
+        try {
+            const response = await axios.delete('http://localhost:3000/usuarios/excluir', {
+                data: { usuarioID }
+            });
+            console.log(response.data);
+        } catch (error) {
+            console.error('Erro ao excluir técnico:', error);
+        }
+    };
+ 
+    return (
+        <div className='adminContainer'>
+            <div className="container">
+                <h2>Técnicos:</h2>
+                {tecnicos.map((tecnico, index) => (
+                    <div className="clienteEmail" key={index}>
+                        <p>Técnico ID: {tecnico.usuarioID} | Nome: {tecnico.nome} | E-mail: {tecnico.email} | Categoria: {tecnico.tipoUsuario} | Turno: {tecnico.turno}</p>
+                        <button className="excluir" onClick={() => handleDeleteUser(tecnico.usuarioID)}>
+                            Excluir
+                        </button>
+                    </div>
+                ))}
+            </div>
+        </div>
+    );
+};
+ 
+export default ClientesAdm;
+ 
