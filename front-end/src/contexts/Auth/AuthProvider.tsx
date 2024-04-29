@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useApi } from "../../hooks/useApi";
 import { User } from "../../types/User";
 import { AuthContext } from "./AuthContext";
+import { Navigate } from "react-router-dom";
 
 export const AuthProvider = ({ children }: { children: JSX.Element }) => {
     const [user, setUser] = useState<User | null>(null);
@@ -12,7 +13,7 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
     //         try {     
     //             const storageData = localStorage.getItem('authToken');
     //             if (storageData) {
-    //                 const userData = await api.validateToken(storageData);
+    //                 const userData = await api.validateToken(JSON.parse(storageData).email);
     //                 if (userData) {
     //                     setUser(userData);       
     //                 }
@@ -45,6 +46,7 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
         console.log("signout está sendo executada.");
         setUser(null);
         setToken('');
+        window.location.href = "/login";
     }
 
     const setToken = (token: string) => {

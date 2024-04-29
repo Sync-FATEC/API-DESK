@@ -6,6 +6,7 @@ import { Cadastro } from './pages/Cadastro';
 import { Admin } from './pages/Admin';
 import { Tecnicos } from './pages/Tecnico';
 import { RequireAuth } from './contexts/Auth/RequireAuth';
+import Faq from './components/Faq';
 
 export const App = () => {
   return (
@@ -14,32 +15,11 @@ export const App = () => {
         <Route path="/" element={<Login />} />
         <Route path="/login" element={<Login />} />
         <Route path="/cadastro" element={<Cadastro />} />
-        <Route
-            path="/admin"
-            element={
-              //<RequireAuth tipoUsuario="A">
-                <Admin />
-              //</RequireAuth>
-            }
-          />
-          <Route
-            path="/cliente"
-            element={
-              <RequireAuth tipoUsuario="U"> 
-                <Cliente />
-              </RequireAuth>
-            }
-          />
-          <Route
-            path="/tecnico"
-            element={
-              <RequireAuth tipoUsuario={['1', '2', '3']} > 
-                <Tecnicos />
-              </RequireAuth>
-            }
-          />
-        </Routes>
+        <Route path="/faq" element={<RequireAuth tipoUsuario={['1', '2', '3', 'U', 'A']}><Faq /></RequireAuth>} />
+        <Route path="/admin" element={<RequireAuth tipoUsuario="A"><Admin /></RequireAuth>} />
+        <Route path="/cliente" element={<RequireAuth tipoUsuario="U"><Cliente /></RequireAuth>} />
+        <Route path="/tecnico" element={<RequireAuth tipoUsuario={['1', '2', '3']}><Tecnicos /></RequireAuth>} />
+      </Routes>
     </div>
   );
 }
-

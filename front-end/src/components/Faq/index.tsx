@@ -8,10 +8,6 @@ import axios from 'axios';
 
 export const Faq = () => {
     const [faqs, setFaqs] = useState<IMensagens[]>([]);
-    const [tipoMensagem, setTipoMensagem] = useState('');
-    const [titulo, setTitulo] = useState('');
-    const [mensagem, setMensagem] = useState('');
-    const [categoriaID, setCategoriaID] = useState(0);
 
     useEffect(() => {
         const fetchSalas = async () => {
@@ -52,5 +48,4 @@ export const Faq = () => {
     )
 }
 
-
-
+export default Faq;

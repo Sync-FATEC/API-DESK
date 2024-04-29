@@ -3,8 +3,9 @@ import { AuthContext } from "../../contexts/Auth/AuthContext";
 import './perfil.css';
 
 export const Perfil = () => {
-    const user = useContext(AuthContext);
-    const { signout } = useContext(AuthContext);
+    const { user, signout } = useContext(AuthContext);
+    console.log(user);
+    
 
     if (!user) {
         return <div>Usuário não autenticado</div>;
@@ -29,13 +30,13 @@ export const Perfil = () => {
                 </div>
                
                 <span className="dadosPerfil">Nome:</span>
-                <p className="infoPerfil">{capitalizeFirstLetter(user.user?.nome)}</p>
+                <p className="infoPerfil">{user.nome}</p>
 
                 <span className="dadosPerfil">E-mail:</span>
-                <p className="infoPerfil">{user.user?.email}</p>
+                <p className="infoPerfil">{user.email}</p>
 
                 <span className="dadosPerfil">CPF:</span>
-                <p className="infoPerfil">{user.user?.cpf}</p>
+                <p className="infoPerfil">{user.cpf}</p>
 
             </div>
 
