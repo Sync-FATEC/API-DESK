@@ -155,7 +155,7 @@ export const Cadastro =() => {
                 } else if (response.data === 'CPF inválido'){
                     Swal.fire({
                         title: 'Error!',
-                        text: 'CPF já existente!',
+                        text: 'CPF inválido!',
                         icon: 'error',
                         confirmButtonText: 'OK'
                     }).then(() => {
