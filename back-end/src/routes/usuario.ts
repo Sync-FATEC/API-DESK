@@ -1,5 +1,6 @@
 import express, { Request, Response } from 'express';
-import { autenticarUsuario, criarUsuario, excluirUsuario, procurarUsuario } from '../controllers/usuarios';
+import { autenticarUsuario, criarUsuario, excluirUsuario, procurarUsuario, vizualizarTecnicos } from '../controllers/usuarios';
+import { error } from 'console';
 
 const router = express.Router();
 
@@ -41,6 +42,14 @@ router.get('/procurar', async (req: Request, res: Response) => {
     res.json(await procurarUsuario(email));
 });
 
-
+router.get('/listarTecnico', async (req: Request, res: Response) => {
+    try {
+        const tecnicos = await vizualizarTecnicos();
+        res.json(tecnicos);
+    } catch (error) {
+        console.error('Erro ao listar técnicos:', error);
+        res.status(500).json({ error: 'Erro ao listar técnicos' });
+    }
+});
 
 export default router;
