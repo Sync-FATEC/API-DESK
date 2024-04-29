@@ -71,17 +71,17 @@ export const listarTickets = async (usuarioID: number) => {
         if (usuario) {
             if (usuario.tipoUsuario === 'U') {
                 const tickets = await ticketsRepositorio.find({ where: { usuario: usuario } });
-                console.log('Tickets listados com sucesso');
+                console.log('Tickets listados com sucesso U');
                 return tickets;
             } 
             else if (usuario.tipoUsuario === 'A') {
                 const tickets = await ticketsRepositorio.find();
-                console.log('Tickets listados com sucesso');
+                console.log('Tickets listados com sucesso A');
                 return tickets;
             }
             else if (usuario.tipoUsuario === '1' || usuario.tipoUsuario === '2' || usuario.tipoUsuario === '3') {
                 const tickets = await ticketsRepositorio.find({ where: { tipoTecnico: usuario.tipoUsuario } });
-                console.log('Tickets listados com sucesso');
+                console.log('Tickets listados com sucesso T');
                 return tickets;
             }
         }
