@@ -17,9 +17,9 @@ export const App = () => {
         <Route
             path="/admin"
             element={
-              <RequireAuth tipoUsuario="A">
+              //<RequireAuth tipoUsuario="A">
                 <Admin />
-              </RequireAuth>
+              //</RequireAuth>
             }
           />
           <Route
