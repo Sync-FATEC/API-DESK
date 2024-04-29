@@ -55,7 +55,7 @@ export const Login = () => {
             case '1':
             case '2':
             case '3':
-              navigate('/tecnicos');
+              navigate('/tecnico');
               break;
             case 'A':
               navigate('/admin');

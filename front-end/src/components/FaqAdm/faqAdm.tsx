@@ -82,7 +82,9 @@ const FaqAdm = () => {
                             <p>{faq.titulo}</p>
                             <p>{faq.mensagem}</p>
                         <button className="excluir" onClick={() => handleDeleteUser(faq.mensagemID)}>
-                            Excluir
+                            <span className="material-symbols-outlined">
+                            delete
+                            </span>
                         </button>
                     </div>
                 ))}

@@ -5,21 +5,13 @@ export const VisualizarTicket = () => {
    
 
     return (
-        <div className='ModalVisualizarTicket'>
-            <div>
-                <h1>1</h1>
-                <h1>Problema</h1> 
-                
+      <div className="modalVisualizar">
+            <h1>Novo Ticket</h1>
+            
+            <div className='infoVisualizar'>
+               
             </div>
-           <hr />
-
-            <div className='infoTicket'>
-                <p>Data de abertura:</p>
-                
-            </div>
-        </div>
-        
-
+      </div>
 
         
     );

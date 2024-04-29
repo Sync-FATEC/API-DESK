@@ -12,7 +12,6 @@
     margin-bottom: 20px;
     color: var(--blue-color);
 }
-
 .filterTickets {
     display: flex;
     margin-bottom: 20px;
@@ -54,9 +53,9 @@
 
 .imagePreview {
     display: flex;
-    flex-direction: row;
     gap: 5px;
     align-items: center;
+    flex-direction: column;
 }
 
 .imagePreview img {
@@ -87,7 +86,7 @@
     border: none;
     border-radius: 10px;
     color: var(--branco-color);
-    font-size: 22px;
+    font-size: 18px;
     cursor: pointer;
      border-radius: 10px
 }
