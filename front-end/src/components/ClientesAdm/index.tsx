@@ -1,23 +1,47 @@
+import axios from 'axios';
+import React, { useState, useEffect } from 'react';
 import './clientesAdm.css';
-
+ 
+interface Tecnico {
+    email: string;
+    usuarioID: string;
+    // adicione outras propriedades se necessário
+}
+ 
 const ClientesAdm = () => {
-    const clientes = [
-        { nome: 'Cliente 1', email: 'cliente1@example.com' },
-        { nome: 'Cliente 2', email: 'cliente2@example.com' },
-        { nome: 'Cliente 3', email: 'cliente3@example.com' }
-    ];
-
-    const handleDeleteUser = () => {
-        // BackEnd logica para excluir e logica para pegar os emails
+    const [tecnicos, setTecnicos] = useState<Tecnico[]>([]);
+ 
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await axios.get<Tecnico[]>('http://localhost:5555/usuarios/listarTecnico');
+                setTecnicos(response.data);
+            } catch (error) {
+                console.error('Erro ao buscar técnicos:', error);
+            }
+        };
+ 
+        fetchData();
+    }, []);
+ 
+    const handleDeleteUser = async (usuarioID: string) => {
+        try {
+            const response = await axios.delete('http://localhost:3000/usuarios/excluir', {
+                data: { usuarioID }
+            });
+            console.log(response.data);
+        } catch (error) {
+            console.error('Erro ao excluir técnico:', error);
+        }
     };
-
+ 
     return (
         <div className='adminContainer'>
             <div className="container">
-                {clientes.map((cliente, index) => (
+                {tecnicos.map((tecnico, index) => (
                     <div className="clienteEmail" key={index}>
-                            <p>{cliente.email}</p>
-                        <button className="excluir" onClick={handleDeleteUser}>
+                        <p>{tecnico.email}</p>
+                        <button className="excluir" onClick={() => handleDeleteUser(tecnico.usuarioID)}>
                             Excluir
                         </button>
                     </div>
@@ -26,5 +50,6 @@ const ClientesAdm = () => {
         </div>
     );
 };
-
+ 
 export default ClientesAdm;
+ 
