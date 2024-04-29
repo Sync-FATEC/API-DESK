@@ -1,7 +1,7 @@
+import { In } from 'typeorm';
 import { AppDataSource } from "../data-source";
 import { Usuarios } from "../entity/usuarios";
 import bcrypt from 'bcrypt';
-
 
 export const usuariosRepositorio = AppDataSource.getRepository(Usuarios)
 
@@ -99,3 +99,14 @@ export const procurarUsuario = async (email: string) => {
         console.error("Erro na hora de procurar um usuario", error);
     }
 }
+
+export const vizualizarTecnicos = async () => {
+    try {
+        const tecnicos = await usuariosRepositorio.find({ where: { tipoUsuario: In(['1', '2', '3']) } });
+        console.log('Tecnicos listados com sucesso:', tecnicos);
+        return tecnicos;
+    } catch (error) {
+        console.error('Erro na listagem:', error);
+        throw error;
+    }
+};
