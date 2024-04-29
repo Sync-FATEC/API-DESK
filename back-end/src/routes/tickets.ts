@@ -32,9 +32,15 @@ router.put('/alterarStatus', async (req: Request, res: Response) => {
 });
 
 router.get('/listar/', async (req: Request, res: Response) => {
-    const { usuarioID } = req.body;
+    const { usuarioID } = req.query as { usuarioID: string };
+
+    if (!usuarioID) {
+        return res.status(400).json({ error: 'UsuarioID não informado' });
+    }
+
     res.json(await listarTickets(parseInt(usuarioID)));
 });
+
 
 router.post('/alterarTecnico', async (req: Request, res: Response) => {
     const { ticketID, tipoTecnico } = req.body;
