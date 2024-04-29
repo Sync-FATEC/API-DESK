@@ -156,7 +156,7 @@ export const CadastroTecnico = () => {
                 } else if (response.data === 'CPF inválido') {
                     Swal.fire({
                         title: 'Error!',
-                        text: 'CPF já existente!',
+                        text: 'CPF inválido!',
                         icon: 'error',
                         confirmButtonText: 'OK'
                     }).then(() => {
@@ -173,7 +173,12 @@ export const CadastroTecnico = () => {
                     });
                 } else {
                     success();
-                    navigate('/login')
+                    setNome('');
+                    setEmail('');
+                    setCpf('');
+                    setSenha('');
+                    setCategoria('');
+                    setTurno('');
                 };
             } catch (error) {
                 console.log(error);
