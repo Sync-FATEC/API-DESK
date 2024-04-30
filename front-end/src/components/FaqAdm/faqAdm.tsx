@@ -5,6 +5,7 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import IMensagens from '../../types/IMensagens';
 import ICategoria from '../../types/ICategoria';
+import React, { ChangeEvent } from 'react';
 
 const FaqAdm = () => {
     const [faqAdm, setFaqAdm] = useState<IMensagens[]>([]);
@@ -17,7 +18,7 @@ const FaqAdm = () => {
         setTitulo(event.target.value);
     };
 
-    const handleMensagemChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const handleMensagemChange = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         setMensagem(event.target.value);
     };
 
@@ -78,9 +79,11 @@ const FaqAdm = () => {
 
             <div className="container">
                 {faqAdm.map((faq, index) => (
-                    <div className="numeroSala" key={faq.mensagemID}>
+                    <div className="faqPost" key={faq.mensagemID}>
+                        <div>
                             <p>{faq.titulo}</p>
                             <p>{faq.mensagem}</p>
+                        </div>
                         <button className="excluir" onClick={() => handleDeleteUser(faq.mensagemID)}>
                             <span className="material-symbols-outlined">
                             delete
@@ -88,20 +91,24 @@ const FaqAdm = () => {
                         </button>
                     </div>
                 ))}
-                <div className="numeroSala">
-                    <form onSubmit={handleAddUser} method='post'>
-                        <input onChange={handleTituloChange} type="text" className="inputSala" placeholder="Adicionar Titulo"/>
-                        <input onChange={handleMensagemChange} type="text" className="inputSala" placeholder="Adicionar Mensagem"/>
-                        <select onChange={(e) => setCategoria(Number(e.target.value))} className="inputSala">
-                            <option value={0}>Selecione uma categoria</option>
-                            {categorias.map((categoria, index) => (
-                                <option key={index} value={categoria.categoriaID}>{categoria.categoria}</option>
-                            ))}
-                        </select>
-                        <button type='submit'>Criar nova mensagem</button>
-                    </form>
-                <img src={add} alt="add" />
-                </div>
+<div className="numeroFaq">
+    <form onSubmit={handleAddUser} method='post'>
+        <select onChange={(e) => setCategoria(Number(e.target.value))} className="inputSala1">
+            <option value={0}>Selecione uma categoria</option>
+            {categorias.map((categoria, index) => (
+                <option key={index} value={categoria.categoriaID}>{categoria.categoria}</option>
+            ))}
+        </select>
+        <div className="inputs">
+            <input onChange={handleTituloChange} type="text" className="inputFaq" placeholder="Adicionar Título"/>
+            <button type='submit' className='add'><img src={add} alt="add" /></button>
+        </div>
+        <textarea onChange={handleMensagemChange} className="inputFaq" placeholder="Adicionar Mensagem" rows={2}></textarea>
+    </form>
+</div>
+
+        
+
                 
             </div>
         </div>
