@@ -31,9 +31,13 @@ const SalaAdm = () => {
         fetchSalas();
       }, []);
 
-    const handleDeleteUser = (numeroSala: number) => {
+    const handleDeleteUser = async (numeroSala: number) => {
         try {
-            const response = axios.delete(`http://localhost:5555/mensagens/excluir/${numeroSala}`)
+            const response = await axios.delete(`http://localhost:5555/salas/excluir/${numeroSala}`)
+            if (response.data === "Erro na exclusão de uma sala") {
+                alert('Erro na exclusão de uma sala');
+                return;
+            }
             setSalas(prevSalas => prevSalas.filter(s => s.numeroSala !== numeroSala));
         } catch (error) {
             console.error(error);
