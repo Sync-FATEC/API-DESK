@@ -1,8 +1,7 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useApi } from "../../hooks/useApi";
 import { User } from "../../types/User";
 import { AuthContext } from "./AuthContext";
-import { Navigate } from "react-router-dom";
 
 export const AuthProvider = ({ children }: { children: JSX.Element }) => {
     const [user, setUser] = useState<User | null>(null);

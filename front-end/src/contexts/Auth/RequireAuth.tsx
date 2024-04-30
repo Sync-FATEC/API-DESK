@@ -3,15 +3,14 @@ import { Navigate } from "react-router-dom";
 import { AuthContext } from "./AuthContext";
 
 export const RequireAuth = ({ children, tipoUsuario }: { children: JSX.Element, tipoUsuario: string[] | string }) => {
-    let { user, signout } = useContext(AuthContext);
-    let mudarUser = user;
+    let { user } = useContext(AuthContext);
     
     const authToken = localStorage.getItem('authToken');
     if (authToken !== null && authToken !== '') {
         const parsedUser = JSON.parse(authToken);
         if (parsedUser) {
-            mudarUser = parsedUser;
-            useContext(AuthContext).user = mudarUser;
+            // eslint-disable-next-line react-hooks/rules-of-hooks
+            useContext(AuthContext).user = parsedUser;
         }
     }
 
