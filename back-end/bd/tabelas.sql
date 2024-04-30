@@ -25,9 +25,8 @@ create table salas (
 
 create table equipamentos (
 	equipamentosID int primary key auto_increment,
-    tipoEquipamento varchar(255),
     equipamento varchar(255),
-    sla timestamp,
+    sla int,
     prioridade int,
     salaID int,
     categoriaID int,
@@ -51,6 +50,7 @@ create table tickets (
     titulo varchar(255),
     descricao varchar(255),
     status varchar(1),
+    prioridade int,
     categoriaID int,
     equipamentosID int,
     salaID int,

@@ -8,13 +8,10 @@ export class Equipamentos {
     equipamentosID: number;
 
     @Column({ length: 255 })
-    tipoEquipamento: string;
-
-    @Column({ length: 255 })
     equipamento: string;
 
-    @Column({ type: 'timestamp' })
-    sla: Date;
+    @Column()
+    sla: number;
 
     @Column()
     prioridade: number;
@@ -27,8 +24,7 @@ export class Equipamentos {
     @JoinColumn({ name: 'categoriasID'})
     categoria: Categorias;
 
-    constructor(tipoEquipamento: string, equipamento: string, sla: Date, prioridade: number, sala: Salas, categoria: Categorias) {
-        this.tipoEquipamento = tipoEquipamento;
+    constructor(equipamento: string, sla: number, prioridade: number, sala: Salas, categoria: Categorias) {
         this.equipamento = equipamento;
         this.sla = sla;
         this.prioridade = prioridade;
