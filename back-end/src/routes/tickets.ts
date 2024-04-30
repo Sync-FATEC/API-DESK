@@ -13,12 +13,12 @@ router.post('/criar', async (req: Request, res: Response) => {
     res.json(await criarTicket(titulo, descricao, status, categoriaID, equipamentosID, numeroSala, usuarioID));
 });
 
-router.delete('/excluir', async (req: Request, res: Response) => {
-    if (req.body.ticketID === '') {
+router.delete('/excluir/:ticketID', async (req: Request, res: Response) => {
+    const ticketID = req.params.ticketID;
+    if (ticketID === '') {
         return res.status(400).json({ error: 'ID do ticket não informado' });
     }
-    const { ticketID } = req.body;
-    res.json(await excluirTicket(ticketID))
+    res.json(await excluirTicket(Number(ticketID)))
 });
 
 router.put('/alterarStatus', async (req: Request, res: Response) => {

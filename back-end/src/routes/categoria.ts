@@ -14,7 +14,7 @@ router.post('/cadastrar', async (req: Request, res: Response) => {
 router.delete('/excluir/:categoriaID', async (req: Request, res: Response) => {
     const categoriaID = req.params.categoriaID;
 
-    if (req.body.categoriaID === '') {
+    if (categoriaID === '') {
         return res.status(400).json({ error: 'ID da categoria não informado' });
     }
     res.json(await excluirCategoria(Number(categoriaID)))

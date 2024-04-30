@@ -11,12 +11,12 @@ router.post('/criar', async (req: Request, res: Response) => {
     res.json(await criarSalas(numeroSala, identificacao));
 });
 
-router.delete('/excluir', async (req: Request, res: Response) => {
-    const { numeroSala } = req.body;
+router.delete('/excluir/:numeroSala', async (req: Request, res: Response) => {
+    const numeroSala = req.params.numeroSala;
     if (numeroSala === '') {
         return res.status(400).json({ error: 'Número da sala não informado' });
     }
-    res.json(await excluirSalas(numeroSala));
+    res.json(await excluirSalas(Number(numeroSala)));
 });
 
 router.get('/visualizar', async (req: Request, res: Response) => {

@@ -16,12 +16,12 @@ router.post('/cadastrar', async (req: Request, res: Response) => {
     res.json(await criarUsuario(nome, cpf, email, senha, tipoUsuario, turno))
 });
 
-router.delete('/excluir', async (req: Request, res: Response) => {
-    const { usuarioID } = req.body;
+router.delete('/excluir/:usuarioID', async (req: Request, res: Response) => {
+    const usuarioID = req.params.usuarioID;
     if (usuarioID === '') {
         return res.status(400).json({ error: 'ID do usuário não informado' });
     }
-    res.json(await excluirUsuario(usuarioID));
+    res.json(await excluirUsuario(Number(usuarioID)));
 });
 
 router.post('/autenticar', async (req: Request, res: Response) => {

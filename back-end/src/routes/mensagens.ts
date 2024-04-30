@@ -14,12 +14,12 @@ router.post('/criar', async (req: Request, res: Response) => {
     res.json(await criarMensagem(tipoMensagem, titulo, mensagem, categoriaID));
 });
 
-router.delete('/excluir', async (req: Request, res: Response) => {
-    const { mensagemID } = req.body;
+router.delete('/excluir/:mensagemID', async (req: Request, res: Response) => {
+    const mensagemID = req.params.mensagemID;
     if (mensagemID === '') {
         return res.status(400).json({ error: 'ID da mensagem não informado' });
     }
-    res.json(await excluirMensagem(mensagemID));
+    res.json(await excluirMensagem(Number(mensagemID)));
 });
 
 router.get('/visualizar', async (req: Request, res: Response) => {
