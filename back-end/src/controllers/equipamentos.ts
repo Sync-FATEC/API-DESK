@@ -27,7 +27,7 @@ export const excluirEquipamento = async (equipamentoID: number) => {
         if (equipamento) {
             await equipamentosRepositorio.remove(equipamento)
             console.log('Equipamento excluido com sucesso');
-            return 1
+            return 'Equipamento excluido com sucesso'
         } else {
             console.log('Equipamento inexistente');
             return 'Equipamento inexistente'

@@ -13,12 +13,12 @@ router.post('/criar', async (req: Request, res: Response) => {
     res.json(await criarEquipamento(equipamento, sla, prioridade, numeroSala, categoriaID));
 });
 
-router.delete('/excluir', async (req: Request, res: Response) => {
-    if (req.body.equipamentoID === '') {
+router.delete('/excluir/:equipamentoID', async (req: Request, res: Response) => {
+    const equipamentoID = req.params.equipamentoID;
+    if (equipamentoID === '') {
         return res.status(400).json({ error: 'ID do equipamento não informado' });
     }
-    const { equipamentoID } = req.body;
-    res.json(await excluirEquipamento(equipamentoID))
+    res.json(await excluirEquipamento(Number(equipamentoID)))
 });
 
 router.get('/listar', async (req: Request, res: Response) => {
