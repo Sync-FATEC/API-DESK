@@ -2,7 +2,7 @@
 import './salaAdm.css';
 import add from '../../assets/img/add.png';
 import axios from 'axios';
-import Sala from '../../types/Sala';
+import Sala from '../../types/ISalas';
 import { useEffect, useState } from 'react';
 
 const SalaAdm = () => {

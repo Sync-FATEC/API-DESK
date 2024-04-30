@@ -2,16 +2,18 @@ import './equipamentoAdm.css';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import ICategoria from '../../types/ICategoria';
-import Sala from '../../types/Sala';
+import IEquipamentos from '../../types/IEquipamentos';
+import ISalas from '../../types/ISalas';
 
 const EquipamentoAdm = () => {
     const [equipamento, setEquipamento] = useState('')
     const [sla, setSla] = useState('')
     const [prioridade, setPrioridade] = useState('')
     const [categoriaID, setCategoriaID] = useState('')
-    const [salaID, setSalaID] = useState('')
+    const [numeroSala, setNumeroSala] = useState('')
     const [categorias, setCategorias] = useState<ICategoria[]>([]);
-    const [salas, setSalas] = useState<Sala[]>([]);
+    const [salas, setSalas] = useState<ISalas[]>([]);
+    const [equipamentos, setEquipamentos] = useState<IEquipamentos[]>([]);
     const handleDeleteUser = () => {
     };
 
@@ -20,8 +22,11 @@ const EquipamentoAdm = () => {
           try {
             const categoria = await axios.get('http://localhost:5555/categorias/listar');
             setCategorias(categoria.data);
-            const sala = await axios.get('http://localhost:5555/salas/visualizar');
+            const sala = await axios.get('http://localhost:5555/salas/visualizar');            
             setSalas(sala.data);
+            const equip = await axios.get('http://localhost:5555/equipamentos/listar');
+            setEquipamentos(equip.data);
+            console.log(equip.data);
           } catch (error) {
             console.error(error);
           }
@@ -30,30 +35,10 @@ const EquipamentoAdm = () => {
         fetchSalas();
       }, []);
 
-    const handleSalaID = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const newSalas = e.target.value;
-    setSalaID(newSalas);
-    };
-
-    const handleCategoriaID = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const newCategoriaID = e.target.value;
-    setCategoriaID(newCategoriaID);
-    };
-
-    const handlePrioridade = (e: React.ChangeEvent<HTMLSelectElement>) => {
-        const newPrioridade = e.target.value;
-        setPrioridade(newPrioridade)
-    }
-
-    const handleSla = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const newSla = e.target.value;
-        setSla(newSla)
-    } 
-
     const handleAddUser = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         
-        if (!equipamento|| !categoriaID || !salaID || !sla || !prioridade) {
+        if (!equipamento|| !categoriaID || !numeroSala || !sla || !prioridade) {
             alert('Preencha todos os campos');
             return;
         }
@@ -63,9 +48,10 @@ const EquipamentoAdm = () => {
                 sla: sla,
                 prioridade: prioridade,
                 categoriaID: categoriaID,
-                salaID: salaID
+                numeroSala: numeroSala
 
             });
+            setEquipamentos([...equipamentos, response.data]);
         } catch (error) {
             console.error(error);
         }
@@ -74,36 +60,55 @@ const EquipamentoAdm = () => {
         <div className="adminContainer">
             <div className="titulo">
             </div>
-
+            {salas.map((sala, index) => (
+                <details key={index}>
+                    <summary>{sala.numeroSala}</summary>
+                    {categorias.map((categoria, index) => (
+                        <details key={index}>
+                            <summary>{categoria.categoria}</summary>
+                            {equipamentos.map((equipamentos, index) => (
+                                equipamentos.sala.salaID === sala.salaID && equipamentos.categoria.categoriaID === categoria.categoriaID ? (
+                                    <div className="numeroSala" key={equipamentos.equipamentosID}>
+                                        <p>{equipamentos.equipamento}</p>
+                                        <p>{equipamentos.sla}</p>
+                                        <p>{equipamentos.prioridade}</p>
+                                    </div>
+                                ) : null
+                            ))}
+                        </details>
+                    ))}
+                </details>
+            ))}
             <div className="container">
                 <form onSubmit={handleAddUser} method="post">
-                    <select onChange={handleSalaID}>
+                    <input type="text" onChange={(e) => setEquipamento(e.target.value)} />
+                    <select onChange={(e) => setNumeroSala(e.target.value)}>
+                        <option value={undefined}>Selecione algo</option>
                         {salas.map((sala, index) => (
                             <option value={sala.numeroSala} key={index}>
                                 {sala.numeroSala}
                             </option>
                         ))}
                     </select>
-                    <select onChange={handleCategoriaID}>
+                    <select onChange={(e) => setCategoriaID(e.target.value)}>
+                        <option value={undefined}>Selecione algo</option>
                         {categorias.map((categoria, index) => (
                             <option value={categoria.categoriaID} key={index}>
                                 {categoria.categoria}
                             </option>
                         ))}
                     </select>
-                    <select onChange={handlePrioridade}>
-                        <option value="1">Baixa</option>
-                        <option value="2">Média</option>
-                        <option value="3">Alta</option>
+                    <select onChange={(e) => setPrioridade(e.target.value)}>
+                        <option value={undefined}>Selecione algo</option>
+                        <option value="Baixa">Baixa</option>
+                        <option value="Media">Média</option>
+                        <option value="Alta">Alta</option>
                     </select>
-                    {/* vai alterar */}
-                    <input type="number" onChange={handleSla}/>
+                    <input type="number" onChange={(e) => setSla(e.target.value)} />
                     <button type="submit">ENVIAR!</button>
                 </form>
-               
-                </div>
-                
             </div>
-        )};
+        </div>
+    )};
 
 export default EquipamentoAdm;

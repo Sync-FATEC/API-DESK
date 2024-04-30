@@ -4,6 +4,7 @@ import add from '../../assets/img/add.png';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import ICategoria from '../../types/ICategoria';
+import { log } from 'console';
 
 const CategoriaAdm = () => {
     const [categorias, setCategorias] = useState<ICategoria[]>([]);
@@ -31,13 +32,13 @@ const CategoriaAdm = () => {
         fetchSalas();
       }, []);
 
-    const handleDeleteUser = (categoriaID: number) => {
+    const handleDeleteUser = async (categoriaID: number) => {
         try {
-            const response = axios.delete('http://localhost:5555/categorias/excluir', {
-                params: {
-                    categoriaID: categoriaID
-                }
-            });
+            const response = await axios.delete('http://localhost:5555/categorias/excluir/' + categoriaID);
+            if (response.data === 'Erro na exclusão de uma categoria') {
+                alert('Erro ao excluir categoria');
+                return;
+            }
             setCategorias(categorias.filter((categoria) => categoria.categoriaID !== categoriaID));
         } catch (error) {
             console.error(error);
