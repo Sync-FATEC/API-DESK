@@ -20,7 +20,7 @@ create table Categorias (
 create table salas (
 	salaID int primary key auto_increment,
     numeroSala int unique not null,
-    indentificacao varchar(255)
+    identificacao varchar(255) not null
 );
 
 create table equipamentos (
@@ -29,9 +29,9 @@ create table equipamentos (
     sla int not null,
     prioridade varchar(50) not null,
     salaID int not null,
-    categoriaID int not null,
+    categoriasID int not null,
     foreign key (salaID) references salas(salaID),
-    foreign key (categoriaID) references Categorias(categoriaID)
+    foreign key (categoriasID) references Categorias(categoriaID)
 );
 
 create table mensagens (

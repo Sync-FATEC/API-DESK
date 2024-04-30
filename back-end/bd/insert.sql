@@ -5,13 +5,13 @@ VALUES ('Hardware', '1'),
        ('Redes', '3');
 
 -- Inserts para a tabela salas
-INSERT INTO salas (numeroSala, indentificacao)
+INSERT INTO salas (numeroSala, identificacao)
 VALUES (101, 'Sala de Reuniões'),
        (102, 'Laboratório de Informática'),
        (103, 'Sala de Servidores');
 
 -- Inserts para a tabela equipamentos
-INSERT INTO equipamentos (equipamento, sla, prioridade, salaID, categoriaID)
+INSERT INTO equipamentos (equipamento, sla, prioridade, salaID, categoriasID)
 VALUES ('Computador', 3, 'Alta', 1, 1),
        ('Roteador', 2, 'Média', 2, 3),
        ('Impressora', 4, 'Baixa', 3, 1);
