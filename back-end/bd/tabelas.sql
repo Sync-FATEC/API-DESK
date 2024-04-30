@@ -27,7 +27,7 @@ create table equipamentos (
 	equipamentosID int primary key auto_increment,
     equipamento varchar(255),
     sla int,
-    prioridade int,
+    prioridade varchar(50),
     salaID int,
     categoriaID int,
     foreign key (salaID) references salas(salaID),
