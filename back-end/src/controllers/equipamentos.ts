@@ -6,7 +6,7 @@ import { salasRepositorio } from "./sala";
 
 export const equipamentosRepositorio = AppDataSource.getRepository(Equipamentos)
 
-export const criarEquipamento = async (equipamento: string, sla: number, prioridade: number, numeroSala: number, categoriaID: number) => {
+export const criarEquipamento = async (equipamento: string, sla: number, prioridade: string, numeroSala: number, categoriaID: number) => {
     try {
         const sala = await salasRepositorio.findOneBy({ numeroSala: numeroSala })
         const categoria = await categoriaRepositorio.findOneBy({ categoriaID: categoriaID })
@@ -14,7 +14,7 @@ export const criarEquipamento = async (equipamento: string, sla: number, priorid
         const novoEquipamento = new Equipamentos(equipamento, sla, prioridade, sala, categoria)
         await equipamentosRepositorio.save(novoEquipamento)
         console.log('Equipamento cadastrado com sucesso');
-        return equipamentosRepositorio
+        return novoEquipamento
     } catch (error) {
         console.error('Ocorreu um erro na criação do equipamento', error);
         return 'Ocorreu um erro na criação do equipamento'
@@ -40,10 +40,10 @@ export const excluirEquipamento = async (equipamentoID: number) => {
 
 export const visualizarEquipamentos = async () => {
     try {
-        const equipamentos = await equipamentosRepositorio.find()
-        return equipamentos
+        const equipamentos = await equipamentosRepositorio.find({ relations: ["sala", "categoria"] });
+        return equipamentos;
     } catch (error) {
         console.error('Ocorreu um erro para visualizar os equipamentos', error);
-        return 'Ocorreu um erro para visualizar os equipamentos'
+        return 'Ocorreu um erro para visualizar os equipamentos';
     }
 }

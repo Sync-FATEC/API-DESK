@@ -20,14 +20,14 @@ export const excluirCategoria = async (categoriaID: number) => {
         const categoria = await categoriaRepositorio.findOneBy({categoriaID: categoriaID})
         if (categoria) {
             await categoriaRepositorio.remove(categoria)
-            console.log('Sala removida com sucesso');
+            console.log('Categoria removida com sucesso');
             return 1
         } else { 
-            console.log('Sala inexistente'); 
-            return 'Sala inexistente'
+            console.log('Categoria inexistente'); 
+            return 'Categoria inexistente'
         }
     } catch (error) {
-        console.error('Erro na exclução de uma categorua\n', error);
+        console.error('Erro na exclução de uma categoria\n', error);
         return 'Erro na exclusão de uma categoria'        
     }
 }

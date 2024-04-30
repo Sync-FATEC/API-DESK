@@ -11,12 +11,13 @@ router.post('/cadastrar', async (req: Request, res: Response) => {
     res.json(await criarCategoria(categoria, tipoTecnico));
 });
 
-router.delete('/excluir', async (req: Request, res: Response) => {
+router.delete('/excluir/:categoriaID', async (req: Request, res: Response) => {
+    const categoriaID = req.params.categoriaID;
+
     if (req.body.categoriaID === '') {
         return res.status(400).json({ error: 'ID da categoria não informado' });
     }
-    const { categoriaID } = req.body;
-    res.json(await excluirCategoria(categoriaID))
+    res.json(await excluirCategoria(Number(categoriaID)))
 });
 
 router.get('/listar', async (req: Request, res: Response) => {

@@ -13,8 +13,8 @@ export class Equipamentos {
     @Column()
     sla: number;
 
-    @Column()
-    prioridade: number;
+    @Column({ length: 50 })
+    prioridade: string;
 
     @ManyToOne(() => Salas)
     @JoinColumn({ name: 'salaID' })
@@ -24,7 +24,7 @@ export class Equipamentos {
     @JoinColumn({ name: 'categoriasID'})
     categoria: Categorias;
 
-    constructor(equipamento: string, sla: number, prioridade: number, sala: Salas, categoria: Categorias) {
+    constructor(equipamento: string, sla: number, prioridade: string, sala: Salas, categoria: Categorias) {
         this.equipamento = equipamento;
         this.sla = sla;
         this.prioridade = prioridade;
