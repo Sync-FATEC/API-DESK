@@ -31,18 +31,16 @@
 .ticket-filters .btnTicket {
     padding: 6px 12px;
     background-color: var(--blue-color);
-    border: 1px solid var(--blue-color);
     border-radius: 10px;
-    color: var(--cinza-color);
+    color: var(--branco-color);
     font-size: 18px;
     cursor: pointer;
-    transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+    border: none;
 }
 
 .ticket-filters .selectFilter:hover,
 .ticket-filters .btnTicket:hover {
-    background-color: var(--black-color);
-    color: var(--cinza-color);
+    color: var(--branco-color);
 }
 
 .ticket-list {
@@ -56,7 +54,7 @@
     font-weight: bold;
     background-color: var(--cinza-color);
     justify-content: center;
-    font-size: 24px;
+    font-size: 22px;
     padding: 20px 0;
 }
 
@@ -71,14 +69,12 @@
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     gap: 10px;
     background-color: var(--branco-color);
-    padding: 10px;
-    border-radius: 5px;
     margin-bottom: 10px;
-    border-top: 2px solid var(--black-color);
+    border-top: 1px solid var(--black-color);
     border-bottom: 2px solid var(--black-color); 
     border-left: none;
     border-right: none;
-    font-size: 20px;
+    font-size: 16px;
 }
 
 .ticket-item div {

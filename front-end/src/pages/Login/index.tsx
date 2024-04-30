@@ -1,9 +1,10 @@
 import React, { useState, useContext } from "react";
-import { useNavigate } from "react-router-dom";
-import { Aside } from "../../components/Aside";
 import { AuthContext } from "../../contexts/Auth/AuthContext";
 import Swal from "sweetalert2";
 import { useApi } from "../../hooks/useApi";
+import logo from '../../assets/img/logo.svg';
+import { Link, useNavigate } from "react-router-dom";
+
 
 
 export const Login = () => {
@@ -97,36 +98,46 @@ export const Login = () => {
 
   return (
     <div className='containerPrincipal'>
-      <Aside />
-      <div className="formContainer">
-        <form onSubmit={handleSubmitLogin}>
-          <div className="form">
-            <h2 className="formTitle">Entre na sua conta</h2>
-            <h3 className="formTitle2">Insira seus dados</h3>
-            <div className="formInput">
-              <input
-                type="text"
-                value={email}
-                onChange={handleEmailLogin}
-                placeholder=" "
-              />
-              <div className="errorMessage">{emailError}</div>
-              <label className="labelInput" htmlFor="email">Digite seu e-mail</label>
-            </div>
-            <div className="formInput">
-              <input
-                type="password"
-                value={senha}
-                onChange={handleSenhaLogin}
-                placeholder=" "
-              />
-              <div className="errorMessage">{senhaError}</div>
-              <label className="labelInput" htmlFor="password">Digite sua senha</label>
-            </div>
-            <button className="formBtn">Logar</button>
-          </div>
-        </form>
-      </div>
+        <aside>
+            <img className='logo' src={logo} alt="logo" />
+            <h1 className="title">Bem-vindo ao Service Desk</h1>
+            <h2 className="title">Cadastre sua conta agora</h2>
+
+            <form className="formAside" action="/cadastro">
+                <button className='botaoAside'>
+                    Cadastrar
+                </button>
+            </form>
+        </aside>
+        <div className="formContainer">
+            <form onSubmit={handleSubmitLogin}>
+                <div className="form">
+                    <h2 className="formTitle">Entre na sua conta</h2>
+                    <h3 className="formTitle2">Insira seus dados</h3>
+                    <div className="formInput">
+                        <input
+                            type="text"
+                            value={email}
+                            onChange={handleEmailLogin}
+                            placeholder=" "
+                        />
+                        <div className="errorMessage">{emailError}</div>
+                        <label className="labelInput" htmlFor="email">Digite seu e-mail</label>
+                    </div>
+                    <div className="formInput">
+                        <input
+                            type="password"
+                            value={senha}
+                            onChange={handleSenhaLogin}
+                            placeholder=" "
+                        />
+                        <div className="errorMessage">{senhaError}</div>
+                        <label className="labelInput" htmlFor="password">Digite sua senha</label>
+                    </div>
+                    <button className="formBtn">Entrar</button>
+                </div>
+            </form>
+        </div>
     </div>
-  );
-};
+);
+}

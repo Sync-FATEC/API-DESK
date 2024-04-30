@@ -1,25 +1,25 @@
 import { useState } from "react";
 import Swal from 'sweetalert2';
 import axios from "axios";
-import { Aside } from "../../components/Aside";
-import { useNavigate } from "react-router-dom";
+import logo from '../../assets/img/logo.svg';
+import { Link, useNavigate } from "react-router-dom";
 
-export const Cadastro =() => { 
-  const [nome, setNome] = useState('');
-  const [cpf, setCpf] = useState('');
-  const [email, setEmail] = useState('');
-  const [senha, setSenha] = useState('');
-  const [isValid, setIsValid] = useState(true);
-  const [nomeError, setNomeError] = useState('');
-  const [cpfError, setCpfError] = useState('');
-  const [emailError, setEmailError] = useState('');
-  const [senhaError, setSenhaError] = useState('');
+export const Cadastro = () => {
+    const [nome, setNome] = useState('');
+    const [cpf, setCpf] = useState('');
+    const [email, setEmail] = useState('');
+    const [senha, setSenha] = useState('');
+    const [isValid, setIsValid] = useState(true);
+    const [nomeError, setNomeError] = useState('');
+    const [cpfError, setCpfError] = useState('');
+    const [emailError, setEmailError] = useState('');
+    const [senhaError, setSenhaError] = useState('');
 
-  const navigate = useNavigate();
+    const navigate = useNavigate();
 
     const handleNome = (e: React.ChangeEvent<HTMLInputElement>) => {
         const newNome = e.target.value;
-   
+
         if (!newNome || !validateNome(newNome)) {
             setNomeError('Nome inválido! Por favor digite novamente.');
             setNome('');
@@ -29,12 +29,12 @@ export const Cadastro =() => {
             setIsValid(true);
             setNomeError('');
         }
-    };  
- 
-    const handleEmail = (e: React.ChangeEvent<HTMLInputElement>) => { 
+    };
+
+    const handleEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
         const newEmail = e.target.value;
         setEmail(newEmail);
-   
+
         if (!validateEmail(newEmail)) {
             setEmailError('Por favor, preencha um e-mail válido.');
             setIsValid(false);
@@ -43,11 +43,11 @@ export const Cadastro =() => {
             setIsValid(true);
         }
     };
-   
+
     const handleSenha = (e: React.ChangeEvent<HTMLInputElement>) => {
         const newSenha = e.target.value;
         setSenha(newSenha);
-   
+
         if (!validateSenha(newSenha) && newSenha.length > 20) {
             setSenhaError('Por favor, preencha uma senha válida.');
             setIsValid(false);
@@ -55,11 +55,11 @@ export const Cadastro =() => {
             setSenhaError('');
             setIsValid(true);
         }
-    };  
- 
+    };
+
     const handleCpf = (e: React.ChangeEvent<HTMLInputElement>) => {
         const newCpf = formatCPF(e.target.value);
-    
+
         if (!newCpf) {
             setCpfError('CPF inválido! Por favor digite novamente.');
             setCpf('')
@@ -70,80 +70,80 @@ export const Cadastro =() => {
             setCpfError('');
         };
     };
- 
-    const validateNome = (nome: string): boolean => { 
+
+    const validateNome = (nome: string): boolean => {
         const nomeRegex = /^[a-zA-ZÀ-ÖØ-öø-ÿ\s]*$/i;
         return nomeRegex.test(nome);
     };
- 
-    const validateEmail = (email: string): boolean => { 
+
+    const validateEmail = (email: string): boolean => {
         const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
         return emailRegex.test(email);
     };
- 
-    const validateCpf = (cpf: string): boolean => { 
+
+    const validateCpf = (cpf: string): boolean => {
         const cpfRegex = /^\d{3}\.\d{3}\.\d{3}-\d{2}$/;
         return cpfRegex.test(cpf);
     };
- 
+
     const formatCPF = (cpf: string): string => {
         const cleaned = cpf.replace(/\D/g, '');
         let formated = cleaned.replace(/(\d{3})(\d{3})(\d{3})(\d{2}).*/, '$1.$2.$3-$4');
         return formated;
     };
- 
+
     const validateSenha = (senha: string): boolean => {
         const senhaRegex = /^[a-zA-Z0-9!@#$%^&*()_+{}[\]:;<>,.?/~`|-]{1,20}$/;
         return senhaRegex.test(senha);
-    };  
+    };
 
-    const cpfSemFormatacao = cpf.replace(/[^\d]/g, ''); 
+    const cpfSemFormatacao = cpf.replace(/[^\d]/g, '');
 
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
- 
+
         let formIsValid = true;
- 
+
         if (nome === '' || !validateNome(nome)) {
             setNomeError('Preencha seu nome.');
             formIsValid = false;
         } else {
             setNomeError('');
         };
- 
+
         if (email === '' || !validateEmail(email)) {
             setEmailError('Preencha seu e-mail.');
             formIsValid = false
         } else {
             setEmailError('');
         };
- 
+
         if (senha === '' || !validateSenha(senha)) {
             setSenhaError('Preencha sua senha.');
             formIsValid = false;
         } else {
             setSenhaError('');
         };
- 
+
         if (cpf === '' || !validateCpf(cpf)) {
             setCpfError('Preencha seu CPF.');
             formIsValid = false;
         } else {
             setCpfError('');
         };
- 
-        if (formIsValid && isValid) { 
-            try { 
-                const response = await axios.post('http://localhost:5555/usuarios/cadastrar', { 
-                'nome': nome,
-                'cpf': cpfSemFormatacao,
-                'email': email,
-                'senha': senha,
-                'tipoUsuario': 'U',
-                'Turno': ''
+
+        if (formIsValid && isValid) {
+            try {
+                const response = await axios.post('http://localhost:5555/usuarios/cadastrar', {
+                    'nome': nome,
+                    'cpf': cpfSemFormatacao,
+                    'email': email,
+                    'senha': senha,
+                    'tipoUsuario': 'U',
+                    'Turno': ''
                 });
- 
-                if (response.data === 'Usuário já cadastrado') { 
+
+                if (response.data === 'Usuário já cadastrado') {
                     Swal.fire({
                         title: 'Error!',
                         text: 'E-mail já existente!',
@@ -152,7 +152,7 @@ export const Cadastro =() => {
                     }).then(() => {
                         setEmail('');
                     });
-                } else if (response.data === 'CPF inválido'){
+                } else if (response.data === 'CPF inválido') {
                     Swal.fire({
                         title: 'Error!',
                         text: 'CPF inválido!',
@@ -161,7 +161,7 @@ export const Cadastro =() => {
                     }).then(() => {
                         setCpf('');
                     });
-                } else if (response.data === 'CPF já cadastrado'){
+                } else if (response.data === 'CPF já cadastrado') {
                     Swal.fire({
                         title: 'Error!',
                         text: 'CPF já cadastrado!',
@@ -170,19 +170,19 @@ export const Cadastro =() => {
                     }).then(() => {
                         setCpf('');
                     });
-                } else { 
+                } else {
                     success();
                     navigate('/login')
                 };
-            } catch (error) { 
+            } catch (error) {
                 console.log(error);
                 warning('Erro criando cliente!');
             };
-        } else { 
+        } else {
             warning('Corrija os campos!');
         };
     };
- 
+
     const warning = (message: string) => {
         Swal.fire({
             title: "Aviso!",
@@ -190,8 +190,8 @@ export const Cadastro =() => {
             icon: "warning",
         });
     };
- 
-    const success = () => { 
+
+    const success = () => {
         Swal.fire({
             title: "Cadastro concluido!",
             text: "Informações cadastradas com sucesso!",
@@ -199,17 +199,26 @@ export const Cadastro =() => {
             confirmButtonText: "OK"
         });
     };
- 
+
     return (
         <div className='containerPrincipal'>
-            <Aside />
-    
+            <aside>
+                <img className='logo' src={logo} alt="logo" />
+                <h1 className='title'>Bem-vindo ao Service Desk</h1>
+                <h2 className='title'>Acesse sua conta agora</h2>
+
+                <form className="formAside" action="/login">
+                    <button className='botaoAside'>
+                        Entrar
+                    </button>
+                </form>
+            </aside>
             <div className="formContainer">
                 <form onSubmit={handleSubmit}>
                     <div className="form">
                         <h2 className="formTitle">Crie sua conta</h2>
                         <h3 className='formTitle2'>Cadastre seus dados</h3>
-    
+
                         <div className="formInput">
                             <input
                                 className={nome !== "" ? "has-val input" : "input"}
@@ -220,7 +229,7 @@ export const Cadastro =() => {
                             <div className="">{nomeError}</div>
                             <label className="labelInput" htmlFor="nome">Digite seu nome</label>
                         </div>
-    
+
                         <div className="formInput">
                             <input
                                 className={email !== "" ? "has-val input" : "input"}
@@ -231,7 +240,7 @@ export const Cadastro =() => {
                             <div className="">{emailError}</div>
                             <label className="labelInput" htmlFor="email">Digite seu e-mail</label>
                         </div>
-    
+
                         <div className="formInput">
                             <input
                                 className={cpf !== "" ? "has-val input" : "input"}
@@ -242,7 +251,7 @@ export const Cadastro =() => {
                             <div className="">{cpfError}</div>
                             <label className="labelInput" htmlFor="cpf">Digite seu CPF</label>
                         </div>
-    
+
                         <div className="formInput">
                             <input
                                 className={senha !== "" ? "has-val input" : "input"}
@@ -253,12 +262,12 @@ export const Cadastro =() => {
                             <div className="">{senhaError}</div>
                             <label className="labelInput" htmlFor="Password">Digite sua senha</label>
                         </div>
-    
-                            <button type="submit" value="Cadastrar" className="formBtn">Cadastrar</button>
+
+                        <button type="submit" value="Cadastrar" className="formBtn">Cadastrar</button>
                     </div>
                 </form>
             </div>
         </div>
     );
-    
+
 };
