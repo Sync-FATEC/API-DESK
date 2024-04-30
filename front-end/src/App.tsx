@@ -6,7 +6,7 @@ import { Cadastro } from './pages/Cadastro';
 import { Admin } from './pages/Admin';
 import { Tecnicos } from './pages/Tecnico';
 import { RequireAuth } from './contexts/Auth/RequireAuth';
-import { FAQ } from './components/FAQ';
+import { FAQ } from './components/Faq';
 
 export const App = () => {
   return (

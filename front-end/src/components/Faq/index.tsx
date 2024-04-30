@@ -13,7 +13,11 @@ export const FAQ = () => {
     useEffect(() => {
         const fetchFAQs = async () => {
             try {
-                const response = await axios.get('http://localhost:5555/mensagens/visualizar');
+                const response = await axios.get('http://localhost:5555/mensagens/visualizar', {
+                    params: {
+                        tipoMensagem: 'F'
+                    }
+                });
                 setFaqs(response.data);
             } catch (error) {
                 setError('Erro ao buscar as mensagens do FAQ. Por favor, tente novamente mais tarde.');
@@ -53,3 +57,4 @@ export const FAQ = () => {
         </>
     );
 };
+export default FAQ;
