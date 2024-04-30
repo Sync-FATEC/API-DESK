@@ -1,12 +1,13 @@
 
+import './BaseDeConhecimento.css';
 import add from '../../assets/img/add.png';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import IMensagens from '../../types/IMensagens';
 import ICategoria from '../../types/ICategoria';
 
-const TemplateADM = () => {
-    const [TemplateADM, setTemplateADM] = useState<IMensagens[]>([]);
+const BaseDeConhecimento = () => {
+    const [baseDeConhecimento, setBaseDeConhecimento] = useState<IMensagens[]>([]);
     const [titulo, setTitulo] = useState('');
     const [mensagem] = useState(null);
     const [categorias, setCategorias] = useState<ICategoria[]>([]);
@@ -21,12 +22,12 @@ const TemplateADM = () => {
           try {
             const response = await axios.get('http://localhost:5555/mensagens/visualizar', {
                 params: {
-                    tipoMensagem: 'T'
+                    tipoMensagem: 'B'
                 }
             });
             const categoria = await axios.get('http://localhost:5555/categorias/listar');
             setCategorias(categoria.data);
-            setTemplateADM(response.data);
+            setBaseDeConhecimento(response.data);
           } catch (error) {
             console.error(error);
           }
@@ -35,11 +36,10 @@ const TemplateADM = () => {
         fetchSalas();
       }, []);
 
-    const handleDeleteUser = async (categoriaID: number) => {
+    const handleDeleteUser = (categoriaID: number) => {
         try {
             const response = axios.delete(`http://localhost:5555/mensagens/excluir/${categoriaID}`)
-            
-        setTemplateADM(TemplateADM.filter((template) => template.mensagemID !== categoriaID));
+        setBaseDeConhecimento(baseDeConhecimento.filter((base) => base.mensagemID !== categoriaID));
         } catch (error) {
             console.error(error);
         }
@@ -53,12 +53,12 @@ const TemplateADM = () => {
         }
         try {
             const response = await axios.post('http://localhost:5555/mensagens/criar', {
-                tipoMensagem: 'T',
+                tipoMensagem: 'B',
                 titulo: titulo,
                 mensagem: mensagem,
                 categoriaID: categoria
             });
-        setTemplateADM([...TemplateADM, response.data]);
+        setBaseDeConhecimento([...baseDeConhecimento, response.data]);
         } catch (error) {
             console.error(error);
         }
@@ -69,10 +69,10 @@ const TemplateADM = () => {
             </div>
 
             <div className="container">
-                {TemplateADM.map((template, index) => (
-                    <div className="numeroSala" key={template.mensagemID}>
-                            <p>{template.titulo} {template.mensagemID}</p>
-                        <button className="excluir" onClick={() => handleDeleteUser(template.mensagemID)}>
+                {baseDeConhecimento.map((base, index) => (
+                    <div className="numeroSala" key={base.mensagemID}>
+                            <p>{base.titulo}</p>
+                        <button className="excluir" onClick={() => handleDeleteUser(base.mensagemID)}>
                             <span className="material-symbols-outlined">
                             delete
                             </span>
@@ -97,4 +97,4 @@ const TemplateADM = () => {
         </div>
     )};
 
-export default TemplateADM;
+export default BaseDeConhecimento;

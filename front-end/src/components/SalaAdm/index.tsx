@@ -33,11 +33,7 @@ const SalaAdm = () => {
 
     const handleDeleteUser = (numeroSala: number) => {
         try {
-            const response = axios.delete('http://localhost:5555/salas/excluir', {
-                params: {
-                    numeroSala: numeroSala
-                }
-            });
+            const response = axios.delete(`http://localhost:5555/mensagens/excluir/${numeroSala}`)
             setSalas(prevSalas => prevSalas.filter(s => s.numeroSala !== numeroSala));
         } catch (error) {
             console.error(error);

@@ -6,12 +6,12 @@ import { salasRepositorio } from "./sala";
 
 export const equipamentosRepositorio = AppDataSource.getRepository(Equipamentos)
 
-export const criarEquipamento = async (tipoEquipamento: string, equipamento: string, sla: Date, prioridade: number, numeroSala: number, categoriaID: number) => {
+export const criarEquipamento = async (equipamento: string, sla: number, prioridade: number, numeroSala: number, categoriaID: number) => {
     try {
         const sala = await salasRepositorio.findOneBy({ numeroSala: numeroSala })
         const categoria = await categoriaRepositorio.findOneBy({ categoriaID: categoriaID })
 
-        const novoEquipamento = new Equipamentos(tipoEquipamento, equipamento, sla, prioridade, sala, categoria)
+        const novoEquipamento = new Equipamentos(equipamento, sla, prioridade, sala, categoria)
         await equipamentosRepositorio.save(novoEquipamento)
         console.log('Equipamento cadastrado com sucesso');
         return equipamentosRepositorio

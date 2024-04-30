@@ -43,11 +43,7 @@ const FaqAdm = () => {
 
     const handleDeleteUser = (categoriaID: number) => {
         try {
-            const response = axios.delete('http://localhost:5555/mensagens/excluir', {
-                params: {
-                    categoriaID: categoriaID
-                }
-            });
+            const response = axios.delete(`http://localhost:5555/mensagens/excluir/${categoriaID}`)
         setFaqAdm(faqAdm.filter((faq) => faq.mensagemID !== categoriaID));
         } catch (error) {
             console.error(error);

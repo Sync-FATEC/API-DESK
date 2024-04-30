@@ -4,13 +4,13 @@ import { criarEquipamento, excluirEquipamento, visualizarEquipamentos } from '..
 const router = express.Router();
 
 router.post('/criar', async (req: Request, res: Response) => {
-    const { tipoEquipamento, equipamento, sla, prioridade, salaID, categoriaID } = req.body;
+    const { equipamento, sla, prioridade, salaID, categoriaID } = req.body;
 
-    if (tipoEquipamento == '' || equipamento == '' || sla == '' || prioridade == '' || salaID == '' || categoriaID == '') {
+    if (equipamento == '' || sla == '' || prioridade == '' || salaID == '' || categoriaID == '') {
         return res.status(400).json({ error: 'Preencha todos os campos' });
     }
 
-    res.json(await criarEquipamento(tipoEquipamento, equipamento, sla, prioridade, salaID, categoriaID));
+    res.json(await criarEquipamento(equipamento, sla, prioridade, salaID, categoriaID));
 });
 
 router.delete('/excluir', async (req: Request, res: Response) => {
