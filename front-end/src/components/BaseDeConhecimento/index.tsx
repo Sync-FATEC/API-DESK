@@ -1,15 +1,15 @@
 
-import './faqAdm.css';
+import './BaseDeConhecimento.css';
 import add from '../../assets/img/add.png';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import IMensagens from '../../types/IMensagens';
 import ICategoria from '../../types/ICategoria';
 
-const FaqAdm = () => {
-    const [faqAdm, setFaqAdm] = useState<IMensagens[]>([]);
+const BaseDeConhecimento = () => {
+    const [baseDeConhecimento, setBaseDeConhecimento] = useState<IMensagens[]>([]);
     const [titulo, setTitulo] = useState('');
-    const [mensagem, setMensagem] = useState('');
+    const [mensagem] = useState(null);
     const [categorias, setCategorias] = useState<ICategoria[]>([]);
     const [categoria, setCategoria] = useState(0);
 
@@ -17,21 +17,17 @@ const FaqAdm = () => {
         setTitulo(event.target.value);
     };
 
-    const handleMensagemChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setMensagem(event.target.value);
-    };
-
     useEffect(() => {
         const fetchSalas = async () => {
           try {
             const response = await axios.get('http://localhost:5555/mensagens/visualizar', {
                 params: {
-                    tipoMensagem: 'F'
+                    tipoMensagem: 'B'
                 }
             });
             const categoria = await axios.get('http://localhost:5555/categorias/listar');
             setCategorias(categoria.data);
-            setFaqAdm(response.data);
+            setBaseDeConhecimento(response.data);
           } catch (error) {
             console.error(error);
           }
@@ -42,12 +38,8 @@ const FaqAdm = () => {
 
     const handleDeleteUser = (categoriaID: number) => {
         try {
-            const response = axios.delete('http://localhost:5555/mensagens/excluir', {
-                params: {
-                    categoriaID: categoriaID
-                }
-            });
-        setFaqAdm(faqAdm.filter((faq) => faq.mensagemID !== categoriaID));
+            const response = axios.delete(`http://localhost:5555/mensagens/excluir/${categoriaID}`)
+        setBaseDeConhecimento(baseDeConhecimento.filter((base) => base.mensagemID !== categoriaID));
         } catch (error) {
             console.error(error);
         }
@@ -55,18 +47,18 @@ const FaqAdm = () => {
     const handleAddUser = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         
-        if (!titulo || !mensagem || !categoria) {
+        if (!titulo || !categoria) {
             alert('Preencha todos os campos');
             return;
         }
         try {
             const response = await axios.post('http://localhost:5555/mensagens/criar', {
-                tipoMensagem: 'F',
+                tipoMensagem: 'B',
                 titulo: titulo,
                 mensagem: mensagem,
                 categoriaID: categoria
             });
-        setFaqAdm([...faqAdm, response.data]);
+        setBaseDeConhecimento([...baseDeConhecimento, response.data]);
         } catch (error) {
             console.error(error);
         }
@@ -77,11 +69,10 @@ const FaqAdm = () => {
             </div>
 
             <div className="container">
-                {faqAdm.map((faq, index) => (
-                    <div className="numeroSala" key={faq.mensagemID}>
-                            <p>{faq.titulo}</p>
-                            <p>{faq.mensagem}</p>
-                        <button className="excluir" onClick={() => handleDeleteUser(faq.mensagemID)}>
+                {baseDeConhecimento.map((base, index) => (
+                    <div className="numeroSala" key={base.mensagemID}>
+                            <p>{base.titulo}</p>
+                        <button className="excluir" onClick={() => handleDeleteUser(base.mensagemID)}>
                             <span className="material-symbols-outlined">
                             delete
                             </span>
@@ -91,7 +82,6 @@ const FaqAdm = () => {
                 <div className="numeroSala">
                     <form onSubmit={handleAddUser} method='post'>
                         <input onChange={handleTituloChange} type="text" className="inputSala" placeholder="Adicionar Titulo"/>
-                        <input onChange={handleMensagemChange} type="text" className="inputSala" placeholder="Adicionar Mensagem"/>
                         <select onChange={(e) => setCategoria(Number(e.target.value))} className="inputSala">
                             <option value={0}>Selecione uma categoria</option>
                             {categorias.map((categoria, index) => (
@@ -107,4 +97,4 @@ const FaqAdm = () => {
         </div>
     )};
 
-export default FaqAdm;
+export default BaseDeConhecimento;

@@ -5,8 +5,9 @@ import {CadastroTecnico} from '../CadastroTecnico';
 import SalaAdm from '../SalaAdm';
 import EquipamentoAdm from '../EquipamentoAdm';
 import CategoriaAdm from '../CategoriaAdm/categoriaAdm';
-import FaqAdm from '../FaqAdm/faqAdm';
-import TemplateAdm from '../TemplateAdm';
+import FaqAdm from '../FaqAdm';
+import BaseDeConhecimento from '../BaseDeConhecimento';
+import TemplateADM from '../TemplateAdm';
 
 export const AsideAdmin: React.FC<{
     onPageChange: (title: string) => void;
@@ -29,7 +30,6 @@ export const AsideAdmin: React.FC<{
                 <div className={selectedOption === 'Técnico' ? 'selectedOption' : 'option'} onClick={() => handleOptionClick('Cadastro de Técnico')}>Cadastro técnico</div>
                 <div className={selectedOption === 'Clientes' ? 'selectedOption' : 'option'} onClick={() => handleOptionClick('Clientes')}>Técnicos</div>
                 <div className={selectedOption === 'Categoria' ? 'selectedOption' : 'option'} onClick={() => handleOptionClick('Categoria')}>Categoria</div>
-                <div className={selectedOption === 'Tipos de problemas' ? 'selectedOption' : 'option'} onClick={() => handleOptionClick('Tipos de problemas')}>Tipos de problemas</div>
                 <div className={selectedOption === 'Equipamento' ? 'selectedOption' : 'option'} onClick={() => handleOptionClick('Equipamento')}>Equipamento</div>
                 <div className={selectedOption === 'Salas' ? 'selectedOption' : 'option'} onClick={() => handleOptionClick('Salas')}>Salas</div>
                 <div className={selectedOption === 'FAQ' ? 'selectedOption' : 'option'} onClick={() => handleOptionClick('FAQ')}>FAQ</div>
@@ -45,7 +45,8 @@ export const AsideAdmin: React.FC<{
                         {selectedOption === 'Equipamento' && <EquipamentoAdm />}
                         {selectedOption === 'Categoria' && <CategoriaAdm />}
                         {selectedOption === 'FAQ' && <FaqAdm />}
-                        {selectedOption === 'Templates de finalização' && <TemplateAdm />}
+                        {selectedOption === 'Base de conhecimento' && <BaseDeConhecimento />}
+                        {selectedOption === 'Templates de finalização' && <TemplateADM />}
                     </div>
                 )}
             </div>

@@ -1,7 +1,6 @@
 import { useState } from "react";
 import Swal from 'sweetalert2';
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
 import './cadastroTecnico.css'
 
 export const CadastroTecnico = () => {
@@ -16,7 +15,6 @@ export const CadastroTecnico = () => {
     const [cpfError, setCpfError] = useState('');
     const [emailError, setEmailError] = useState('');
     const [senhaError, setSenhaError] = useState('');
-    const navigate = useNavigate();
 
     const handleNome = (e: React.ChangeEvent<HTMLInputElement>) => {
         const newNome = e.target.value;
