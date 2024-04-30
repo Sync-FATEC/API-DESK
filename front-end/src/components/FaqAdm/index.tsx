@@ -1,113 +1,115 @@
-
 import './faqAdm.css';
 import add from '../../assets/img/add.png';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import IMensagens from '../../types/IMensagens';
 import ICategoria from '../../types/ICategoria';
-import React, { ChangeEvent } from 'react';
 
 const FaqAdm = () => {
     const [faqAdm, setFaqAdm] = useState<IMensagens[]>([]);
     const [titulo, setTitulo] = useState('');
     const [mensagem, setMensagem] = useState('');
     const [categorias, setCategorias] = useState<ICategoria[]>([]);
-    const [categoria, setCategoria] = useState(0);
+    const [categoriaSelecionada, setCategoriaSelecionada] = useState<number>(0);
+    const [error, setError] = useState<string>('');
 
-    const handleTituloChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setTitulo(event.target.value);
-    };
-
-    const handleMensagemChange = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-        setMensagem(event.target.value);
-    };
+    // Opções de categoria fixas
+    const opcoesCategoriasFixas: ICategoria[] = [
+        { categoriaID: 1, categoria: 'Categoria 1' },
+        { categoriaID: 2, categoria: 'Categoria 2' },
+        { categoriaID: 3, categoria: 'Categoria 3' }
+    ];
 
     useEffect(() => {
-        const fetchSalas = async () => {
-          try {
-            const response = await axios.get('http://localhost:5555/mensagens/visualizar', {
-                params: {
-                    tipoMensagem: 'F'
-                }
-            });
-            const categoria = await axios.get('http://localhost:5555/categorias/listar');
-            setCategorias(categoria.data);
-            setFaqAdm(response.data);
-          } catch (error) {
-            console.error(error);
-          }
-        };
-    
-        fetchSalas();
-      }, []);
+        const fetchData = async () => {
+            try {
+                const responseFaqs = await axios.get('http://localhost:5555/mensagens/visualizar', {
+                    params: {
+                        tipoMensagem: 'F'
+                    }
+                });
+                setFaqAdm(responseFaqs.data);
 
-    const handleDeleteUser = (categoriaID: number) => {
+                const responseCategorias = await axios.get('http://localhost:5555/categorias/listar');
+                setCategorias(responseCategorias.data);
+            } catch (error) {
+                setError('Erro ao buscar os dados. Por favor, tente novamente mais tarde.');
+            }
+        };
+
+        fetchData();
+    }, []);
+
+    const handleDeleteUser = async (mensagemID: number) => {
         try {
-            const response = axios.delete(`http://localhost:5555/mensagens/excluir/${categoriaID}`)
-        setFaqAdm(faqAdm.filter((faq) => faq.mensagemID !== categoriaID));
+            await axios.delete(`http://localhost:5555/mensagens/excluir/${mensagemID}`);
+            setFaqAdm(faqAdm.filter((faq) => faq.mensagemID !== mensagemID));
         } catch (error) {
-            console.error(error);
+            setError('Erro ao excluir a mensagem.');
         }
     };
+
     const handleAddUser = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         
-        if (!titulo || !mensagem || !categoria) {
-            alert('Preencha todos os campos');
+        if (!titulo || !mensagem || categoriaSelecionada === 0) {
+            setError('Preencha todos os campos.');
             return;
         }
+
         try {
             const response = await axios.post('http://localhost:5555/mensagens/criar', {
                 tipoMensagem: 'F',
                 titulo: titulo,
                 mensagem: mensagem,
-                categoriaID: categoria
+                categoriaID: categoriaSelecionada
             });
-        setFaqAdm([...faqAdm, response.data]);
+            setFaqAdm([...faqAdm, response.data]);
+            setTitulo('');
+            setMensagem('');
+            setCategoriaSelecionada(0);
         } catch (error) {
-            console.error(error);
+            setError('Erro ao adicionar a mensagem.');
         }
     };
+
     return (
         <div className="adminContainer">
-            <div className="titulo">
-            </div>
-
             <div className="container">
-                {faqAdm.map((faq, index) => (
+                {error && <div className="error">{error}</div>}
+                {faqAdm.map((faq) => (
                     <div className="faqPost" key={faq.mensagemID}>
                         <div>
                             <p>{faq.titulo}</p>
                             <p>{faq.mensagem}</p>
                         </div>
                         <button className="excluir" onClick={() => handleDeleteUser(faq.mensagemID)}>
-                            <span className="material-symbols-outlined">
-                            delete
-                            </span>
+                            <span className="material-symbols-outlined">delete</span>
                         </button>
                     </div>
                 ))}
-<div className="numeroFaq">
-    <form onSubmit={handleAddUser} method='post'>
-        <select onChange={(e) => setCategoria(Number(e.target.value))} className="inputSala1">
-            <option value={0}>Selecione uma categoria</option>
-            {categorias.map((categoria, index) => (
-                <option key={index} value={categoria.categoriaID}>{categoria.categoria}</option>
-            ))}
-        </select>
-        <div className="inputs">
-            <input onChange={handleTituloChange} type="text" className="inputFaq" placeholder="Adicionar Título"/>
-            <button type='submit' className='add'><img src={add} alt="add" /></button>
-        </div>
-        <textarea onChange={handleMensagemChange} className="inputFaq" placeholder="Adicionar Mensagem" rows={2}></textarea>
-    </form>
-</div>
-
-        
-
-                
+                <div className="numeroFaq">
+                    <form onSubmit={handleAddUser} method='post'>
+                        <select onChange={(e) => setCategoriaSelecionada(Number(e.target.value))} className="inputSala1">
+                            <option value={0}>Selecione uma categoria</option>
+                            {categorias.map((categoria) => (
+                                <option key={categoria.categoriaID} value={categoria.categoriaID}>{categoria.categoria}</option>
+                            ))}
+                            {/* Adicionando opções de categoria fixas */}
+                            {opcoesCategoriasFixas.map((opcao) => (
+                                <option key={opcao.categoriaID} value={opcao.categoriaID}>{opcao.categoria}</option>
+                            ))}
+                        </select>
+                        <div className="inputs">
+                            <input value={titulo} onChange={(e) => setTitulo(e.target.value)} type="text" className="inputFaq" placeholder="Adicionar Título"/>
+                            <button type='submit' className='add'><img src={add} alt="add" /></button>
+                        </div>
+                        <textarea value={mensagem} onChange={(e) => setMensagem(e.target.value)} className="inputFaq" placeholder="Adicionar Mensagem" rows={2}></textarea>
+                    </form>
+                </div>
             </div>
         </div>
-    )};
+    );
+};
 
 export default FaqAdm;

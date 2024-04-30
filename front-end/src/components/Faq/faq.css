@@ -1,15 +1,15 @@
-.baner{
+.banner{
     background-color: var(--cinza-color);
     display: flex;
     justify-content: center;
     
 }
-.baner img{
+.banner img{
     width: 30vw;
     height: 30vh;
 }
 
-.faqContainer{
+.containerFAQ{
     width: 90vw;
     height: 90vh;
     margin: 0 auto;
@@ -17,7 +17,6 @@
 
 .faq{
     display: flex;
-    /* align-items: center; */
     flex-direction: column;
     border-top: 2px solid var(--black-color);
     border-bottom: 2px solid var(--black-color); 

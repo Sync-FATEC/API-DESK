@@ -104,7 +104,6 @@
   font-size: 22px;
   width: 200px;
   cursor: pointer;
-
 }
 
 aside {
@@ -131,7 +130,9 @@ aside {
   cursor: pointer;
   color: var(--branco-color);
 }
-
+.botaoAside a {
+  color: var(--black-color); 
+}
 .logo{
   padding: 64px 64px ;
 }

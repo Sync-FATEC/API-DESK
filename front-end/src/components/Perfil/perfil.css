@@ -1,4 +1,4 @@
-.modalPerfil{
+.modalPerfil {
     padding: 10px;
     width: 350px;
     background-color: var(--branco-color);
@@ -11,19 +11,18 @@
     color: var(--blue-color);
 }
 
-.dadosPerfil{
+.dadosPerfil {
     position: relative;
     left: 10px; 
     top: 10px; 
     background-color: var(--branco-color);
     font-size: 18px; 
-    color:var(--blue-color);
+    color: var(--blue-color);
     padding: 0 5px;
     font-weight:600;
-    
 }
 
-.infoPerfil{
+.infoPerfil {
     text-align: left;
     padding: 10px;
     border: 2px solid rgba(0, 0, 0, 0.2); 
@@ -32,17 +31,31 @@
     font-size: 18px;
     font-weight: 600;
     border-radius: 10px;
-
 }
-.imagePerfil{
+
+.imagePerfil {
     display: flex;
     justify-content: center;
     color: var(--blue-color);
 }
-#account{
+
+#account {
     font-size: 100px;
 }
 
+.btnPerfilContainer {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px; 
+}
 
-
-
+.btnPerfil {
+    padding: 6px 12px;
+    background-color: var(--blue-color);
+    border-radius: 10px;
+    color: var(--branco-color);
+    font-size: 18px;
+    cursor: pointer;
+    border: none;
+    width: 150px;
+}

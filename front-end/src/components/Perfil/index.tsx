@@ -6,19 +6,17 @@ export const Perfil = () => {
     const { user, signout } = useContext(AuthContext);
     console.log(user);
     
-
     if (!user) {
         return <div>Usuário não autenticado</div>;
     }
 
-    const capitalizeFirstLetter = (str:any) => {
+    const capitalizeFirstLetter = (str:string) => {
         return str.charAt(0).toUpperCase() + str.slice(1);
     };
 
     const handleSignout = () => {
         signout(); 
     };
-
 
     return (
         <div>
@@ -30,7 +28,7 @@ export const Perfil = () => {
                 </div>
                
                 <span className="dadosPerfil">Nome:</span>
-                <p className="infoPerfil">{user.nome}</p>
+                <p className="infoPerfil">{capitalizeFirstLetter(user.nome)}</p>
 
                 <span className="dadosPerfil">E-mail:</span>
                 <p className="infoPerfil">{user.email}</p>
@@ -38,11 +36,13 @@ export const Perfil = () => {
                 <span className="dadosPerfil">CPF:</span>
                 <p className="infoPerfil">{user.cpf}</p>
 
-            </div>
-
-            <button className="header-button" onClick={handleSignout}>
+         
+            <div className="btnPerfilContainer">
+                <button className="btnPerfil" onClick={handleSignout}>
                     Sair
                 </button>
+            </div>
+            </div>
         </div>
     );
 };

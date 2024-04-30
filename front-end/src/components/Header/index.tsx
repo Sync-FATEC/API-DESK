@@ -1,11 +1,11 @@
-import  { useState } from 'react';
+import { useState } from 'react';
 import logo from '../../assets/img/logo-header.svg';
 import './header.css';
 import { Perfil } from '../Perfil';
-
+import { Link } from 'react-router-dom';
 
 export const Header = () => {
-    
+
     const [modalOpen, setModalOpen] = useState(false);
 
     const handleOpenModal = () => {
@@ -16,8 +16,6 @@ export const Header = () => {
         setModalOpen(false);
     };
 
-    
-
     return (
         <header className="header">
             <div className="header-left">
@@ -25,12 +23,15 @@ export const Header = () => {
             </div>
             <div className="header-right">
                 <button className="header-button">
-                    <span className="material-symbols-outlined">confirmation_number</span>
+                    <Link to="/VisualizarTicket">
+                        <span className="material-symbols-outlined">confirmation_number</span>
+                    </Link>
                 </button>
 
                 <button className="header-button">
-                    <a href="/faq"><span className="material-symbols-outlined">help</span></a>
-                    
+                    <Link to="/FAQ">
+                        <span className="material-symbols-outlined">help</span>
+                    </Link>
                 </button>
 
                 <div className="header-divider" />
@@ -38,18 +39,18 @@ export const Header = () => {
                 <button className="header-button" onClick={handleOpenModal}>
                     <span className="material-symbols-outlined">account_circle</span>
                 </button>
-                
-            
             </div>
 
-            {modalOpen && (
-                <div className="modal">
-                    <div className="modal-content">
-                        <span className="close" onClick={handleCloseModal}>&times;</span>
-                        <Perfil />
+            {
+                modalOpen && (
+                    <div className="modal">
+                        <div className="modal-content">
+                            <span className="close" onClick={handleCloseModal}>&times;</span>
+                            <Perfil />
+                        </div>
                     </div>
-                </div>
-            )}
-        </header>
+                )
+            }
+        </header >
     );
 };

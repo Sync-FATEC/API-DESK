@@ -33,6 +33,4 @@ describe('App', () => {
     expect(screen.getByText('Cadastro')).toBeInTheDocument();
   });
 
-  // Add more tests for other routes...
-
 });

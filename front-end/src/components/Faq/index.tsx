@@ -1,51 +1,55 @@
 import { Header } from '../../components/Header';
-import baner from '../../assets/img/faq.jpg';
+import banner from '../../assets/img/faq.jpg';
 import './faq.css';
 import IMensagens from '../../types/IMensagens';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
-
-export const Faq = () => {
+export const FAQ = () => {
     const [faqs, setFaqs] = useState<IMensagens[]>([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState('');
 
     useEffect(() => {
-        const fetchSalas = async () => {
-          try {
-            const response = await axios.get('http://localhost:5555/mensagens/visualizar', {
-                params: {
-                    tipoMensagem: 'F'
-                }
-            });
-            setFaqs(response.data);
-          } catch (error) {
-            console.error(error);
-          }
+        const fetchFAQs = async () => {
+            try {
+                const response = await axios.get('http://localhost:5555/mensagens/visualizar');
+                setFaqs(response.data);
+            } catch (error) {
+                setError('Erro ao buscar as mensagens do FAQ. Por favor, tente novamente mais tarde.');
+            } finally {
+                setLoading(false);
+            }
         };
-    
-        fetchSalas();
-      }, []);
-     
-    return(
-        <><Header />
-        <div className="baner">
-                <img src={baner} alt="baner" />
-            </div>
-        <div className="faqContainer">
-            <div className="titulo">
-                <div className="formTitle">Perguntas Frequentes</div>
-            </div> 
-                {faqs.map((faq, index) => (
-                    <div className="faq" key={index}>
-                        <details>
-                            <summary>{faq.titulo}</summary>
-                            <p>{faq.mensagem}</p>
-                        </details>
-                    </div>
-                ))}
-            </div>
-        </> 
-    )
-}
 
-export default Faq;
+        fetchFAQs();
+    }, []);
+
+    return (
+        <>
+            <Header />
+            <div className="banner">
+                <img src={banner} alt="banner" />
+            </div>
+            <div className="containerFAQ">
+                <div className="title">
+                    <div className="formTitle">Perguntas Frequentes</div>
+                </div>
+                {loading ? (
+                    <div>Carregando...</div>
+                ) : error ? (
+                    <div>{error}</div>
+                ) : (
+                    faqs.map((faq, index) => (
+                        <div className="faq" key={index}>
+                            <details>
+                                <summary>{faq.titulo}</summary>
+                                <p>{faq.mensagem}</p>
+                            </details>
+                        </div>
+                    ))
+                )}
+            </div>
+        </>
+    );
+};
