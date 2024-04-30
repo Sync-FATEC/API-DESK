@@ -14,8 +14,6 @@ const EquipamentoAdm = () => {
     const [categorias, setCategorias] = useState<ICategoria[]>([]);
     const [salas, setSalas] = useState<ISalas[]>([]);
     const [equipamentos, setEquipamentos] = useState<IEquipamentos[]>([]);
-    const handleDeleteUser = () => {
-    };
 
     useEffect(() => {
         const fetchSalas = async () => {
@@ -56,6 +54,20 @@ const EquipamentoAdm = () => {
             console.error(error);
         }
     };
+
+    const handleDeleteUser = async (equipamentosID: number) => {
+        try {
+            const response = await axios.delete('http://localhost:5555/equipamentos/excluir/' + equipamentosID);
+            if (response.data === 'Ocorreu um erro para excluir o equipamento') {
+                alert('Ocorreu um erro para excluir o equipamento');
+                return;
+            }
+            setEquipamentos(equipamentos.filter((equipamento) => equipamento.equipamentosID !== equipamentosID));
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
     return (
         <div className="adminContainer">
             <div className="titulo">
@@ -72,6 +84,7 @@ const EquipamentoAdm = () => {
                                         <p>{equipamentos.equipamento}</p>
                                         <p>{equipamentos.sla}</p>
                                         <p>{equipamentos.prioridade}</p>
+                                        <button onClick={() => handleDeleteUser(equipamentos.equipamentosID)}>Excluir</button>
                                     </div>
                                 ) : null
                             ))}
