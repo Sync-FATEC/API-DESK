@@ -64,6 +64,8 @@ const SalaAdm = () => {
                 identificacao: identificacao
             });
             setSalas(prevSalas => [...prevSalas, response.data]);
+            setNumeroSala('');
+            setIdentificacao('');
             Toast.fire({
             icon: "success",
             title: "Criado com sucesso!"
@@ -71,7 +73,7 @@ const SalaAdm = () => {
 
         } catch (error) {
             console.error(error);
-            erro('Error!');
+            erro('Error! Verifique as informações.');
         }
     };
     return (
@@ -91,8 +93,8 @@ const SalaAdm = () => {
                 ))}
                 <div className="salaSubmit">
                     <form onSubmit={handleAddUser} method='post'>
-                        <input onChange={handleNumeroSalaChange} type="number" className="inputSala" placeholder="Adicionar Sala"/>
-                        <input onChange={handleIdentificacaoChange} type="text" className='inputSala' placeholder='Adicionar identificação'/>
+                        <input value={numeroSala} onChange={handleNumeroSalaChange} type="number" className="inputSala" placeholder="Adicionar Sala"/>
+                        <input value={identificacao} onChange={handleIdentificacaoChange} type="text" className='inputSala' placeholder='Adicionar identificação'/>
                         <button type='submit' className='add'><span className="material-symbols-outlined">add</span></button>
                     </form>
                 </div>
