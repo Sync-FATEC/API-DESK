@@ -2,25 +2,16 @@ import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import './tecnicoAdm.css';
 import { erro, Toast } from '../Swal/swal';
-import { Tecnicos } from '../../pages/Tecnico';
- 
-interface Tecnico {
-    email: string;
-    usuarioID: string;
-    nome: string;
-    turno: string;
-    tipoUsuario: string;
-    // adicione outras propriedades se necessário
-}
+import ITecnicos from '../../types/ITecnicos';
 
  
 const ClientesAdm = () => {
-    const [tecnicos, setTecnicos] = useState<Tecnico[]>([]);
+    const [tecnicos, setTecnicos] = useState<ITecnicos[]>([]);
  
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get<Tecnico[]>('http://localhost:5555/usuarios/listarTecnico');
+                const response = await axios.get<ITecnicos[]>('http://localhost:5555/usuarios/listarTecnico');
                 setTecnicos(response.data);
             } catch (error) {
                 console.error('Erro ao buscar técnicos:', error);
@@ -32,10 +23,7 @@ const ClientesAdm = () => {
  
     const handleDeleteUser = async (usuarioID: string) => {
         try {
-            const response = await axios.delete('http://localhost:3000/usuarios/excluir', {
-                data: { usuarioID }
-            });
-            console.log(response.data);
+            const response = await axios.delete('http://localhost:5555/usuarios/excluir/' + usuarioID);
             Toast.fire({
             icon: "success",
             title: "Excluido com sucesso!"
@@ -53,7 +41,6 @@ const ClientesAdm = () => {
                 <h2>Técnicos:</h2>
                 {tecnicos.map((tecnico, index) => (
                     <div className="clienteEmail" key={index}>
-                        {/* <p>Técnico ID: {tecnico.usuarioID} | Nome: {tecnico.nome} | E-mail: {tecnico.email} | Categoria: {tecnico.tipoUsuario} | Turno: {tecnico.turno}</p> */}
                         <div className="linha">
                         <div className="linhaEsquerda">
                         {tecnico.nome} - {tecnico.email} </div>
