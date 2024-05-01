@@ -47,3 +47,17 @@ export const visualizarEquipamentos = async () => {
         return 'Ocorreu um erro para visualizar os equipamentos';
     }
 }
+
+export const visualizarEquipamentosCatSala = async (numeroSala: number, categoriaID: number) => {
+    try {
+        const sala = await salasRepositorio.findOneBy({ numeroSala: numeroSala })
+        const categoria = await categoriaRepositorio.findOneBy({ categoriaID: categoriaID })
+        const equipamentos = await equipamentosRepositorio.find(
+            { where: {sala: sala, categoria: categoria }, relations: ["sala", "categoria"] }
+        );
+        return equipamentos;
+    } catch (error) {
+        console.error('Ocorreu um erro para visualizar os equipamentos', error);
+        return 'Ocorreu um erro para visualizar os equipamentos';
+    }
+}
