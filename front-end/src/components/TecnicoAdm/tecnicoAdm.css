@@ -11,7 +11,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px;
+    padding: 6px 8px;
     margin: 10px;
     border: 2px solid var(--cinza-color);
     border-radius: 10px;
@@ -33,4 +33,20 @@
 
 .excluir:hover {
     color: var(--red-error-color);
+}
+
+.linhaDireita{
+    display: flex;
+}
+.itemLinha{
+    border: 2px solid var(--cinza-color);
+    border-radius: 5px;
+    padding: 6px 12px;
+    margin-left: 6px;
+    align-content: center;
+}
+
+.linhaTurno{
+    align-items: center;
+    display: flex;
 }
