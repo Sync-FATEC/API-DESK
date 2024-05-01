@@ -1,10 +1,9 @@
 import React, { useState, useContext } from "react";
 import { AuthContext } from "../../contexts/Auth/AuthContext";
-import Swal from "sweetalert2";
 import { useApi } from "../../hooks/useApi";
 import logo from '../../assets/img/logo.svg';
-import { Link, useNavigate } from "react-router-dom";
-
+import { useNavigate } from "react-router-dom";
+import { loginSenhaEmail, Toast, warning } from "../../components/Swal/swal";
 
 
 export const Login = () => {
@@ -51,25 +50,37 @@ export const Login = () => {
         if (data && data.tipoUsuario) {
           switch (data.tipoUsuario) {
             case 'U':
+              Toast.fire({
+                icon: "success",
+                title: "Logado com sucesso!"
+              })
               navigate('/cliente');
               break;
             case '1':
             case '2':
             case '3':
+              Toast.fire({
+                icon: "success",
+                title: "Logado com sucesso!"
+              })
               navigate('/tecnico');
               break;
             case 'A':
+              Toast.fire({
+                icon: "success",
+                title: "Logado com sucesso!"
+              })
               navigate('/admin');
               break;
             default:
               break;
           }
         } else {
-          errorSwal('Usuário inexistente ou senha incorreta');
+          loginSenhaEmail();
           setSenha('');
         }
       } else {
-        errorSwal('Usuário inexistente ou senha incorreta');
+        loginSenhaEmail();
         setSenha('');
       }
     } catch (error) {
@@ -79,23 +90,6 @@ export const Login = () => {
     }
   };
   
-  const warning = (message: string) => {
-    Swal.fire({
-      title: 'Aviso!',
-      text: message,
-      icon: 'warning'
-    });
-  };
-  
-  const errorSwal = (message: string) => {
-    Swal.fire({
-      title: 'Error!',
-      text: message,
-      icon: 'error'
-    });
-  };
-
-
   return (
     <div className='containerPrincipal'>
         <aside>
