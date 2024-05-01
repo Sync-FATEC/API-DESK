@@ -1,8 +1,8 @@
 import { useState } from "react";
-import Swal from 'sweetalert2';
 import axios from "axios";
 import logo from '../../assets/img/logo.svg';
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { cadastradoCpf, cadastradoEmailSenha, success, warning } from "../../components/Swal/swal";
 
 export const Cadastro = () => {
     const [nome, setNome] = useState('');
@@ -144,34 +144,19 @@ export const Cadastro = () => {
                 });
 
                 if (response.data === 'Usuário já cadastrado') {
-                    Swal.fire({
-                        title: 'Error!',
-                        text: 'E-mail já existente!',
-                        icon: 'error',
-                        confirmButtonText: 'OK'
-                    }).then(() => {
-                        setEmail('');
-                    });
+                    cadastradoEmailSenha();
+                    setEmail('');
+
                 } else if (response.data === 'CPF inválido') {
-                    Swal.fire({
-                        title: 'Error!',
-                        text: 'CPF inválido!',
-                        icon: 'error',
-                        confirmButtonText: 'OK'
-                    }).then(() => {
-                        setCpf('');
-                    });
+                    warning('CPF inválido!');
+                    setCpf('');
+
                 } else if (response.data === 'CPF já cadastrado') {
-                    Swal.fire({
-                        title: 'Error!',
-                        text: 'CPF já cadastrado!',
-                        icon: 'error',
-                        confirmButtonText: 'OK'
-                    }).then(() => {
-                        setCpf('');
-                    });
+                    cadastradoCpf();
+                    setCpf('');
+
                 } else {
-                    success();
+                    success('Cadastrado com sucesso!');
                     navigate('/login')
                 };
             } catch (error) {
@@ -182,24 +167,6 @@ export const Cadastro = () => {
             warning('Corrija os campos!');
         };
     };
-
-    const warning = (message: string) => {
-        Swal.fire({
-            title: "Aviso!",
-            text: message,
-            icon: "warning",
-        });
-    };
-
-    const success = () => {
-        Swal.fire({
-            title: "Cadastro concluido!",
-            text: "Informações cadastradas com sucesso!",
-            icon: "success",
-            confirmButtonText: "OK"
-        });
-    };
-
     return (
         <div className='containerPrincipal'>
             <aside>
