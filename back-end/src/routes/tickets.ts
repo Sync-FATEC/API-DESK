@@ -31,14 +31,14 @@ router.put('/alterarStatus', async (req: Request, res: Response) => {
     res.json(await alterarStatusTicket(ticketID, status));
 });
 
-router.get('/listar/', async (req: Request, res: Response) => {
-    const { usuarioID } = req.query as { usuarioID: string };
+router.get('/listar/:usuarioID', async (req: Request, res: Response) => {
+    const usuarioID = req.params.usuarioID;
 
     if (!usuarioID) {
         return res.status(400).json({ error: 'UsuarioID não informado' });
     }
-
-    res.json(await listarTickets(parseInt(usuarioID)));
+    
+    res.json(await listarTickets(Number(usuarioID)));
 });
 
 

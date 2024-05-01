@@ -2,7 +2,10 @@ import { Header } from '../../components/Header';
 import './cliente.css';
 import { NovoTicket } from '../../components/NovoTicket';
 import { VisualizarTicket } from '../../components/VisualizarTicket';
-import { useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
+import axios from 'axios';
+import ITickets from '../../types/ITickets';
+import { AuthContext } from '../../contexts/Auth/AuthContext';
 
 export const Cliente = () => {
 
@@ -14,6 +17,22 @@ export const Cliente = () => {
     const [isVisualizarTicketModalOpen, setIsVisualizarTicketModalOpen] = useState(false);
     const handleOpenVisualizarTicketModal = () => setIsVisualizarTicketModalOpen(true);
     const handleCloseVisualizarTicketModal = () => setIsVisualizarTicketModalOpen(false);
+
+    const [tickets, setTickets] = useState<ITickets[]>([]);
+    const { user } = useContext(AuthContext); 
+
+    useEffect(() => {
+        const fetchSalas = async () => {
+          try {
+            const response = await axios.get(`http://localhost:5555/tickets/listar/${user?.usuarioID}`);
+            setTickets(response.data);
+          } catch (error) {
+            console.error(error);
+          }
+        };
+    
+        fetchSalas();
+      }, []);
 
     return (
         <div className="ticketContainer">
@@ -50,15 +69,17 @@ export const Cliente = () => {
                         <div className="ticket-types">
                             <div>ID</div>
                             <div>Abertura</div>
-                            <div>Descrição</div>
+                            <div>Titulo</div>
                             <div>Categoria</div>
                             <div>Tickets</div>
                         </div>
+                        {tickets.map((ticket) => (
+
                         <div className="ticket-item">
-                            <div>1</div>
-                            <div>2024-04-25</div>
-                            <div>Descrição do ticket 1...</div>
-                            <div>Atendimento</div>
+                            <div>{ticket.ticketsID}</div>
+                            <div>{new Date(ticket.dataAbertura).toLocaleDateString('pt-BR')}</div>
+                            <div>{ticket.titulo}</div>
+                            <div>{ticket.categoria.categoria}</div>
 
                             <div>
 
@@ -76,26 +97,8 @@ export const Cliente = () => {
                                     </div>
                                 </div>
                             )}
-
-
-
                         </div>
-                        <div className="ticket-item">
-                            <div>2</div>
-                            <div>2024-04-24</div>
-                            <div>Descrição do ticket 2...</div>
-                            <div>Aberto</div>
-                            <div><span className="material-symbols-outlined">
-                                mystery</span></div>
-                        </div>
-                        <div className="ticket-item">
-                            <div>3</div>
-                            <div>2024-04-23</div>
-                            <div>Descrição do ticket 3...</div>
-                            <div>Pendente</div>
-                            <div><span className="material-symbols-outlined">
-                                mystery</span></div>
-                        </div>
+                        ))}
                     </div>
 
                 </div>

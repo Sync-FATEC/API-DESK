@@ -69,18 +69,19 @@ export const listarTickets = async (usuarioID: number) => {
     try {
         const usuario = await usuariosRepositorio.findOneBy({ usuarioID: usuarioID });
         if (usuario) {
+
             if (usuario.tipoUsuario === 'U') {
-                const tickets = await ticketsRepositorio.find({ where: { usuario: usuario } });
+                const tickets = await ticketsRepositorio.find({ where: { usuario: usuario }, relations: ['categoria', 'equipamentos', 'sala']});
                 console.log('Tickets listados com sucesso U');
                 return tickets;
             } 
             else if (usuario.tipoUsuario === 'A') {
-                const tickets = await ticketsRepositorio.find();
+                const tickets = await ticketsRepositorio.find({relations: ['categoria', 'equipamentos', 'sala', 'usuario']});
                 console.log('Tickets listados com sucesso A');
                 return tickets;
             }
             else if (usuario.tipoUsuario === '1' || usuario.tipoUsuario === '2' || usuario.tipoUsuario === '3') {
-                const tickets = await ticketsRepositorio.find({ where: { tipoTecnico: usuario.tipoUsuario } });
+                const tickets = await ticketsRepositorio.find({ where: { tipoTecnico: usuario.tipoUsuario }, relations: ['categoria', 'equipamentos', 'sala', 'usuario'] });
                 console.log('Tickets listados com sucesso T');
                 return tickets;
             }
