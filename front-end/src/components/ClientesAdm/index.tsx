@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import './clientesAdm.css';
+import { erro, Toast } from '../Swal/swal';
  
 interface Tecnico {
     email: string;
@@ -30,8 +31,14 @@ const ClientesAdm = () => {
                 data: { usuarioID }
             });
             console.log(response.data);
+            Toast.fire({
+            icon: "success",
+            title: "Excluido com sucesso!"
+            })
+            
         } catch (error) {
             console.error('Erro ao excluir técnico:', error);
+            erro('Erro ao excluir técnico');
         }
     };
  
@@ -52,4 +59,3 @@ const ClientesAdm = () => {
 };
  
 export default ClientesAdm;
- 
