@@ -41,6 +41,29 @@ export const Header = () => {
         }
     };
 
+    const handleTicketsClick = () => {
+        if (user && user.tipoUsuario) { 
+            switch (user.tipoUsuario) {
+                case 'U':
+                    navigate('/cliente');
+                    break;
+                case '1':
+                case '2':
+                case '3':
+                    navigate('/tecnico');
+                    break;
+                case 'A':
+                    navigate('/visualizarTickets');
+                    break;
+                default:
+                    navigate('/');
+                    break;
+            }
+        } else {
+            navigate('/');
+        }
+    };
+
     return (
         <header className="header">
         <div className="headerLeft">
@@ -50,9 +73,9 @@ export const Header = () => {
         </div>
             <div className="headerRight">
                 <button className="btnHeader">
-                    <Link to="/VisualizarTicket">
+                    <button className="logoButton" onClick={handleTicketsClick}>
                         <span className="material-symbols-outlined">confirmation_number</span>
-                    </Link>
+                    </button>
                 </button>
 
                 <button className="btnHeader">
