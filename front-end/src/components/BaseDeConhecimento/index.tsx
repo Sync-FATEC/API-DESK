@@ -65,6 +65,8 @@ const BaseDeConhecimento = () => {
                 categoriaID: categoria
             });
         setBaseDeConhecimento([...baseDeConhecimento, response.data]);
+        setTitulo('');
+        setCategoria(0);
         Toast.fire({
         icon: "success",
         title: "Criado com sucesso!"
@@ -93,8 +95,8 @@ const BaseDeConhecimento = () => {
                 ))}
                 <div className="numeroSala">
                     <form onSubmit={handleAddUser} method='post'>
-                        <input onChange={handleTituloChange} type="text" className="inputSala" placeholder="Adicionar Titulo"/>
-                        <select onChange={(e) => setCategoria(Number(e.target.value))} className="inputSala">
+                        <input value={titulo} onChange={handleTituloChange} type="text" className="inputSala" placeholder="Adicionar Titulo"/>
+                        <select value={categoria} onChange={(e) => setCategoria(Number(e.target.value))} className="inputSala">
                             <option value={0}>Selecione uma categoria</option>
                             {categorias.map((categoria, index) => (
                                 <option key={index} value={categoria.categoriaID}>{categoria.categoria}</option>
