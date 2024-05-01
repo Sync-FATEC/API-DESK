@@ -24,6 +24,7 @@ const ClientesAdm = () => {
     const handleDeleteUser = async (usuarioID: string) => {
         try {
             const response = await axios.delete('http://localhost:5555/usuarios/excluir/' + usuarioID);
+            setTecnicos(tecnicos.filter((tecnico) => tecnico.usuarioID !== usuarioID));
             Toast.fire({
             icon: "success",
             title: "Excluido com sucesso!"
