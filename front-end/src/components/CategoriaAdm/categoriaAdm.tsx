@@ -4,7 +4,7 @@ import add from '../../assets/img/add.png';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import ICategoria from '../../types/ICategoria';
-import { log } from 'console';
+import { erro, Toast, warning } from '../Swal/swal';
 
 const CategoriaAdm = () => {
     const [categorias, setCategorias] = useState<ICategoria[]>([]);
@@ -15,6 +15,7 @@ const CategoriaAdm = () => {
         setCategoria(event.target.value);
     };
 
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const handleTipoTecnicoChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setTipoTecnico(event.target.value);
     };
@@ -36,19 +37,25 @@ const CategoriaAdm = () => {
         try {
             const response = await axios.delete('http://localhost:5555/categorias/excluir/' + categoriaID);
             if (response.data === 'Erro na exclusão de uma categoria') {
-                alert('Erro ao excluir categoria');
+                erro('Erro ao excluir categoria');
                 return;
             }
             setCategorias(categorias.filter((categoria) => categoria.categoriaID !== categoriaID));
+            Toast.fire({
+            icon: "success",
+            title: "Excluido com sucesso!"
+            })
+
         } catch (error) {
             console.error(error);
+            erro('Error!')
         }
     };
     const handleAddUser = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         
         if (!categoria || !tipoTecnico) {
-            alert('Preencha todos os campos');
+            warning('Preencha todos os campos');
             return;
         }
         try {
@@ -57,8 +64,16 @@ const CategoriaAdm = () => {
                 tipoTecnico: tipoTecnico
             });
             setCategorias([...categorias, response.data]);
+            Toast.fire({
+            icon: "success",
+            title: "Criado com sucesso!"
+            })
+            setCategoria('');
+            setTipoTecnico('');
+
         } catch (error) {
             console.error(error);
+            erro('Error na criação de categoria!')
         }
     };
     return (
@@ -78,7 +93,7 @@ const CategoriaAdm = () => {
                 ))}
                 <div className="numeroSala">
                     <form onSubmit={handleAddUser} method='post'>
-                        <input onChange={handleCategoriaChange} type="text" className="inputSala" placeholder="Adicionar categoria"/>
+                        <input value={categoria} onChange={handleCategoriaChange} type="text" className="inputSala" placeholder="Adicionar categoria"/>
                         <div className="formInput">
                             <label className="labelInputTecnico" htmlFor="categoria">Categoria do técnico</label>
                             <select className="selectCategoria" value={tipoTecnico} onChange={(e) => setTipoTecnico(e.target.value)}>
