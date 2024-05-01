@@ -1,7 +1,7 @@
 import { useState } from "react";
-import Swal from 'sweetalert2';
 import axios from "axios";
 import './cadastroTecnico.css'
+import { erro, success, warning } from "../Swal/swal";
 
 export const CadastroTecnico = () => {
     const [nome, setNome] = useState('');
@@ -143,34 +143,19 @@ export const CadastroTecnico = () => {
                 });
 
                 if (response.data === 'Usuário já cadastrado') {
-                    Swal.fire({
-                        title: 'Error!',
-                        text: 'E-mail já existente!',
-                        icon: 'error',
-                        confirmButtonText: 'OK'
-                    }).then(() => {
-                        setEmail('');
-                    });
+                    warning('Técnico já cadastrado!')
+                    setEmail('');
+
                 } else if (response.data === 'CPF inválido') {
-                    Swal.fire({
-                        title: 'Error!',
-                        text: 'CPF inválido!',
-                        icon: 'error',
-                        confirmButtonText: 'OK'
-                    }).then(() => {
-                        setCpf('');
-                    });
+                    erro('CPF inválido!');
+                    setCpf('');
+
                 } else if (response.data === 'CPF já cadastrado') {
-                    Swal.fire({
-                        title: 'Error!',
-                        text: 'CPF já cadastrado!',
-                        icon: 'error',
-                        confirmButtonText: 'OK'
-                    }).then(() => {
-                        setCpf('');
-                    });
+                    warning('CPF já cadastrado!')
+                    setCpf('');
+
                 } else {
-                    success();
+                    success('Técnico cadastrado com sucesso!');
                     setNome('');
                     setEmail('');
                     setCpf('');
@@ -180,29 +165,13 @@ export const CadastroTecnico = () => {
                 };
             } catch (error) {
                 console.log(error);
-                warning('Erro criando técnico!');
+                erro('Erro criando técnico!');
             };
         } else {
             warning('Corrija os campos!');
         };
     };
 
-    const warning = (message: string) => {
-        Swal.fire({
-            title: "Aviso!",
-            text: message,
-            icon: "warning",
-        });
-    };
-
-    const success = () => {
-        Swal.fire({
-            title: "Cadastro concluído!",
-            text: "Informações cadastradas com sucesso!",
-            icon: "success",
-            confirmButtonText: "OK"
-        });
-    };
     return (
         <div className='adminContainer'>
             <div className="formContainer">
