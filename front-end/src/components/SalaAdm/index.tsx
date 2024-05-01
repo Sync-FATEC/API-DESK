@@ -4,6 +4,7 @@ import add from '../../assets/img/add.png';
 import axios from 'axios';
 import Sala from '../../types/ISalas';
 import { useEffect, useState } from 'react';
+import { erro, Toast, warning } from '../Swal/swal';
 
 const SalaAdm = () => {
     const [sala, setSalas] = useState<Sala[]>([]);
@@ -35,19 +36,25 @@ const SalaAdm = () => {
         try {
             const response = await axios.delete(`http://localhost:5555/salas/excluir/${numeroSala}`)
             if (response.data === "Erro na exclusão de uma sala") {
-                alert('Erro na exclusão de uma sala');
+                erro('Erro na exclusão de uma sala');
                 return;
             }
             setSalas(prevSalas => prevSalas.filter(s => s.numeroSala !== numeroSala));
+            Toast.fire({
+            icon: "success",
+            title: "Excluido com sucesso!"
+            })
+
         } catch (error) {
             console.error(error);
+            erro('Error!');
         }
     };
     const handleAddUser = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         
         if (!numeroSala || !identificacao) {
-            alert('Preencha todos os campos');
+            warning('Preencha todos os campos');
             return;
         }
 
@@ -57,8 +64,14 @@ const SalaAdm = () => {
                 identificacao: identificacao
             });
             setSalas(prevSalas => [...prevSalas, response.data]);
+            Toast.fire({
+            icon: "success",
+            title: "Criado com sucesso!"
+            })
+
         } catch (error) {
             console.error(error);
+            erro('Error!');
         }
     };
     return (
