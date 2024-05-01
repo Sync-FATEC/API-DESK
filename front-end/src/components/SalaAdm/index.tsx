@@ -81,19 +81,19 @@ const SalaAdm = () => {
 
             <div className="container">
                 {sala.map((sala, index) => (
-                    <div className="numeroSala" key={index}>
+                    <div className="rowInformacoes" key={index}>
                             <p>{sala.numeroSala}</p>
                             <p>{sala.identificacao}</p>
                         <button className="excluir" onClick={() => handleDeleteUser(sala.numeroSala)}>
-                            Excluir
+                        <span className="material-symbols-outlined">Delete</span>
                         </button>
                     </div>
                 ))}
-                <div className="SalaSubmit">
+                <div className="salaSubmit">
                     <form onSubmit={handleAddUser} method='post'>
                         <input onChange={handleNumeroSalaChange} type="number" className="inputSala" placeholder="Adicionar Sala"/>
                         <input onChange={handleIdentificacaoChange} type="text" className='inputSala' placeholder='Adicionar identificação'/>
-                        <button type='submit' className='add'><img src={add} alt="add" /></button>
+                        <button type='submit' className='add'><span className="material-symbols-outlined">add</span></button>
                     </form>
                 </div>
                 
