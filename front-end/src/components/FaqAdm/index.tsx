@@ -14,13 +14,6 @@ const FaqAdm = () => {
     const [categoriaSelecionada, setCategoriaSelecionada] = useState<number>(0);
     const [error, setError] = useState<string>('');
 
-    // Opções de categoria fixas
-    const opcoesCategoriasFixas: ICategoria[] = [
-        { categoriaID: 1, categoria: 'Categoria 1' },
-        { categoriaID: 2, categoria: 'Categoria 2' },
-        { categoriaID: 3, categoria: 'Categoria 3' }
-    ];
-
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -100,14 +93,10 @@ const FaqAdm = () => {
                 ))}
                 <div className="numeroFaq">
                     <form onSubmit={handleAddUser} method='post'>
-                        <select onChange={(e) => setCategoriaSelecionada(Number(e.target.value))} className="inputSala1">
+                        <select value={categoriaSelecionada} onChange={(e) => setCategoriaSelecionada(Number(e.target.value))} className="inputSala1">
                             <option value={0}>Selecione uma categoria</option>
                             {categorias.map((categoria) => (
                                 <option key={categoria.categoriaID} value={categoria.categoriaID}>{categoria.categoria}</option>
-                            ))}
-                            {/* Adicionando opções de categoria fixas */}
-                            {opcoesCategoriasFixas.map((opcao) => (
-                                <option key={opcao.categoriaID} value={opcao.categoriaID}>{opcao.categoria}</option>
                             ))}
                         </select>
                         <div className="inputs">
