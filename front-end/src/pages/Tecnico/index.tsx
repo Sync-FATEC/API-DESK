@@ -12,11 +12,7 @@ export const Tecnicos = () => {
     useEffect(() => {
         const fetchSalas = async () => {
           try {            
-            const response = await axios.get('http://localhost:5555/tickets/listar', {
-                params: {
-                  usuarioID: user.user?.usuarioID
-                }
-              });
+            const response = await axios.get('http://localhost:5555/tickets/listar/' + user.user?.usuarioID);
             setTickets(response.data);
           } catch (error) {
             console.error(error);
@@ -30,7 +26,14 @@ export const Tecnicos = () => {
         <><Header />
                 {tickets.map((tickets, index) => (
                     <div className="faq" key={index}>
-                    <p>{tickets.descricao}</p>
+                        <h1>{tickets.titulo}</h1>
+                        <p>{tickets.descricao}</p>
+                        <p>{tickets.status}</p>
+                        <p>{tickets.categoria.categoria}</p>
+                        <p>{tickets.equipamentos.equipamento}</p>
+                        <p>{tickets.sala.numeroSala}</p>
+                        <p>{tickets.usuario.nome}</p>
+                        <div>{new Date(tickets.dataAbertura).toLocaleDateString('pt-BR')}</div>
                     </div>
                 ))}
         </> 
