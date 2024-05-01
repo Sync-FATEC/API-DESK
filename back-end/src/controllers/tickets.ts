@@ -76,12 +76,12 @@ export const listarTickets = async (usuarioID: number) => {
                 return tickets;
             } 
             else if (usuario.tipoUsuario === 'A') {
-                const tickets = await ticketsRepositorio.find();
+                const tickets = await ticketsRepositorio.find({relations: ['categoria', 'equipamentos', 'sala', 'usuario']});
                 console.log('Tickets listados com sucesso A');
                 return tickets;
             }
             else if (usuario.tipoUsuario === '1' || usuario.tipoUsuario === '2' || usuario.tipoUsuario === '3') {
-                const tickets = await ticketsRepositorio.find({ where: { tipoTecnico: usuario.tipoUsuario } });
+                const tickets = await ticketsRepositorio.find({ where: { tipoTecnico: usuario.tipoUsuario }, relations: ['categoria', 'equipamentos', 'sala', 'usuario'] });
                 console.log('Tickets listados com sucesso T');
                 return tickets;
             }
