@@ -220,7 +220,7 @@ export const CadastroTecnico = () => {
                             />
                             <div className="">{senhaError}</div>
                         </div>
-                    </div>
+
     
                     <div className="formSelect">
                         <div className="formInput">
@@ -242,7 +242,8 @@ export const CadastroTecnico = () => {
                             </select>
                         </div>
                     </div>
-    
+                </div>
+
                     <div className="tecnicoBtn">
                         <button type="submit" value="Cadastrar" className="formBtn">Cadastrar</button>
                     </div>

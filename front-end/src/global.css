@@ -84,7 +84,7 @@
 .labelInput {
   position: absolute;
   left: 10px; 
-  top: -11px; 
+  top: -10px; 
   background: var(--branco-color);
   font-size: 16px; 
   color:var(--black-color);
