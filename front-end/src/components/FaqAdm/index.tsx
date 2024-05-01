@@ -4,6 +4,7 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import IMensagens from '../../types/IMensagens';
 import ICategoria from '../../types/ICategoria';
+import { erro, Toast, warning } from '../Swal/swal';
 
 const FaqAdm = () => {
     const [faqAdm, setFaqAdm] = useState<IMensagens[]>([]);
@@ -44,8 +45,13 @@ const FaqAdm = () => {
         try {
             await axios.delete(`http://localhost:5555/mensagens/excluir/${mensagemID}`);
             setFaqAdm(faqAdm.filter((faq) => faq.mensagemID !== mensagemID));
+            Toast.fire({
+            icon: "success",
+            title: "Excluido com sucesso!"
+            })
+
         } catch (error) {
-            setError('Erro ao excluir a mensagem.');
+            erro('Erro ao excluir a mensagem.');
         }
     };
 
@@ -53,7 +59,7 @@ const FaqAdm = () => {
         event.preventDefault();
         
         if (!titulo || !mensagem || categoriaSelecionada === 0) {
-            setError('Preencha todos os campos.');
+            warning('Preencha todos os campos.');
             return;
         }
 
@@ -65,11 +71,15 @@ const FaqAdm = () => {
                 categoriaID: categoriaSelecionada
             });
             setFaqAdm([...faqAdm, response.data]);
+            Toast.fire({
+            icon: "success",
+            title: "Criado com sucesso!"
+            })
             setTitulo('');
             setMensagem('');
             setCategoriaSelecionada(0);
         } catch (error) {
-            setError('Erro ao adicionar a mensagem.');
+            erro('Erro ao adicionar a mensagem.');
         }
     };
 
