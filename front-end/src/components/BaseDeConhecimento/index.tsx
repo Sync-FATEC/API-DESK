@@ -1,10 +1,10 @@
-
 import './BaseDeConhecimento.css';
 import add from '../../assets/img/add.png';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import IMensagens from '../../types/IMensagens';
 import ICategoria from '../../types/ICategoria';
+import { erro, Toast, warning } from '../Swal/swal';
 
 const BaseDeConhecimento = () => {
     const [baseDeConhecimento, setBaseDeConhecimento] = useState<IMensagens[]>([]);
@@ -40,15 +40,21 @@ const BaseDeConhecimento = () => {
         try {
             const response = axios.delete(`http://localhost:5555/mensagens/excluir/${categoriaID}`)
         setBaseDeConhecimento(baseDeConhecimento.filter((base) => base.mensagemID !== categoriaID));
+        Toast.fire({
+        icon: "success",
+        title: "Excluido com sucesso!"
+        })
+
         } catch (error) {
             console.error(error);
+            erro('Erro ao excluir!');
         }
     };
     const handleAddUser = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         
         if (!titulo || !categoria) {
-            alert('Preencha todos os campos');
+            warning('Preencha todos os campos');
             return;
         }
         try {
@@ -59,8 +65,14 @@ const BaseDeConhecimento = () => {
                 categoriaID: categoria
             });
         setBaseDeConhecimento([...baseDeConhecimento, response.data]);
+        Toast.fire({
+        icon: "success",
+        title: "Criado com sucesso!"
+        })
+
         } catch (error) {
             console.error(error);
+            erro('Error!');
         }
     };
     return (
