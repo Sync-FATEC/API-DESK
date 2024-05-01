@@ -1,8 +1,8 @@
 import axios from 'axios';
 import './novoticket.css';
 import React, { useState } from 'react';
-import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
+import { erro, success, warning } from '../Swal/swal';
  
 export const NovoTicket = () => {
     const [selectedImage, setSelectedImage] = useState<File | null>(null);
@@ -175,7 +175,7 @@ export const NovoTicket = () => {
                     setDescricao('');
                     erro('Erro na criação do ticket');
                 } else {
-                    success();
+                    success('Ticket criado com sucesso!');
                     navigate('/clientes');
                 };
             } catch (error) {
@@ -185,33 +185,6 @@ export const NovoTicket = () => {
         } else {
             warning('Corrija os campos!');
         };
-    };
- 
-    const warning = (message: string) => {
-        Swal.fire({
-            title: "Aviso!",
-            text: message,
-            icon: 'warning',
-            confirmButtonText: 'OK'
-        });
-    };
- 
-    const erro = (message: string) => {
-        Swal.fire({
-            title: "Error!",
-            text: message,
-            icon: 'error',
-            confirmButtonText: 'OK'
-        });
-    };
- 
-    const success = () => {
-        Swal.fire({
-            title: "Ticket enviado",
-            text: "Ticket enviado com sucesso!",
-            icon: 'success',
-            confirmButtonText: "OK"
-        });
     };
  
     return (
