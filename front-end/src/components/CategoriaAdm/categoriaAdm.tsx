@@ -20,16 +20,16 @@ const CategoriaAdm = () => {
 
     useEffect(() => {
         const fetchSalas = async () => {
-          try {
-            const response = await axios.get('http://localhost:5555/categorias/listar');
-            setCategorias(response.data);
-          } catch (error) {
-            console.error(error);
-          }
+            try {
+                const response = await axios.get('http://localhost:5555/categorias/listar');
+                setCategorias(response.data);
+            } catch (error) {
+                console.error(error);
+            }
         };
-    
+
         fetchSalas();
-      }, []);
+    }, []);
 
     const handleDeleteUser = async (categoriaID: number) => {
         try {
@@ -40,8 +40,8 @@ const CategoriaAdm = () => {
             }
             setCategorias(categorias.filter((categoria) => categoria.categoriaID !== categoriaID));
             Toast.fire({
-            icon: "success",
-            title: "Excluido com sucesso!"
+                icon: "success",
+                title: "Excluido com sucesso!"
             })
 
         } catch (error) {
@@ -51,7 +51,7 @@ const CategoriaAdm = () => {
     };
     const handleAddUser = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        
+
         if (!categoria || !tipoTecnico) {
             warning('Preencha todos os campos');
             return;
@@ -63,8 +63,8 @@ const CategoriaAdm = () => {
             });
             setCategorias([...categorias, response.data]);
             Toast.fire({
-            icon: "success",
-            title: "Criado com sucesso!"
+                icon: "success",
+                title: "Criado com sucesso!"
             })
             setCategoria('');
             setTipoTecnico('');
@@ -76,39 +76,38 @@ const CategoriaAdm = () => {
     };
     return (
         <div className="adminContainer">
-            <div className="titulo">
-            </div>
-
-            <div className="container">
+ 
                 {categorias.map((categorias, index) => (
                     <div className="rowInformacoes" key={categorias.categoriaID}>
-                            <p className="itemCategoria">{categorias.categoria}</p>
-                            <p className="itemCategoria">{categorias.tipoTecnico}</p>
+                        <p className="itemCategoria">{categorias.categoria}</p>
+                        <p className="itemCategoria">{categorias.tipoTecnico}</p>
                         <button className="excluir" onClick={() => handleDeleteUser(categorias.categoriaID)}>
-                        <span className="material-symbols-outlined">Delete</span>
+                            <span className="material-symbols-outlined">Delete</span>
                         </button>
                     </div>
                 ))}
-                <div className="rowInformacoes">
-                    <form onSubmit={handleAddUser} method='post' className="boxCategoria">
-                        <div>
-                            <input value={categoria} onChange={handleCategoriaChange} type="text" className="inputSala" placeholder="Adicionar categoria"/>
-                            <div className="formInput">
-                                <label className="labelInputTecnico" htmlFor="categoria">Categoria do técnico</label>
-                                <select className="selectCategoria" value={tipoTecnico} onChange={(e) => setTipoTecnico(e.target.value)}>
-                                    <option value=""></option>
-                                    <option value="1">Suporte N1</option>
-                                    <option value="2">Suporte N2</option>
-                                    <option value="3">Suporte N3</option>
-                                </select>
-                            </div>
+                <form onSubmit={handleAddUser} method='post' className="rowInformacoes">
+                <div className="containerCategoria">
+                        <div className='formCategoria'>
+                        <label className="labelCategoria" htmlFor="categoria">Adicionar Categoria</label>
+                        <input value={categoria} onChange={handleCategoriaChange} type="text" className="inputCategoria" />
                         </div>
-                        <button type='submit' className="add"><span className="material-symbols-outlined">add</span></button>
-                    </form>
-                </div>
-                
-            </div>
+                        <div className='formCategoria'>
+
+                        <label className="labelCategoria" htmlFor="categoria">Categoria do técnico</label>
+                        <select className="selectCategoria" value={tipoTecnico} onChange={(e) => setTipoTecnico(e.target.value)}>
+                            <option value=""></option>
+                            <option value="1">Suporte N1</option>
+                            <option value="2">Suporte N2</option>
+                            <option value="3">Suporte N3</option>
+                        </select>
+                        </div>
+                        <button type='submit' className="btnAdd"><span className="material-symbols-outlined">add</span></button>
+                    </div>
+                </form>
         </div>
-    )};
+    );
+    
+};
 
 export default CategoriaAdm;
