@@ -22,11 +22,11 @@ export const Perfil = () => {
             confirmButtonText: "Sim", // texto do botão de aceitar
             denyButtonText: "Não", // texto do botão de recusar
             width: 410, // largura do aviso
-            confirmButtonColor: 'rgba(1, 1, 1, 1)', // teste de cor para os botão
-            denyButtonColor: 'rgba(100, 100, 100, 1)', // teste de cor para os botão
+            confirmButtonColor: 'rgb(0,114,187)', // teste de cor para os botão
+            denyButtonColor: 'rgb(255, 0, 53)', // teste de cor para os botão
             customClass: { // para colocar o css das coisas
-                confirmButton: '',
-                denyButton: '',
+                confirmButton: 'cButton',
+                denyButton: 'dButton',
             }
         }).then((result) => {
             if (result.isConfirmed) {
