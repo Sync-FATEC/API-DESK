@@ -236,9 +236,9 @@ export const CadastroTecnico = () => {
                             <label className="labelInputTecnico" htmlFor="turno">Turno do técnico</label>
                             <select className="selectCategoria" value={turno} onChange={(e) => setTurno(e.target.value)}>
                                 <option value=""></option>
-                                <option value="Manhã">Manhã</option>
-                                <option value="Tarde">Tarde</option>
-                                <option value="Noite">Noite</option>
+                                <option value="M">Manhã</option>
+                                <option value="T">Tarde</option>
+                                <option value="N">Noite</option>
                             </select>
                         </div>
                     </div>
