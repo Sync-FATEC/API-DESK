@@ -87,12 +87,12 @@ export const NovoTicket = () => {
     };
 
     const validateAssunto = (assunto: string): boolean => {
-        const assuntoRegex = /^[a-zA-ZÀ-ÖØ-öø-ÿ\s]*$/i;
+        const assuntoRegex = /^.*$/;
         return assuntoRegex.test(assunto);
     };
  
     const validateDescricao = (descricao: string): boolean => {
-        const descricaoRegex = /^[a-zA-ZÀ-ÖØ-öø-ÿ\s]*$/i;
+        const descricaoRegex = /^.*$/;
         return descricaoRegex.test(descricao);
     };
  
@@ -166,8 +166,13 @@ export const NovoTicket = () => {
                     setDescricao('');
                     erro('Erro na criação do ticket');
                 } else {
+                    setCategoriaID('');
+                    setEquipamentoID('');
+                    setNumeroSala('');
+                    setTitulo('');
+                    setDescricao('');
                     success('Ticket criado com sucesso!');
-                    navigate('/cliente');
+                    window.location.reload()
                 };
             } catch (error) {
                 console.log(error);
@@ -210,7 +215,7 @@ export const NovoTicket = () => {
                     <select onChange={handleSala} value={numeroSala} className="selectCategoria">
                         <option value={undefined}>Sala</option>
                         {salas.map((sala) => (
-                            <option key={sala.salaID} value={sala.numeroSala}>{sala.numeroSala}</option>
+                            <option key={sala.salaID} value={sala.numeroSala}>{sala.numeroSala} - {sala.identificacao}</option>
                         ))}
                     <div>{opcaoError}</div>
                     </select>
