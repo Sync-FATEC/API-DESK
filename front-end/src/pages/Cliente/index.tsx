@@ -57,7 +57,7 @@ export const Cliente = () => {
                         {isNovoTicketModalOpen && (
                             <div className="modal">
                                 <div className="modal-content">
-                                    <span className="close" onClick={handleCloseNovoTicketModal}>&times;</span>
+                                    <span className="close1" onClick={handleCloseNovoTicketModal}>&times;</span>
                                     <NovoTicket />
                                 </div>
                             </div>

@@ -98,7 +98,8 @@ export const Tecnicos = () => {
                 <div className='atendendo'>Atendendo</div>
                 <div className='pendente'>Pendente</div>
                 <div className='finalizado' onClick={handleOpenVisualizarTicketModal}>Finalizado</div>
-
+              </div> 
+            ))}
                 {isVisualizarTicketModalOpen && (
                   <div className="modal">
                     <div className="modal-content">
@@ -107,9 +108,9 @@ export const Tecnicos = () => {
                     </div>
                   </div>
                 )}
-              </div>
+              
 
-            ))}
+           
           </div>
         </div>
       </div>

@@ -3,9 +3,10 @@
     border: 2px solid var(--cinza-color);
     color: var(--black-color);
     font-size: 18px;
-    width: 100%;
+    width: 95%;
     background: var(--branco-color);
     padding: 10px;
+    
 }
 
 .formTecnico {
@@ -17,6 +18,7 @@
 
 .formSelect {
     display: flex;
+    gap: 5%;
 }
 
 .tecnicoBtn {
@@ -44,5 +46,6 @@
     pointer-events: none;
     font-weight:600;
     width: 100%;
+    
     background-color: var(--branco-color);
 }

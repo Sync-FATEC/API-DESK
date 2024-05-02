@@ -10,7 +10,8 @@
     border-radius: 5px;
     min-height: 100%; 
     font-weight:600;
-
+    
+    height: 100vh;
 }
 
 .option {

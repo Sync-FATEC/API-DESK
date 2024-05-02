@@ -111,3 +111,17 @@ h1{
     width: 100%;
     min-height: 100vh
 }
+.close1 {
+    position: absolute;
+    padding: 0 20px;
+    right: 20px;
+    
+    cursor: pointer;
+    font-size: 50px;
+    color: var(--blue-color);
+}
+.modal-content {
+    position: relative;  /* Garante que o posicionamento de children absolutos seja relativo a este bloco */
+    padding: 20px;       /* Ajuste conforme necessário */
+    box-sizing: border-box; /* Isso ajuda a manter padding dentro da caixa */
+}
