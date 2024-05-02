@@ -8,7 +8,7 @@ export const warning = (message: string) => {
         icon: 'warning',
         confirmButtonText: 'OK',
         backdrop: 'rgba(0,0,0,0.7)',
-        timer: 3000, // 5 segundos
+        timer: 3000, // 3 segundos
         timerProgressBar: true,
         showClass: {
             popup: 'animate__animated animate__fadeInDown'
@@ -33,7 +33,32 @@ export const erro = (message: string) => {
         icon: 'error',
         confirmButtonText: 'OK',
         backdrop: 'rgba(0,0,0,0.7)',
-        timer: 5000, // 5 segundos
+        timer: 3000, // 3 segundos
+        timerProgressBar: true,
+        showClass: {
+            popup: 'animate__animated animate__fadeInDown'
+        },
+        hideClass: {
+            popup: 'animate__animated animate__fadeOutUp'
+        },
+        customClass: {
+            popup: 'my-popup-class',
+            title: 'my-title-class',
+            confirmButton: 'my-confirm-button-class',
+            timerProgressBar: 'my-progress-bar-class'
+        }
+    };
+    Swal.fire(options);
+};
+
+export const successTicket = (message: string) => {
+    const options: SweetAlertOptions = {
+        title: "Sucesso!",
+        text: message,
+        icon: 'success',
+        confirmButtonText: 'OK',
+        backdrop: 'rgba(0,0,0,0.7)',
+        timer: 1350, // 1.35 segundos
         timerProgressBar: true,
         showClass: {
             popup: 'animate__animated animate__fadeInDown'
@@ -58,7 +83,7 @@ export const success = (message: string) => {
         icon: 'success',
         confirmButtonText: 'OK',
         backdrop: 'rgba(0,0,0,0.7)',
-        timer: 5000, // 5 segundos
+        timer: 3000, // 3 segundos
         timerProgressBar: true,
         showClass: {
             popup: 'animate__animated animate__fadeInDown'
@@ -97,7 +122,7 @@ export const cadastradoEmailSenha = () => {
         confirmButtonText: 'OK',
         footer: '<a href="/login">Deseja fazer login?</a>',
         backdrop: 'rgba(0,0,0,0.7)',
-        timer: 5000, // 5 segundos
+        timer: 3000, // 3 segundos
         timerProgressBar: true,
         showClass: {
             popup: 'animate__animated animate__fadeInDown'
@@ -122,7 +147,7 @@ export const cadastradoCpf = () => {
         confirmButtonText: 'OK',
         footer: '<a href="/login">Deseja fazer login?</a>',
         backdrop: 'rgba(0,0,0,0.7)',
-        timer: 5000, // 5 segundos
+        timer: 3000, // 3 segundos
         timerProgressBar: true,
         showClass: {
             popup: 'animate__animated animate__fadeInDown'
@@ -147,7 +172,7 @@ export const loginSenhaEmail = () => {
         confirmButtonText: 'OK',
         footer: '<a href="/cadastro">Deseja se cadastrar?</a>',
         backdrop: 'rgba(0,0,0,0.7)',
-        timer: 5000, // 5 segundos
+        timer: 3000, // 3 segundos
         timerProgressBar: true,
         showClass: {
             popup: 'animate__animated animate__fadeInDown'
@@ -169,7 +194,7 @@ export const Toast = Swal.mixin({
     toast: true,
     position: "top-end",
     showConfirmButton: false,
-    timer: 5000,
+    timer: 1250,// 1.25 segundos
     background: `rgba( 240, 240, 240, 1 )`,
     timerProgressBar: true,
     didOpen: (toast) => {
