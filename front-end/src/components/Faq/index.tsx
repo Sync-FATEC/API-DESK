@@ -1,5 +1,5 @@
 import { Header } from '../../components/Header';
-import banner from '../../assets/img/faq.jpg';
+import banner from '../../assets/img/Image FAQ.svg';
 import './faq.css';
 import IMensagens from '../../types/IMensagens';
 import { useEffect, useState } from 'react';
