@@ -92,6 +92,17 @@ export const listarTickets = async (usuarioID: number) => {
     }
 }
 
+export const procurarTicket = async (ticketID: number) => {
+    const ticket = await ticketsRepositorio.find({ where: { ticketsID: ticketID }, relations: ['categoria', 'equipamentos', 'sala']});
+    if (ticket) {
+        console.log('Ticket encontrado com sucesso');
+        return ticket;
+    } else {
+        console.log('Ticket inexistente');
+        return 'Ticket inexistente';
+    }
+}
+
 export const alterarTecnico = async (ticketID: number, tipoTecnico: string) => {
     try {
         const ticket = await ticketsRepositorio.findOneBy({ ticketsID: ticketID });

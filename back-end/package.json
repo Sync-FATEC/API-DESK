@@ -8,6 +8,7 @@
       "@types/express": "^4.17.21",
       "@types/node": "^20.12.7",
       "ts-node": "10.9.1",
+      "ts-node-dev": "^2.0.0",
       "typescript": "^5.4.5"
    },
    "dependencies": {
@@ -23,7 +24,7 @@
       "yarn": "^1.22.22"
    },
    "scripts": {
-      "start": "ts-node src/index.ts",
+      "start": "ts-node-dev src/index.ts",
       "typeorm": "typeorm-ts-node-commonjs"
    }
 }

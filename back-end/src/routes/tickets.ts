@@ -1,5 +1,5 @@
 import express, { Request, Response } from 'express';
-import { criarTicket, excluirTicket, alterarStatusTicket, listarTickets, alterarTecnico } from '../controllers/tickets';
+import { criarTicket, excluirTicket, alterarStatusTicket, listarTickets, alterarTecnico, procurarTicket } from '../controllers/tickets';
 
 const router = express.Router();
 
@@ -41,6 +41,16 @@ router.get('/listar/:usuarioID', async (req: Request, res: Response) => {
     res.json(await listarTickets(Number(usuarioID)));
 });
 
+router.get('/procurar/:ticketID', async (req: Request, res: Response) => {
+    const ticketID = req.params.ticketID;
+
+    if (!ticketID) {
+        return res.status(400).json({ error: 'TicketID não informado' });
+    }
+    
+    res.json(await procurarTicket(Number(ticketID)));
+
+});
 
 router.post('/alterarTecnico', async (req: Request, res: Response) => {
     const { ticketID, tipoTecnico } = req.body;
