@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { AuthContext } from "../../contexts/Auth/AuthContext";
 import './perfil.css';
+import Swal from "sweetalert2";
 
 export const Perfil = () => {
     const { user, signout } = useContext(AuthContext);
@@ -9,15 +10,31 @@ export const Perfil = () => {
     if (!user) {
         return <div>Usuário não autenticado</div>;
     }
-
+    
     const capitalizeFirstLetter = (str:string) => {
         return str.charAt(0).toUpperCase() + str.slice(1);
     };
-
-    const handleSignout = () => {
-        signout(); 
+    
+    const handleSignout = () => { // Arrumar o css desse swal
+        Swal.fire({
+            title: "Deseja realmente sair?",
+            showDenyButton: true,
+            confirmButtonText: "Sim", // texto do botão de aceitar
+            denyButtonText: "Não", // texto do botão de recusar
+            width: 410, // largura do aviso
+            confirmButtonColor: 'rgba(1, 1, 1, 1)', // teste de cor para os botão
+            denyButtonColor: 'rgba(100, 100, 100, 1)', // teste de cor para os botão
+            customClass: { // para colocar o css das coisas
+                confirmButton: '',
+                denyButton: '',
+            }
+        }).then((result) => {
+            if (result.isConfirmed) {
+                signout(); 
+            }
+        });
     };
-
+    
     return (
         <div>
             <div className="modalPerfil">
