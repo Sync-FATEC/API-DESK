@@ -71,7 +71,7 @@ export const listarTickets = async (usuarioID: number) => {
         if (usuario) {
 
             if (usuario.tipoUsuario === 'U') {
-                const tickets = await ticketsRepositorio.find({ where: { usuario: usuario }, relations: ['categoria', 'equipamentos', 'sala']});
+                const tickets = await ticketsRepositorio.find({ where: { usuario: usuario }, relations: ['categoria', 'equipamentos', 'sala', 'usuario']});
                 console.log('Tickets listados com sucesso U');
                 return tickets;
             } 
