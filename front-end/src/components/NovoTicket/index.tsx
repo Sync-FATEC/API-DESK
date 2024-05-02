@@ -9,7 +9,6 @@ import ISalas from '../../types/ISalas';
 import { AuthContext } from '../../contexts/Auth/AuthContext';
  
 export const NovoTicket = () => {
-    const [selectedImage, setSelectedImage] = useState<File | null>(null);
     const [ titulo, setTitulo ] = useState('');
     const [ descricao, setDescricao ] = useState('');
     const [ categoriaID, setCategoriaID ] = useState('');
@@ -202,26 +201,28 @@ export const NovoTicket = () => {
             <form onSubmit={handleSubmit}>
                 <div className='filterTickets'>
                     <select onChange={handleCategoria} value={categoriaID} className="selectCategoria">
-                    <option value={undefined}>Selecione uma opção</option>
+                    <option value={undefined}>Categoria</option>
                         {categorias.map((categoria) => (
                             <option key={categoria.categoriaID} value={categoria.categoriaID}>{categoria.categoria}</option>
                         ))}
                     <div>{opcaoError}</div>
                     </select>
                     <select onChange={handleSala} value={numeroSala} className="selectCategoria">
-                        <option value={undefined}>Selecione uma opção</option>
+                        <option value={undefined}>Sala</option>
                         {salas.map((sala) => (
                             <option key={sala.salaID} value={sala.numeroSala}>{sala.numeroSala}</option>
                         ))}
                     <div>{opcaoError}</div>
                     </select>
                     <select onChange={handleEquipamento} value={equipamentoID} className="selectCategoria">
-                    <option value={undefined}>Selecione uma opção</option>
+                    <option value={undefined}>Equipamento</option>
                         {equipamentos.map((equipamento) => (
                             <option key={equipamento.equipamentosID} value={equipamento.equipamentosID}>{equipamento.equipamento}</option>
                         ))}
+                
                     <div>{opcaoError}</div>
                     </select>
+                    </div>
                     <div className="formInputAssunto">
                         <input value={titulo} onChange={handleAssunto} className='inputAssunto' type="text" placeholder="Titulo do Ticket" />
                         <div>{assuntoError}</div>
@@ -230,7 +231,7 @@ export const NovoTicket = () => {
                         <textarea value={descricao} onChange={handleDescricao} className='inputAssunto' placeholder="Descrição do Ticket"></textarea>
                         <div>{descricaoError}</div>
                     </div>
-                </div>
+                
 
                 <div className="containerTicket">
                 <button type='submit' value='Cadastrar' className="btnTicket">Enviar Ticket</button>

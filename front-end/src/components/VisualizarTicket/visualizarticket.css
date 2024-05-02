@@ -11,7 +11,8 @@
     display: flex;
     margin-bottom: 20px;
     flex-wrap: wrap; 
-    width: 800px;
+    
+    width: 50%;
 }
 
 .selectCategoria {
@@ -32,16 +33,35 @@
 
 .formInputAssunto {
     width: 100%;
-    margin: 10px;
+    margin: 10px 0;
 }
 
-.containerTicket {
+
+.modalVisualizar{
     display: flex;
-    align-items: center;
-    flex-direction: row;
-    justify-content: space-between;
-    padding: 0 10px;
+    flex-direction: column;
+    padding: 20px;
+    width: 800px;
 }
 
+.modalVisualizar h1 {
+    border-bottom: 2px solid var(--blue-color);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    color: var(--blue-color);
+}
+.infoContainer{
+    display: flex;
 
-
+    flex-direction: row;
+    justify-content:center;
+}
+.infoVisualizar  {
+    display: inline;
+}
+.infoChat{
+    width: 50%;
+}
+.infoVisualizar p {
+    margin-bottom: 10px; /* Ajusta o espaço entre cada parágrafo */
+}

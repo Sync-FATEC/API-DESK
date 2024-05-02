@@ -63,6 +63,7 @@
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 1000;
+    
 }
 
 .modalContent {
@@ -72,6 +73,8 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     position: relative;
 }
+
+
 
 .close {
     position: absolute;

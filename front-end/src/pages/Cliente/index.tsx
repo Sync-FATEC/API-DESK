@@ -71,22 +71,22 @@ export const Cliente = () => {
                             <div>Abertura</div>
                             <div>Titulo</div>
                             <div>Categoria</div>
-                            <div>Tickets</div>
+                            <div></div>
                         </div>
                         {tickets.map((ticket) => (
 
                         <div className="ticket-item">
-                            <div>{ticket.ticketsID}</div>
-                            <div>{new Date(ticket.dataAbertura).toLocaleDateString('pt-BR')}</div>
-                            <div>{ticket.titulo}</div>
-                            <div>{ticket.categoria.categoria}</div>
-
-                            <div>
+                            <div className='ticket-itemDiv'>{ticket.ticketsID}</div>
+                            <div className='ticket-itemDiv'>{new Date(ticket.dataAbertura).toLocaleDateString('pt-BR')}</div>
+                            <div className='ticket-itemDiv'>{ticket.titulo}</div>
+                            <div className='ticket-itemDiv'>{ticket.categoria.categoria}</div>
+                        
+                            <div className='ticket-itemDiv'>
 
                                 <span className="material-symbols-outlined" onClick={handleOpenVisualizarTicketModal}>
                                     mystery
                                 </span>
-
+                        
 
                             </div>
                             {isVisualizarTicketModalOpen && (

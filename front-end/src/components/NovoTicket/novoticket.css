@@ -1,9 +1,11 @@
 .modal-content {
     background-color: var(--branco-color);
+    border-radius: 10px;
 }
 
 .modalTicket {
     padding: 20px;
+    
 }
 
 .modalTicket h1 {
@@ -14,8 +16,8 @@
 }
 .filterTickets {
     display: flex;
-    margin-bottom: 20px;
-    flex-wrap: wrap; 
+    flex-direction: row;
+    gap: 10px;
     width: 800px;
 }
 
@@ -37,7 +39,7 @@
 
 .formInputAssunto {
     width: 100%;
-    margin: 10px;
+    margin: 10px 0;
 }
 
 .containerTicket {
@@ -45,7 +47,7 @@
     align-items: center;
     flex-direction: row;
     justify-content: space-between;
-    padding: 0 10px;
+
 }
 
 
