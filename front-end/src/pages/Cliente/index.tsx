@@ -1,38 +1,40 @@
+import React, { useState, useEffect, useContext } from 'react';
 import { Header } from '../../components/Header';
 import './cliente.css';
 import { NovoTicket } from '../../components/NovoTicket';
-import { VisualizarTicket } from '../../components/VisualizarTicket';
-import { useContext, useEffect, useState } from 'react';
+import  VisualizarTicket from '../../components/VisualizarTicket';
 import axios from 'axios';
 import ITickets from '../../types/ITickets';
 import { AuthContext } from '../../contexts/Auth/AuthContext';
 
-export const Cliente = () => {
-
+const Cliente: React.FC = () => {
     const [isNovoTicketModalOpen, setIsNovoTicketModalOpen] = useState(false);
     const handleOpenNovoTicketModal = () => setIsNovoTicketModalOpen(true);
     const handleCloseNovoTicketModal = () => setIsNovoTicketModalOpen(false);
 
-
+    const [selectedTicket, setSelectedTicket] = useState<ITickets | null>(null);
     const [isVisualizarTicketModalOpen, setIsVisualizarTicketModalOpen] = useState(false);
-    const handleOpenVisualizarTicketModal = () => setIsVisualizarTicketModalOpen(true);
+    const handleOpenVisualizarTicketModal = (ticket: ITickets) => {
+        setSelectedTicket(ticket);
+        setIsVisualizarTicketModalOpen(true);
+    };
     const handleCloseVisualizarTicketModal = () => setIsVisualizarTicketModalOpen(false);
 
     const [tickets, setTickets] = useState<ITickets[]>([]);
     const { user } = useContext(AuthContext); 
 
     useEffect(() => {
-        const fetchSalas = async () => {
-          try {
-            const response = await axios.get(`http://localhost:5555/tickets/listar/${user?.usuarioID}`);
-            setTickets(response.data);
-          } catch (error) {
-            console.error(error);
-          }
+        const fetchTickets = async () => {
+            try {
+                const response = await axios.get(`http://localhost:5555/tickets/listar/${user?.usuarioID}`);
+                setTickets(response.data);
+            } catch (error) {
+                console.error(error);
+            }
         };
-    
-        fetchSalas();
-      }, []);
+
+        fetchTickets();
+    }, [user?.usuarioID]);
 
     return (
         <div className="ticketContainer">
@@ -74,37 +76,30 @@ export const Cliente = () => {
                             <div></div>
                         </div>
                         {tickets.map((ticket) => (
-
-                        <div className="ticket-item">
-                            <div className='ticket-itemDiv'>{ticket.ticketsID}</div>
-                            <div className='ticket-itemDiv'>{new Date(ticket.dataAbertura).toLocaleDateString('pt-BR')}</div>
-                            <div className='ticket-itemDiv'>{ticket.titulo}</div>
-                            <div className='ticket-itemDiv'>{ticket.categoria.categoria}</div>
-                        
-                            <div className='ticket-itemDiv'>
-
-                                <span className="material-symbols-outlined" onClick={handleOpenVisualizarTicketModal}>
-                                    mystery
-                                </span>
-                        
-
-                            </div>
-                            {isVisualizarTicketModalOpen && (
-                                <div className="modal">
-                                    <div className="modal-content">
-                                        <span className="close" onClick={handleCloseVisualizarTicketModal}>&times;</span>
-                                        <VisualizarTicket />
-                                    </div>
+                            <div className="ticket-item" key={ticket.ticketsID}>
+                                <div className='ticket-itemDiv'>{ticket.ticketsID}</div>
+                                <div className='ticket-itemDiv'>{new Date(ticket.dataAbertura).toLocaleDateString('pt-BR')}</div>
+                                <div className='ticket-itemDiv'>{ticket.titulo}</div>
+                                <div className='ticket-itemDiv'>{ticket.categoria.categoria}</div>
+                                <div className='ticket-itemDiv'>
+                                    <span className="material-symbols-outlined" onClick={() => handleOpenVisualizarTicketModal(ticket)}>
+                                        mystery
+                                    </span>
                                 </div>
-                            )}
-                        </div>
+                            </div>
                         ))}
                     </div>
-
+                    {isVisualizarTicketModalOpen && selectedTicket && (
+                        <div className="modal">
+                            <div className="modal-content">
+                                <VisualizarTicket selectedTicket={selectedTicket} onClose={handleCloseVisualizarTicketModal} />
+                            </div>
+                        </div>
+                    )}
                 </div>
             </div>
-
         </div>
-
     );
 };
+
+export default Cliente;
