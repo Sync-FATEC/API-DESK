@@ -1,6 +1,4 @@
-
 import './categoriaAdm.css';
-import add from '../../assets/img/add.png';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import ICategoria from '../../types/ICategoria';
@@ -83,29 +81,30 @@ const CategoriaAdm = () => {
 
             <div className="container">
                 {categorias.map((categorias, index) => (
-                    <div className="numeroSala" key={categorias.categoriaID}>
-                            <p>{categorias.categoria}</p>
-                            <p>{categorias.tipoTecnico}</p>
+                    <div className="rowInformacoes" key={categorias.categoriaID}>
+                            <p className="itemCategoria">{categorias.categoria}</p>
+                            <p className="itemCategoria">{categorias.tipoTecnico}</p>
                         <button className="excluir" onClick={() => handleDeleteUser(categorias.categoriaID)}>
-                            Excluir
+                        <span className="material-symbols-outlined">Delete</span>
                         </button>
                     </div>
                 ))}
-                <div className="numeroSala">
-                    <form onSubmit={handleAddUser} method='post'>
-                        <input value={categoria} onChange={handleCategoriaChange} type="text" className="inputSala" placeholder="Adicionar categoria"/>
-                        <div className="formInput">
-                            <label className="labelInputTecnico" htmlFor="categoria">Categoria do técnico</label>
-                            <select className="selectCategoria" value={tipoTecnico} onChange={(e) => setTipoTecnico(e.target.value)}>
-                                <option value=""></option>
-                                <option value="1">Suport N1</option>
-                                <option value="2">Suporte N2</option>
-                                <option value="3">Suporte N3</option>
-                            </select>
+                <div className="rowInformacoes">
+                    <form onSubmit={handleAddUser} method='post' className="boxCategoria">
+                        <div>
+                            <input value={categoria} onChange={handleCategoriaChange} type="text" className="inputSala" placeholder="Adicionar categoria"/>
+                            <div className="formInput">
+                                <label className="labelInputTecnico" htmlFor="categoria">Categoria do técnico</label>
+                                <select className="selectCategoria" value={tipoTecnico} onChange={(e) => setTipoTecnico(e.target.value)}>
+                                    <option value=""></option>
+                                    <option value="1">Suporte N1</option>
+                                    <option value="2">Suporte N2</option>
+                                    <option value="3">Suporte N3</option>
+                                </select>
+                            </div>
                         </div>
-                        <button type='submit'>Criar nova categoria</button>
+                        <button type='submit' className="add"><span className="material-symbols-outlined">add</span></button>
                     </form>
-                <img src={add} alt="add" />
                 </div>
                 
             </div>

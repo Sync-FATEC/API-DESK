@@ -1,0 +1,11 @@
+.itemCategoria{
+    width: 60%;
+}
+
+.boxCategoria{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    flex-direction: row;
+    
+}
