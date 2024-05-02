@@ -11,6 +11,10 @@
     color: var(--blue-color);
 }
 
+.confirmButton {
+    width: 500px;
+}
+
 .dadosPerfil {
     position: relative;
     left: 10px; 
