@@ -21,16 +21,16 @@ const SalaAdm = () => {
 
     useEffect(() => {
         const fetchSalas = async () => {
-          try {
-            const response = await axios.get('http://localhost:5555/salas/visualizar');
-            setSalas(response.data);
-          } catch (error) {
-            console.error(error);
-          }
+            try {
+                const response = await axios.get('http://localhost:5555/salas/visualizar');
+                setSalas(response.data);
+            } catch (error) {
+                console.error(error);
+            }
         };
-    
+
         fetchSalas();
-      }, []);
+    }, []);
 
     const handleDeleteUser = async (numeroSala: number) => {
         try {
@@ -41,8 +41,8 @@ const SalaAdm = () => {
             }
             setSalas(prevSalas => prevSalas.filter(s => s.numeroSala !== numeroSala));
             Toast.fire({
-            icon: "success",
-            title: "Excluido com sucesso!"
+                icon: "success",
+                title: "Excluido com sucesso!"
             })
 
         } catch (error) {
@@ -52,7 +52,7 @@ const SalaAdm = () => {
     };
     const handleAddUser = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        
+
         if (!numeroSala || !identificacao) {
             warning('Preencha todos os campos');
             return;
@@ -67,8 +67,8 @@ const SalaAdm = () => {
             setNumeroSala('');
             setIdentificacao('');
             Toast.fire({
-            icon: "success",
-            title: "Criado com sucesso!"
+                icon: "success",
+                title: "Criado com sucesso!"
             })
 
         } catch (error) {
@@ -78,29 +78,29 @@ const SalaAdm = () => {
     };
     return (
         <div className="adminContainer">
-            <div className="titulo">
-            </div>
 
-            <div className="container">
-                {sala.map((sala, index) => (
-                    <div className="rowInformacoes" key={index}>
-                            <p>{sala.numeroSala}</p>
-                            <p>{sala.identificacao}</p>
-                        <button className="excluir" onClick={() => handleDeleteUser(sala.numeroSala)}>
-                        <span className="material-symbols-outlined">Delete</span>
-                        </button>
+            <form className="rowInformacoes" onSubmit={handleAddUser} method='post'>
+                <div className="containerCategoria">
+                    <div className='formCategoria'>
+                        <input value={numeroSala} onChange={handleNumeroSalaChange} type="number" className="inputCategoria" placeholder="Adicionar Sala " />
                     </div>
-                ))}
-                <div className="salaSubmit">
-                    <form onSubmit={handleAddUser} method='post'>
-                        <input value={numeroSala} onChange={handleNumeroSalaChange} type="number" className="inputSala" placeholder="Adicionar Sala"/>
-                        <input value={identificacao} onChange={handleIdentificacaoChange} type="text" className='inputSala' placeholder='Adicionar identificação'/>
-                        <button type='submit' className='add'><span className="material-symbols-outlined">add</span></button>
-                    </form>
+                    <div className='formCategoria'>
+                        <input value={identificacao} onChange={handleIdentificacaoChange} type="text" className="inputCategoria" placeholder='Adicionar identificação' />
+                    </div>
+                    <button type='submit' className="btnAdd"><span className="material-symbols-outlined">Add</span></button>
                 </div>
-                
-            </div>
+            </form>
+            {sala.map((sala, index) => (
+                <div className="rowInformacoes" key={index}>
+                    <p>{sala.numeroSala}</p>
+                    <p>{sala.identificacao}</p>
+                    <button className="excluir" onClick={() => handleDeleteUser(sala.numeroSala)}>
+                        <span className="material-symbols-outlined">Delete</span>
+                    </button>
+                </div>
+            ))}
         </div>
-    )};
+    );
+}
 
 export default SalaAdm;

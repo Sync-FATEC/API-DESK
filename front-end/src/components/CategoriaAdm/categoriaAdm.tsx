@@ -76,38 +76,36 @@ const CategoriaAdm = () => {
     };
     return (
         <div className="adminContainer">
- 
-                {categorias.map((categorias, index) => (
-                    <div className="rowInformacoes" key={categorias.categoriaID}>
-                        <p className="itemCategoria">{categorias.categoria}</p>
-                        <p className="itemCategoria">{categorias.tipoTecnico}</p>
-                        <button className="excluir" onClick={() => handleDeleteUser(categorias.categoriaID)}>
-                            <span className="material-symbols-outlined">Delete</span>
-                        </button>
-                    </div>
-                ))}
-                <form onSubmit={handleAddUser} method='post' className="rowInformacoes">
-                <div className="containerCategoria">
-                        <div className='formCategoria'>
-                        <label className="labelCategoria" htmlFor="categoria">Adicionar Categoria</label>
-                        <input value={categoria} onChange={handleCategoriaChange} type="text" className="inputCategoria" />
-                        </div>
-                        <div className='formCategoria'>
 
-                        <label className="labelCategoria" htmlFor="categoria">Categoria do técnico</label>
+            <form onSubmit={handleAddUser} method='post' className="rowInformacoes">
+                <div className="containerCategoria">
+                    <div className='formCategoria'>
+                        <input value={categoria} onChange={handleCategoriaChange} type="text" className="inputCategoria" placeholder="Adicionar Categoria" />
+                    </div>
+                    <div className='formCategoria'>
                         <select className="selectCategoria" value={tipoTecnico} onChange={(e) => setTipoTecnico(e.target.value)}>
-                            <option value=""></option>
+                            <option value="" disabled selected>Categoria do técnico</option>
                             <option value="1">Suporte N1</option>
                             <option value="2">Suporte N2</option>
                             <option value="3">Suporte N3</option>
                         </select>
-                        </div>
-                        <button type='submit' className="btnAdd"><span className="material-symbols-outlined">add</span></button>
                     </div>
-                </form>
+                    <button type='submit' className="btnAdd"><span className="material-symbols-outlined">add</span></button>
+                </div>
+            </form>
+
+            {categorias.map((categorias, index) => (
+                <div className="rowInformacoes" key={categorias.categoriaID}>
+                    <p className="itemCategoria">{categorias.categoria}</p>
+                    <p className="itemCategoria">{categorias.tipoTecnico}</p>
+                    <button className="excluir" onClick={() => handleDeleteUser(categorias.categoriaID)}>
+                        <span className="material-symbols-outlined">Delete</span>
+                    </button>
+                </div>
+            ))}
         </div>
     );
-    
+
 };
 
 export default CategoriaAdm;
