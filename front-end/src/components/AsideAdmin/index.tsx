@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './AsideAdmin.css';
-import ClientesAdm from '../TecnicoAdm';
+import TecnicosAdm from '../TecnicoAdm';
 import {CadastroTecnico} from '../CadastroTecnico';
 import SalaAdm from '../SalaAdm';
 import EquipamentoAdm from '../EquipamentoAdm';
@@ -28,7 +28,7 @@ export const AsideAdmin: React.FC<{
         <div className="containerAside">
             <div className="asideLinks">
                 <div className={selectedOption === 'Técnico' ? 'selectedOption' : 'option'} onClick={() => handleOptionClick('Cadastro de Técnico')}>Cadastro técnico</div>
-                <div className={selectedOption === 'Clientes' ? 'selectedOption' : 'option'} onClick={() => handleOptionClick('Clientes')}>Técnicos</div>
+                <div className={selectedOption === 'Técnicos' ? 'selectedOption' : 'option'} onClick={() => handleOptionClick('Técnicos')}>Técnicos</div>
                 <div className={selectedOption === 'Categoria' ? 'selectedOption' : 'option'} onClick={() => handleOptionClick('Categoria')}>Categoria</div>
                 <div className={selectedOption === 'Equipamento' ? 'selectedOption' : 'option'} onClick={() => handleOptionClick('Equipamento')}>Equipamento</div>
                 <div className={selectedOption === 'Salas' ? 'selectedOption' : 'option'} onClick={() => handleOptionClick('Salas')}>Salas</div>
@@ -40,7 +40,7 @@ export const AsideAdmin: React.FC<{
                 {selectedOption && (
                     <div className="selected-content">
                         {selectedOption === 'Cadastro de Técnico' && <CadastroTecnico/>}
-                        {selectedOption === 'Clientes' && <ClientesAdm />}
+                        {selectedOption === 'Técnicos' && <TecnicosAdm />}
                         {selectedOption === 'Salas' && <SalaAdm />}
                         {selectedOption === 'Equipamento' && <EquipamentoAdm />}
                         {selectedOption === 'Categoria' && <CategoriaAdm />}

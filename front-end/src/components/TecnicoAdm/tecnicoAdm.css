@@ -37,6 +37,7 @@
 
 .linhaDireita{
     display: flex;
+    width: 200px;
 }
 .itemLinha{
     border: 2px solid var(--cinza-color);
@@ -44,9 +45,11 @@
     padding: 6px 12px;
     margin-left: 6px;
     align-content: center;
+    width: 20%;
 }
 
 .linhaTurno{
     align-items: center;
     display: flex;
+    width: 90%;
 }

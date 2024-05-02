@@ -5,7 +5,7 @@ import { erro, Toast } from '../Swal/swal';
 import ITecnicos from '../../types/ITecnicos';
 
  
-const ClientesAdm = () => {
+const TecnicosAdm = () => {
     const [tecnicos, setTecnicos] = useState<ITecnicos[]>([]);
  
     useEffect(() => {
@@ -68,5 +68,5 @@ const ClientesAdm = () => {
     );
 };
  
-export default ClientesAdm;
+export default TecnicosAdm;
  
