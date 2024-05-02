@@ -1,41 +1,34 @@
-import { Header } from '../../components/Header';
-import { useContext, useEffect, useState } from 'react';
-import axios from 'axios';
+import React from 'react';
 import ITickets from '../../types/ITickets';
-import { AuthContext } from '../../contexts/Auth/AuthContext';
 
-
-export const VisualizarTickets = () => {
-    const [tickets, setTickets] = useState<ITickets[]>([]);
-    const user = useContext(AuthContext);
-
-    useEffect(() => {
-        const fetchSalas = async () => {
-          try {            
-            const response = await axios.get('http://localhost:5555/tickets/listar/' + user.user?.usuarioID);
-            setTickets(response.data);
-          } catch (error) {
-            console.error(error);
-          }
-        };
-    
-        fetchSalas();
-      }, [user.user]);
-     
-    return(
-        <><Header />
-                {tickets.map((tickets, index) => (
-                    <div className="faq" key={index}>
-                        <h1>{tickets.titulo}</h1>
-                        <p>{tickets.descricao}</p>
-                        <p>{tickets.status}</p>
-                        <p>{tickets.categoria.categoria}</p>
-                        <p>{tickets.equipamentos.equipamento}</p>
-                        <p>{tickets.sala.numeroSala}</p>
-                        <p>{tickets.usuario.nome}</p>
-                        <div>{new Date(tickets.dataAbertura).toLocaleDateString('pt-BR')}</div>
-                    </div>
-                ))}
-        </> 
-    )
+interface Props {
+    selectedTicket: ITickets | null;
+    onClose: () => void;
 }
+
+const VisualizarTicket: React.FC<Props> = ({ selectedTicket, onClose }) => {
+    if (!selectedTicket) return null;
+
+    return (
+        <div className="modalVisualizar">
+            <div className='infoContainer'>
+                <div className="infoVisualizar">
+                    <h2>{selectedTicket.titulo}</h2>
+                    <p>{selectedTicket.descricao}</p>
+                    <p>{selectedTicket.status}</p>
+                    <p>{selectedTicket.categoria.categoria}</p>
+                    <p>{selectedTicket.equipamentos.equipamento}</p>
+                    <p>{selectedTicket.sala.numeroSala}</p>
+                    <p>{selectedTicket.usuario.nome}</p>
+                    <div>{new Date(selectedTicket.dataAbertura).toLocaleDateString('pt-BR')}</div>
+                </div>
+                <div className='infoChat'>
+                    {/* Aqui você pode adicionar o componente de chat, se necessário */}
+                </div>
+            </div>
+            <span className="close" onClick={onClose}>&times;</span>
+        </div>
+    );
+};
+
+export default VisualizarTicket;
