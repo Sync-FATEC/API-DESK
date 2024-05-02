@@ -38,11 +38,13 @@
     
 }
 
-.modalVisualizar h1 {
+.btnVisualizar {
     border-bottom: 2px solid var(--blue-color);
     padding-bottom: 10px;
     margin-bottom: 20px;
     color: var(--blue-color);
+    display: flex;
+    
 }
 .infoContainer{
     display: flex;
@@ -58,4 +60,17 @@
 }
 .infoVisualizar p {
     margin-bottom: 10px; /* Ajusta o espaço entre cada parágrafo */
+}
+#btnAtendendo{
+    color: var(--black-color);
+}
+#btnPendente{
+    color: #FF8A00;
+}
+#btnFinalizar{
+    color: #28C94C;
+}
+#btnSla{
+    color: var(--red-error-color);
+    margin-left: 200px;
 }
