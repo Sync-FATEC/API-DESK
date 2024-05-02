@@ -2,7 +2,7 @@ import axios from 'axios';
 import './novoticket.css';
 import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { erro, success, warning } from '../Swal/swal';
+import { erro, successTicket, warning } from '../Swal/swal';
 import ICategoria from '../../types/ICategoria';
 import IEquipamentos from '../../types/IEquipamentos';
 import ISalas from '../../types/ISalas';
@@ -166,14 +166,11 @@ export const NovoTicket = () => {
                     setDescricao('');
                     erro('Erro na criação do ticket');
                 } else {
-                    setCategoriaID('');
-                    setEquipamentoID('');
-                    setNumeroSala('');
-                    setTitulo('');
-                    setDescricao('');
-                    success('Ticket criado com sucesso!');
-                    window.location.reload()
-                };
+                    successTicket('Ticket criado com sucesso!');
+                    setTimeout(() => {
+                        window.location.reload();
+                    }, 1350); // Atraso de 1350 milissegundos (1.35 segundo)
+                }
             } catch (error) {
                 console.log(error);
                 erro('Erro no envio de dados!');
