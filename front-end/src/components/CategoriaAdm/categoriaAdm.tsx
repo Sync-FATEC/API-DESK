@@ -76,7 +76,6 @@ const CategoriaAdm = () => {
     };
     return (
         <div className="adminContainer">
-
             <form onSubmit={handleAddUser} method='post' className="rowInformacoes">
                 <div className="containerCategoria">
                     <div className='formCategoria'>
