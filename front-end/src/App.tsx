@@ -7,7 +7,7 @@ import { Admin } from './pages/Admin';
 import { Tecnicos } from './pages/Tecnico';
 import { RequireAuth } from './contexts/Auth/RequireAuth';
 import { FAQ } from './components/Faq';
-import VisualizarTickets  from './pages/VisualizarTickets';
+import VisualizarTickets  from './pages/VisualizarTicketsCliente';
 
 export const App = () => {
   return (
