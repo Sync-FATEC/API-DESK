@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import { Header } from '../../components/Header';
 import './cliente.css';
 import { NovoTicket } from '../../components/NovoTicket';
-import  VisualizarTicket from '../../components/VisualizarTicket';
+import  VisualizarTicketCliente from '../VisualizarTicketsCliente';
 import axios from 'axios';
 import ITickets from '../../types/ITickets';
 import { AuthContext } from '../../contexts/Auth/AuthContext';
@@ -92,7 +92,7 @@ const Cliente: React.FC = () => {
                     {isVisualizarTicketModalOpen && selectedTicket && (
                         <div className="modal">
                             <div className="modal-content">
-                                <VisualizarTicket selectedTicket={selectedTicket} onClose={handleCloseVisualizarTicketModal} />
+                                <VisualizarTicketCliente selectedTicket={selectedTicket} onClose={handleCloseVisualizarTicketModal} />
                             </div>
                         </div>
                     )}
