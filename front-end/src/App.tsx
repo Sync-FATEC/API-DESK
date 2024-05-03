@@ -7,7 +7,8 @@ import { Admin } from './pages/Admin';
 import { Tecnicos } from './pages/Tecnico';
 import { RequireAuth } from './contexts/Auth/RequireAuth';
 import { FAQ } from './components/Faq';
-import VisualizarTickets  from './pages/VisualizarTicketsCliente';
+import VisualizarTickets  from './components/VisualizarTicketsCliente';
+import { TicketsAdmin } from './pages/TicketsAdmin';
 
 export const App = () => {
   return (
@@ -18,6 +19,7 @@ export const App = () => {
         <Route path="/cadastro" element={<Cadastro />} />
         <Route path="/FAQ" element={<RequireAuth tipoUsuario={['1', '2', '3', 'U', 'A']}><FAQ /></RequireAuth>} />
         <Route path="/admin" element={<RequireAuth tipoUsuario="A"><Admin /></RequireAuth>} />
+        <Route path="/ticketsAdmin" element={<RequireAuth tipoUsuario="A"><TicketsAdmin /></RequireAuth>} />
         <Route path="/visualizarTickets" element={<RequireAuth tipoUsuario="U"><VisualizarTickets selectedTicket={null} onClose={function (): void {
           throw new Error('Function not implemented.');
         } } /></RequireAuth>} />

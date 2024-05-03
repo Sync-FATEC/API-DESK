@@ -53,7 +53,7 @@ export const Header = () => {
                     navigate('/tecnico');
                     break;
                 case 'A':
-                    navigate('/visualizarTickets');
+                    navigate('/ticketsAdmin');
                     break;
                 default:
                     navigate('/');
