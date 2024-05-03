@@ -45,3 +45,22 @@
 .mostrar{
     display: block;
 }
+
+summary::-webkit-details-marker {
+    display: none
+  }
+  summary:after {
+    background: black; 
+    content: "+"; 
+    color: #fff; 
+    float: left;  
+    font-weight: bold; 
+    padding: 0; 
+    text-align: center; 
+    width: 20px;
+    left: 20px;
+    margin-right: 10px;
+  }
+  details[open] summary:after {
+    content: "-";
+  }

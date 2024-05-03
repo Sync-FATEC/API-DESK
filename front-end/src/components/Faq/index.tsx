@@ -46,7 +46,7 @@ export const FAQ = () => {
                 ) : (
                     faqs.map((faq, index) => (
                         <div className="faq" key={index}>
-                            <details>
+                            <details className='sumary'>
                                 <summary>{faq.titulo}</summary>
                                 <p>{faq.mensagem}</p>
                             </details>
