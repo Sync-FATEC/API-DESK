@@ -3,7 +3,7 @@ import { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
 import ITickets from '../../types/ITickets';
 import { AuthContext } from '../../contexts/Auth/AuthContext';
-import VisualizarTicket from '../../components/VisualizarTicket'; // Importe o componente VisualizarTicket
+import VisualizarTicketTecnico from '../../components/VisualizarTicketTecnico'; // Importe o componente VisualizarTicket
 import './tecnico.css';
 
 export const Tecnicos = () => {
@@ -112,7 +112,7 @@ export const Tecnicos = () => {
           <div className="modal">
             <div className="modal-content">
               <span className="close" onClick={handleCloseVisualizarTicketModal}>&times;</span>
-              <VisualizarTicket selectedTicket={selectedTicket} onClose={handleCloseVisualizarTicketModal} />
+              <VisualizarTicketTecnico selectedTicket={selectedTicket} onClose={handleCloseVisualizarTicketModal} />
             </div>
           </div>
         )}
