@@ -83,7 +83,7 @@ const CategoriaAdm = () => {
                     </div>
                     <div className='formCategoria'>
                         <select className="selectCategoria" value={tipoTecnico} onChange={(e) => setTipoTecnico(e.target.value)}>
-                            <option value="" disabled selected>Categoria do técnico</option>
+                            <option value="" disabled selected></option>
                             <option value="1">Suporte N1</option>
                             <option value="2">Suporte N2</option>
                             <option value="3">Suporte N3</option>

@@ -11,7 +11,6 @@
 .selectCategoria {
     border-radius: 10px;
     color: var(--black-color);
-    padding: 5px;
 }
 
 .inputAssunto {

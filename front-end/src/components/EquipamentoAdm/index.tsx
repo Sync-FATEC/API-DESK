@@ -18,26 +18,26 @@ const EquipamentoAdm = () => {
 
     useEffect(() => {
         const fetchSalas = async () => {
-          try {
-            const categoria = await axios.get('http://localhost:5555/categorias/listar');
-            setCategorias(categoria.data);
-            const sala = await axios.get('http://localhost:5555/salas/visualizar');
-            setSalas(sala.data);
-            const equip = await axios.get('http://localhost:5555/equipamentos/listar');
-            setEquipamentos(equip.data);
-            console.log(equip.data);
-          } catch (error) {
-            console.error(error);
-          }
+            try {
+                const categoria = await axios.get('http://localhost:5555/categorias/listar');
+                setCategorias(categoria.data);
+                const sala = await axios.get('http://localhost:5555/salas/visualizar');
+                setSalas(sala.data);
+                const equip = await axios.get('http://localhost:5555/equipamentos/listar');
+                setEquipamentos(equip.data);
+                console.log(equip.data);
+            } catch (error) {
+                console.error(error);
+            }
         };
-    
+
         fetchSalas();
-      }, []);
+    }, []);
 
     const handleAddUser = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        
-        if (!equipamento|| !categoriaID || !numeroSala || !sla || !prioridade) {
+
+        if (!equipamento || !categoriaID || !numeroSala || !sla || !prioridade) {
             warning('Preencha todos os campos');
             return;
         }
@@ -51,8 +51,8 @@ const EquipamentoAdm = () => {
             });
             setEquipamentos([...equipamentos, response.data]);
             Toast.fire({
-            icon: "success",
-            title: "Criado com sucesso!"
+                icon: "success",
+                title: "Criado com sucesso!"
             })
             setEquipamento('');
             setNumeroSala('');
@@ -106,8 +106,8 @@ const EquipamentoAdm = () => {
             }
             setEquipamentos(equipamentos.filter((equipamento) => equipamento.equipamentosID !== equipamentosID));
             Toast.fire({
-            icon: "success",
-            title: "Excluido com sucesso!"
+                icon: "success",
+                title: "Excluido com sucesso!"
             })
 
         } catch (error) {
@@ -118,80 +118,95 @@ const EquipamentoAdm = () => {
 
     return (
         <div className="adminContainer">
-            <div className="titulo">
-            </div>
-            <div className="container">
-                <form onSubmit={handleAddUser} method="post">
-                <div className="topEquip">
-                    <div className="formInput">
+            <form onSubmit={handleAddUser} method="post" className="rowInformacoes">
+                <div className="containerEquipamento">
+                    <div className="formCategoria">
                         <label className="labelEquipamento" htmlFor="sala">Sala</label>
-                        <select className="selectEquipamento" onChange={handleNumeroSala} value={numeroSala}>
+                        <select className="selectCategoria" onChange={handleNumeroSala} value={numeroSala}>
                             <option value={undefined}></option>
                             {salas.map((sala, index) => (
-                            <option value={sala.numeroSala} key={index}>{sala.numeroSala}</option>
-                            ))}
-                    </select>
-                    </div>
-                    <div className="formInput">
-                        <label className="labelEquipamento" htmlFor="categoria">Categoria</label>
-                        <select className="selectEquipamento" onChange={handleCategoriaID} value={categoriaID}>
-                            <option value={undefined}></option>
-                            {categorias.map((categoria, index) => (
-                            <option value={categoria.categoriaID} key={index}>
-                                {categoria.categoria}
-                            </option>
+                                <option value={sala.numeroSala} key={index}>{sala.numeroSala}</option>
                             ))}
                         </select>
                     </div>
-                    <div className="formInput">
+                    <div className='formCategoria'>
+                        <label className="labelEquipamento" htmlFor="categoria">Categoria</label>
+                        <select className="selectCategoria" onChange={handleCategoriaID} value={categoriaID}>
+                            <option value={undefined}></option>
+                            {categorias.map((categoria, index) => (
+                                <option value={categoria.categoriaID} key={index}>
+                                    {categoria.categoria}
+                                </option>
+                            ))}
+                        </select>
+                    </div>
+                    <div className='formCategoria'>
                         <label className="labelEquipamento" htmlFor="prioridade">Prioridade</label>
-                        <select className="selectEquipamento" onChange={handlePrioridade} value={prioridade}>
+                        <select className="selectCategoria"
+                            onChange={handlePrioridade} value={prioridade}>
                             <option value={undefined}></option>
                             <option value="Baixa">Baixa</option>
                             <option value="Media">Média</option>
                             <option value="Alta">Alta</option>
                         </select>
                     </div>
+                    <div className='formCategoria'>
+                        <label className="labelEquipamento" htmlFor="equipamento">Equipamento</label>
+                        <input className="inputCategoria" type="text" onChange={handleEquipamento} value={equipamento} />
                     </div>
-                    <div className="baixoEquipamento">
-                    <div className="formInput">
-                        <label className="labelInput" htmlFor="equipamento">Equipamento</label>
-                        <input className="inputMenor" type="text" onChange={handleEquipamento} value={equipamento}/>
+                    <div className='formCategoria'>
+                        <label className="labelEquipamento" htmlFor="sla">SLA</label>
+                        <input className="inputCategoria" type="number" onChange={handleSla} value={sla} />
+
                     </div>
-                    <div className="formInput formInputSla">
-                        <label className="labelInput" htmlFor="sla">SLA</label>
-                        <input className="inputMenor inputSla" type="number" onChange={handleSla} value={sla} />
-                        <button className='add' type="submit"><span className="material-symbols-outlined">Add</span></button>
+                    <div className='containerBtnEquipamento'>
+                        <button className='btnEquipamento' type="submit">Cadatrar Equipamento</button>
                     </div>
-                    </div>
-                </form>
-            </div>
+                </div>
 
-
-
-
-            {salas.map((sala, index) => (
-                <details key={index}>
-                    <summary>{sala.numeroSala}</summary>
-                    {categorias.map((categoria, index) => (
-                        <details key={index}>
-                            <summary>{categoria.categoria}</summary>
-                            {equipamentos.map((equipamentos, index) => (
-                                equipamentos.sala.salaID === sala.salaID && equipamentos.categoria.categoriaID === categoria.categoriaID ? (
-                                    <div className="numeroSala" key={equipamentos.equipamentosID}>
-                                        <p>{equipamentos.equipamento}</p>
-                                        <p>{equipamentos.sla}</p>
-                                        <p>{equipamentos.prioridade}</p>
-                                        <button onClick={() => handleDeleteUser(equipamentos.equipamentosID)}>Excluir</button>
+            </form>
+            {salas.map((sala, salaIndex) => (
+                <details className='containerResultado' key={salaIndex}>
+                    <summary className='sumarioResultado' >
+                        <label>Sala:</label>{sala.numeroSala}
+                    </summary>
+                    {categorias.map((categoria, categoriaIndex) => (
+                        <details className='detalhesResultado' key={categoriaIndex}>
+                            <summary className='sumarioResultado'>
+                                <label>Categoria:</label>{categoria.categoria}
+                            </summary>
+                            {equipamentos.map((equipamento, equipamentoIndex) => (
+                                equipamento.sala.salaID === sala.salaID && equipamento.categoria.categoriaID === categoria.categoriaID ? (
+                                    <div className="detalhesEquipamento" key={equipamentoIndex}>
+                                        <div className="infoContainer">
+                                            <label>Equipamento:</label>
+                                            <p>{equipamento.equipamento}</p>
+                                        </div>
+                                        <div className="infoContainer">
+                                            <label>SLA:</label>
+                                            <p>{equipamento.sla}</p>
+                                        </div>
+                                        <div className="infoContainer">
+                                            <label>Prioridade:</label>
+                                            <p>{equipamento.prioridade}</p>
+                                        </div>
+                                        <button className='excluir' onClick={() => handleDeleteUser(equipamento.equipamentosID)}>
+                                            <span className="material-symbols-outlined">Delete</span>
+                                        </button>
                                     </div>
+
+
+
                                 ) : null
                             ))}
                         </details>
                     ))}
                 </details>
             ))}
-            
+
+
         </div>
-    )};
+    )
+};
 
 export default EquipamentoAdm;

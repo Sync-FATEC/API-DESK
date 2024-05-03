@@ -1,5 +1,4 @@
 import './faqAdm.css';
-import add from '../../assets/img/add.png';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import IMensagens from '../../types/IMensagens';

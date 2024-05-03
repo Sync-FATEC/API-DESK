@@ -91,7 +91,7 @@ const BaseDeConhecimento = () => {
                         </select>
                     </div>
                     <div className='formCategoria'>
-                        <input value={titulo} onChange={handleTituloChange} type="text" className="inputCategoria" placeholder="Adicionar Titulo" />
+                        <input value={titulo} onChange={handleTituloChange} type="text" className="inputCategoria" placeholder="Adicionar Título" />
                     </div>
                     <div className='formCategoria'>
                         <textarea value={mensagem} onChange={(e) => setMensagem(e.target.value)} className="inputCategoria" placeholder="Adicionar Mensagem" rows={2}></textarea>
