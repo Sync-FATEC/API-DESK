@@ -1,37 +1,22 @@
-.faqPost{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px;
-    margin: 10px;
-    border: 2px solid var(--cinza-color);
+.filtroFaq{
     border-radius: 10px;
-    width: 100%; 
-}
-
-.numeroFaq {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    white-space: nowrap;
-    padding: 15px;
-    margin: 10px;
     border: 2px solid var(--cinza-color);
-    border-radius: 10px;
-    width: 100%;  
-
-}
-
-.inputSala1{
-    border: none;
+    color: var(--black-color);
+    font-size: 18px;
+    background: var(--branco-color);
+    padding: 10px;
     
 }
-
-.inputFaq{
-    width: 665px;
-    margin-bottom: 10px;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    border: none;
+.containerFaq{
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+    
+}
+.containerFiltroFaq{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
 
 }

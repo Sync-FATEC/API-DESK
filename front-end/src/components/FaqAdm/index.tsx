@@ -40,8 +40,8 @@ const FaqAdm = () => {
             await axios.delete(`http://localhost:5555/mensagens/excluir/${mensagemID}`);
             setFaqAdm(faqAdm.filter((faq) => faq.mensagemID !== mensagemID));
             Toast.fire({
-            icon: "success",
-            title: "Excluido com sucesso!"
+                icon: "success",
+                title: "Excluido com sucesso!"
             })
 
         } catch (error) {
@@ -51,7 +51,7 @@ const FaqAdm = () => {
 
     const handleAddUser = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        
+
         if (!titulo || !mensagem || categoriaSelecionada === 0) {
             warning('Preencha todos os campos.');
             return;
@@ -66,8 +66,8 @@ const FaqAdm = () => {
             });
             setFaqAdm([...faqAdm, response.data]);
             Toast.fire({
-            icon: "success",
-            title: "Criado com sucesso!"
+                icon: "success",
+                title: "Criado com sucesso!"
             })
             setTitulo('');
             setMensagem('');
@@ -79,44 +79,51 @@ const FaqAdm = () => {
 
     return (
         <div className="adminContainer">
-            <div className="container">
-            <div className="numeroFaq">
-                    <form onSubmit={handleAddUser} method='post'>
-                        <select value={categoriaSelecionada} onChange={(e) => setCategoriaSelecionada(Number(e.target.value))} className="inputSala1">
+            <form onSubmit={handleAddUser} method='post' className="rowInformacoes">
+                <div className="containerFaq">
+                    <div className='formCategoria'>
+                        <select value={categoriaSelecionada} onChange={(e) => setCategoriaSelecionada(Number(e.target.value))} className="selectCategoria">
                             <option value={0}>Selecione uma categoria</option>
                             {categorias.map((categoria) => (
                                 <option key={categoria.categoriaID} value={categoria.categoriaID}>{categoria.categoria}</option>
                             ))}
                         </select>
-                        <div className="inputs">
-                            <input value={titulo} onChange={(e) => setTitulo(e.target.value)} type="text" className="inputFaq" placeholder="Adicionar Título"/>
-                            <button type='submit' className='add'><img src={add} alt="add" /></button>
-                        </div>
-                        <textarea value={mensagem} onChange={(e) => setMensagem(e.target.value)} className="inputFaq" placeholder="Adicionar Mensagem" rows={2}></textarea>
-                    </form>
+                    </div>
+                    <div className='formCategoria'>
+                        <input value={titulo} onChange={(e) => setTitulo(e.target.value)} type="text" className="inputCategoria" placeholder="Adicionar Título" />
+                    </div>
+                    <div className='formCategoria'>
+                        <textarea value={mensagem} onChange={(e) => setMensagem(e.target.value)} className="inputCategoria" placeholder="Adicionar Mensagem" rows={2}></textarea>
+                    </div>
                 </div>
-                <select value={categoriaFiltro} onChange={(e) => setCategoriaFiltro(Number(e.target.value))} className="inputSala1">
-                            <option value={0}>Selecione uma categoria</option>
-                            {categorias.map((categoria) => (
-                                <option key={categoria.categoriaID} value={categoria.categoriaID}>{categoria.categoria}</option>
-                            ))}
-                        </select>
 
-                {error && <div className="error">{error}</div>}
-                {faqAdm.map((faq) => (
-                    <div className="faqPost" key={faq.mensagemID}>
-                        <div>
-                            <p>{faq.titulo}</p>
-                            <p>{faq.mensagem}</p>
-                        </div>
+                <button type='submit' className="btnAdd"><img src={add} alt="add" /></button>
+
+            </form>
+
+            <div className='containerFiltroFaq'>
+            <select value={categoriaFiltro} onChange={(e) => setCategoriaFiltro(Number(e.target.value))} className="filtroFaq">
+                <option value={0}>Filtro categorias</option>
+                {categorias.map((categoria) => (
+                    <option key={categoria.categoriaID} value={categoria.categoriaID}>{categoria.categoria}</option>
+                ))}
+            </select>
+            
+            </div>
+
+
+            {error && <div className="error">{error}</div>}
+            {
+                faqAdm.map((faq) => (
+                    <div className="rowInformacoes" key={faq.mensagemID}>
+                        <p>{faq.titulo}</p>
+                        <p>{faq.mensagem}</p>
                         <button className="excluir" onClick={() => handleDeleteUser(faq.mensagemID)}>
                             <span className="material-symbols-outlined">delete</span>
                         </button>
                     </div>
                 ))}
-                
-            </div>
-        </div>
+        </div >
     );
 };
 
