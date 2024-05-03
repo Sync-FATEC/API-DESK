@@ -1,27 +1,21 @@
-.containerBase, .basePost{
+.containerBase{
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    white-space: nowrap;
-    padding: 15px;
-    margin: 10px;
-    border-bottom: 2px var(--cinza-color) solid;
-    border-top: 2px var(--cinza-color) solid;
+    flex-direction: column;
     width: 100%;
 }
 
-.inputBorder{
-    border: none;
+.containerFiltroBase{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
 }
-
-.inputBase {
-    width: 665px;
-    margin-bottom: 10px;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    border: none;
-}
-
-.basePost {
-    white-space: normal;
+.filtroBase{
+    border-radius: 10px;
+    border: 2px solid var(--cinza-color);
+    color: var(--black-color);
+    font-size: 18px;
+    background: var(--branco-color);
+    padding: 10px;
+    
 }

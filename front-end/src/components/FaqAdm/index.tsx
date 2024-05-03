@@ -97,7 +97,7 @@ const FaqAdm = () => {
                     </div>
                 </div>
 
-                <button type='submit' className="btnAdd"><img src={add} alt="add" /></button>
+                <button type='submit' className="btnAdd"><span className="material-symbols-outlined">Add</span></button>
 
             </form>
 
