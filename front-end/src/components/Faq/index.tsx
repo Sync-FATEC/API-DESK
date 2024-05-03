@@ -36,25 +36,23 @@ export const FAQ = () => {
                 <img src={banner} alt="banner" />
             </div>
             <div className="containerFAQ">
-                <div className="title">
-                    <div className="formTitle">Perguntas Frequentes</div>
-                </div>
+                <h1>Perguntas Frequentes</h1>
                 {loading ? (
                     <div>Carregando...</div>
                 ) : error ? (
                     <div>{error}</div>
                 ) : (
-                    faqs.map((faq, index) => (
-                        <div className="faq" key={index}>
-                            <details className='sumary'>
-                                <summary>{faq.titulo}</summary>
-                                <p>{faq.mensagem}</p>
-                            </details>
-                        </div>
-                    ))
-                )}
+                faqs.map((faq, index) => (
+                    <div className="faq" key={index}>
+                        <details className='detalhesFAQ'>
+                            <summary className='sumarioFAQ'>{faq.titulo}</summary>
+                            <p className='menssagemFAQ'>{faq.mensagem}</p>
+                        </details>
+                    </div>
+                )))}
             </div>
         </>
     );
+    
 };
 export default FAQ;

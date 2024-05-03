@@ -1,66 +1,93 @@
-.banner{
-    background-color: var(--cinza-color);
+.banner {
     display: flex;
     justify-content: center;
-    
+    padding: var(--padding-global);
+    background-color: var(--cinza-color);
+
 }
-.banner img{
+
+.banner img {
     width: 50vw;
     height: 50vh;
 }
 
-.containerFAQ{
-    width: 90vw;
-    height: 90vh;
-    margin: 0 auto;
-}
 
-.faq{
+.containerFAQ{
     display: flex;
     flex-direction: column;
-    border-top: 2px solid var(--black-color);
-    border-bottom: 2px solid var(--black-color); 
-    padding: 16px;
-    margin-bottom: 16px;
-    /* flex-wrap: nowrap; */
-    /* justify-content: space-between; */
+    padding: var(--padding-global);
 }
-.faqLinha{
+.containerFAQ h1{
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    /* background-color: aquamarine; */
+    margin: 10px;
+    color: var(--black-color);
+    justify-content: center
+}
+
+.faq {
+    margin-bottom: 20px;
+}
+
+.detalhesFAQ {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    border: 2px solid var(--cinza-color);
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.sumarioFAQ {
+    position: relative;
+    padding: 10px 40px;
+    font-size: 24px;
+    font-weight: 600;
+    border-radius: 10px;
+    margin-bottom: 5px;
+    list-style: none;
     width: 100%;
+
 }
-.faqLinha button{
-    border: none;
-    background-color: var(--white-color) ;
-    padding: 1px;
+.menssagemFAQ{
+    font-size: 20px;
+    font-weight: 600;
+    padding-left:40px ;
+
 }
 
-.textoFaq{
-    display: none;
+.sumarioFAQ:before,
+.sumarioFAQ:after {
+    content: "";
+    position: absolute;
 }
 
-.mostrar{
-    display: block;
+.sumarioFAQ:before {
+    left: 12px;
+    top: 50%;
+    height: 2px;
+    margin-top: -1px;
+    width: 16px;
+    background: var(--black-color);
 }
 
-summary::-webkit-details-marker {
-    display: none
-  }
-  summary:after {
-    background: black; 
-    content: "+"; 
-    color: #fff; 
-    float: left;  
-    font-weight: bold; 
-    padding: 0; 
-    text-align: center; 
-    width: 20px;
+.sumarioFAQ:after {
     left: 20px;
-    margin-right: 10px;
-  }
-  details[open] summary:after {
-    content: "-";
-  }
+    top: 50%;
+    height: 16px;
+    margin-top: -8px;
+    width: 2px;
+    margin-left: -1px;
+    background: var(--black-color);
+    transition: all 300ms ease-in-out;
+}
+
+.sumarioFAQ[open]::after {
+    opacity: 0;
+    transform: translateY(25%);
+}
+
+.detalhesFAQ p {
+    font-size: 16px;
+    margin-top: 10px;
+    color: var(--black-color);
+}
