@@ -11,6 +11,7 @@ const BaseDeConhecimento = () => {
     const [mensagem, setMensagem] = useState('');
     const [categorias, setCategorias] = useState<ICategoria[]>([]);
     const [categoria, setCategoria] = useState(0);
+    const [categoriaFiltro, setCategoriaFiltro] = useState(0);
 
     const handleTituloChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setTitulo(event.target.value);
@@ -95,6 +96,12 @@ const BaseDeConhecimento = () => {
                         <textarea value={mensagem} onChange={(e) => setMensagem(e.target.value)} className="inputBase" placeholder="Adicionar Mensagem" rows={2}></textarea>                        
                     </form>
                 </div>
+                <select value={categoriaFiltro} onChange={(e) => setCategoriaFiltro(Number(e.target.value))} className="inputBorder">
+                            <option value={0}>Selecione uma categoria</option>
+                            {categorias.map((categoria, index) => (
+                                <option key={index} value={categoria.categoriaID}>{categoria.categoria}</option>
+                            ))}
+                        </select>
                 {baseDeConhecimento.map((base, index) => (
                     <div className="basePost" key={base.mensagemID}>
                         <div>

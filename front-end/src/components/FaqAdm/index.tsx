@@ -13,6 +13,7 @@ const FaqAdm = () => {
     const [categorias, setCategorias] = useState<ICategoria[]>([]);
     const [categoriaSelecionada, setCategoriaSelecionada] = useState<number>(0);
     const [error, setError] = useState<string>('');
+    const [categoriaFiltro, setCategoriaFiltro] = useState(0);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -79,19 +80,7 @@ const FaqAdm = () => {
     return (
         <div className="adminContainer">
             <div className="container">
-                {error && <div className="error">{error}</div>}
-                {faqAdm.map((faq) => (
-                    <div className="faqPost" key={faq.mensagemID}>
-                        <div>
-                            <p>{faq.titulo}</p>
-                            <p>{faq.mensagem}</p>
-                        </div>
-                        <button className="excluir" onClick={() => handleDeleteUser(faq.mensagemID)}>
-                            <span className="material-symbols-outlined">delete</span>
-                        </button>
-                    </div>
-                ))}
-                <div className="numeroFaq">
+            <div className="numeroFaq">
                     <form onSubmit={handleAddUser} method='post'>
                         <select value={categoriaSelecionada} onChange={(e) => setCategoriaSelecionada(Number(e.target.value))} className="inputSala1">
                             <option value={0}>Selecione uma categoria</option>
@@ -106,6 +95,26 @@ const FaqAdm = () => {
                         <textarea value={mensagem} onChange={(e) => setMensagem(e.target.value)} className="inputFaq" placeholder="Adicionar Mensagem" rows={2}></textarea>
                     </form>
                 </div>
+                <select value={categoriaFiltro} onChange={(e) => setCategoriaFiltro(Number(e.target.value))} className="inputSala1">
+                            <option value={0}>Selecione uma categoria</option>
+                            {categorias.map((categoria) => (
+                                <option key={categoria.categoriaID} value={categoria.categoriaID}>{categoria.categoria}</option>
+                            ))}
+                        </select>
+
+                {error && <div className="error">{error}</div>}
+                {faqAdm.map((faq) => (
+                    <div className="faqPost" key={faq.mensagemID}>
+                        <div>
+                            <p>{faq.titulo}</p>
+                            <p>{faq.mensagem}</p>
+                        </div>
+                        <button className="excluir" onClick={() => handleDeleteUser(faq.mensagemID)}>
+                            <span className="material-symbols-outlined">delete</span>
+                        </button>
+                    </div>
+                ))}
+                
             </div>
         </div>
     );
