@@ -1,8 +1,10 @@
 import React from 'react';
-import { useContext } from 'react';
-import { AuthContext } from '../../contexts/Auth/AuthContext';
+import { useState } from 'react';
+
 import './visualizarticket.css';
 import ITickets from '../../types/ITickets';
+import { EscalamentoTicket } from '../../components/EscalamentoTicket';
+
 
 interface Props {
     selectedTicket: ITickets | null;
@@ -10,17 +12,41 @@ interface Props {
 }
 
 const VisualizarTicket: React.FC<Props> = ({ selectedTicket, onClose }) => {
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const user = useContext(AuthContext);
+   
+    
 
-    // Verifica se o ticket está selecionado
-    if (!selectedTicket) return null;
+    const [modalOpen, setModalOpen] = useState(false);
+    
+
+    const handleOpenModal = () => {
+        setModalOpen(true);
+    };
+
+    const handleCloseModal = () => {
+        setModalOpen(false);
+    };
+
+    if (!selectedTicket) {
+        return null;
+    }
+
+
 
     return (
         <div className="modalVisualizar">
             <div className='btnVisualizar'> 
                 <div>
+                <button className="btnHeader" onClick={handleOpenModal}>
                     <span className="material-symbols-outlined">sync_alt</span>
+                </button>
+                {modalOpen && (
+                <div className="modal">
+                    <div className="modalContent">
+                        <span className="close" onClick={handleCloseModal}>&times;</span>
+                        <EscalamentoTicket />
+                    </div>
+                </div>
+            )}
                     <span id='btnAtendendo' className="material-symbols-outlined">play_circle</span>
                     <span id='btnPendente' className="material-symbols-outlined">pause_circle</span>
                     <span id='btnFinalizar' className="material-symbols-outlined">check_circle</span>
@@ -32,23 +58,21 @@ const VisualizarTicket: React.FC<Props> = ({ selectedTicket, onClose }) => {
 
             <div className='infoContainer'>
                 <div className="infoVisualizar">
-                    <h2>{selectedTicket.titulo}</h2>
-                    <p>{selectedTicket.descricao}</p>
-                    <p>{selectedTicket.status}</p>
-                    <p>{selectedTicket.categoria.categoria}</p>
-                    <p>{selectedTicket.equipamentos.equipamento}</p>
-                    <p>{selectedTicket.sala.numeroSala}</p>
-                    <p>{selectedTicket.usuario.nome}</p>
+                    <h2>Título: {selectedTicket.titulo}</h2>
+                    <p>Descrição {selectedTicket.descricao}</p>
+                    <p>Categoria: {selectedTicket.categoria.categoria}</p>
+                    <p>Equipamento: {selectedTicket.equipamentos.equipamento}</p>
+                    <p>Sala: {selectedTicket.sala.numeroSala}</p>
+                    <p>Nome descrição: {selectedTicket.usuario.nome}</p>
                     <div>{new Date(selectedTicket.dataAbertura).toLocaleDateString('pt-BR')}</div>
                 </div>
                 <div className='infoChat'>
                     {/* Aqui você pode adicionar o componente de chat, se necessário */}
                 </div>
             </div>
-
-            {/* Botão para fechar o modal */}
-            <span className="close" onClick={onClose}>&times;</span>
+            
         </div>
+        
     );
 };
 

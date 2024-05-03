@@ -23,16 +23,20 @@ export const Tecnicos = () => {
   useEffect(() => {
     const fetchTickets = async () => {
       try {
-        const response = await axios.get('http://localhost:5555/tickets/listar/' + user.user?.usuarioID);
-        setTickets(response.data);
+        const response = await axios.get(`http://localhost:5555/tickets/listar/${user.user?.usuarioID}`);
+        const initializedTickets = response.data.map((ticket: ITickets) => ({
+          ...ticket,
+          status: ticket.status || 'A fazer' // Define o status inicial se não estiver definido
+        }));
+        setTickets(initializedTickets);
       } catch (error) {
-        console.error(error);
+        console.error("Erro ao buscar tickets:", error);
       }
     };
-
+  
     fetchTickets();
   }, [user.user]);
-
+  
   return (
     <div className="ticketContainer">
       <div className="formTicket">
@@ -69,8 +73,9 @@ export const Tecnicos = () => {
               <div className='finalizado'>Finalizado</div>
             </div>
             {tickets.map((ticket, index) => (
+               ticket.ticketsID && ticket.titulo && 
               <div key={index} className="ticket-itemTec">
-                <div className='afazerInfo'>
+                <div className='afazerInfo'  onClick={() => handleOpenVisualizarTicketModal(ticket)}>
                   <div>
                     #{ticket.ticketsID}
                   </div>
@@ -84,7 +89,7 @@ export const Tecnicos = () => {
                 </div>
                 <div className='atendendo'>Atendendo</div>
                 <div className='pendente'>Pendente</div>
-                <div className='finalizado' onClick={() => handleOpenVisualizarTicketModal(ticket)}>Finalizado</div>
+                <div className='finalizado'> Finalizado</div>
               </div>
             ))}
           </div>
