@@ -120,6 +120,56 @@ const EquipamentoAdm = () => {
         <div className="adminContainer">
             <div className="titulo">
             </div>
+            <div className="container">
+                <form onSubmit={handleAddUser} method="post">
+                <div className="topEquip">
+                    <div className="formInput">
+                        <label className="labelEquipamento" htmlFor="sala">Sala</label>
+                        <select className="selectEquipamento" onChange={handleNumeroSala} value={numeroSala}>
+                            <option value={undefined}></option>
+                            {salas.map((sala, index) => (
+                            <option value={sala.numeroSala} key={index}>{sala.numeroSala}</option>
+                            ))}
+                    </select>
+                    </div>
+                    <div className="formInput">
+                        <label className="labelEquipamento" htmlFor="categoria">Categoria</label>
+                        <select className="selectEquipamento" onChange={handleCategoriaID} value={categoriaID}>
+                            <option value={undefined}></option>
+                            {categorias.map((categoria, index) => (
+                            <option value={categoria.categoriaID} key={index}>
+                                {categoria.categoria}
+                            </option>
+                            ))}
+                        </select>
+                    </div>
+                    <div className="formInput">
+                        <label className="labelEquipamento" htmlFor="prioridade">Prioridade</label>
+                        <select className="selectEquipamento" onChange={handlePrioridade} value={prioridade}>
+                            <option value={undefined}></option>
+                            <option value="Baixa">Baixa</option>
+                            <option value="Media">Média</option>
+                            <option value="Alta">Alta</option>
+                        </select>
+                    </div>
+                    </div>
+                    <div className="baixoEquipamento">
+                    <div className="formInput">
+                        <label className="labelInput" htmlFor="equipamento">Equipamento</label>
+                        <input className="inputMenor" type="text" onChange={handleEquipamento} value={equipamento}/>
+                    </div>
+                    <div className="formInput formInputSla">
+                        <label className="labelInput" htmlFor="sla">SLA</label>
+                        <input className="inputMenor inputSla" type="number" onChange={handleSla} value={sla} />
+                        <button className='add' type="submit"><span className="material-symbols-outlined">Add</span></button>
+                    </div>
+                    </div>
+                </form>
+            </div>
+
+
+
+
             {salas.map((sala, index) => (
                 <details key={index}>
                     <summary>{sala.numeroSala}</summary>
@@ -140,35 +190,7 @@ const EquipamentoAdm = () => {
                     ))}
                 </details>
             ))}
-            <div className="container">
-                <form onSubmit={handleAddUser} method="post">
-                    <input type="text" onChange={handleEquipamento} value={equipamento}/>
-                    <select onChange={handleNumeroSala} value={numeroSala}>
-                        <option value={undefined}>Selecione algo</option>
-                        {salas.map((sala, index) => (
-                            <option value={sala.numeroSala} key={index}>
-                                {sala.numeroSala}
-                            </option>
-                        ))}
-                    </select>
-                    <select onChange={handleCategoriaID} value={categoriaID}>
-                        <option value={undefined}>Selecione algo</option>
-                        {categorias.map((categoria, index) => (
-                            <option value={categoria.categoriaID} key={index}>
-                                {categoria.categoria}
-                            </option>
-                        ))}
-                    </select>
-                    <select onChange={handlePrioridade} value={prioridade}>
-                        <option value={undefined}>Selecione algo</option>
-                        <option value="Baixa">Baixa</option>
-                        <option value="Media">Média</option>
-                        <option value="Alta">Alta</option>
-                    </select>
-                    <input type="number" onChange={handleSla} value={sla} />
-                    <button type="submit">ENVIAR!</button>
-                </form>
-            </div>
+            
         </div>
     )};
 

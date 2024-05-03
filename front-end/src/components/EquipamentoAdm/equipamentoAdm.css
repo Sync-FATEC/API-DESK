@@ -44,3 +44,44 @@
 
 }
 
+.selectEquipamento{
+    border-radius: 10px;
+    border: 2px solid var(--cinza-color);
+    color: var(--black-color);
+    font-size: 18px;
+    width: 100%;
+    background: var(--branco-color);
+    padding: 10px;
+}
+
+.labelEquipamento{
+    position: relative;
+    left: 5px;
+    top: 10px;
+    font-size: 16px;
+    color: var(--black-color);
+    padding: 0 5px;
+    transition: 200ms ease-in-out;
+    pointer-events: none;
+    font-weight: 600;
+    width: 100%;
+    background-color: var(--branco-color);
+}
+
+.topEquip{
+    display: flex;
+    justify-content: space-between;
+    
+}
+
+.inputMenor{
+    height: 28px !important;
+}
+
+.inputSla{
+    width: 308px !important;
+}
+.formInputSla{
+    display: flex;
+    justify-content: space-between;
+}
