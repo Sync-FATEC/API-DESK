@@ -146,15 +146,7 @@ aside {
   padding: 0 120px;
   flex-direction: column;
 }
-.input {
-  border-radius: 10px;
-}
-.linha{
-  display: flex;
-  justify-content: space-between;
-  width: 90%;
-  align-items: center;
-}
+
 .rowInformacoes{
   display: flex;
   justify-content: space-between;
