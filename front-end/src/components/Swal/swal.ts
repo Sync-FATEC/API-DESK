@@ -8,7 +8,7 @@ export const warning = (message: string) => {
         icon: 'warning',
         confirmButtonText: 'OK',
         backdrop: 'rgba(0,0,0,0.7)',
-        timer: 3000, // 3 segundos
+        timer: 2000, // 3 segundos
         timerProgressBar: true,
         showClass: {
             popup: 'animate__animated animate__fadeInDown'

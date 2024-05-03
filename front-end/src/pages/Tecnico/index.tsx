@@ -63,14 +63,26 @@ export const Tecnicos = () => {
         <div className='ticket-contentTec'>
           <div className="ticket-listTec">
             <div className="ticket-typesTec">
-              <div className='afazer'>A fazer
+              <div id='btnAfazer' className='afazer'>A fazer
                 <span className="material-symbols-outlined">
                   flag
                 </span>
               </div>
-              <div className='atendendo'>Atendendo</div>
-              <div className='pendente'>Pendente</div>
-              <div className='finalizado'>Finalizado</div>
+              <div id='btnAtendendo' className='atendendo'>Atendendo
+              <span className="material-symbols-outlined">
+                  play_circle
+                </span>
+              </div>
+              <div id='btnPendente' className='pendente'>Pendente
+                <span className="material-symbols-outlined">
+                  pause_circle
+                </span>              
+              </div>
+              <div id='btnFinalizar' className='finalizado'>Finalizado
+              <span className="material-symbols-outlined">
+                  check_circle
+                </span> 
+              </div>
             </div>
             {tickets.map((ticket, index) => (
                ticket.ticketsID && ticket.titulo && 
@@ -87,9 +99,10 @@ export const Tecnicos = () => {
                     {new Date(ticket.dataAbertura).toLocaleDateString('pt-BR')}
                   </div>
                 </div>
+                {/*}
                 <div className='atendendo'>Atendendo</div>
                 <div className='pendente'>Pendente</div>
-                <div className='finalizado'> Finalizado</div>
+                <div className='finalizado'> Finalizado</div>*/}
               </div>
             ))}
           </div>

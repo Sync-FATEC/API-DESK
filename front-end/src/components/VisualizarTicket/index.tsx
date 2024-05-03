@@ -30,7 +30,7 @@ const VisualizarTicket: React.FC<Props> = ({ selectedTicket, onClose }) => {
         return null;
     }
 
-
+    
 
     return (
         <div className="modalVisualizar">
@@ -39,14 +39,6 @@ const VisualizarTicket: React.FC<Props> = ({ selectedTicket, onClose }) => {
                 <button className="btnHeader" onClick={handleOpenModal}>
                     <span className="material-symbols-outlined">sync_alt</span>
                 </button>
-                {modalOpen && (
-                <div className="modal">
-                    <div className="modalContent">
-                        <span className="close" onClick={handleCloseModal}>&times;</span>
-                        <EscalamentoTicket />
-                    </div>
-                </div>
-            )}
                     <span id='btnAtendendo' className="material-symbols-outlined">play_circle</span>
                     <span id='btnPendente' className="material-symbols-outlined">pause_circle</span>
                     <span id='btnFinalizar' className="material-symbols-outlined">check_circle</span>
@@ -70,7 +62,14 @@ const VisualizarTicket: React.FC<Props> = ({ selectedTicket, onClose }) => {
                     {/* Aqui você pode adicionar o componente de chat, se necessário */}
                 </div>
             </div>
-            
+            {modalOpen && (
+                <div className="modal">
+                    <div className="modalContent">
+                        <span className="close" onClick={handleCloseModal}>&times;</span>
+                        <EscalamentoTicket />
+                    </div>
+                </div>
+            )}
         </div>
         
     );

@@ -23,11 +23,15 @@ export const Perfil = () => {
             denyButtonText: "Não", // texto do botão de recusar
             width: 410, // largura do aviso
             confirmButtonColor: 'rgb(0,114,187)', // teste de cor para os botão
-            denyButtonColor: 'rgb(255, 0, 53)', // teste de cor para os botão
+            denyButtonColor: 'rgb(255, 0, 53)',
+            heightAuto: false,
+            backdrop: false, // teste de cor para os botão
             customClass: { // para colocar o css das coisas
                 confirmButton: 'cButton',
                 denyButton: 'dButton',
+                
             }
+            
         }).then((result) => {
             if (result.isConfirmed) {
                 signout(); 

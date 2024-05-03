@@ -175,3 +175,41 @@ aside {
   cursor: pointer;
 
 }
+
+.afazer{
+  padding: 6px 12px;
+  border: 1px solid var(--red-error-color);
+  border-radius: 10px;
+}
+
+.atendendo{
+  padding: 6px 12px;
+  border: 1px solid #2F2E41;
+  border-radius: 10px;
+}
+.pendente{
+  padding: 6px 12px;
+  border: 1px solid #FF8A00;
+  border-radius: 10px;
+}
+.finalizado{
+  padding: 6px 12px;
+  border: 1px solid #28C94C;
+  border-radius: 10px;
+}
+#btnAtendendo{
+  color: var(--black-color);
+}
+#btnPendente{
+  color: #FF8A00;
+}
+#btnFinalizar{
+  color: #28C94C;
+}
+#btnSla{
+  color: var(--red-error-color);
+  margin-left: 200px;
+}
+#btnAfazer{
+  color: var(--red-error-color);
+}
