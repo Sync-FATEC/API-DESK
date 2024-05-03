@@ -1,5 +1,4 @@
 import './BaseDeConhecimento.css';
-import add from '../../assets/img/add.png';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import IMensagens from '../../types/IMensagens';
@@ -9,7 +8,7 @@ import { erro, Toast, warning } from '../Swal/swal';
 const BaseDeConhecimento = () => {
     const [baseDeConhecimento, setBaseDeConhecimento] = useState<IMensagens[]>([]);
     const [titulo, setTitulo] = useState('');
-    const [mensagem] = useState(null);
+    const [mensagem, setMensagem] = useState('');
     const [categorias, setCategorias] = useState<ICategoria[]>([]);
     const [categoria, setCategoria] = useState(0);
 
@@ -66,6 +65,7 @@ const BaseDeConhecimento = () => {
             });
         setBaseDeConhecimento([...baseDeConhecimento, response.data]);
         setTitulo('');
+        setMensagem('');
         setCategoria(0);
         Toast.fire({
         icon: "success",
@@ -79,36 +79,36 @@ const BaseDeConhecimento = () => {
     };
     return (
         <div className="adminContainer">
-            <div className="titulo">
-            </div>
-
             <div className="container">
-                {baseDeConhecimento.map((base, index) => (
-                    <div className="numeroSala" key={base.mensagemID}>
-                            <p>{base.titulo}</p>
-                        <button className="excluir" onClick={() => handleDeleteUser(base.mensagemID)}>
-                            <span className="material-symbols-outlined">
-                            delete
-                            </span>
-                        </button>
-                    </div>
-                ))}
-                <div className="numeroSala">
+                <div className="containerBase">
                     <form onSubmit={handleAddUser} method='post'>
-                        <input value={titulo} onChange={handleTituloChange} type="text" className="inputSala" placeholder="Adicionar Titulo"/>
-                        <select value={categoria} onChange={(e) => setCategoria(Number(e.target.value))} className="inputSala">
+                        <select value={categoria} onChange={(e) => setCategoria(Number(e.target.value))} className="inputBorder">
                             <option value={0}>Selecione uma categoria</option>
                             {categorias.map((categoria, index) => (
                                 <option key={index} value={categoria.categoriaID}>{categoria.categoria}</option>
                             ))}
                         </select>
-                        <button type='submit'>Criar nova mensagem</button>
+                        <div className="inputs">
+                            <input value={titulo} onChange={handleTituloChange} type="text" className="inputBase" placeholder="Adicionar Titulo"/>
+                            <button type='submit' className='add'><span className="material-symbols-outlined">Add</span></button>
+                        </div>
+                        <textarea value={mensagem} onChange={(e) => setMensagem(e.target.value)} className="inputBase" placeholder="Adicionar Mensagem" rows={2}></textarea>                        
                     </form>
-                <img src={add} alt="add" />
                 </div>
-                
+                {baseDeConhecimento.map((base, index) => (
+                    <div className="basePost" key={base.mensagemID}>
+                        <div>
+                            <p>{base.titulo}</p>
+                            <p>{base.mensagem}</p>
+                        </div>    
+                        <button className="excluir" onClick={() => handleDeleteUser(base.mensagemID)}>
+                            <span className="material-symbols-outlined">delete</span>
+                        </button>
+                    </div>
+                ))}
             </div>
         </div>
-    )};
+    )
+};
 
 export default BaseDeConhecimento;

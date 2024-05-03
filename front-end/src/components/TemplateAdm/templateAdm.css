@@ -37,10 +37,14 @@
 }
 
 
-.add{
-    border: none;
-    outline: none;
-    background: none;
-
+.containerTemplate{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    white-space: nowrap;
+    padding: 15px;
+    margin: 10px;
+    border: 2px solid var(--cinza-color);
+    border-radius: 10px;
+    width: 100%;
 }
-
