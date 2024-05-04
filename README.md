@@ -194,6 +194,14 @@ alt="MVP">
     </tr>
     <tr>
       <td>15</td>
+      <td>BAIXA</td>
+      <td>Como administrador, quero poder cadastrar categorias e prioridade de chamados, para que os chamados possam ser organizados de forma eficiente e direcionados para as equipes corretas.</td>
+      <td>5</td>
+      <td>2</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>16</td>
       <td>ALTA</td>
       <td>Como técnico, quero poder escalar chamados para um técnico de nível superior, para chamados que requerem mais conhecimento</td>
       <td>3</td>
@@ -201,14 +209,14 @@ alt="MVP">
       <td>3</td>
     </tr>
     <tr>
-      <td>16</td>
+      <td>17</td>
       <td>ALTA</td>
       <td>Como cliente, após abrir um ticket, quero acompanhar seu status na interface do sistema para ver se está "Aberto", "Em atendimento", "Pendente" e "Finalizado", além de quaisquer atualizações feitas pela equipe de suporte, para estar informado sobre o progresso do meu pedido.</td>
       <td>5</td>
       <td>3</td>
       <td>3</td>
     </tr>
-      <td>17</td>
+      <td>18</td>
       <td>MÉDIA</td>
       <td>Como cliente, quero poder adicionar mais informações ou fazer perguntas adicionais sobre o ticket por meio de  anotações na interface do ticket</td>
       <td>8</td>
@@ -216,7 +224,7 @@ alt="MVP">
       <td>3</td>
     </tr>
     <tr>
-      <td>18</td>
+      <td>19</td>
       <td>MÉDIA</td>
       <td>Como técnico, quero poder adicionar mais informações ou fazer perguntas adicionais sobre o ticket por meio de  anotações na interface do ticket</td>
       <td>8</td>
@@ -224,7 +232,7 @@ alt="MVP">
       <td>3</td>
     </tr>
     <tr>
-      <td>19</td>
+      <td>20</td>
       <td>MÉDIA</td>
       <td>Como técnico, Quero poder filtrar chamados por prioridade, para que eu possa priorizar e resolver primeiro os chamados mais críticos.</td>
       <td>8</td>
@@ -232,7 +240,7 @@ alt="MVP">
       <td>3</td>
     </tr>
     <tr>
-      <td>20</td>
+      <td>21</td>
       <td>MÉDIA</td>
       <td>Como administrador, quero poder gerenciar os acessos de técnico</td>
       <td>8</td>
@@ -240,7 +248,7 @@ alt="MVP">
       <td>2</td>
     </tr>
     <tr>
-      <td>21</td>
+      <td>22</td>
       <td>MÉDIA</td>
       <td>Como técnico, quero poder atualizar o status dos chamados, para que o tempo de SLA seja gerenciado com base no tempo que o ticket permanece em atendimento, garantindo uma resposta e resolução dentro dos prazos acordados.</td>
       <td>8</td>
@@ -248,7 +256,7 @@ alt="MVP">
       <td>6</td>
     </tr>
     <tr>
-      <td>22</td>
+      <td>23</td>
       <td>MÉDIA</td>
       <td>Como administrador, quero definir e ajustar os tempos de SLA para diferentes tipos de chamados, para que possamos garantir um atendimento ágil e dentro das expectativas dos usuários.</td>
       <td>3</td>
@@ -256,7 +264,7 @@ alt="MVP">
       <td>6</td>
     </tr>
     <tr>
-      <td>23</td>
+      <td>24</td>
       <td>MÉDIA</td>
       <td>Como administrador, quero adicionar conteúdos relevantes à base de conhecimento, para que atendentes e técnicos tenham acesso a informações que auxiliem na resolução de chamados.</td>
       <td>2</td>
@@ -264,20 +272,12 @@ alt="MVP">
       <td>5</td>
     </tr>
     <tr>
-      <td>24</td>
+      <td>25</td>
       <td>BAIXA</td>
       <td>Como administrador, quero ter a capacidade de gerenciar e ajustar os turnos dos técnicos, para que eu possa assegurar uma cobertura eficiente do serviço e atender às demandas de trabalho de maneira equilibrada.</td>
       <td>8</td>
       <td>3</td>
       <td>1</td>
-    </tr>
-    <tr>
-      <td>25</td>
-      <td>BAIXA</td>
-      <td>Como administrador, quero poder cadastrar categorias e prioridade de chamados, para que os chamados possam ser organizados de forma eficiente e direcionados para as equipes corretas.</td>
-      <td>5</td>
-      <td>3</td>
-      <td>3</td>
     </tr>
     <tr>
       <td>26</td>
