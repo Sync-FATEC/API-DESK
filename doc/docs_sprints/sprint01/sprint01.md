@@ -96,28 +96,12 @@
           <td>Configurar o banco de dados para armazenar os dados do CPF</td>
         </tr>
         <tr>
-          <td>Como técnico, quero poder escalar chamados para um técnico de nível superior, para chamados que requerem mais conhecimento</td>
-          <td>Implementar uma funcionalidade de escalonamento de chamados para técnicos de nível superior quando necessário, permitindo a seleção do técnico apropriado com base na área de conhecimento necessária.</td>
-          <td>3</td>
-          <td>Criar botão para mudar o escalamento do nível do chamado</td>
-          <td>Criar função para realizar o escalamento de chamados para outro nível do suporte</td>
-          <td>Configurar o banco de dados para armazenar os dados do ticket</td>
-        </tr>
-        <tr>
           <td>Como cliente, após logar com sucesso, quero ser redirecionado para minha página inicial  para visualizar todos os tickets anteriores que abri e verificar o status atual de cada um, para ter um panorama do meu histórico de atendimento.</td>
           <td>Após o login, redirecionar o cliente para uma página inicial que exiba todos os tickets anteriores abertos pelo cliente, listando-os de forma organizada e incluindo detalhes como título, data de abertura, categoria e status atual.</td>
           <td>3</td>
           <td>Criar página inicial com as informações de todos os tickets do usuário logado</td>
           <td>Desenvolver lógica para exibição de tickets do usuário logado</td>
           <td>Configurar permissões de visualização de tickets para usuário logado</td>
-        </tr>
-        <tr>
-          <td>Como cliente, após abrir um ticket, quero acompanhar seu status na interface do sistema para ver se está "Aberto", "Em atendimento", "Pendente" e "Finalizado", além de quaisquer atualizações feitas pela equipe de suporte, para estar informado sobre o progresso do meu pedido.</td>
-          <td>Permitir que clientes visualizem o status atual de seus tickets na interface do sistema, incluindo atualizações feitas pela equipe de suporte, e receber notificações automáticas sobre mudanças ou atualizações no status do ticket.</td>
-          <td>5</td>
-          <td>Criar botão para mudar o status do ticket</td>
-          <td>Implementar função para atualização de status do ticket</td>
-          <td>Configurar gatilhos no bd para atualização de status do ticket</td>
         </tr>
         <tr>
           <td>Como administrador, quero cadastrar soluções para problemas recorrentes no FAQ, para que o cliente possa resolver sem a abertura de chamado </td>
@@ -157,6 +141,14 @@
           <td>Criar interface para o cadastro de equipamentos</td>
           <td>Desenvolver lógica para cadastro e gestão de equipamentos</td>
           <td>Configurar banco de dados para armazenamento de dados de equipamentos</td>
+        </tr>
+        <tr>
+          <td>Como administrador, quero poder cadastrar categorias e prioridade de chamados, para que os chamados possam ser organizados de forma eficiente e direcionados para as equipes corretas</td>
+          <td>O sistema deve permitir que o administrador crie novas categorias e prioridades de chamados</td>
+          <td>5</td>
+          <td>Criar interfaces para cadastro e gestão de categorias e prioridades de chamados</td>
+          <td>Desenvolver lógica para gerenciamento das categorias e prioridades</td>
+          <td>Configurar banco de dados para armazenamento de dados das categorias e prioridades dos tickets</td>
         </tr>
     </tbody>
 </table>
