@@ -72,3 +72,9 @@
     justify-content: center;
     padding: 10px 20px; 
 }
+.modalVisualizar h1 {
+    border-bottom: 2px solid var(--blue-color);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    color: var(--blue-color);
+}

@@ -12,11 +12,11 @@ interface Props {
 }
 
 const VisualizarTicketTecnico: React.FC<Props> = ({ selectedTicket, onClose }) => {
-   
-    
+
+
 
     const [modalOpen, setModalOpen] = useState(false);
-    
+
 
     const handleOpenModal = () => {
         setModalOpen(true);
@@ -30,22 +30,29 @@ const VisualizarTicketTecnico: React.FC<Props> = ({ selectedTicket, onClose }) =
         return null;
     }
 
-    
+
 
     return (
         <div className="modalVisualizar">
-            <div className='btnVisualizar'> 
+            <div className='btnVisualizar'>
                 <div>
-                <button className="btnHeader" onClick={handleOpenModal}>
-                    <span className="material-symbols-outlined">sync_alt</span>
-                </button>
+                    <button id='btnEscalar' className="btnHeader" onClick={handleOpenModal}>
+                        <span className="material-symbols-outlined">sync_alt</span>
+                    </button>
                     <span id='btnAtendendo' className="material-symbols-outlined">play_circle</span>
                     <span id='btnPendente' className="material-symbols-outlined">pause_circle</span>
                     <span id='btnFinalizar' className="material-symbols-outlined">check_circle</span>
                 </div>
                 <div>
-                    <span id='btnSla' className="material-symbols-outlined">bomb</span>
+
+                    <span id='btnSla' className="material-symbols-outlined">bomb
+                    </span>
                 </div>
+                <div className='slaInfo'>
+                    <p>Data do estouro SLA</p>
+                    <p>04/05/2024</p>
+                </div>
+
             </div>
 
             <div className='infoContainer'>
@@ -55,8 +62,8 @@ const VisualizarTicketTecnico: React.FC<Props> = ({ selectedTicket, onClose }) =
                     <p>Categoria: {selectedTicket.categoria.categoria}</p>
                     <p>Equipamento: {selectedTicket.equipamentos.equipamento}</p>
                     <p>Sala: {selectedTicket.sala.numeroSala}</p>
-                    <p>Nome descrição: {selectedTicket.usuario.nome}</p>
-                    <div>{new Date(selectedTicket.dataAbertura).toLocaleDateString('pt-BR')}</div>
+                    <p>Nome cliente: {selectedTicket.usuario.nome}</p>
+                    <div>Data de abertura: {new Date(selectedTicket.dataAbertura).toLocaleDateString('pt-BR')}</div>
                 </div>
                 <div className='infoChat'>
                     {/* Aqui você pode adicionar o componente de chat, se necessário */}
@@ -71,7 +78,7 @@ const VisualizarTicketTecnico: React.FC<Props> = ({ selectedTicket, onClose }) =
                 </div>
             )}
         </div>
-        
+
     );
 };
 

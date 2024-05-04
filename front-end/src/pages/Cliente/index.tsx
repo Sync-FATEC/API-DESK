@@ -59,7 +59,7 @@ const Cliente: React.FC = () => {
                         {isNovoTicketModalOpen && (
                             <div className="modal">
                                 <div className="modal-content">
-                                    <span className="close1" onClick={handleCloseNovoTicketModal}>&times;</span>
+                                    <span className="close" onClick={handleCloseNovoTicketModal}>&times;</span>
                                     <NovoTicket />
                                 </div>
                             </div>
@@ -92,7 +92,9 @@ const Cliente: React.FC = () => {
                     {isVisualizarTicketModalOpen && selectedTicket && (
                         <div className="modal">
                             <div className="modal-content">
+                            <span className="close" onClick={handleCloseVisualizarTicketModal}>&times;</span>
                                 <VisualizarTicketCliente selectedTicket={selectedTicket} onClose={handleCloseVisualizarTicketModal} />
+                                
                             </div>
                         </div>
                     )}

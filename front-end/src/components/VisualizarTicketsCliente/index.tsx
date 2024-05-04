@@ -1,6 +1,6 @@
 import React from 'react';
 import ITickets from '../../types/ITickets';
-
+import './visualizarTickets.css'
 interface Props {
     selectedTicket: ITickets | null;
     onClose: () => void;
@@ -11,22 +11,21 @@ const VisualizarTicketCliente: React.FC<Props> = ({ selectedTicket, onClose }) =
 
     return (
         <div className="modalVisualizar">
+            <h1>{selectedTicket.titulo}</h1>
             <div className='infoContainer'>
                 <div className="infoVisualizar">
-                    <h2>{selectedTicket.titulo}</h2>
-                    <p>{selectedTicket.descricao}</p>
-                    <p>{selectedTicket.status}</p>
-                    <p>{selectedTicket.categoria.categoria}</p>
-                    <p>{selectedTicket.equipamentos.equipamento}</p>
-                    <p>{selectedTicket.sala.numeroSala}</p>
-                    <p>{selectedTicket.usuario.nome}</p>
-                    <div>{new Date(selectedTicket.dataAbertura).toLocaleDateString('pt-BR')}</div>
+                    <p>Descrição: {selectedTicket.descricao}</p>
+                    <p>Categoria: {selectedTicket.categoria.categoria}</p>
+                    <p>Equipamento: {selectedTicket.equipamentos.equipamento}</p>
+                    <p>Sala: {selectedTicket.sala.numeroSala}</p>
+                    
+                    <div>Data de abertura: {new Date(selectedTicket.dataAbertura).toLocaleDateString('pt-BR')}</div>
                 </div>
                 <div className='infoChat'>
-                    {/* Aqui você pode adicionar o componente de chat, se necessário */}
+                    {/* adc info sprint 3*/}
                 </div>
             </div>
-            <span className="close" onClick={onClose}>&times;</span>
+           
         </div>
     );
 };

@@ -4,7 +4,7 @@ import TecnicosAdm from '../TecnicoAdm';
 import {CadastroTecnico} from '../CadastroTecnico';
 import SalaAdm from '../SalaAdm';
 import EquipamentoAdm from '../EquipamentoAdm';
-import CategoriaAdm from '../CategoriaAdm/categoriaAdm';
+import CategoriaAdm from '../CategoriaAdm';
 import FaqAdm from '../FaqAdm';
 import BaseDeConhecimento from '../BaseDeConhecimento';
 import TemplateADM from '../TemplateAdm';

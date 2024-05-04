@@ -192,8 +192,11 @@ aside {
 }
 #btnSla{
   color: var(--red-error-color);
-  margin-left: 200px;
+  margin-left: 140px;
 }
 #btnAfazer{
   color: var(--red-error-color);
+}
+#btnEscalar{
+    color: var(--blue-color);
 }

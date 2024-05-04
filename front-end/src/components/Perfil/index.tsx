@@ -56,8 +56,7 @@ export const Perfil = () => {
 
                 <span className="dadosPerfil">CPF:</span>
                 <p className="infoPerfil">{user.cpf}</p>
-
-         
+                 
             <div className="btnPerfilContainer">
                 <button className="btnPerfil" onClick={handleSignout}>
                     Sair

@@ -2,6 +2,7 @@
     padding: 10px;
     width: 350px;
     background-color: var(--branco-color);
+    z-index: 10000;
 }
 
 .modalPerfil h1 {

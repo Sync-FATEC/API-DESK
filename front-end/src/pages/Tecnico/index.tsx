@@ -47,15 +47,15 @@ export const Tecnicos = () => {
             <div className="filter-containerTec">
               <select className="selectFilter">
                 <option value="abertos">Prioridade</option>
-                <option value="emAtendimento">Em Atendimento</option>
-                <option value="pendentes">Pendentes</option>
-                <option value="finalizados">Finalizados</option>
+                <option value="emAtendimento">Alta</option>
+                <option value="pendentes">Média</option>
+                <option value="finalizados">Baixa</option>
               </select>
               <select className="selectFilter">
                 <option value="abertos">Categoria</option>
-                <option value="emAtendimento">Em Atendimento</option>
-                <option value="pendentes">Pendentes</option>
-                <option value="finalizados">Finalizados</option>
+                <option value="emAtendimento">Hardware</option>
+                <option value="pendentes">Software</option>
+                <option value="finalizados">Rede</option>
               </select>
             </div>
           </div>
