@@ -123,21 +123,13 @@ alt="MVP">
     <tr>
       <td>6</td>
       <td>ALTA</td>
-      <td>Como cliente, quero clicar em um botão "Novo Ticket" para abrir um formulário onde posso preencher informações sobre um novo problema ou solicitação, incluindo título, descrição, categoria, e enviá-lo para a equipe de suporte, para buscar solução para um novo problema ou necessidade.</td>
-      <td>8</td>
-      <td>2</td>
-      <td>3</td>
-    </tr>
-    <tr>
-      <td>7</td>
-      <td>ALTA</td>
       <td>Como técnico, quero acessar uma página com a lista de todos os chamados, para que eu possa ver todos os chamados abertos e suas informações relevantes.</td>
       <td>3</td>
       <td>2</td>
       <td>3</td>
     </tr>
     <tr>
-      <td>8</td>
+      <td>7</td>
       <td>ALTA</td>
       <td>Como cliente, quero que o processo de login inclua uma etapa de verificação da existência do meu CPF, para assegurar que apenas CPFs válidos e registrados tenham acesso, aumentando assim a segurança da minha conta contra acessos indevidos.</td>
       <td>3</td>
@@ -145,7 +137,7 @@ alt="MVP">
       <td>1</td>
     </tr>
     <tr>
-      <td>9</td>
+      <td>8</td>
       <td>ALTA</td>
       <td>Como cliente, após logar com sucesso, quero ser redirecionado para minha página inicial  para visualizar todos os tickets anteriores que abri e verificar o status atual de cada um, para ter um panorama do meu histórico de atendimento.</td>
       <td>3</td>
@@ -153,15 +145,15 @@ alt="MVP">
       <td>3</td>
     </tr>
         <tr>
-      <td>10</td>
+      <td>9</td>
       <td>ALTA</td>
-      <td>Como administrador, quero poder cadastrar categorias e prioridade de chamados, para que os chamados possam ser organizados de forma eficiente e direcionados para as equipes corretas.</td>
-      <td>5</td>
+      <td>Como cliente, quero clicar em um botão "Novo Ticket" para abrir um formulário onde posso preencher informações sobre um novo problema ou solicitação, incluindo título, descrição, categoria, e enviá-lo para a equipe de suporte, para buscar solução para um novo problema ou necessidade.</td>
+      <td>8</td>
       <td>2</td>
-      <td>3</td>
+      <td>4</td>
     </tr>
     <tr>
-      <td>11</td>
+      <td>10</td>
       <td>ALTA</td>
       <td>Como administrador, quero cadastrar soluções para problemas recorrentes no FAQ, para que o cliente possa resolver sem a abertura de chamado</td>
       <td>3</td>
@@ -169,7 +161,7 @@ alt="MVP">
       <td>7</td>
     </tr>
     <tr>
-      <td>12</td>
+      <td>11</td>
       <td>ALTA</td>
       <td>Como cliente, quero ter acesso a uma seção de FAQ que liste problemas comuns no sistema e suas soluções, para que eu possa rapidamente encontrar respostas e solucionar questões sem precisar contatar o suporte.</td>
       <td>2</td>
@@ -177,7 +169,7 @@ alt="MVP">
       <td>7</td>
     </tr>
     <tr>
-      <td>13</td>
+      <td>12</td>
       <td>MÉDIA</td>
       <td>Como administrador, quero acessar os históricos completos dos chamados, Para que eu possa analisar as interações anteriores e melhorar continuamente o processo de suporte.</td>
       <td>5</td>
@@ -185,7 +177,7 @@ alt="MVP">
       <td>3</td>
     </tr>
     <tr>
-      <td>14</td>
+      <td>13</td>
       <td>MÉDIA</td>
       <td>Como cliente, quero acessar meu histórico completo de tickets</td>
       <td>3</td>
@@ -193,24 +185,32 @@ alt="MVP">
       <td>3</td>
     </tr>
     <tr>
-      <td>15</td>
+      <td>14</td>
       <td>MÉDIA</td>
       <td>Como administrador, quero cadastrar equipamentos no sistema, para que possamos manter um registro detalhado dos equipamentos utilizados pelos usuários.</td>
       <td>3</td>
       <td>2</td>
       <td>1</td>
-         <tr>
-      <td>16</td>
-      <td>MÉDIA</td>
+    </tr>
+    <tr>
+      <td>15</td>
+      <td>ALTA</td>
       <td>Como técnico, quero poder escalar chamados para um técnico de nível superior, para chamados que requerem mais conhecimento</td>
       <td>3</td>
       <td>3</td>
       <td>3</td>
     </tr>
+    <tr>
+      <td>16</td>
+      <td>ALTA</td>
+      <td>Como cliente, após abrir um ticket, quero acompanhar seu status na interface do sistema para ver se está "Aberto", "Em atendimento", "Pendente" e "Finalizado", além de quaisquer atualizações feitas pela equipe de suporte, para estar informado sobre o progresso do meu pedido.</td>
+      <td>5</td>
+      <td>3</td>
+      <td>3</td>
     </tr>
       <td>17</td>
       <td>MÉDIA</td>
-      <td>Como cliente, quero poder adicionar mais informações ou fazer perguntas adicionais sobre o ticket por meio de  anotações na interface do ticket.</td>
+      <td>Como cliente, quero poder adicionar mais informações ou fazer perguntas adicionais sobre o ticket por meio de  anotações na interface do ticket</td>
       <td>8</td>
       <td>3</td>
       <td>3</td>
@@ -218,7 +218,7 @@ alt="MVP">
     <tr>
       <td>18</td>
       <td>MÉDIA</td>
-      <td>Como técnico, quero poder adicionar mais informações ou fazer perguntas adicionais sobre o ticket por meio de  anotações na interface do ticket.</td>
+      <td>Como técnico, quero poder adicionar mais informações ou fazer perguntas adicionais sobre o ticket por meio de  anotações na interface do ticket</td>
       <td>8</td>
       <td>3</td>
       <td>3</td>
@@ -234,22 +234,13 @@ alt="MVP">
     <tr>
       <td>20</td>
       <td>MÉDIA</td>
-      <td>Como cliente, após abrir um ticket, quero acompanhar seu status na interface do sistema para ver se está "Aberto", "Em atendimento", "Pendente" e "Finalizado", além de quaisquer atualizações feitas pela equipe de suporte, para estar informado sobre o    
-       progresso do meu pedido.</td>
-      <td>5</td>
-      <td>3</td>
-      <td>4</td>
-    </tr>
-    <tr>
-      <td>21</td>
-      <td>MÉDIA</td>
-      <td>Como administrador, quero poder gerenciar os acessos de técnico.</td>
+      <td>Como administrador, quero poder gerenciar os acessos de técnico</td>
       <td>8</td>
       <td>3</td>
       <td>2</td>
     </tr>
     <tr>
-      <td>22</td>
+      <td>21</td>
       <td>MÉDIA</td>
       <td>Como técnico, quero poder atualizar o status dos chamados, para que o tempo de SLA seja gerenciado com base no tempo que o ticket permanece em atendimento, garantindo uma resposta e resolução dentro dos prazos acordados.</td>
       <td>8</td>
@@ -257,7 +248,7 @@ alt="MVP">
       <td>6</td>
     </tr>
     <tr>
-      <td>23</td>
+      <td>22</td>
       <td>MÉDIA</td>
       <td>Como administrador, quero definir e ajustar os tempos de SLA para diferentes tipos de chamados, para que possamos garantir um atendimento ágil e dentro das expectativas dos usuários.</td>
       <td>3</td>
@@ -265,7 +256,7 @@ alt="MVP">
       <td>6</td>
     </tr>
     <tr>
-      <td>24</td>
+      <td>23</td>
       <td>MÉDIA</td>
       <td>Como administrador, quero adicionar conteúdos relevantes à base de conhecimento, para que atendentes e técnicos tenham acesso a informações que auxiliem na resolução de chamados.</td>
       <td>2</td>
@@ -273,12 +264,20 @@ alt="MVP">
       <td>5</td>
     </tr>
     <tr>
-      <td>25</td>
+      <td>24</td>
       <td>BAIXA</td>
       <td>Como administrador, quero ter a capacidade de gerenciar e ajustar os turnos dos técnicos, para que eu possa assegurar uma cobertura eficiente do serviço e atender às demandas de trabalho de maneira equilibrada.</td>
       <td>8</td>
       <td>3</td>
       <td>1</td>
+    </tr>
+    <tr>
+      <td>25</td>
+      <td>BAIXA</td>
+      <td>Como administrador, quero poder cadastrar categorias e prioridade de chamados, para que os chamados possam ser organizados de forma eficiente e direcionados para as equipes corretas.</td>
+      <td>5</td>
+      <td>3</td>
+      <td>3</td>
     </tr>
     <tr>
       <td>26</td>
