@@ -11,21 +11,32 @@ const VisualizarTicketCliente: React.FC<Props> = ({ selectedTicket, onClose }) =
 
     return (
         <div className="modalVisualizar">
-            <h1>{selectedTicket.titulo}</h1>
-            <div className='infoContainer'>
-                <div className="infoVisualizar">
-                    <p>Descrição: {selectedTicket.descricao}</p>
-                    <p>Categoria: {selectedTicket.categoria.categoria}</p>
-                    <p>Equipamento: {selectedTicket.equipamentos.equipamento}</p>
-                    <p>Sala: {selectedTicket.sala.numeroSala}</p>
-                    
-                    <div>Data de abertura: {new Date(selectedTicket.dataAbertura).toLocaleDateString('pt-BR')}</div>
+            <h1>#{selectedTicket.ticketsID} {selectedTicket.titulo}</h1>
+            <div className='containerVisualizarTicket'>
+                <div className="infoVisualizarTicket">
+                    <div className="infoPair">
+                        <span className="boldText">Data de abertura:</span>
+                        <p>{new Date(selectedTicket.dataAbertura).toLocaleDateString('pt-BR')}</p>
+                    </div>
+                    <div className="infoPair">
+                        <span className="boldText">Sala:</span>
+                        <p>{selectedTicket.sala.numeroSala}</p>
+                    </div>
+                    <div className="infoPair">
+                        <span className="boldText">Categoria:</span>
+                        <p>{selectedTicket.categoria.categoria}</p>
+                    </div>
+                    <div className="infoPair">
+                        <span className="boldText">Equipamento:</span>
+                        <p>{selectedTicket.equipamentos.equipamento}</p>
+                    </div>
+                    <div className="infoPair">
+                        <span className="boldText">Descrição:</span>
+                        <p>{selectedTicket.descricao}</p>
+                    </div>
                 </div>
-                <div className='infoChat'>
-                    {/* adc info sprint 3*/}
-                </div>
+                <div className='chatCliente'></div>
             </div>
-           
         </div>
     );
 };

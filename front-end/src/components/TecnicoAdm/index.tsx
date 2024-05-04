@@ -38,7 +38,6 @@ const TecnicosAdm = () => {
 
     return (
         <div className='adminContainer'>
-            <h2>Técnicos:</h2>
             {tecnicos.map((tecnico, index) => (
                 <div className="containerTecnico" key={index}>
                     <div className="informacaoTecnico">

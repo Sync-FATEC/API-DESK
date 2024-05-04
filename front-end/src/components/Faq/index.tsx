@@ -30,7 +30,8 @@ export const FAQ = () => {
     }, []);
 
     return (
-        <>
+        <div className="ticketContainer">
+        <div className="formTicket">
             <Header />
             <div className="banner">
                 <img src={banner} alt="banner" />
@@ -51,7 +52,8 @@ export const FAQ = () => {
                     </div>
                 )))}
             </div>
-        </>
+            </div>
+        </div>
     );
     
 };
