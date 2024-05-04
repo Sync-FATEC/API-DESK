@@ -3,8 +3,7 @@ import { useState } from 'react';
 
 import './visualizarticket.css';
 import ITickets from '../../types/ITickets';
-import { EscalamentoTicket } from '../EscalamentoTicket';
-
+import EscalamentoTicket from '../EscalamentoTicket';
 
 interface Props {
     selectedTicket: ITickets | null;
@@ -12,11 +11,7 @@ interface Props {
 }
 
 const VisualizarTicketTecnico: React.FC<Props> = ({ selectedTicket, onClose }) => {
-
-
-
     const [modalOpen, setModalOpen] = useState(false);
-
 
     const handleOpenModal = () => {
         setModalOpen(true);
@@ -30,8 +25,6 @@ const VisualizarTicketTecnico: React.FC<Props> = ({ selectedTicket, onClose }) =
         return null;
     }
 
-
-
     return (
         <div className="modalVisualizar">
             <div className='btnVisualizar'>
@@ -44,15 +37,12 @@ const VisualizarTicketTecnico: React.FC<Props> = ({ selectedTicket, onClose }) =
                     <span id='btnFinalizar' className="material-symbols-outlined">check_circle</span>
                 </div>
                 <div>
-
-                    <span id='btnSla' className="material-symbols-outlined">bomb
-                    </span>
+                    <span id='btnSla' className="material-symbols-outlined">bomb</span>
                 </div>
                 <div className='slaInfo'>
                     <p>Data do estouro SLA</p>
                     <p>04/05/2024</p>
                 </div>
-
             </div>
 
             <div className='infoContainer'>
@@ -69,16 +59,16 @@ const VisualizarTicketTecnico: React.FC<Props> = ({ selectedTicket, onClose }) =
                     {/* Aqui você pode adicionar o componente de chat, se necessário */}
                 </div>
             </div>
-            {modalOpen && (
+
+            {modalOpen && selectedTicket && (
                 <div className="modal">
                     <div className="modalContent">
                         <span className="close" onClick={handleCloseModal}>&times;</span>
-                        <EscalamentoTicket />
+                        <EscalamentoTicket selectedTicket={selectedTicket} />
                     </div>
                 </div>
             )}
         </div>
-
     );
 };
 
