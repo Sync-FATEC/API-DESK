@@ -315,7 +315,7 @@ alt="MVP">
 </table>
 
 <h3>Modelo de Dados</h3>
-<img src="https://github.com/Sync-FATEC/API-DESK/blob/main/doc/docs_sprints/sprint01/BDLogico.jpg">
+<img src="https://github.com/Sync-FATEC/API-DESK/blob/main/doc/docs_sprints/sprint02/BDLogico.jpg">
 
 <h2>DoR (Definition of Ready):</h2>
 
@@ -400,7 +400,7 @@ alt="MVP">
   <tr>
     <td align="center">02</td>
     <td>05/05/2023</td>
-    <td></td>
+    <td align="center"><a href="https://github.com/Sync-FATEC/API-DESK/blob/main/doc/docs_sprints/sprint02/sprint02.md">Relatório</a></td> 
     <td align="center">🔄</td>
   </tr>
   <tr>
@@ -419,14 +419,49 @@ alt="MVP">
 </table>
 
 
-<h2>:hammer_and_wrench: Como executar</h2>
+<h2>:hammer_and_wrench: Como instalar</h2>
   <h3>Passo 1: Instale as Dependências</h3>
-  <p>Certifique-se de ter o Git instalado no seu sistema.</p>
-  <p>Para baixar o Git, acesse <a href="https://git-scm.com/downloads">https://git-scm.com/downloads</a>.</p>
+  <p>Certifique-se de ter o Node.js e o MySQL instalados no seu sistema.</p>
+  <p>Para baixar o Node.js <a href="https://nodejs.org/">https://nodejs.org/</a>.</p>
+  <p>Para baixar o MySQL <a href="https://www.mysql.com/downloads/">https://www.mysql.com/downloads/</a>.</p>
   <h3>Passo 2: Abra o Terminal</h3>
   <p>Pesquise por "Terminal" na barra de tarefas do seu dispositivo e abra o terminal.</p>
   <h3>Passo 3: Clone o Repositório</h3>
   <pre><code>git clone https://github.com/Sync-FATEC/API-DESK</code></pre>
+
+  <h3>Passo 4: Instale as Dependências do Backend</h3>
+  <p>No terminal, navegue até a pasta "back-end" dentro do diretório clonado:</p>
+  <pre><code>cd API-DESK/back-end</code></pre>
+  <p>Em seguida, execute o comando para instalar as dependências:</p>
+  <pre><code>npm install</code></pre>
+
+  <h3>Passo 5: Configure o Banco de Dados</h3>
+  <p>Abra o arquivo "data-source.ts" localizado em "API-DESK/back-end/src" e altere as credenciais do banco de dados conforme necessário:</p>
+  <pre><code>export const AppDataSource = new DataSource({
+    type: "mysql",
+    host: "localhost",
+    port: 3306,
+    username: "root",
+    password: "sua-senha",
+    database: "api",
+    synchronize: true,
+    logging: false,
+    entities: [Usuarios, Tickets, Salas, Mensagens, Equipamentos, Categorias],
+    migrations: [],
+    subscribers: []
+});</code></pre>
+
+  <h3>Passo 6: Instale as Dependências do Frontend</h3>
+  <p>Navegue até a pasta "front-end" dentro do diretório clonado:</p>
+  <pre><code>cd ../front-end</code></pre>
+  <p>Em seguida, execute o comando para instalar as dependências:</p>
+  <pre><code>npm install</code></pre>
+
+  <h3>Passo 7: Inicie a Aplicação</h3>
+  <p>Para iniciar a aplicação, ainda dentro da pasta "front-end" e "back-end", execute:</p>
+  <pre><code>npm start</code></pre>
+
+  <p>Agora você pode acessar sua aplicação em um navegador no endereço indicado.</p>
 
 <h2>:busts_in_silhouette: Membros:</h2>
 <table>
