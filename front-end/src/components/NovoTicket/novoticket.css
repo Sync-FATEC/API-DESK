@@ -1,0 +1,37 @@
+.modal-content {
+    background-color: var(--branco-color);
+    border-radius: 10px;
+}
+
+.modalTicket {
+    padding: 20px;
+
+}
+
+.containerNovoTicket {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.modalTicket h1 {
+    border-bottom: 2px solid var(--blue-color);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    color: var(--blue-color);
+}
+
+.containerTickets {
+    display: flex;
+    gap: 10px;
+    width: 800px;
+
+}
+
+.formTicket {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 100%;
+    margin: 10px 0px;
+}

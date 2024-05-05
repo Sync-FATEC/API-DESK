@@ -1,0 +1,22 @@
+.filtroFaq{
+    border-radius: 10px;
+    border: 2px solid var(--cinza-color);
+    color: var(--black-color);
+    font-size: 18px;
+    background: var(--branco-color);
+    padding: 10px;
+    
+}
+.containerFaq{
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+    
+}
+.containerFiltroFaq{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+
+}

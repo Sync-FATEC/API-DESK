@@ -1,0 +1,93 @@
+.banner {
+    display: flex;
+    justify-content: center;
+    padding: var(--padding-global);
+    background-color: var(--cinza-color);
+
+}
+
+.banner img {
+    width: 50vw;
+    height: 50vh;
+}
+
+
+.containerFAQ{
+    display: flex;
+    flex-direction: column;
+    padding: var(--padding-global);
+}
+.containerFAQ h1{
+    display: flex;
+    margin: 10px;
+    color: var(--black-color);
+    justify-content: center
+}
+
+.faq {
+    margin-bottom: 20px;
+}
+
+.detalhesFAQ {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    border: 2px solid var(--cinza-color);
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.sumarioFAQ {
+    position: relative;
+    padding: 10px 40px;
+    font-size: 24px;
+    font-weight: 600;
+    border-radius: 10px;
+    margin-bottom: 5px;
+    list-style: none;
+    width: 100%;
+
+}
+.menssagemFAQ{
+    font-size: 20px;
+    font-weight: 600;
+    padding-left:40px ;
+
+}
+
+.sumarioFAQ:before,
+.sumarioFAQ:after {
+    content: "";
+    position: absolute;
+}
+
+.sumarioFAQ:before {
+    left: 12px;
+    top: 50%;
+    height: 2px;
+    margin-top: -1px;
+    width: 16px;
+    background: var(--black-color);
+}
+
+.sumarioFAQ:after {
+    left: 20px;
+    top: 50%;
+    height: 16px;
+    margin-top: -8px;
+    width: 2px;
+    margin-left: -1px;
+    background: var(--black-color);
+    transition: all 300ms ease-in-out;
+}
+
+.sumarioFAQ[open]::after {
+    opacity: 0;
+    transform: translateY(25%);
+}
+
+.detalhesFAQ p {
+    font-size: 16px;
+    margin-top: 10px;
+    color: var(--black-color);
+}

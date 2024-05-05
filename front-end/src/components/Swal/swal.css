@@ -1,0 +1,13 @@
+/* Estilo da barra de progresso do temporizador */
+.my-progress-bar-class {
+    background-color: rgba(0, 0, 0, 0.7) !important; /* Cor de fundo da barra de progresso */
+    height: 5px !important; /* Altura da barra de progresso */
+}
+
+.green {
+    color: #3e8147;
+}
+
+body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown) {
+    overflow-y: scroll !important;
+}

@@ -1,0 +1,21 @@
+.containerBase{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.containerFiltroBase{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+.filtroBase{
+    border-radius: 10px;
+    border: 2px solid var(--cinza-color);
+    color: var(--black-color);
+    font-size: 18px;
+    background: var(--branco-color);
+    padding: 10px;
+    
+}

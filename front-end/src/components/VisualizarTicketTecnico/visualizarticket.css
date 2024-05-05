@@ -1,0 +1,65 @@
+
+
+.infoVisualizar {
+    display: flex;
+    margin-bottom: 20px;
+    flex-wrap: wrap; 
+    width: 50%;
+}
+
+.selectCategoria {
+    border-radius: 10px;
+    color: var(--black-color);
+}
+
+.inputAssunto {
+    display: flex;
+    text-align: left;
+    border: 2px solid rgba(0, 0, 0, 0.2); 
+    font-size: 20px;
+    border-radius: 10px;
+    width: 97%;
+    padding: 0 10px;
+}
+
+.formInputAssunto {
+    width: 100%;
+    margin: 10px 0;
+}
+
+
+.modalVisualizar{
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    width: 800px;
+    
+}
+
+.btnVisualizar {
+    border-bottom: 2px solid var(--blue-color);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    color: var(--blue-color);
+    display: flex;
+    
+}
+.infoContainer{
+    display: flex;
+
+    flex-direction: row;
+    justify-content:center;
+}
+.infoVisualizar  {
+    display: inline;
+}
+.infoChat{
+    width: 50%;
+}
+.infoVisualizar p {
+    margin-bottom: 10px; 
+    margin-top: 10px;
+}
+.slaInfo{
+    color: var(--red-error-color);
+}
