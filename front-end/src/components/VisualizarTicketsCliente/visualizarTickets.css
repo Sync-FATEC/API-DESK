@@ -23,7 +23,7 @@
 .infoPair {
     display: flex;
     flex-direction: column;
-    padding: 10px;
+    padding: 10px 10px 10px 0;
     width: 90%;
 }
 
@@ -41,9 +41,6 @@
     font-size: 16px;
     color: var(--blue-color);
     font-weight: 600;
-
-
-
 }
 
 .chatCliente {

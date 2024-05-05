@@ -46,14 +46,28 @@ const VisualizarTicketTecnico: React.FC<Props> = ({ selectedTicket, onClose }) =
             </div>
 
             <div className='infoContainer'>
-                <div className="infoVisualizar">
+                <div className="infoVisualizar infoVisualizarTicket">
                     <h2>Título: {selectedTicket.titulo}</h2>
-                    <p>Descrição {selectedTicket.descricao}</p>
-                    <p>Categoria: {selectedTicket.categoria.categoria}</p>
-                    <p>Equipamento: {selectedTicket.equipamentos.equipamento}</p>
-                    <p>Sala: {selectedTicket.sala.numeroSala}</p>
-                    <p>Nome cliente: {selectedTicket.usuario.nome}</p>
-                    <div>Data de abertura: {new Date(selectedTicket.dataAbertura).toLocaleDateString('pt-BR')}</div>
+                    <div className="infoPair">
+                        <span className="boldText">Data de abertura:</span>
+                        <p>{new Date(selectedTicket.dataAbertura).toLocaleDateString('pt-BR')}</p>
+                    </div>
+                    <div className="infoPair">
+                        <span className="boldText">Sala: </span>
+                        <p>{selectedTicket.sala.numeroSala}</p>
+                    </div>
+                    <div className="infoPair">
+                        <span className="boldText">Categoria: </span>
+                        <p>{selectedTicket.categoria.categoria}</p>
+                    </div>
+                    <div className="infoPair">
+                        <span className="boldText">Equipamento: </span>
+                        <p>{selectedTicket.equipamentos.equipamento}</p>
+                    </div>
+                    <div className="infoPair">
+                        <span className="boldText">Descrição: </span>
+                        <p>{selectedTicket.descricao}</p>
+                    </div>
                 </div>
                 <div className='infoChat'>
                     {/* Aqui você pode adicionar o componente de chat, se necessário */}
