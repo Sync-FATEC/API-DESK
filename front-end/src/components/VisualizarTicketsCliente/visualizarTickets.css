@@ -22,8 +22,14 @@
 
 .infoPair {
     display: flex;
+    flex-direction: column;
     padding: 10px;
+    width: 90%;
+}
 
+.infoPair > p {
+    width: 100%;
+    word-wrap: break-word;
 }
 
 .boldText {

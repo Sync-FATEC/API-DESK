@@ -125,7 +125,7 @@ const EquipamentoAdm = () => {
                         <select className="selectCategoria" onChange={handleNumeroSala} value={numeroSala}>
                             <option value={undefined}></option>
                             {salas.map((sala, index) => (
-                                <option value={sala.numeroSala} key={index}>{sala.numeroSala}</option>
+                                <option value={sala.numeroSala} key={index}>{sala.numeroSala} - {sala.identificacao}</option>
                             ))}
                         </select>
                     </div>
@@ -168,7 +168,7 @@ const EquipamentoAdm = () => {
             {salas.map((sala, salaIndex) => (
                 <details className='containerResultado' key={salaIndex}>
                     <summary className='sumarioResultado' >
-                        <label>Sala:</label>{sala.numeroSala}
+                        <label>Sala: </label>{sala.numeroSala} - {sala.identificacao}
                     </summary>
                     {categorias.map((categoria, categoriaIndex) => (
                         <details className='detalhesResultado' key={categoriaIndex}>

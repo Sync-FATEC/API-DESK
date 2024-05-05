@@ -83,7 +83,7 @@ const CategoriaAdm = () => {
                     </div>
                     <div className='formCategoria'>
                         <select className="selectCategoria" value={tipoTecnico} onChange={(e) => setTipoTecnico(e.target.value)}>
-                            <option value="" disabled selected></option>
+                            <option value={undefined}>Tipo técnico</option>
                             <option value="1">Suporte N1</option>
                             <option value="2">Suporte N2</option>
                             <option value="3">Suporte N3</option>
@@ -96,7 +96,7 @@ const CategoriaAdm = () => {
             {categorias.map((categorias, index) => (
                 <div className="rowInformacoes" key={categorias.categoriaID}>
                     <p className="itemCategoria">{categorias.categoria}</p>
-                    <p className="itemCategoria">{categorias.tipoTecnico}</p>
+                    <p className="itemCategoria">N{categorias.tipoTecnico}</p>
                     <button className="excluir" onClick={() => handleDeleteUser(categorias.categoriaID)}>
                         <span className="material-symbols-outlined">Delete</span>
                     </button>

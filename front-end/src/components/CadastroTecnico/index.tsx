@@ -227,7 +227,7 @@ export const CadastroTecnico = () => {
                             <label className="labelInputTecnico" htmlFor="categoria">Categoria do técnico</label>
                             <select className="selectCategoria" value={categoria} onChange={(e) => setCategoria(e.target.value)}>
                                 <option value=""></option>
-                                <option value="1">Suport N1</option>
+                                <option value="1">Suporte N1</option>
                                 <option value="2">Suporte N2</option>
                                 <option value="3">Suporte N3</option>
                             </select>
