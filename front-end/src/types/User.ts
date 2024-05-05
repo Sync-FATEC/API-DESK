@@ -4,5 +4,6 @@ export interface User {
     email: string;
     tipoUsuario: string;
     cpf: string;
+    token: string;
   }
   

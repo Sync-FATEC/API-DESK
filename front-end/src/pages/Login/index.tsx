@@ -45,10 +45,10 @@ export const Login = () => {
   
     try {
       const isLogged = await auth.signin(email, senha);
+      const data = await api.signin(email, senha);
       if (isLogged) { 
-        const data = await api.validateToken(email);
-        if (data && data.tipoUsuario) {
-          switch (data.tipoUsuario) {
+        if (data && data.usuario.tipoUsuario) {
+          switch (data.usuario.tipoUsuario) {
             case 'U':
               Toast.fire({
                 icon: "success",
