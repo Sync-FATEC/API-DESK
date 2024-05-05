@@ -2,6 +2,7 @@ import { In } from 'typeorm';
 import { AppDataSource } from "../data-source";
 import { Usuarios } from "../entity/usuarios";
 import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
 
 export const usuariosRepositorio = AppDataSource.getRepository(Usuarios)
 
@@ -73,7 +74,8 @@ export const autenticarUsuario = async (email: string, senha: string) => {
         if (usuario) {
             if (await bcrypt.compare(senha, usuario.senha)) {
                 console.log('Usuário autenticado com sucesso');
-                return usuario;
+                const token = jwt.sign({ usuarioID: usuario.usuarioID }, "secret", { expiresIn: '1h' });
+                return { usuario: { ...usuario, token: token }};
             } else {
                 console.log('Senha incorreta');
                 return 'Senha incorreta';
@@ -87,16 +89,17 @@ export const autenticarUsuario = async (email: string, senha: string) => {
     }
 }
 
-export const procurarUsuario = async (email: string) => {
+export const validarToken = async (token: string) => {
     try {
-        const usuario = await usuariosRepositorio.findOne({ where: { email: email }})
-        if (usuario) {
-            return usuario
-        } else {
-            return 0
+        if (!jwt.verify(token, "secret")) {
+            console.log('Token inválido');
+            return false;
         }
+        console.log('Token válido');
+        return true;
     } catch (error) {
         console.error("Erro na hora de procurar um usuario", error);
+        return false;
     }
 }
 

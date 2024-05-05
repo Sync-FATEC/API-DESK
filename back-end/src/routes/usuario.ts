@@ -1,5 +1,5 @@
 import express, { Request, Response } from 'express';
-import { autenticarUsuario, criarUsuario, excluirUsuario, procurarUsuario, vizualizarTecnicos } from '../controllers/usuarios';
+import { autenticarUsuario, criarUsuario, excluirUsuario, validarToken, vizualizarTecnicos } from '../controllers/usuarios';
 import { error } from 'console';
 
 const router = express.Router();
@@ -32,14 +32,14 @@ router.post('/autenticar', async (req: Request, res: Response) => {
     res.json(await autenticarUsuario(email, senha));
 });
 
-router.get('/procurar', async (req: Request, res: Response) => {
-    const email = req.query.email;
- 
-    if (!email || typeof email !== 'string') {
-        return res.status(400).json({ error: 'E-mail inválido' });
+router.get('/validar/:token', async (req: Request, res: Response) => {
+    const token = req.params.token;
+    
+    if (!token || typeof token !== 'string') {
+        return res.status(400).json({ error: 'token inválido' });
     }
-
-    res.json(await procurarUsuario(email));
+    
+    res.json(await validarToken(token));
 });
 
 router.get('/listarTecnico', async (req: Request, res: Response) => {
