@@ -20,12 +20,10 @@ export const RequireAuth = ({ children, tipoUsuario }: { children: JSX.Element, 
                     console.error('Erro ao validar token:', error);
                     setLogado(false);
                 } finally {
-                    // Marca a verificação como concluída, independentemente do resultado
                     setVerificacaoConcluida(true);
                 }
             } else {
                 setLogado(false);
-                // Marca a verificação como concluída se não houver usuário
                 setVerificacaoConcluida(true);
             }
         };
@@ -33,11 +31,20 @@ export const RequireAuth = ({ children, tipoUsuario }: { children: JSX.Element, 
         validarToken();
     }, [api, user]);
 
-    useEffect(() => {
-        localStorage.setItem('authToken', JSON.stringify(user));
-    }, [user]);
+    const authToken = localStorage.getItem('authToken');
+    if (authToken !== null && authToken !== '') {
+        const parsedUser = JSON.parse(authToken);
+        if (parsedUser) {
+            // eslint-disable-next-line react-hooks/rules-of-hooks
+            useContext(AuthContext).user = parsedUser;
+        }
+    }
+
+    localStorage.setItem('authToken', JSON.stringify(user))
 
     console.log('logado', logado);
+    console.log(user);
+    
     
     if (!verificacaoConcluida) {
         return <div>Verificando autenticação...</div>;
