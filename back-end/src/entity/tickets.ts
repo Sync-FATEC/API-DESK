@@ -28,6 +28,9 @@ export class Tickets {
     @Column({ length: 1 })
     tipoTecnico: string;
 
+    @Column({ length: 50 })
+    prioridade: string;
+
     @ManyToOne(() => Categorias)
     @JoinColumn({ name: 'categoriaID' })
     categoria: Categorias;
@@ -44,12 +47,13 @@ export class Tickets {
     @JoinColumn({ name: 'usuarioID' })
     usuario: Usuarios;
 
-    constructor(dataAbertura: Date, titulo: string, descricao: string, status: string, tipoTecnico: string, categoria: Categorias, equipamentos: Equipamentos, sala: Salas, usuario: Usuarios) {
+    constructor(dataAbertura: Date, titulo: string, descricao: string, status: string, tipoTecnico: string, prioridade: string, categoria: Categorias, equipamentos: Equipamentos, sala: Salas, usuario: Usuarios) {
         this.dataAbertura = dataAbertura;
         this.titulo = titulo;
         this.descricao = descricao;
         this.status = status;
         this.tipoTecnico = tipoTecnico;
+        this.prioridade = prioridade;
         this.categoria = categoria;
         this.equipamentos = equipamentos;
         this.sala = sala;
