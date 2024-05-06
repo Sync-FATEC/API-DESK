@@ -101,27 +101,30 @@ const FaqAdm = () => {
             </form>
 
             <div className='containerFiltroFaq'>
-            <select value={categoriaFiltro} onChange={(e) => setCategoriaFiltro(Number(e.target.value))} className="filtroFaq">
-                <option value={0}>Filtro categorias</option>
-                {categorias.map((categoria) => (
-                    <option key={categoria.categoriaID} value={categoria.categoriaID}>{categoria.categoria}</option>
-                ))}
-            </select>
-            
+                <select value={categoriaFiltro} onChange={(e) => setCategoriaFiltro(Number(e.target.value))} className="filtroFaq">
+                    <option value={0}>Filtro categorias</option>
+                    {categorias.map((categoria) => (
+                        <option key={categoria.categoriaID} value={categoria.categoriaID}>{categoria.categoria}</option>
+                    ))}
+                </select>
+
             </div>
 
 
             {error && <div className="error">{error}</div>}
             {
-                faqAdm.map((faq) => (
-                    <div className="rowInformacoes" key={faq.mensagemID}>
-                        <p>{faq.titulo}</p>
-                        <p>{faq.mensagem}</p>
-                        <button className="excluir" onClick={() => handleDeleteUser(faq.mensagemID)}>
-                            <span className="material-symbols-outlined">delete</span>
-                        </button>
-                    </div>
-                ))}
+                faqAdm
+                    .filter((faq) => categoriaFiltro === 0 || faq.categoria.categoriaID === categoriaFiltro)
+                    .map((faq) => (
+                        <div className="rowInformacoes" key={faq.mensagemID}>
+                            <p>{faq.titulo}</p>
+                            <p>{faq.mensagem}</p>
+                            <button className="excluir" onClick={() => handleDeleteUser(faq.mensagemID)}>
+                                <span className="material-symbols-outlined">delete</span>
+                            </button>
+                        </div>
+                    ))
+            }
         </div >
     );
 };

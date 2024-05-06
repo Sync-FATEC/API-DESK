@@ -78,6 +78,14 @@ const BaseDeConhecimento = () => {
             erro('Error!');
         }
     };
+    const filteredBaseDeConhecimento = baseDeConhecimento.filter((base) => {
+        if (categoriaFiltro === 0) {
+            return true;
+        } else {
+            return base.categoria.categoriaID === categoriaFiltro;
+        }
+    });
+
     return (
         <div className="adminContainer">
             <form onSubmit={handleAddUser} method='post' className="rowInformacoes">
@@ -110,7 +118,7 @@ const BaseDeConhecimento = () => {
                     ))}
                 </select>
             </div>
-            {baseDeConhecimento.map((base, index) => (
+            {filteredBaseDeConhecimento.map((base, index) => (
                 <div className="rowInformacoes" key={base.mensagemID}>
                     <p>{base.titulo}</p>
                     <p>{base.mensagem}</p>

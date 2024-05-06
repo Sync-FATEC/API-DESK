@@ -3,12 +3,14 @@ import { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
 import ITickets from '../../types/ITickets';
 import { AuthContext } from '../../contexts/Auth/AuthContext';
-import VisualizarTicketTecnico from '../../components/VisualizarTicketTecnico'; // Importe o componente VisualizarTicket
+import VisualizarTicketTecnico from '../../components/VisualizarTicketTecnico';
 import './tecnico.css';
+import ICategoria from '../../types/ICategoria';
 
 export const Tecnicos = () => {
   const [isVisualizarTicketModalOpen, setIsVisualizarTicketModalOpen] = useState(false);
-  const [selectedTicket, setSelectedTicket] = useState<ITickets | null>(null); // Estado para armazenar o ticket selecionado
+  const [selectedTicket, setSelectedTicket] = useState<ITickets | null>(null);
+  const [categorias, setCategorias] = useState<ICategoria[]>([]);
 
   const handleOpenVisualizarTicketModal = (ticket: ITickets) => {
     setSelectedTicket(ticket);
@@ -26,9 +28,11 @@ export const Tecnicos = () => {
         const response = await axios.get(`http://localhost:5555/tickets/listar/${user.user?.usuarioID}`);
         const initializedTickets = response.data.map((ticket: ITickets) => ({
           ...ticket,
-          status: ticket.status || 'A fazer' // Define o status inicial se não estiver definido
+          status: ticket.status || '1'
         }));
         setTickets(initializedTickets);
+        const categoria = await axios.get('http://localhost:5555/categorias/listar');
+        setCategorias(categoria.data);
       } catch (error) {
         console.error("Erro ao buscar tickets:", error);
       }
@@ -37,6 +41,27 @@ export const Tecnicos = () => {
     fetchTickets();
   }, [user.user]);
   
+  const [filtroPrioridade, setFiltroPrioridade] = useState('');
+  const [filtroCategoria, setFiltroCategoria] = useState('');
+
+  const handleFiltroPrioridadeChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    setFiltroPrioridade(event.target.value);
+  };
+
+  const handleFiltroCategoriaChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    setFiltroCategoria(event.target.value);
+  };
+
+  const filteredTickets = tickets.filter((ticket) => {
+    if (filtroPrioridade && ticket.prioridade !== filtroPrioridade) {
+      return false;
+    }
+    if (filtroCategoria && ticket.categoria.categoriaID !== Number(filtroCategoria)) {
+      return false;
+    }
+    return true;
+  });
+
   return (
     <div className="ticketContainer">
       <div className="formTicket">
@@ -45,17 +70,17 @@ export const Tecnicos = () => {
           <h1>Listagem de Tickets</h1>
           <div className="ticket-filters">
             <div className="filter-containerTec">
-              <select className="selectFilter">
-                <option value="abertos">Prioridade</option>
-                <option value="emAtendimento">Alta</option>
-                <option value="pendentes">Média</option>
-                <option value="finalizados">Baixa</option>
+              <select className="selectFilter" value={filtroPrioridade} onChange={handleFiltroPrioridadeChange}>
+                <option value="">Prioridade</option>
+                <option value="Alta">Alta</option>
+                <option value="Media">Média</option>
+                <option value="Baixa">Baixa</option>
               </select>
-              <select className="selectFilter">
-                <option value="abertos">Categoria</option>
-                <option value="emAtendimento">Hardware</option>
-                <option value="pendentes">Software</option>
-                <option value="finalizados">Rede</option>
+              <select className="selectFilter" value={filtroCategoria} onChange={handleFiltroCategoriaChange}>
+                <option value="">Categoria</option>
+                {categorias.map((categoria, index) => (
+                  <option key={index} value={categoria.categoriaID}>{categoria.categoria}</option>
+                ))}
               </select>
             </div>
           </div>
@@ -84,7 +109,7 @@ export const Tecnicos = () => {
                 </span> 
               </div>
             </div>
-            {tickets.map((ticket, index) => (
+            {filteredTickets.map((ticket, index) => (
                ticket.ticketsID && ticket.titulo && 
               <div key={index} className="ticket-itemTec">
                 <div className='afazerInfo'  onClick={() => handleOpenVisualizarTicketModal(ticket)}>
@@ -95,7 +120,7 @@ export const Tecnicos = () => {
                     {ticket.titulo}
                   </div>
                   <div>
-                    <span className='prioridade'>Médio</span>
+                    <span className='prioridade'>{ticket.prioridade}</span>
                     {new Date(ticket.dataAbertura).toLocaleDateString('pt-BR')}
                   </div>
                 </div>

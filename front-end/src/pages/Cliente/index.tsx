@@ -36,6 +36,25 @@ const Cliente: React.FC = () => {
         fetchTickets();
     }, [user?.usuarioID]);
 
+    const [filter, setFilter] = useState(1);
+
+    const handleFilterChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+        setFilter(Number(event.target.value));
+    };
+
+    const filteredTickets = tickets.filter((ticket) => {
+        if (filter === 1) {
+            return ticket.status === '1';
+        } else if (filter === 2) {
+            return ticket.status === '2';
+        } else if (filter === 3) {
+            return ticket.status === '3';
+        } else if (filter === 4) {
+            return ticket.status === '4';
+        }
+        return true;
+    });
+
     return (
         <div className="ticketContainer">
             <div className="formTicket">
@@ -44,11 +63,12 @@ const Cliente: React.FC = () => {
                     <h1>Listagem de Tickets</h1>
                     <div className="ticket-filters">
                         <div className="filter-container">
-                            <select className="selectFilter">
-                                <option value="abertos">Abertos</option>
-                                <option value="emAtendimento">Em Atendimento</option>
-                                <option value="pendentes">Pendentes</option>
-                                <option value="finalizados">Finalizados</option>
+                            <select className="selectFilter" value={filter} onChange={handleFilterChange}>
+                                <option value={0}>Mostrar todos</option>
+                                <option value={1}>Abertos</option>
+                                <option value={2}>Em Atendimento</option>
+                                <option value={3}>Pendentes</option>
+                                <option value={4}>Finalizados</option>
                             </select>
                         </div>
 
@@ -75,7 +95,7 @@ const Cliente: React.FC = () => {
                             <div>Categoria</div>
                             <div></div>
                         </div>
-                        {tickets.map((ticket) => (
+                        {filteredTickets.map((ticket) => (
                             <div className="ticket-item" key={ticket.ticketsID}>
                                 <div className='ticket-itemDiv'>{ticket.ticketsID}</div>
                                 <div className='ticket-itemDiv'>{new Date(ticket.dataAbertura).toLocaleDateString('pt-BR')}</div>

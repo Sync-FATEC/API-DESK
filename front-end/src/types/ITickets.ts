@@ -10,6 +10,7 @@ export default interface ITickets {
     salaID: number;
     usuarioID: number;
     tipoTecnico: string;
+    prioridade: string;
     categoria: {
         categoria: string;
         tipoTecnico: string;

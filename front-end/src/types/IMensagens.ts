@@ -3,5 +3,9 @@ export default interface IMensagens {
     tipoMensagem: string;
     titulo: string;
     mensagem: string;
-    categoriaID: number;
+    categoria: {
+        categoria: string;
+        tipoTecnico: string;
+        categoriaID: number;
+    };
 }

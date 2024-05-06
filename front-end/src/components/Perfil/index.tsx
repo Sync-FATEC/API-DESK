@@ -5,7 +5,6 @@ import Swal from "sweetalert2";
 
 export const Perfil = () => {
     const { user, signout } = useContext(AuthContext);
-    console.log(user);
     
     if (!user) {
         return <div>Usuário não autenticado</div>;
