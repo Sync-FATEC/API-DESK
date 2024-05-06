@@ -50,7 +50,7 @@ create table tickets (
     titulo varchar(255) not null,
     descricao varchar(255) not null,
     status varchar(1) default '1',
-    prioridade int not null,
+    prioridade varchar(50) not null,
     categoriaID int not null,
     equipamentosID int not null,
     salaID int not null,
