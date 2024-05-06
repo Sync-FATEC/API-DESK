@@ -61,3 +61,13 @@ create table tickets (
     foreign key (salaID) references salas(salaID),
     foreign key (usuarioID) references usuarios(usuarioID)
 );
+
+create table anotacoes (
+    anotacoesID int primary key auto_increment,
+    dataAnotacao datetime not null,
+    anotacao varchar(255) not null,
+    ticketsID int not null,
+    usuarioID int not null,
+    foreign key (ticketsID) references tickets(ticketsID),
+    foreign key (usuarioID) references usuarios(usuarioID)
+); 
