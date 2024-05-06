@@ -15,7 +15,6 @@ export const RequireAuth = ({ children, tipoUsuario }: { children: JSX.Element, 
                 try {
                     const data = await api.validateToken(user.token);
                     setLogado(Boolean(data));
-                    console.log('data', data);
                 } catch (error) {
                     console.error('Erro ao validar token:', error);
                     setLogado(false);
@@ -41,9 +40,6 @@ export const RequireAuth = ({ children, tipoUsuario }: { children: JSX.Element, 
     }
 
     localStorage.setItem('authToken', JSON.stringify(user))
-
-    console.log('logado', logado);
-    console.log(user);
     
     
     if (!verificacaoConcluida) {

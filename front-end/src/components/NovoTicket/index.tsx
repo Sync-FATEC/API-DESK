@@ -180,6 +180,11 @@ export const NovoTicket = () => {
 
     useEffect(() => {
         const fetchData = async () => {
+            if (numeroSala === 'Sala' || categoriaID === 'Categoria') {
+                setEquipamentos([]);
+                return;
+            }
+            
             if (numeroSala !== '' && categoriaID !== '') {
                 const equip = await axios.get(`http://localhost:5555/equipamentos/listarCatSala/${numeroSala}/${categoriaID}`);
 
