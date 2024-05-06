@@ -60,3 +60,10 @@
 .slaInfo{
     color: var(--red-error-color);
 }
+
+.statusTicket{
+    display: flex;
+    font-size: 20px;
+    align-items: center;
+    color: var(--black-color);
+}

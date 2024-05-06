@@ -183,20 +183,42 @@ aside {
 }
 #btnAtendendo{
   color: var(--black-color);
+  cursor: pointer;
+
 }
 #btnPendente{
   color: #FF8A00;
+  cursor: pointer;
+
 }
 #btnFinalizar{
   color: #28C94C;
+  cursor: pointer;
+
 }
 #btnSla{
   color: var(--red-error-color);
   margin-left: 140px;
+  cursor: pointer;
+
+
 }
 #btnAfazer{
   color: var(--red-error-color);
+  cursor: pointer;
+
 }
 #btnEscalar{
     color: var(--blue-color);
+    cursor: pointer;
+
+}
+#btnAtendendo:active,
+#btnPendente:active,
+#btnFinalizar:active,
+#btnSla:active,
+#btnAfazer:active,
+#btnEscalar:active {
+  transform: translateY(2px);
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
 }

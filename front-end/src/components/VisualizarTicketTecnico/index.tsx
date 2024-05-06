@@ -1,6 +1,5 @@
-import React from 'react';
-import { useState } from 'react';
-
+import React, { useState } from 'react';
+import axios from 'axios';
 import './visualizarticket.css';
 import ITickets from '../../types/ITickets';
 import EscalamentoTicket from '../EscalamentoTicket';
@@ -12,6 +11,7 @@ interface Props {
 
 const VisualizarTicketTecnico: React.FC<Props> = ({ selectedTicket, onClose }) => {
     const [modalOpen, setModalOpen] = useState(false);
+    const [currentStatus, setCurrentStatus] = useState(selectedTicket?.status || '');
 
     const handleOpenModal = () => {
         setModalOpen(true);
@@ -19,6 +19,18 @@ const VisualizarTicketTecnico: React.FC<Props> = ({ selectedTicket, onClose }) =
 
     const handleCloseModal = () => {
         setModalOpen(false);
+    };
+
+    const handleUpdateStatus = async (newStatus: string) => {
+        try {
+            await axios.put(`http://localhost:5555/tickets/alterarStatus`, { ticketID: selectedTicket?.ticketsID, status: newStatus });
+            if (selectedTicket) {
+                selectedTicket.status = newStatus;
+                setCurrentStatus(newStatus); // Atualiza o estado do status do ticket
+            }
+        } catch (error) {
+            console.error("Erro ao atualizar status do ticket:", error);
+        }
     };
 
     if (!selectedTicket) {
@@ -32,9 +44,10 @@ const VisualizarTicketTecnico: React.FC<Props> = ({ selectedTicket, onClose }) =
                     <button id='btnEscalar' className="btnHeader" onClick={handleOpenModal}>
                         <span className="material-symbols-outlined">sync_alt</span>
                     </button>
-                    <span id='btnAtendendo' className="material-symbols-outlined">play_circle</span>
-                    <span id='btnPendente' className="material-symbols-outlined">pause_circle</span>
-                    <span id='btnFinalizar' className="material-symbols-outlined">check_circle</span>
+                    <span id='btnAtendendo' className="material-symbols-outlined" onClick={() => handleUpdateStatus('2')}>play_circle</span>
+                    <span id='btnPendente' className="material-symbols-outlined" onClick={() => handleUpdateStatus('3')}>pause_circle</span>
+                    <span id='btnFinalizar' className="material-symbols-outlined" onClick={() => handleUpdateStatus('4')}>check_circle</span>
+                    <span className="  statusTicket ">Status : {currentStatus === '1' ? 'A fazer' : currentStatus === '2' ? 'Atendendo' : currentStatus === '3' ? 'Pendente' : currentStatus === '4' ? 'Finalizado' : ''}</span>
                 </div>
                 <div>
                     <span id='btnSla' className="material-symbols-outlined">bomb</span>
@@ -70,7 +83,6 @@ const VisualizarTicketTecnico: React.FC<Props> = ({ selectedTicket, onClose }) =
                     </div>
                 </div>
                 <div className='infoChat'>
-                    {/* Aqui você pode adicionar o componente de chat, se necessário */}
                 </div>
             </div>
 

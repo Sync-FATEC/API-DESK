@@ -37,10 +37,10 @@ export const Tecnicos = () => {
         console.error("Erro ao buscar tickets:", error);
       }
     };
-  
+
     fetchTickets();
   }, [user.user]);
-  
+
   const [filtroPrioridade, setFiltroPrioridade] = useState('');
   const [filtroCategoria, setFiltroCategoria] = useState('');
 
@@ -61,6 +61,21 @@ export const Tecnicos = () => {
     }
     return true;
   });
+
+  const getStatusClass = (status: string) => {
+    switch (status) {
+      case '1':
+        return 'afazer';
+      case '2':
+        return 'atendendo';
+      case '3':
+        return 'pendente';
+      case '4':
+        return 'finalizado';
+      default:
+        return '';
+    }
+  };
 
   return (
     <div className="ticketContainer">
@@ -88,51 +103,109 @@ export const Tecnicos = () => {
         <div className='ticket-contentTec'>
           <div className="ticket-listTec">
             <div className="ticket-typesTec">
+              <div className="containerColunas">
               <div id='btnAfazer' className='afazer'>A fazer
                 <span className="material-symbols-outlined">
                   flag
                 </span>
+                </div>
+                {filteredTickets.map((ticket, index) => (
+                  ticket.status === '1' && (
+                    <div key={index} className={`ticket-itemTec ${getStatusClass(ticket.status)}`} onClick={() => handleOpenVisualizarTicketModal(ticket)}>
+                      <div className={`ticket-item-info ${getStatusClass(ticket.status)}Info`}>
+                        <div>
+                          #{ticket.ticketsID}
+                        </div>
+                        <div>
+                          {ticket.titulo}
+                        </div>
+                        <div>
+                          <span className='prioridade'>{ticket.prioridade}</span>
+                          {new Date(ticket.dataAbertura).toLocaleDateString('pt-BR')}
+                        </div>
+                      </div>
+                    </div>
+                  )
+                ))}
               </div>
+              <div className="containerColunas">
               <div id='btnAtendendo' className='atendendo'>Atendendo
               <span className="material-symbols-outlined">
                   play_circle
                 </span>
               </div>
+                {filteredTickets.map((ticket, index) => (
+                  ticket.status === '2' && (
+                    <div key={index} className={`ticket-itemTec ${getStatusClass(ticket.status)}`} onClick={() => handleOpenVisualizarTicketModal(ticket)}>
+                      <div className={`ticket-item-info ${getStatusClass(ticket.status)}Info`}>
+                        <div>
+                          #{ticket.ticketsID}
+                        </div>
+                        <div>
+                          {ticket.titulo}
+                        </div>
+                        <div>
+                        {new Date(ticket.dataAbertura).toLocaleDateString('pt-BR')}
+                          <span className='prioridade'>{ticket.prioridade}</span>
+                        </div>
+                      </div>
+                    </div>
+                  )
+                ))}
+              </div>
+              <div className="containerColunas">
               <div id='btnPendente' className='pendente'>Pendente
                 <span className="material-symbols-outlined">
                   pause_circle
                 </span>              
               </div>
+                {filteredTickets.map((ticket, index) => (
+                  ticket.status === '3' && (
+                    <div key={index} className={`ticket-itemTec ${getStatusClass(ticket.status)}`} onClick={() => handleOpenVisualizarTicketModal(ticket)}>
+                      <div className={`ticket-item-info ${getStatusClass(ticket.status)}Info`}>
+                        <div>
+                          #{ticket.ticketsID}
+                        </div>
+                        <div>
+                          {ticket.titulo}
+                        </div>
+                        <div>
+                          <span className='prioridade'>{ticket.prioridade}</span>
+                          {new Date(ticket.dataAbertura).toLocaleDateString('pt-BR')}
+                        </div>
+                      </div>
+                    </div>
+                  )
+                ))}
+              </div>
+              <div className="containerColunas">
               <div id='btnFinalizar' className='finalizado'>Finalizado
               <span className="material-symbols-outlined">
                   check_circle
                 </span> 
               </div>
-            </div>
-            {filteredTickets.map((ticket, index) => (
-               ticket.ticketsID && ticket.titulo && 
-              <div key={index} className="ticket-itemTec">
-                <div className='afazerInfo'  onClick={() => handleOpenVisualizarTicketModal(ticket)}>
-                  <div>
-                    #{ticket.ticketsID}
-                  </div>
-                  <div>
-                    {ticket.titulo}
-                  </div>
-                  <div>
-                    <span className='prioridade'>{ticket.prioridade}</span>
-                    {new Date(ticket.dataAbertura).toLocaleDateString('pt-BR')}
-                  </div>
-                </div>
-                {/*}
-                <div className='atendendo'>Atendendo</div>
-                <div className='pendente'>Pendente</div>
-                <div className='finalizado'> Finalizado</div>*/}
+                {filteredTickets.map((ticket, index) => (
+                  ticket.status === '4' && (
+                    <div key={index} className={`ticket-itemTec ${getStatusClass(ticket.status)}`} onClick={() => handleOpenVisualizarTicketModal(ticket)}>
+                      <div className={`ticket-itemTec ${getStatusClass(ticket.status)}Info`}>
+                        <div>
+                          #{ticket.ticketsID}
+                        </div>
+                        <div>
+                          {ticket.titulo}
+                        </div>
+                        <div>
+                          <span className='prioridade'>{ticket.prioridade}</span>
+                          {new Date(ticket.dataAbertura).toLocaleDateString('pt-BR')}
+                        </div>
+                      </div>
+                    </div>
+                  )
+                ))}
               </div>
-            ))}
+            </div>
           </div>
         </div>
-        {/* Renderiza o modal VisualizarTicket apenas se o modal estiver aberto e houver um ticket selecionado */}
         {isVisualizarTicketModalOpen && selectedTicket && (
           <div className="modal">
             <div className="modal-content">

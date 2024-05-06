@@ -3,22 +3,26 @@
     gap: 10px;
     flex: 1;
     margin-right: 10px;
-    flex-direction: row;
     
+}
+.containerColunas{
+    display: flex;
+    flex-direction: column;
 }
 
 .ticket-contentTec {
-    
     background-color: var(--cinza-color);
-    min-width:100vh;
+    min-width: 100vh;
     height: 100%;
     width: 100%;
-    min-height: 100vh
+    min-height: 100vh;
+    
 }
 
 .ticket-listTec {
     padding: var(--padding-global);
 }
+
 .ticket-typesTec {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -28,45 +32,21 @@
     justify-content: center;
     font-size: 24px;
     padding: 20px 0;
+
 }
 
 .ticket-typesTec div {
     display: flex;
     padding: 10px;
     justify-content: space-between;
-}
+    margin-bottom: 10px;
 
-.afazer{
-    display: flex;
-    flex-direction: row;
-    
-    
-    padding: 6px 12px;
-    border: 1px solid var(--red-error-color);
-    border-radius: 10px;
-}
-
-.atendendo{
-    padding: 6px 12px;
-    border: 1px solid #2F2E41;
-    border-radius: 10px;
-}
-.pendente{
-    padding: 6px 12px;
-    border: 1px solid #FF8A00;
-    border-radius: 10px;
-}
-.finalizado{
-    padding: 6px 12px;
-    border: 1px solid #28C94C;
-    border-radius: 10px;
 }
 
 .ticket-itemTec {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    display: flex;
+    flex-direction: column;
     gap: 10px;
-    
     background-color: var(--cinza-color);
     justify-content: center;
     font-size: 20px;
@@ -75,11 +55,11 @@
 
 .ticket-itemTec div {
     display: flex;
-    justify-content: space-between;
-     
+    flex-direction: column;
+
 }
 
-.prioridade{
+.prioridade {
     padding: 6px 12px;
     font-weight: bold;
     border: 1px solid var(--blue-color);
@@ -89,11 +69,9 @@
     cursor: pointer;
     transition: background-color 0.3s, border-color 0.3s, color 0.3s;
 }
-.afazerInfo{
+
+.pendenteInfo{
     display: flex;
-    flex-direction: column;
-    padding: 6px 12px;
-    border: 1px solid var(--red-error-color);
-    border-radius: 10px;
-    gap: 10px;
+    font-size: 20px;
+
 }
