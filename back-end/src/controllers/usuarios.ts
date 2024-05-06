@@ -130,3 +130,35 @@ export const vizualizarTecnicos = async () => {
         throw error;
     }
 };
+
+export const alterarTurnoTecnico = async (tecnicoID: number, turno: string) => {
+    try {
+        const tecnico = await usuariosRepositorio.findOneBy({ usuarioID: tecnicoID });
+        if (tecnico) {
+            tecnico.turno = turno;
+            await usuariosRepositorio.save(tecnico);
+            console.log('Turno alterado com sucesso');
+            return tecnico;
+        } else {
+            return 'Tecnico inexistente'
+        }
+    } catch (error) {
+        console.error('Erro na alteração do turno', error);
+    }
+};
+
+export const alterarTipoTecnico = async (tecnicoID: number, tipoTecnico: string) => {
+    try {
+        const tecnico = await usuariosRepositorio.findOneBy({ usuarioID: tecnicoID });
+        if (tecnico) {
+            tecnico.tipoUsuario = tipoTecnico;
+            await usuariosRepositorio.save(tecnico);
+            console.log('Tipo alterado com sucesso');
+            return tecnico;
+        } else {
+            return 'Tecnico inexistente'
+        }
+    } catch (error) {
+        console.error('Erro na alteração do tipo', error);
+    }
+}

@@ -1,5 +1,5 @@
 import express, { Request, Response } from 'express';
-import { autenticarUsuario, criarUsuario, excluirUsuario, validarToken, vizualizarTecnicos } from '../controllers/usuarios';
+import { alterarTipoTecnico, alterarTurnoTecnico, autenticarUsuario, criarUsuario, excluirUsuario, validarToken, vizualizarTecnicos } from '../controllers/usuarios';
 import { error } from 'console';
 
 const router = express.Router();
@@ -51,5 +51,37 @@ router.get('/listarTecnico', async (req: Request, res: Response) => {
         res.status(500).json({ error: 'Erro ao listar técnicos' });
     }
 });
+
+router.put('/alterarTurnoTecnico/:tecnicoID/:turno', async (req: Request, res: Response) => {
+    try {
+        const tecnicoID = req.params.tecnicoID;
+        const turno = req.params.turno;
+
+        if (tecnicoID === '' || turno === '') {
+            return res.status(400).json({ error: 'Preencha todos os campos' });
+        }
+
+        res.json(await alterarTurnoTecnico(Number(tecnicoID), turno));
+    } catch (error) {
+        console.error('Erro ao alterar turno do técnico:', error);
+        res.status(500).json({ error: 'Erro ao alterar turno do técnico' });
+    }
+})
+
+router.put('/alterarTipoTecnico/:tecnicoID/:tipoTecnico', async (req: Request, res: Response) => {
+    try {
+        const tecnicoID = req.params.tecnicoID;
+        const tipoTecnico = req.params.tipoTecnico;
+
+        if (tecnicoID === '' || tipoTecnico === '') {
+            return res.status(400).json({ error: 'Preencha todos os campos' })
+        }
+
+        res.json(await alterarTipoTecnico(Number(tecnicoID), tipoTecnico))
+    } catch (error) {
+        console.error('Erro ao alterar tipo do técnico:', error);
+        res.status(500).json({ error: 'Erro ao alterar tipo do técnico' });
+    }
+})
 
 export default router;
