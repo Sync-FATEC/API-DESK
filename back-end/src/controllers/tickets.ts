@@ -20,7 +20,7 @@ export const criarTicket = async (titulo: string, descricao: string, status: str
             return 'Categoria, equipamento, sala ou usuário inexistente';
         }
 
-        const novoTicket = new Tickets(dataAbertura, titulo, descricao, status, categoria.tipoTecnico, categoria, equipamento, sala, usuario);
+        const novoTicket = new Tickets(dataAbertura, titulo, descricao, status, categoria.tipoTecnico, equipamento.prioridade, categoria, equipamento, sala, usuario);
         await ticketsRepositorio.save(novoTicket);
         console.log('Ticket criado com sucesso');
         return novoTicket;
