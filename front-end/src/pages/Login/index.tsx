@@ -3,7 +3,7 @@ import { AuthContext } from "../../contexts/Auth/AuthContext";
 import { useApi } from "../../hooks/useApi";
 import logo from '../../assets/img/logo.svg';
 import { useNavigate } from "react-router-dom";
-import { loginSenhaEmail, Toast, warning } from "../../components/Swal/swal";
+import { loginSenhaEmail, LoginTecnicoHorario, Toast, warning } from "../../components/Swal/swal";
 
 
 export const Login = () => {
@@ -46,7 +46,10 @@ export const Login = () => {
     try {
       const isLogged = await auth.signin(email, senha);
       const data = await api.signin(email, senha);
-      if (isLogged) { 
+      if (data === "O técnico não pode acessar o sistema nesse horário") {
+        LoginTecnicoHorario();
+        setSenha('');
+      } else if (isLogged) { 
         if (data && data.usuario.tipoUsuario) {
           switch (data.usuario.tipoUsuario) {
             case 'U':
@@ -79,11 +82,11 @@ export const Login = () => {
           loginSenhaEmail();
           setSenha('');
         }
-      } else {
-        loginSenhaEmail();
-        setSenha('');
-      }
-    } catch (error) {
+    } else {
+      loginSenhaEmail();
+      setSenha('');
+    }
+  } catch (error) {
       console.error(error);
       warning('Verifique suas informações.');
       setSenha('');
