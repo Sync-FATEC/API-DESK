@@ -69,9 +69,3 @@
     cursor: pointer;
     transition: background-color 0.3s, border-color 0.3s, color 0.3s;
 }
-
-.pendenteInfo{
-    display: flex;
-    font-size: 20px;
-
-}
