@@ -73,25 +73,32 @@ export const autenticarUsuario = async (email: string, senha: string) => {
         const usuario = await usuariosRepositorio.findOneBy({ email: email });
         if (usuario) {
             if (await bcrypt.compare(senha, usuario.senha)) {
-                console.log('Usuário autenticado com sucesso');
                 const token = jwt.sign({ usuarioID: usuario.usuarioID }, "secret", { expiresIn: '1h' });
+
                 if (usuario.tipoUsuario === '1' || usuario.tipoUsuario === '2' || usuario.tipoUsuario === '3') {
                     const currentTime = new Date();
                     const currentHour = currentTime.getHours();
+
                     if (usuario.turno === 'M') {
                         if (currentHour <= 6 || currentHour > 14) {
+                            console.log('O técnico não pode acessar o sistema nesse horário')
                             return 'O técnico não pode acessar o sistema nesse horário'
                         }
+
                     } else if (usuario.turno === 'T') {
                         if (currentHour <= 14 || currentHour > 22) {
+                            console.log('O técnico não pode acessar o sistema nesse horário')
                             return 'O técnico não pode acessar o sistema nesse horário'
                         }
+
                     } else if (usuario.turno === 'N') {
                         if (currentHour <= 22 || currentHour > 6) {
+                            console.log('O técnico não pode acessar o sistema nesse horário')
                             return 'O técnico não pode acessar o sistema nesse horário'
                     }
                 }
-            }
+            }   
+                console.log('Usuário autenticado com sucesso');
                 return { usuario: { ...usuario, token: token }};
             } else {
                 console.log('Senha incorreta');
