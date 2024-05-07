@@ -74,7 +74,9 @@ export const TicketsAdmin = () => {
       default:
         return '';
     }
+    
   };
+  
   return (
     <div className="ticketContainer">
       <div className="formTicket">
