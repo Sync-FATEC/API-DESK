@@ -6,17 +6,18 @@ import { Mensagens } from './entity/mensagens';
 import { Salas } from './entity/salas';
 import { Tickets } from './entity/tickets';
 import { Usuarios } from './entity/usuarios';
+import { Anotacoes } from './entity/anotacoes';
 
 export const AppDataSource = new DataSource({
     type: "mysql",
     host: "localhost",
     port: 3306,
     username: "root",
-    password: "12345",
+    password: "fatec",
     database: "api",
     synchronize: true,
     logging: false,
-    entities: [Usuarios, Tickets, Salas, Mensagens, Equipamentos, Categorias],
+    entities: [Usuarios, Tickets, Salas, Mensagens, Equipamentos, Categorias, Anotacoes],
     migrations: [],
     subscribers: []
 });

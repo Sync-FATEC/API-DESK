@@ -47,17 +47,24 @@ export const excluirTicket = async (ticketID: number) => {
     }
 }
 
-export const alterarStatusTicket = async (ticketID: number, status: string) => {
+export const alterarStatusTicket = async (ticketID: number, status: string, tecnicoID: number) => {
     try {
         const ticket = await ticketsRepositorio.findOneBy({ ticketsID: ticketID });
-        if (ticket) {
+        const tecnico = await usuariosRepositorio.findOneBy({ usuarioID: tecnicoID });
+        if (ticket && tecnico) {
             ticket.status = status;
+            if (status === '1' || status === '4') {
+                ticket.tecnico = null;
+                console.log('Técnico removido do ticket');
+            } else {
+                ticket.tecnico = tecnico;
+            }
             await ticketsRepositorio.save(ticket);
             console.log('Status do ticket alterado com sucesso');
             return ticket;
         } else {
-            console.log('Ticket inexistente');
-            return 'ticket inexistente';
+            console.log('Ticket inexistente ou tecnico inexistente');
+            return 'ticket inexistente ou tecnico inexistente';
         }
     } catch (error) {
         console.error('Erro na alteração do status do ticket', error);
