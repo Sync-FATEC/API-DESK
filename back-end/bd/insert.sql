@@ -12,9 +12,17 @@ VALUES (101, 'Sala de Reuniões'),
 
 -- Inserts para a tabela equipamentos
 INSERT INTO equipamentos (equipamento, sla, prioridade, salaID, categoriasID)
-VALUES ('Computador', 3, 'Alta', 1, 1),
-       ('Roteador', 2, 'Média', 2, 3),
-       ('Impressora', 4, 'Baixa', 3, 1);
+VALUES 
+	   ('Computador', 3, 'Alta', 1, 1),
+	   ('Desktop', 3, 'Média', 1, 2),
+	   ('Roteador', 3, 'Baixa', 1, 3),
+       ('Computador', 3, 'Alta', 2, 1),
+	   ('Desktop', 3, 'Média', 2, 2),
+	   ('Roteador', 3, 'Baixa', 2, 3),
+       ('Computador', 3, 'Alta', 3, 1),
+	   ('Desktop', 3, 'Média', 3, 2),
+	   ('Roteador', 3, 'Baixa', 3, 3);
+
 
 INSERT INTO mensagens (tipoMensagem, titulo, mensagem, categoriaID)
 VALUES 
