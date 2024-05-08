@@ -17,7 +17,7 @@ export class Tickets {
     dataFechamento: null | Date;
 
     @Column({ type: 'datetime'})
-    dataSla: String;
+    dataSla: Date;
 
     @Column({ length: 255 })
     titulo: string
