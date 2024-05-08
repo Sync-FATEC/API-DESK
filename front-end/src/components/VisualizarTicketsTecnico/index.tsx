@@ -13,7 +13,7 @@ interface Props {
 const VisualizarTicketTecnico: React.FC<Props> = ({ selectedTicket, onClose }) => {
     const [modalOpen, setModalOpen] = useState(false);
     const [currentStatus, setCurrentStatus] = useState(selectedTicket?.status || '');
-
+    
     const handleOpenModal = () => {
         setModalOpen(true);
     };
@@ -55,7 +55,7 @@ const VisualizarTicketTecnico: React.FC<Props> = ({ selectedTicket, onClose }) =
                 </div>
                 <div className='slaInfo'>
                     <p>Data do estouro SLA</p>
-                    <p>04/05/2024</p>
+                    <p>{selectedTicket.dataSla}</p>
                 </div>
             </div>
 
