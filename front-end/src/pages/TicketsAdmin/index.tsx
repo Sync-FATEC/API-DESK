@@ -3,8 +3,7 @@ import { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
 import ITickets from '../../types/ITickets';
 import { AuthContext } from '../../contexts/Auth/AuthContext';
-import VisualizarTicketTecnico from '../../components/VisualizarTicketTecnico'; // Importe o componente VisualizarTicket
-import './ticketsAdmin.css';
+import VisualizarTicketTecnico from '../../components/VisualizarTicketTecnico';
 import ICategoria from '../../types/ICategoria';
 
 export const TicketsAdmin = () => {

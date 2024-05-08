@@ -104,36 +104,41 @@ export const Tecnicos = () => {
           <div className="ticket-listTec">
             <div className="ticket-typesTec">
               <div className="containerColunas">
-              <div id='btnAfazer' className='afazer'>A fazer
-                <span className="material-symbols-outlined">
-                  flag
-                </span>
+                <div id='btnAfazer' className='afazer'>A fazer
+                  <span className="material-symbols-outlined">
+                    flag
+                  </span>
                 </div>
                 {filteredTickets.map((ticket, index) => (
                   ticket.status === '1' && (
                     <div key={index} className={`ticket-itemTec ${getStatusClass(ticket.status)}`} onClick={() => handleOpenVisualizarTicketModal(ticket)}>
                       <div className={`ticket-item-info ${getStatusClass(ticket.status)}Info`}>
-                        <div>
-                          #{ticket.ticketsID}
-                        </div>
-                        <div>
-                          {ticket.titulo}
-                        </div>
-                        <div>
-                          <span className='prioridade'>{ticket.prioridade}</span>
-                          {new Date(ticket.dataAbertura).toLocaleDateString('pt-BR')}
-                        </div>
+                       
+                       
+                          <div>
+                            #{ticket.ticketsID}
+                          </div>
+                          <div className='tituloCardTitulo'>
+                            {ticket.titulo}
+                          </div>
+                    
+                          <div>
+                            <span className='prioridade'>{ticket.prioridade}</span>
+                            {new Date(ticket.dataAbertura).toLocaleDateString('pt-BR')}
+                          </div>
+
+                        
                       </div>
                     </div>
                   )
                 ))}
               </div>
               <div className="containerColunas">
-              <div id='btnAtendendo' className='atendendo'>Atendendo
-              <span className="material-symbols-outlined">
-                  play_circle
-                </span>
-              </div>
+                <div id='btnAtendendo' className='atendendo'>Atendendo
+                  <span className="material-symbols-outlined">
+                    play_circle
+                  </span>
+                </div>
                 {filteredTickets.map((ticket, index) => (
                   ticket.status === '2' && (
                     <div key={index} className={`ticket-itemTec ${getStatusClass(ticket.status)}`} onClick={() => handleOpenVisualizarTicketModal(ticket)}>
@@ -141,11 +146,11 @@ export const Tecnicos = () => {
                         <div>
                           #{ticket.ticketsID}
                         </div>
+                        <div className='tituloCardTitulo'>
+                            {ticket.titulo}
+                          </div>
                         <div>
-                          {ticket.titulo}
-                        </div>
-                        <div>
-                        {new Date(ticket.dataAbertura).toLocaleDateString('pt-BR')}
+                          {new Date(ticket.dataAbertura).toLocaleDateString('pt-BR')}
                           <span className='prioridade'>{ticket.prioridade}</span>
                         </div>
                       </div>
@@ -154,11 +159,11 @@ export const Tecnicos = () => {
                 ))}
               </div>
               <div className="containerColunas">
-              <div id='btnPendente' className='pendente'>Pendente
-                <span className="material-symbols-outlined">
-                  pause_circle
-                </span>              
-              </div>
+                <div id='btnPendente' className='pendente'>Pendente
+                  <span className="material-symbols-outlined">
+                    pause_circle
+                  </span>
+                </div>
                 {filteredTickets.map((ticket, index) => (
                   ticket.status === '3' && (
                     <div key={index} className={`ticket-itemTec ${getStatusClass(ticket.status)}`} onClick={() => handleOpenVisualizarTicketModal(ticket)}>
@@ -179,11 +184,11 @@ export const Tecnicos = () => {
                 ))}
               </div>
               <div className="containerColunas">
-              <div id='btnFinalizar' className='finalizado'>Finalizado
-              <span className="material-symbols-outlined">
-                  check_circle
-                </span> 
-              </div>
+                <div id='btnFinalizar' className='finalizado'>Finalizado
+                  <span className="material-symbols-outlined">
+                    check_circle
+                  </span>
+                </div>
                 {filteredTickets.map((ticket, index) => (
                   ticket.status === '4' && (
                     <div key={index} className={`ticket-itemTec ${getStatusClass(ticket.status)}`} onClick={() => handleOpenVisualizarTicketModal(ticket)}>

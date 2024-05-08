@@ -24,8 +24,8 @@
 }
 
 .ticket-typesTec {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    display: flex;
+    align-items: flex-start;
     gap: 10px;
     font-weight: bold;
     background-color: var(--cinza-color);
@@ -36,6 +36,7 @@
 }
 
 .ticket-typesTec div {
+    flex: 1 1 25%;
     display: flex;
     padding: 10px;
     justify-content: space-between;
@@ -45,19 +46,13 @@
 
 .ticket-itemTec {
     display: flex;
-    flex-direction: column;
-    gap: 10px;
+    flex-direction: column; 
     background-color: var(--cinza-color);
     justify-content: center;
     font-size: 20px;
     padding: 10px 0;
 }
 
-.ticket-itemTec div {
-    display: flex;
-    flex-direction: column;
-
-}
 
 .prioridade {
     padding: 6px 12px;
@@ -66,6 +61,25 @@
     border-radius: 10px;
     color: var(--blue-color);
     font-size: 18px;
+    width: 50px;
+    text-align: center;
     cursor: pointer;
     transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+}.containerInfoTicketInicio{
+    display: flex;
+    flex-direction: column;
+}
+.containerInfoTicketFim{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.ticket-item-info{
+    display: flex;
+    flex-direction: column;
+}
+.tituloCardTitulo{
+    max-width:  50px;
+    word-wrap: break-word;
+    
 }
