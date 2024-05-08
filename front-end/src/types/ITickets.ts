@@ -2,6 +2,7 @@ export default interface ITickets {
     ticketsID: number;
     dataAbertura: string;
     dataFechamento: string | null;
+    dataSla: string;
     titulo: string;
     descricao: string;
     status: string;
