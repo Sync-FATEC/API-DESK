@@ -1,5 +1,5 @@
 
-import './chatCliente.css';
+import './chat.css';
 import React, { useEffect, useRef } from 'react';
 
 

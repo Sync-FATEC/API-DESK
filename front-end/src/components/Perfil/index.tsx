@@ -5,15 +5,15 @@ import Swal from "sweetalert2";
 
 export const Perfil = () => {
     const { user, signout } = useContext(AuthContext);
-    
+
     if (!user) {
         return <div>Usuário não autenticado</div>;
     }
-    
-    const capitalizeFirstLetter = (str:string) => {
+
+    const capitalizeFirstLetter = (str: string) => {
         return str.charAt(0).toUpperCase() + str.slice(1);
     };
-    
+
     const handleSignout = () => { // Arrumar o css desse swal
         Swal.fire({
             title: "Deseja realmente sair?",
@@ -28,25 +28,27 @@ export const Perfil = () => {
             customClass: { // para colocar o css das coisas
                 confirmButton: 'cButton',
                 denyButton: 'dButton',
-                
+
             }
-            
+
         }).then((result) => {
             if (result.isConfirmed) {
-                signout(); 
+                signout();
             }
         });
+
+
     };
-    
+
     return (
         <div>
             <div className="modalPerfil">
-                
+
                 <h1>Perfil</h1>
                 <div className="imagePerfil">
-                     <span id="account" className="material-symbols-outlined">account_circle</span>
+                    <span id="account" className="material-symbols-outlined">account_circle</span>
                 </div>
-               
+
                 <span className="dadosPerfil">Nome:</span>
                 <p className="infoPerfil">{capitalizeFirstLetter(user.nome)}</p>
 
@@ -55,12 +57,24 @@ export const Perfil = () => {
 
                 <span className="dadosPerfil">CPF:</span>
                 <p className="infoPerfil">{user.cpf}</p>
-                 
-            <div className="btnPerfilContainer">
-                <button className="btnPerfil" onClick={handleSignout}>
-                    Sair
-                </button>
-            </div>
+
+                {
+                    user && ['1', '2', '3'].includes(user.tipoUsuario) && (
+                        
+                            <div>
+                                <span className="dadosPerfil">Nível do Suporte:</span>
+                                <p className="infoPerfil">N{user.tipoUsuario}</p>
+                            </div>
+                        
+                    )
+                }
+
+
+                <div className="btnPerfilContainer">
+                    <button className="btnPerfil" onClick={handleSignout}>
+                        Sair
+                    </button>
+                </div>
             </div>
         </div>
     );

@@ -3,7 +3,7 @@ import { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
 import ITickets from '../../types/ITickets';
 import { AuthContext } from '../../contexts/Auth/AuthContext';
-import VisualizarTicketTecnico from '../../components/VisualizarTicketTecnico';
+import VisualizarTicketTecnico from '../../components/VisualizarTicketsTecnico';
 import ICategoria from '../../types/ICategoria';
 
 export const TicketsAdmin = () => {
@@ -27,7 +27,7 @@ export const TicketsAdmin = () => {
         const response = await axios.get(`http://localhost:5555/tickets/listar/${user.user?.usuarioID}`);
         const initializedTickets = response.data.map((ticket: ITickets) => ({
           ...ticket,
-          status: ticket.status || '1' 
+          status: ticket.status || '1'
         }));
         setTickets(initializedTickets);
         const categoria = await axios.get('http://localhost:5555/categorias/listar');
@@ -36,10 +36,10 @@ export const TicketsAdmin = () => {
         console.error("Erro ao buscar tickets:", error);
       }
     };
-  
+
     fetchTickets();
   }, [user.user]);
-  
+
   const [filtroPrioridade, setFiltroPrioridade] = useState('');
   const [filtroCategoria, setFiltroCategoria] = useState('');
 
@@ -73,9 +73,9 @@ export const TicketsAdmin = () => {
       default:
         return '';
     }
-    
+
   };
-  
+
   return (
     <div className="ticketContainer">
       <div className="formTicket">
@@ -103,10 +103,10 @@ export const TicketsAdmin = () => {
           <div className="ticket-listTec">
             <div className="ticket-typesTec">
               <div className="containerColunas">
-              <div id='btnAfazer' className='afazer'>A fazer
-                <span className="material-symbols-outlined">
-                  flag
-                </span>
+                <div id='btnAfazer' className='afazer'>A fazer
+                  <span className="material-symbols-outlined">
+                    flag
+                  </span>
                 </div>
                 {filteredTickets.map((ticket, index) => (
                   ticket.status === '1' && (
@@ -116,7 +116,9 @@ export const TicketsAdmin = () => {
                           #{ticket.ticketsID}
                         </div>
                         <div>
-                          {ticket.titulo}
+                          <p className='tituloCardTitulo'>
+                            {ticket.titulo}
+                          </p>
                         </div>
                         <div>
                           <span className='prioridade'>{ticket.prioridade}</span>
@@ -128,11 +130,11 @@ export const TicketsAdmin = () => {
                 ))}
               </div>
               <div className="containerColunas">
-              <div id='btnAtendendo' className='atendendo'>Atendendo
-              <span className="material-symbols-outlined">
-                  play_circle
-                </span>
-              </div>
+                <div id='btnAtendendo' className='atendendo'>Atendendo
+                  <span className="material-symbols-outlined">
+                    play_circle
+                  </span>
+                </div>
                 {filteredTickets.map((ticket, index) => (
                   ticket.status === '2' && (
                     <div key={index} className={`ticket-itemTec ${getStatusClass(ticket.status)}`} onClick={() => handleOpenVisualizarTicketModal(ticket)}>
@@ -141,32 +143,9 @@ export const TicketsAdmin = () => {
                           #{ticket.ticketsID}
                         </div>
                         <div>
-                          {ticket.titulo}
-                        </div>
-                        <div>
-                        {new Date(ticket.dataAbertura).toLocaleDateString('pt-BR')}
-                          <span className='prioridade'>{ticket.prioridade}</span>
-                        </div>
-                      </div>
-                    </div>
-                  )
-                ))}
-              </div>
-              <div className="containerColunas">
-              <div id='btnPendente' className='pendente'>Pendente
-                <span className="material-symbols-outlined">
-                  pause_circle
-                </span>              
-              </div>
-                {filteredTickets.map((ticket, index) => (
-                  ticket.status === '3' && (
-                    <div key={index} className={`ticket-itemTec ${getStatusClass(ticket.status)}`} onClick={() => handleOpenVisualizarTicketModal(ticket)}>
-                      <div className={`ticket-item-info ${getStatusClass(ticket.status)}Info`}>
-                        <div>
-                          #{ticket.ticketsID}
-                        </div>
-                        <div>
-                          {ticket.titulo}
+                          <p className='tituloCardTitulo'>
+                            {ticket.titulo}
+                          </p>
                         </div>
                         <div>
                           <span className='prioridade'>{ticket.prioridade}</span>
@@ -178,11 +157,38 @@ export const TicketsAdmin = () => {
                 ))}
               </div>
               <div className="containerColunas">
-              <div id='btnFinalizar' className='finalizado'>Finalizado
-              <span className="material-symbols-outlined">
-                  check_circle
-                </span> 
+                <div id='btnPendente' className='pendente'>Pendente
+                  <span className="material-symbols-outlined">
+                    pause_circle
+                  </span>
+                </div>
+                {filteredTickets.map((ticket, index) => (
+                  ticket.status === '3' && (
+                    <div key={index} className={`ticket-itemTec ${getStatusClass(ticket.status)}`} onClick={() => handleOpenVisualizarTicketModal(ticket)}>
+                      <div className={`ticket-item-info ${getStatusClass(ticket.status)}Info`}>
+                        <div>
+                          #{ticket.ticketsID}
+                        </div>
+                        <div>
+                          <p className='tituloCardTitulo'>
+                            {ticket.titulo}
+                          </p>
+                        </div>
+                        <div>
+                          <span className='prioridade'>{ticket.prioridade}</span>
+                          {new Date(ticket.dataAbertura).toLocaleDateString('pt-BR')}
+                        </div>
+                      </div>
+                    </div>
+                  )
+                ))}
               </div>
+              <div className="containerColunas">
+                <div id='btnFinalizar' className='finalizado'>Finalizado
+                  <span className="material-symbols-outlined">
+                    check_circle
+                  </span>
+                </div>
                 {filteredTickets.map((ticket, index) => (
                   ticket.status === '4' && (
                     <div key={index} className={`ticket-itemTec ${getStatusClass(ticket.status)}`} onClick={() => handleOpenVisualizarTicketModal(ticket)}>
@@ -191,7 +197,9 @@ export const TicketsAdmin = () => {
                           #{ticket.ticketsID}
                         </div>
                         <div>
-                          {ticket.titulo}
+                          <p className='tituloCardTitulo'>
+                            {ticket.titulo}
+                          </p>
                         </div>
                         <div>
                           <span className='prioridade'>{ticket.prioridade}</span>
@@ -214,6 +222,6 @@ export const TicketsAdmin = () => {
           </div>
         )}
       </div>
-    </div>
+    </div >
   );
 };

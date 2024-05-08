@@ -5,8 +5,14 @@
     margin-bottom: 20px;
     color: var(--blue-color);
     align-items: center;
+    word-break: break-word;
 }
-
+.modalVisualizar{
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    width: 800px; 
+}
 .containerVisualizarTicket {
     display: flex;
     width: 100%;
@@ -16,8 +22,16 @@
     width: 50%;
     display: flex;
     flex-direction: column;
-
-
+}
+.infoVisualizarTicket > h2{
+    width: 90%;
+    word-wrap: break-word;
+}
+.infoVisualizarTicket p {
+    outline: none;
+    font-size: 16px;
+    color: var(--blue-color);
+    font-weight: 600;
 }
 
 .infoPair {
@@ -25,6 +39,7 @@
     flex-direction: column;
     padding: 10px 10px 10px 0;
     width: 90%;
+    word-break: break-word;
 }
 
 .infoPair > p {
@@ -33,13 +48,6 @@
 }
 
 .boldText {
-    font-weight: 600;
-}
-
-.infoVisualizarTicket p {
-    outline: none;
-    font-size: 16px;
-    color: var(--blue-color);
     font-weight: 600;
 }
 
@@ -54,3 +62,24 @@
     border-radius: 10px;
     gap: 5px;
 }
+
+.selectCategoria {
+    border-radius: 10px;
+    color: var(--black-color);
+}
+/*
+.inputAssunto {
+    display: flex;
+    text-align: left;
+    border: 2px solid rgba(0, 0, 0, 0.2); 
+    font-size: 20px;
+    border-radius: 10px;
+    width: 97%;
+    padding: 0 10px;
+}
+
+.formInputAssunto {
+    width: 100%;
+    margin: 10px 0;
+}
+*/

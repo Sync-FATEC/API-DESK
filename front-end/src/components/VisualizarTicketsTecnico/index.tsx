@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import './visualizarticket.css';
 import ITickets from '../../types/ITickets';
 import EscalamentoTicket from '../EscalamentoTicket';
 import { ChatTecnico } from '../chatTecnico';
+import './visualizarTicketsTecnico.css'
 
 interface Props {
     selectedTicket: ITickets | null;
@@ -60,7 +60,7 @@ const VisualizarTicketTecnico: React.FC<Props> = ({ selectedTicket, onClose }) =
             </div>
 
             <div className='infoContainer'>
-                <div className="infoVisualizar infoVisualizarTicket">
+                <div className="infoVisualizarTicket">
                     <h2>Título: {selectedTicket.titulo}</h2>
                     <div className="infoPair">
                         <span className="boldText">Data de abertura:</span>

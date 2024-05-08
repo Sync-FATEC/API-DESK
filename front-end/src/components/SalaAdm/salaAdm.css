@@ -26,19 +26,6 @@
     width: 100%; 
 }
 
-.excluir {
-    cursor: pointer;
-    color: var(--black-color);
-    transition: color 0.3s;
-    background-color: transparent;
-    border: none;
-    margin-left: 20px; 
-}
-
-.excluir:hover {
-    color: var(--red-error-color);
-}
-
 .inputSala {
     border: none;
     outline: none;

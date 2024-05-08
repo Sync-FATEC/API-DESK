@@ -79,7 +79,6 @@
     flex-direction: column;
 }
 .tituloCardTitulo{
-    max-width:  50px;
+    max-width:  350px;
     word-wrap: break-word;
-    
 }

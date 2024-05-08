@@ -3,7 +3,7 @@ import { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
 import ITickets from '../../types/ITickets';
 import { AuthContext } from '../../contexts/Auth/AuthContext';
-import VisualizarTicketTecnico from '../../components/VisualizarTicketTecnico';
+import VisualizarTicketTecnico from '../../components/VisualizarTicketsTecnico';
 import './tecnico.css';
 import ICategoria from '../../types/ICategoria';
 
@@ -113,21 +113,23 @@ export const Tecnicos = () => {
                   ticket.status === '1' && (
                     <div key={index} className={`ticket-itemTec ${getStatusClass(ticket.status)}`} onClick={() => handleOpenVisualizarTicketModal(ticket)}>
                       <div className={`ticket-item-info ${getStatusClass(ticket.status)}Info`}>
-                       
-                       
-                          <div>
-                            #{ticket.ticketsID}
-                          </div>
-                          <div className='tituloCardTitulo'>
-                            {ticket.titulo}
-                          </div>
-                    
-                          <div>
-                            <span className='prioridade'>{ticket.prioridade}</span>
-                            {new Date(ticket.dataAbertura).toLocaleDateString('pt-BR')}
-                          </div>
 
-                        
+
+                        <div>
+                          #{ticket.ticketsID}
+                        </div>
+                        <div>
+                          <p className='tituloCardTitulo'>
+                            {ticket.titulo}
+                          </p>
+                        </div>
+
+                        <div>
+                          <span className='prioridade'>{ticket.prioridade}</span>
+                          {new Date(ticket.dataAbertura).toLocaleDateString('pt-BR')}
+                        </div>
+
+
                       </div>
                     </div>
                   )
@@ -146,12 +148,14 @@ export const Tecnicos = () => {
                         <div>
                           #{ticket.ticketsID}
                         </div>
-                        <div className='tituloCardTitulo'>
-                            {ticket.titulo}
-                          </div>
                         <div>
-                          {new Date(ticket.dataAbertura).toLocaleDateString('pt-BR')}
+                          <p className='tituloCardTitulo'>
+                            {ticket.titulo}
+                          </p>
+                        </div>
+                        <div>
                           <span className='prioridade'>{ticket.prioridade}</span>
+                          {new Date(ticket.dataAbertura).toLocaleDateString('pt-BR')}
                         </div>
                       </div>
                     </div>
@@ -172,7 +176,9 @@ export const Tecnicos = () => {
                           #{ticket.ticketsID}
                         </div>
                         <div>
-                          {ticket.titulo}
+                          <p className='tituloCardTitulo'>
+                            {ticket.titulo}
+                          </p>
                         </div>
                         <div>
                           <span className='prioridade'>{ticket.prioridade}</span>
@@ -197,7 +203,9 @@ export const Tecnicos = () => {
                           #{ticket.ticketsID}
                         </div>
                         <div>
-                          {ticket.titulo}
+                          <p className='tituloCardTitulo'>
+                            {ticket.titulo}
+                          </p>
                         </div>
                         <div>
                           <span className='prioridade'>{ticket.prioridade}</span>
