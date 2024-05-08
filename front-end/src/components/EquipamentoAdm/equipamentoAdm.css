@@ -4,7 +4,7 @@
     align-items: center;
     padding: 6px 8px;
     margin: 10px;
-    border: 2px solid var(--cinza-color);
+    border: 2px solid var(--gray-color);
     border-radius: 10px;
     width: 100%;
     font-weight: 600;
@@ -19,7 +19,7 @@
 .labelEquipamento{
     left: 10px;
     top: 10px;
-    background: var(--branco-color);
+    background: var(--white-color);
     font-size: 16px;
     color: var(--black-color);
     padding: 0 5px;
@@ -39,7 +39,7 @@
     margin: 10px;
     border-radius: 10px;
     font-weight:600;
-    color: var(--branco-color);
+    color: var(--white-color);
 
 
 }
@@ -50,7 +50,7 @@
     align-items: center;
     padding: 6px 8px;
     margin: 10px;
-    border: 2px solid var(--cinza-color);
+    border: 2px solid var(--gray-color);
     border-radius: 10px;
     width: 95%; 
     font-weight:600;
@@ -70,7 +70,7 @@
     display: flex;
     padding: 6px 8px;
     margin: 10px;
-    border: 2px solid var(--cinza-color);
+    border: 2px solid var(--gray-color);
     border-radius: 10px;
     width: 100%; 
 }
@@ -89,7 +89,7 @@
     cursor: pointer;
     transition: color 300ms ease-in-out;
     font-size: 20px;
-    border: 2px solid var(--cinza-color);
+    border: 2px solid var(--gray-color);
     border-radius: 10px;
     margin: 5px;
     letter-spacing: 1px; 

@@ -5,7 +5,7 @@
 }
 .asideLinks {
     width: 200px; 
-    background-color: var(--cinza-color); 
+    background-color: var(--gray-color);
     padding: 20px;
     border-radius: 5px;
     min-height: 100%; 
