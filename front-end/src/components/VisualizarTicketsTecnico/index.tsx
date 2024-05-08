@@ -134,7 +134,7 @@ const VisualizarTicketTecnico: React.FC<Props> = ({ selectedTicket, onClose }) =
                     </div>
                 </div>
                 <div className='chatCliente'>
-                <ChatTecnico />
+                <ChatTecnico selectedTicket={selectedTicket}/>
                 </div>
             </div>
 
