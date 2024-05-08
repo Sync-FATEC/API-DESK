@@ -14,6 +14,7 @@ export const criarTicket = async (titulo: string, descricao: string, status: str
         const sala = await salasRepositorio.findOneBy({ numeroSala: numeroSala });
         const usuario = await usuariosRepositorio.findOneBy({ usuarioID: usuarioID });
         const dataAbertura = new Date();
+        const dataSla = new Date(dataAbertura.getTime() + 24 * 60 * 60 * 1000);
 
         if (!categoria || !equipamento || !sala || !usuario) {
             console.log('Categoria, equipamento, sala ou usuário inexistente');
