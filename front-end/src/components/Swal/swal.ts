@@ -228,3 +228,28 @@ export const Toast = Swal.mixin({
     }
   });
   
+  export const TicketStatusAlterado = () => {
+    const options: SweetAlertOptions = {
+        title: "Sucesso!",
+        text: "Status do ticket alterado com sucesso!",
+        icon: 'success',
+        confirmButtonText: 'OK',
+        backdrop: 'rgba(0,0,0,0.7)',
+        timer: 2000, // 2 segundos
+        timerProgressBar: true,
+        showClass: {
+            popup: 'animate__animated animate__fadeInDown'
+        },
+        hideClass: {
+            popup: 'animate__animated animate__fadeOutUp'
+        },
+        customClass: {
+            popup: 'my-popup-class',
+            title: 'my-title-class',
+            confirmButton: 'my-confirm-button-class',
+            timerProgressBar: 'my-progress-bar-class'
+        }
+    };
+    Swal.fire(options);
+};
+
