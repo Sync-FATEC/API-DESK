@@ -18,6 +18,12 @@
   --green-color: #28C94C;
   --orange-color: #FF8A00;
   --padding-global: 0 120px;
+  --fonte-titulo: 32px;
+  --fonte-subTitulo: 28px;
+  --fonte-label: 22px;
+  --fonte-input: 16px;
+  --fonte-button: 16px;
+  --fonte-buttonAside: 20px;
 }
 
 .containerPrincipal {
@@ -41,7 +47,7 @@
 }
 
 .formTitle {
-  font-size: 32px;
+  font-size: var(--fonte-titulo);
   color: var(--black-color);
   margin-bottom: 20px;
   text-align: center;
@@ -50,7 +56,7 @@
 .formTitle2 {
   color: var(--black-color);
   text-align: center;
-  font-size: 28px;
+  font-size: var(--fonte-subTitulo);
   padding: 0 0 24px;
 }
 
@@ -63,7 +69,7 @@
 .formInput input {
   text-align: left;
   outline: none;
-  font-size: 16px;
+  font-size: var(--fonte-input);
   padding: 10px;
   border: 1px solid rgba(0, 0, 0, 0.2); 
   display: block;
@@ -88,7 +94,7 @@
   left: 10px; 
   top: -10px; 
   background: var(--white-color);
-  font-size: 16px; 
+  font-size: var(--fonte-input); 
   color:var(--black-color);
   padding: 0 5px;
   transition: 200ms ease-in-out;
@@ -103,7 +109,7 @@
   padding: 10px;
   background-color: var(--blue-color);
   color: var(--gray-color);
-  font-size: 16px;
+  font-size: var(--fonte-button);
   cursor: pointer;
 }
 
@@ -125,7 +131,7 @@ aside {
   border: 2px solid var(--white-color);
   background-color: transparent;
   width: 200px;
-  font-size: 20px;
+  font-size: var(--fonte-buttonAside);
   border-radius: 10px;
   justify-content: center;
   cursor: pointer;

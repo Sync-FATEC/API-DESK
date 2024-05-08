@@ -1,6 +1,7 @@
 import React from 'react';
 import ITickets from '../../types/ITickets';
 import './visualizarTickets.css'
+import { ChatCliente } from '../chatCliente';
 interface Props {
     selectedTicket: ITickets | null;
     onClose: () => void;
@@ -35,7 +36,9 @@ const VisualizarTicketCliente: React.FC<Props> = ({ selectedTicket, onClose }) =
                         <p>{selectedTicket.descricao}</p>
                     </div>
                 </div>
-                <div className='chatCliente'></div>
+                <div className='chatCliente'>
+                <ChatCliente />
+                </div>
             </div>
         </div>
     );

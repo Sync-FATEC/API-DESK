@@ -3,6 +3,7 @@ import axios from 'axios';
 import './visualizarticket.css';
 import ITickets from '../../types/ITickets';
 import EscalamentoTicket from '../EscalamentoTicket';
+import { ChatTecnico } from '../chatTecnico';
 
 interface Props {
     selectedTicket: ITickets | null;
@@ -82,7 +83,8 @@ const VisualizarTicketTecnico: React.FC<Props> = ({ selectedTicket, onClose }) =
                         <p>{selectedTicket.descricao}</p>
                     </div>
                 </div>
-                <div className='infoChat'>
+                <div className='chatCliente'>
+                <ChatTecnico />
                 </div>
             </div>
 

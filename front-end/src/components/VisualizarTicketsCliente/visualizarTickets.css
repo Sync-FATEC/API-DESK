@@ -46,8 +46,11 @@
 .chatCliente {
     width: 50%;
     padding: 10px;
-    border: 1px solid rgba(0, 0, 0, 0.2); 
-    display: block;
+    text-align: center;
+    flex-direction: column;
+    border: 1px solid var(--gray-color); 
+    display: flex;
     font-weight: 600;
     border-radius: 10px;
+    gap: 5px;
 }

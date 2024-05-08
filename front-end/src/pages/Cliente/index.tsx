@@ -93,7 +93,7 @@ const Cliente: React.FC = () => {
                             <div>Abertura</div>
                             <div>Titulo</div>
                             <div>Categoria</div>
-                            <div></div>
+                            <div>Visualizar</div>
                         </div>
                         {filteredTickets.map((ticket) => (
                             <div className="ticket-item" key={ticket.ticketsID}>
