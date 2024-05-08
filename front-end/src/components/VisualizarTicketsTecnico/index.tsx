@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import axios from 'axios';
 import ITickets from '../../types/ITickets';
 import EscalamentoTicket from '../EscalamentoTicket';
 import { ChatTecnico } from '../chatTecnico';
 import './visualizarTicketsTecnico.css'
+import { AuthContext } from '../../contexts/Auth/AuthContext';
 
 interface Props {
     selectedTicket: ITickets | null;
@@ -14,6 +15,7 @@ const VisualizarTicketTecnico: React.FC<Props> = ({ selectedTicket, onClose }) =
     const [modalOpen, setModalOpen] = useState(false);
     const [currentStatus, setCurrentStatus] = useState(selectedTicket?.status || '');
     const formatDataSlaTickets = selectedTicket?.dataSla ? new Date (selectedTicket.dataSla).toLocaleString ('pt-BR', { hour: 'numeric', minute: 'numeric', day: 'numeric', month: 'numeric', year: 'numeric'}): '';
+    const { user } = useContext(AuthContext);
     
     const handleOpenModal = () => {
         setModalOpen(true);
@@ -25,7 +27,7 @@ const VisualizarTicketTecnico: React.FC<Props> = ({ selectedTicket, onClose }) =
 
     const handleUpdateStatus = async (newStatus: string) => {
         try {
-            await axios.put(`http://localhost:5555/tickets/alterarStatus`, { ticketID: selectedTicket?.ticketsID, status: newStatus });
+            await axios.put(`http://localhost:5555/tickets/alterarStatus`, { ticketID: selectedTicket?.ticketsID, status: newStatus, tecnicoID: user?.usuarioID});
             if (selectedTicket) {
                 selectedTicket.status = newStatus;
                 setCurrentStatus(newStatus); // Atualiza o estado do status do ticket
