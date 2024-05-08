@@ -47,6 +47,7 @@ create table tickets (
 	ticketsID int primary key auto_increment,
     dataAbertura datetime not null,
     dataFechamento datetime,
+    dataSla datetime not null,
     titulo varchar(255) not null,
     descricao varchar(255) not null,
     status varchar(1) default '1',
