@@ -16,6 +16,9 @@ export class Tickets {
     @Column({ type: 'datetime', nullable: true})
     dataFechamento: null | Date;
 
+    @Column({ type: 'datetime'})
+    dataSla: String;
+
     @Column({ length: 255 })
     titulo: string
 
@@ -51,8 +54,9 @@ export class Tickets {
     @JoinColumn({ name: 'TecnicoID' })
     tecnico: Usuarios;
 
-    constructor(dataAbertura: Date, titulo: string, descricao: string, status: string, tipoTecnico: string, prioridade: string, categoria: Categorias, equipamentos: Equipamentos, sala: Salas, usuario: Usuarios) {
+    constructor(dataAbertura: Date, dataSla: Date, titulo: string, descricao: string, status: string, tipoTecnico: string, prioridade: string, categoria: Categorias, equipamentos: Equipamentos, sala: Salas, usuario: Usuarios) {
         this.dataAbertura = dataAbertura;
+        this.dataSla = dataSla;
         this.titulo = titulo;
         this.descricao = descricao;
         this.status = status;
