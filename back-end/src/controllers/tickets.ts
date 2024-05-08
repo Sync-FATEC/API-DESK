@@ -14,14 +14,14 @@ export const criarTicket = async (titulo: string, descricao: string, status: str
         const sala = await salasRepositorio.findOneBy({ numeroSala: numeroSala });
         const usuario = await usuariosRepositorio.findOneBy({ usuarioID: usuarioID });
         const dataAbertura = new Date();
-        const dataSla = new Date(dataAbertura.getTime() + 24 * 60 * 60 * 1000);
+        const dataSla = new Date(dataAbertura.getTime() + equipamento.sla * 60 * 60 * 1000);
 
         if (!categoria || !equipamento || !sala || !usuario) {
             console.log('Categoria, equipamento, sala ou usuário inexistente');
             return 'Categoria, equipamento, sala ou usuário inexistente';
         }
 
-        const novoTicket = new Tickets(dataAbertura, titulo, descricao, status, categoria.tipoTecnico, equipamento.prioridade, categoria, equipamento, sala, usuario);
+        const novoTicket = new Tickets(dataAbertura, dataSla, titulo, descricao, status, categoria.tipoTecnico, equipamento.prioridade, categoria, equipamento, sala, usuario);
         await ticketsRepositorio.save(novoTicket);
         console.log('Ticket criado com sucesso');
         return novoTicket;
