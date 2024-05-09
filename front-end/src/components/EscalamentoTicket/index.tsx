@@ -13,7 +13,7 @@ const EscalamentoTicket: React.FC<Props> = ({ selectedTicket }) => {
 
     const handleEscalamento = async (tecnico: string) => {
         try {
-            const response = await axios.post('http://localhost:5555/tickets/alterarTecnico', {
+            const response = await axios.post('http://localhost:5555/tickets/alterarTipoTecnico', {
                 ticketID: selectedTicket.ticketsID,
                 tipoTecnico: tecnico
             });
