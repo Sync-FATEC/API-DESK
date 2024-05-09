@@ -41,6 +41,14 @@ const EquipamentoAdm = () => {
             warning('Preencha todos os campos');
             return;
         }
+        if (equipamento.toString().length > 20) { 
+            warning('Equipamento muito longo. Limite de 20 caracteres.');
+            return;
+        }
+        if (sla.toString().length > 10) { 
+            warning('Número de SLA muito longo. Limite de 10 caracteres.');
+            return;
+        }
         try {
             const response = await axios.post('http://localhost:5555/equipamentos/criar', {
                 equipamento: equipamento,

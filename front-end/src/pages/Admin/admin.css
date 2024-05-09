@@ -1,3 +1,10 @@
+.containerAdmin{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 100%;
+  margin: 10px 0;
+}
 .titleAdmin {
     display: flex;
     font-size: 40px;

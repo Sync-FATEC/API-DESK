@@ -5,5 +5,6 @@ export interface User {
     tipoUsuario: string;
     cpf: string;
     token: string;
+    turno: string;
   }
   

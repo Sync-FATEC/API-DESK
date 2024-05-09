@@ -120,7 +120,6 @@ export const cadastradoEmailSenha = () => {
         title: "E-mail ou senha já existentes!",
         icon: 'question',
         confirmButtonText: 'OK',
-        footer: '<a href="/login">Deseja fazer login?</a>',
         backdrop: 'rgba(0,0,0,0.7)',
         timer: 3000, // 3 segundos
         timerProgressBar: true,
@@ -145,7 +144,6 @@ export const cadastradoCpf = () => {
         title: "CPF já cadastrado!",
         icon: 'question',
         confirmButtonText: 'OK',
-        footer: '<a href="/login">Deseja fazer login?</a>',
         backdrop: 'rgba(0,0,0,0.7)',
         timer: 3000, // 3 segundos
         timerProgressBar: true,

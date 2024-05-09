@@ -56,6 +56,10 @@ const CategoriaAdm = () => {
             warning('Preencha todos os campos');
             return;
         }
+        if (categoria.toString().length > 20) { 
+            warning('Categoria muito longo. Limite de 20 caracteres.');
+            return;
+        }
         try {
             const response = await axios.post('http://localhost:5555/categorias/cadastrar', {
                 categoria: categoria,

@@ -60,6 +60,10 @@ const SalaAdm = () => {
             warning('Número da sala muito longo. Limite de 10 caracteres.');
             return;
         }
+        if (identificacao.toString().length > 30) { 
+            warning('Identificação da sala muito longo. Limite de 30 caracteres.');
+            return;
+        }
 
         try {
             const response = await axios.post('http://localhost:5555/salas/criar', {

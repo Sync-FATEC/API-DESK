@@ -8,6 +8,18 @@ import ITecnicos from '../../types/ITecnicos';
 const TecnicosAdm = () => {
     const [tecnicos, setTecnicos] = useState<ITecnicos[]>([]);
 
+    const getTurnoClass = (turno: string) => {
+        switch (turno) {
+          case 'M':
+            return 'Manhã';
+          case 'T':
+            return 'Tarde';
+          case 'N':
+            return 'Noite';
+          default:
+            return '';
+        }
+      };
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -52,7 +64,8 @@ const TecnicosAdm = () => {
                                 N{tecnico.tipoUsuario}
                             </div>
                             <div className="tecnicoTurno">
-                                <span>Turno: {tecnico.turno}</span>
+                                <span>Turno: {getTurnoClass(tecnico.turno)}</span>
+                                
                             </div>
 
                         </div>

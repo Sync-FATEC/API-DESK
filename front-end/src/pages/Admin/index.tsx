@@ -12,7 +12,8 @@ export const Admin: React.FC = () => {
     };
 
     return (
-        <div>
+
+        <div className='containerAdmin'>
             <Header />
             <div className="titleAdmin">{pageTitle}</div> 
             <div className="containerPrincipal">
