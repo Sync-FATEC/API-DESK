@@ -45,8 +45,9 @@ AppDataSource.initialize().then(async () => {
 
         });
 
-        socket.on('sendMessage', (message, room, tipoUsuario) => {
-            io.to(room).emit('message', message, tipoUsuario);
+        socket.on('sendMessage', (message, room, tipoUsuario, nome) => {
+            io.to(room).emit('message', message, tipoUsuario, nome);
+            console.log(nome, message, tipoUsuario, room);
             console.log('Mensagem enviada');
             
         });
