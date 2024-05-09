@@ -24,6 +24,16 @@
     align-self: flex-end;
 }
 
+.mensagemChat2:hover::after  .mensagemChat:hover::after {
+    content: attr(title);
+    position: absolute;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 5px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
 .mensagemChat2{
     background-color: var(--gray-color);
     border-radius: 5px;

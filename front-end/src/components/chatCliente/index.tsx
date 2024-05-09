@@ -13,7 +13,8 @@ interface Props {
 export const ChatCliente: React.FC<Props> = ({ selectedTicket }) => {
     const messagesEndRef = useRef<HTMLDivElement | null>(null);
     const socketRef = useRef<Socket | null>(null);
-    const [messages, setMessages] = useState<string[]>([]);
+    const [messages, setMessages] = useState<{
+        nome: string | undefined;message: string, tipoUsuario: string}[]>([]);
     const [anotacoes, setAnotacoes] = useState<IAnotacao[]>([]);
     const [input, setInput] = useState<string>('');
     const { user } = useContext(AuthContext);
@@ -25,23 +26,29 @@ export const ChatCliente: React.FC<Props> = ({ selectedTicket }) => {
     useEffect(() => {
         const fetchAnotacoes = async () => {
             try {
-                const response = await axios.get(`http://localhost:5555/anotacoes/listar/${selectedTicket?.ticketsID}`);
+                const response = await axios.get(`http://localhost:5555/anotacoes/listar/` + selectedTicket?.ticketsID);
                 setAnotacoes(response.data);
+                
             } catch (error) {
                 console.error(error);
             }
+            scrollToBottom();
         };
+
         fetchAnotacoes();
-
+        interface IMessage {
+            message: string;
+            nome: string;
+            tipoUsuario: string;
+        }
         socketRef.current = io('http://localhost:5555');
-
         socketRef.current.emit('joinRoom', selectedTicket?.ticketsID);
-        socketRef.current.on('message', async (message: string) => {
-            await fetchAnotacoes();
-            console.log(message);
+        socketRef.current.on('message', async (message: string, tipoUsuario: string, nome: string) => {
+            const messages = new Object({message, tipoUsuario, nome}) as IMessage;
+            
+            setMessages((prevMessages) => [...prevMessages, messages]);
+            scrollToBottom();
         });
-
-        scrollToBottom();
 
         return () => {
             if (socketRef.current) {
@@ -52,7 +59,9 @@ export const ChatCliente: React.FC<Props> = ({ selectedTicket }) => {
 
     const sendMessage = async (message: string) => {
         if (socketRef.current) {
-            socketRef.current.emit('sendMessage', message, selectedTicket?.ticketsID, user?.tipoUsuario);
+            socketRef.current.emit('sendMessage', message, selectedTicket?.ticketsID, user?.tipoUsuario, user?.nome);
+            
+            setInput('');
         }
         const response = await axios.post('http://localhost:5555/anotacoes/criar', {
                     'anotacao': message,
@@ -60,45 +69,59 @@ export const ChatCliente: React.FC<Props> = ({ selectedTicket }) => {
                     'usuarioID': user?.usuarioID,
                 });
 
-        try {
-            const response = await axios.get(`http://localhost:5555/anotacoes/listar/${selectedTicket?.ticketsID}`);
-            setAnotacoes(response.data);
-            console.log(anotacoes);
-            
-        } catch (error) {
-            console.error(error);
-        }
-
-        setInput('');
     };
     
     const handleInput = (event: React.ChangeEvent<HTMLInputElement>) => {
         const { value } = event.target;
         setInput(value);
     }
+
+    const handleSubmit = (event: React.FormEvent) => {
+        if (!input) {
+            event.preventDefault();
+        } else {
+        event.preventDefault();
+        sendMessage(input);
+    }
+    };
+
     return (
         <>
-            <h2 className='tituloChat'>Chat com Tecnico</h2>
+            <h2 className='tituloChat'>Chat com Cliente</h2>
             <div className='containerMensagemChat'>
-                {anotacoes.map((message, index) => (
-                    message.usuario.tipoUsuario === 'U' ? (
-                        <p key={index} className='mensagemChat'>{message.anotacao}</p>
-                    ) : (
-                        <p key={index} className='mensagemChat2'>{message.anotacao}</p>
-                    )
+            {anotacoes.map((message, index) => (
+                    <>
+                        {message.usuario.tipoUsuario === 'U' ? (
+                            <p key={index} className='mensagemChat' title={message.usuario.nome}>{message.anotacao}</p>
+                        ) : (
+                            <p key={index} className='mensagemChat2' title={message.usuario.nome}>{message.anotacao}</p>
+                        )}
+                    </>
+                ))}
+                {messages.map((message, index) => (
+                    <>
+                        {message.tipoUsuario === 'U' ? (
+                            <p key={index} className='mensagemChat' title={message.nome}>{message.message}</p>
+                        ) : (
+                            <p key={index} className='mensagemChat2' title={message.nome}>{message.message}</p>
+                        )}
+                    </>
                 ))}
 
                 <div ref={messagesEndRef} />
 
             </div>
-            <div className='containerInputChat'>
-                <input value={input} onChange={handleInput} className='inputChat' type="text" placeholder='Digite uma mensagem' />
-                <button type='submit' onClick={() => sendMessage(input)}>
-                    <span className="material-symbols-outlined">
-                        send
-                    </span>
-                </button>
-            </div>
+
+            <form onSubmit={handleSubmit}>
+                <div className='containerInputChat'>
+                    <input value={input} onChange={handleInput} className='inputChat' type="text" placeholder='Digite uma mensagem' />
+                    <button type='submit'>
+                        <span className="material-symbols-outlined">
+                            send
+                        </span>
+                    </button>
+                </div>
+            </form>
         </>
     );
 };
