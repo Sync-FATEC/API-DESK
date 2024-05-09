@@ -104,7 +104,7 @@ export const Tecnicos = () => {
           <div className="ticket-listTec">
             <div className="ticket-typesTec">
               <div className="containerColunas">
-                <div id='btnAfazer' className='afazer'>A fazer
+                <div id='btnAfazer' className='containerAfazer'>A fazer
                   <span className="material-symbols-outlined">
                     flag
                   </span>
@@ -115,20 +115,21 @@ export const Tecnicos = () => {
                       <div className={`ticket-item-info ${getStatusClass(ticket.status)}Info`}>
 
 
-                        <div>
+                        <div className='containerInfoTicketInicio'>
                           #{ticket.ticketsID}
                         </div>
-                        <div>
-                          <p className='tituloCardTitulo'>
+                        <div className='containerTituloCard'>
+                          <p>
                             {ticket.titulo}
                           </p>
                         </div>
+                        <div className='containerInfoTicketFim'>
+                          <span className='prioridadeTicket'>{ticket.prioridade}</span>
+                          <div className='dataAberturaTicket'>
+                            {new Date(ticket.dataAbertura).toLocaleDateString('pt-BR')}
+                          </div>
 
-                        <div>
-                          <span className='prioridade'>{ticket.prioridade}</span>
-                          {new Date(ticket.dataAbertura).toLocaleDateString('pt-BR')}
                         </div>
-
 
                       </div>
                     </div>
@@ -136,7 +137,7 @@ export const Tecnicos = () => {
                 ))}
               </div>
               <div className="containerColunas">
-                <div id='btnAtendendo' className='atendendo'>Atendendo
+                <div id='btnAtendendo' className='containerAtendendo'>Atendendo
                   <span className="material-symbols-outlined">
                     play_circle
                   </span>
@@ -145,17 +146,20 @@ export const Tecnicos = () => {
                   ticket.status === '2' && (
                     <div key={index} className={`ticket-itemTec ${getStatusClass(ticket.status)}`} onClick={() => handleOpenVisualizarTicketModal(ticket)}>
                       <div className={`ticket-item-info ${getStatusClass(ticket.status)}Info`}>
-                        <div>
+                        <div className='containerInfoTicketInicio'>
                           #{ticket.ticketsID}
                         </div>
-                        <div>
-                          <p className='tituloCardTitulo'>
+                        <div className='containerTituloCard'>
+                          <p>
                             {ticket.titulo}
                           </p>
                         </div>
-                        <div>
-                          <span className='prioridade'>{ticket.prioridade}</span>
-                          {new Date(ticket.dataAbertura).toLocaleDateString('pt-BR')}
+                        <div className='containerInfoTicketFim'>
+                          <span className='prioridadeTicket'>{ticket.prioridade}</span>
+                          <div className='dataAberturaTicket'>
+                            {new Date(ticket.dataAbertura).toLocaleDateString('pt-BR')}
+                          </div>
+
                         </div>
                       </div>
                     </div>
@@ -163,7 +167,7 @@ export const Tecnicos = () => {
                 ))}
               </div>
               <div className="containerColunas">
-                <div id='btnPendente' className='pendente'>Pendente
+                <div id='btnPendente' className='containerPendente'>Pendente
                   <span className="material-symbols-outlined">
                     pause_circle
                   </span>
@@ -172,17 +176,20 @@ export const Tecnicos = () => {
                   ticket.status === '3' && (
                     <div key={index} className={`ticket-itemTec ${getStatusClass(ticket.status)}`} onClick={() => handleOpenVisualizarTicketModal(ticket)}>
                       <div className={`ticket-item-info ${getStatusClass(ticket.status)}Info`}>
-                        <div>
+                        <div className='containerInfoTicketInicio'>
                           #{ticket.ticketsID}
                         </div>
-                        <div>
-                          <p className='tituloCardTitulo'>
+                        <div className='containerTituloCard'>
+                          <p>
                             {ticket.titulo}
                           </p>
                         </div>
-                        <div>
-                          <span className='prioridade'>{ticket.prioridade}</span>
-                          {new Date(ticket.dataAbertura).toLocaleDateString('pt-BR')}
+                        <div className='containerInfoTicketFim'>
+                          <span className='prioridadeTicket'>{ticket.prioridade}</span>
+                          <div className='dataAberturaTicket'>
+                            {new Date(ticket.dataAbertura).toLocaleDateString('pt-BR')}
+                          </div>
+
                         </div>
                       </div>
                     </div>
@@ -190,7 +197,7 @@ export const Tecnicos = () => {
                 ))}
               </div>
               <div className="containerColunas">
-                <div id='btnFinalizar' className='finalizado'>Finalizado
+                <div id='btnFinalizar' className='containerFinalizado'>Finalizado
                   <span className="material-symbols-outlined">
                     check_circle
                   </span>
@@ -198,18 +205,21 @@ export const Tecnicos = () => {
                 {filteredTickets.map((ticket, index) => (
                   ticket.status === '4' && (
                     <div key={index} className={`ticket-itemTec ${getStatusClass(ticket.status)}`} onClick={() => handleOpenVisualizarTicketModal(ticket)}>
-                      <div className={`ticket-itemTec ${getStatusClass(ticket.status)}Info`}>
-                        <div>
+                      <div className={`ticket-item-info ${getStatusClass(ticket.status)}Info`}>
+                        <div className='containerInfoTicketInicio'>
                           #{ticket.ticketsID}
                         </div>
-                        <div>
-                          <p className='tituloCardTitulo'>
+                        <div className='containerTituloCard'>
+                          <p>
                             {ticket.titulo}
                           </p>
                         </div>
-                        <div>
-                          <span className='prioridade'>{ticket.prioridade}</span>
-                          {new Date(ticket.dataAbertura).toLocaleDateString('pt-BR')}
+                        <div className='containerInfoTicketFim'>
+                          <span className='prioridadeTicket'>{ticket.prioridade}</span>
+                          <div className='dataAberturaTicket'>
+                            {new Date(ticket.dataAbertura).toLocaleDateString('pt-BR')}
+                          </div>
+
                         </div>
                       </div>
                     </div>

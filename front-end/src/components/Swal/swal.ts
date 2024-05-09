@@ -195,7 +195,6 @@ export const loginSenhaEmail = () => {
         title: "Usuário inexistente ou senha incorreta",
         icon: 'question',
         confirmButtonText: 'OK',
-        footer: '<a href="/cadastro">Deseja se cadastrar?</a>',
         backdrop: 'rgba(0,0,0,0.7)',
         timer: 3000, // 3 segundos
         timerProgressBar: true,
