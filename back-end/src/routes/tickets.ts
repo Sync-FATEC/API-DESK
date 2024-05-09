@@ -1,5 +1,5 @@
 import express, { Request, Response } from 'express';
-import { criarTicket, excluirTicket, alterarStatusTicket, listarTickets, alterarTecnico, procurarTicket } from '../controllers/tickets';
+import { alterarTipoTecnico, criarTicket, excluirTicket, alterarStatusTicket, listarTickets, procurarTicket, alterarTecnico } from '../controllers/tickets';
 
 const router = express.Router();
 
@@ -52,14 +52,26 @@ router.get('/procurar/:ticketID', async (req: Request, res: Response) => {
 
 });
 
-router.post('/alterarTecnico', async (req: Request, res: Response) => {
+router.post('/alterarTipoTecnico', async (req: Request, res: Response) => {
     const { ticketID, tipoTecnico } = req.body;
-
+    
     if (ticketID == '' || tipoTecnico == '') {
         return res.status(400).json({ error: 'Preencha todos os campos' });
     }
 
-    res.json(await alterarTecnico(ticketID, tipoTecnico));
+    res.json(await alterarTipoTecnico(ticketID, tipoTecnico));
 });
+
+router.put('/alterarTecnico/:ticketID/:tecnicoID', async (req: Request, res: Response) => {
+    const ticketID = Number(req.params.ticketID);
+    const tecnicoID = Number(req.params.tecnicoID);
+    
+    if (!ticketID || !tecnicoID ) {
+        return res.status(400).json({ error: 'Preencha todos os campos' });
+    }
+
+    res.json(await alterarTecnico(ticketID, tecnicoID));
+});
+
 
 export default router;
