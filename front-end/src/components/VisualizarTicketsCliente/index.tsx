@@ -35,9 +35,13 @@ const VisualizarTicketCliente: React.FC<Props> = ({ selectedTicket, onClose }) =
                         <span className="boldText">Descrição: </span>
                         <p>{selectedTicket.descricao}</p>
                     </div>
+                    <div className="infoPair">
+                        <span className="boldText">Tecnico: </span>
+                        <p>{selectedTicket.tecnico?.nome}</p>
+                    </div>
                 </div>
                 <div className='chatCliente'>
-                <ChatCliente />
+                <ChatCliente selectedTicket={selectedTicket}/>
                 </div>
             </div>
         </div>

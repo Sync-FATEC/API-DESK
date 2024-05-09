@@ -6,15 +6,31 @@
     height: 200px;
     overflow-y: auto;
     margin: 0 0 20px;
+    display: flex;
+    flex-direction: column;
     
 }
+
 .containerMensagemChat p{
     word-wrap: break-word;
 }
+
 .mensagemChat{
-   background-color: var(--gray-color); 
-   border-radius: 5px;
-   padding: 8px;
+    background-color: var(--gray-color);
+    border-radius: 5px;
+    padding: 8px;
+    margin: 0 0 10px;
+    max-width: 70%;
+    align-self: flex-end;
+}
+
+.mensagemChat2{
+    background-color: var(--gray-color);
+    border-radius: 5px;
+    padding: 8px;
+    margin: 0 0 10px;
+    max-width: 70%;
+    align-self: flex-start;
 }
 
 .containerInputChat{

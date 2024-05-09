@@ -61,7 +61,7 @@ create table tickets (
     foreign key (categoriaID) references categorias(categoriaID),
     foreign key (equipamentosID) references equipamentos(equipamentosID),
     foreign key (salaID) references salas(salaID),
-    foreign key (usuarioID) references usuarios(usuarioID)
+    foreign key (usuarioID) references usuarios(usuarioID),
     foreign key (tecnicoID) references usuarios(usuarioID)
 );
 

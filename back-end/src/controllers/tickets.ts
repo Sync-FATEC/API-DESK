@@ -52,11 +52,19 @@ export const alterarStatusTicket = async (ticketID: number, status: string, tecn
     try {
         const ticket = await ticketsRepositorio.findOneBy({ ticketsID: ticketID });
         const tecnico = await usuariosRepositorio.findOneBy({ usuarioID: tecnicoID });
+        if (ticket.status === '4') {
+            console.log('Ticket finalizado, não é possível alterar o status');
+            return 'Ticket finalizado, não é possível alterar o status';
+        }
         if (ticket && tecnico) {
             ticket.status = status;
-            if (status === '1' || status === '4') {
+            if (status === '1') {
                 ticket.tecnico = null;
                 console.log('Técnico removido do ticket');
+            } else if (status === '4') {
+                ticket.dataFechamento = new Date();
+                ticket.tecnico = null;
+                console.log('Ticket finalizado com sucesso');
             } else {
                 ticket.tecnico = tecnico;
             }
@@ -79,17 +87,17 @@ export const listarTickets = async (usuarioID: number) => {
         if (usuario) {
 
             if (usuario.tipoUsuario === 'U') {
-                const tickets = await ticketsRepositorio.find({ where: { usuario: usuario }, relations: ['categoria', 'equipamentos', 'sala', 'usuario']});
+                const tickets = await ticketsRepositorio.find({ where: { usuario: usuario }, relations: ['categoria', 'equipamentos', 'sala', 'usuario', 'tecnico']});
                 console.log('Tickets listados com sucesso U');
                 return tickets;
             } 
             else if (usuario.tipoUsuario === 'A') {
-                const tickets = await ticketsRepositorio.find({relations: ['categoria', 'equipamentos', 'sala', 'usuario']});
+                const tickets = await ticketsRepositorio.find({relations: ['categoria', 'equipamentos', 'sala', 'usuario', 'tecnico']});
                 console.log('Tickets listados com sucesso A');
                 return tickets;
             }
             else if (usuario.tipoUsuario === '1' || usuario.tipoUsuario === '2' || usuario.tipoUsuario === '3') {
-                const tickets = await ticketsRepositorio.find({ where: { tipoTecnico: usuario.tipoUsuario }, relations: ['categoria', 'equipamentos', 'sala', 'usuario'] });
+                const tickets = await ticketsRepositorio.find({ where: { tipoTecnico: usuario.tipoUsuario }, relations: ['categoria', 'equipamentos', 'sala', 'usuario', 'tecnico'] });
                 console.log('Tickets listados com sucesso T');
                 return tickets;
             }

@@ -27,7 +27,7 @@ export const criarAnotacoes = async (anotacao: string, ticketsID: number, usuari
     }
 }
 
-export const deleteAnotacoes = async (anotacoesID: number) => {
+export const deletarAnotacoes = async (anotacoesID: number) => {
     try {
         const anotacoes = await anotacoesRepositorio.findOne({ where: {anotacoesID: anotacoesID} });
         if (anotacoes) {
@@ -41,5 +41,22 @@ export const deleteAnotacoes = async (anotacoesID: number) => {
     } catch (error) {
         console.error('Erro na exclusão de uma anotação\n', error);
         return 'Erro na exclusão de uma anotação'
+    }
+}
+
+export const listarAnotacoes = async (ticketsID: number) => {
+    try {
+        const ticket = await ticketsRepositorio.findOne({ where: {ticketsID: ticketsID} });
+        const anotacoes = await anotacoesRepositorio.find({ where: {tickets: ticket}, relations: ['usuario']});
+        if (anotacoes) {
+            console.log('Anotações listadas com sucesso');
+            return anotacoes
+        } else {
+            console.log('Ticket inexistente');
+            return 'Ticket inexistente'
+        }
+    } catch (error) {
+        console.error('Erro na listagem de anotações', error);
+        return 'Erro na listagem de anotações'
     }
 }
