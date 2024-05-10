@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import './escalamentoTicket.css';
 import ITickets from '../../types/ITickets';
+import { erro } from '../Swal/swal';
+import Swal from 'sweetalert2';
 
 interface Props {
     selectedTicket: ITickets;
@@ -18,10 +20,33 @@ const EscalamentoTicket: React.FC<Props> = ({ selectedTicket }) => {
                 tipoTecnico: tecnico
             });
             console.log(response.data);
-            window.location.reload();
+            Swal.fire({
+                title: "Sucesso!",
+                text: "Ticket escalonado com sucesso!",
+                icon: 'success',
+                confirmButtonText: 'OK',
+                backdrop: 'rgba(0,0,0,0.7)',
+                timer: 2500, // 2.5 segundos
+                timerProgressBar: true,
+                showClass: {
+                    popup: 'animate__animated animate__fadeInDown'
+                },
+                hideClass: {
+                    popup: 'animate__animated animate__fadeOutUp'
+                },
+                customClass: {
+                    popup: 'my-popup-class',
+                    title: 'my-title-class',
+                    confirmButton: 'my-confirm-button-class',
+                    timerProgressBar: 'my-progress-bar-class'
+                }
+            }).then(() => {
+                window.location.reload()
+            })
 
         } catch (error) {
             console.error('Erro ao escalonar o ticket:', error);
+            erro('Erro ao escalonar o ticket');
         }
     };
 
