@@ -5,7 +5,7 @@ import EscalamentoTicket from '../EscalamentoTicket';
 import { ChatTecnico } from '../chatTecnico';
 import './visualizarTicketsTecnico.css'
 import { AuthContext } from '../../contexts/Auth/AuthContext';
-import { erro, TicketStatusAlterado, warning } from '../Swal/swal';
+import { erro, warning } from '../Swal/swal';
 import Swal from 'sweetalert2';
 
 interface Props {
@@ -56,7 +56,29 @@ const VisualizarTicketTecnico: React.FC<Props> = ({ selectedTicket, onClose }) =
                             if (selectedTicket) {
                                 selectedTicket.status = newStatus;
                                 setCurrentStatus(newStatus);
-                                TicketStatusAlterado();
+                                Swal.fire({
+                                    title: "Sucesso!",
+                                    text: "Ticket finalizado com sucesso!",
+                                    icon: 'success',
+                                    confirmButtonText: 'OK',
+                                    backdrop: 'rgba(0,0,0,0.7)',
+                                    timer: 2500, // 2.5 segundos
+                                    timerProgressBar: true,
+                                    showClass: {
+                                        popup: 'animate__animated animate__fadeInDown'
+                                    },
+                                    hideClass: {
+                                        popup: 'animate__animated animate__fadeOutUp'
+                                    },
+                                    customClass: {
+                                        popup: 'my-popup-class',
+                                        title: 'my-title-class',
+                                        confirmButton: 'my-confirm-button-class',
+                                        timerProgressBar: 'my-progress-bar-class'
+                            }
+                                }).then(() => {
+                                    window.location.reload();
+                                });
                             }
                         }
                     });
@@ -65,14 +87,58 @@ const VisualizarTicketTecnico: React.FC<Props> = ({ selectedTicket, onClose }) =
                     if (selectedTicket) {
                         selectedTicket.status = newStatus;
                         setCurrentStatus(newStatus);
-                        TicketStatusAlterado();
+                        Swal.fire({
+                            title: "Sucesso!",
+                            text: "Status do ticket alterado com sucesso!",
+                            icon: 'success',
+                            confirmButtonText: 'OK',
+                            backdrop: 'rgba(0,0,0,0.7)',
+                            timer: 2500, // 2.5 segundos
+                            timerProgressBar: true,
+                            showClass: {
+                                popup: 'animate__animated animate__fadeInDown'
+                            },
+                            hideClass: {
+                                popup: 'animate__animated animate__fadeOutUp'
+                            },
+                            customClass: {
+                                popup: 'my-popup-class',
+                                title: 'my-title-class',
+                                confirmButton: 'my-confirm-button-class',
+                                timerProgressBar: 'my-progress-bar-class'
+                    }
+                        }).then(() => {
+                            window.location.reload();
+                        });
                     }
                 } else if (newStatus === '3') {
                     axios.put(`http://localhost:5555/tickets/alterarStatus`, { ticketID: selectedTicket?.ticketsID, status: newStatus, tecnicoID: user?.usuarioID });
                     if (selectedTicket) {
                         selectedTicket.status = newStatus;
                         setCurrentStatus(newStatus);
-                        TicketStatusAlterado();
+                        Swal.fire({
+                            title: "Sucesso!",
+                            text: "Status do ticket alterado com sucesso!",
+                            icon: 'success',
+                            confirmButtonText: 'OK',
+                            backdrop: 'rgba(0,0,0,0.7)',
+                            timer: 2500, // 2.5 segundos
+                            timerProgressBar: true,
+                            showClass: {
+                                popup: 'animate__animated animate__fadeInDown'
+                            },
+                            hideClass: {
+                                popup: 'animate__animated animate__fadeOutUp'
+                            },
+                            customClass: {
+                                popup: 'my-popup-class',
+                                title: 'my-title-class',
+                                confirmButton: 'my-confirm-button-class',
+                                timerProgressBar: 'my-progress-bar-class'
+                    }
+                        }).then(() => {
+                            window.location.reload();
+                        });
                     }
                 } else {
                     warning('Status inválido!');
