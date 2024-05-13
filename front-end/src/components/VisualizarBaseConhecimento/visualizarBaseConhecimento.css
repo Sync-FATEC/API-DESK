@@ -1,0 +1,20 @@
+.modalBaseConhecimento{
+    width: 800px;
+    height: 650px;
+    /* background-color: brown; */
+    overflow-y: auto;
+}
+
+.close{
+    top: 8px;
+}
+
+.tituloBase{
+    font-weight: 600;
+    color: var(--blue-color);
+    font-size: 22px;
+}
+
+.basebox{
+    margin-bottom: 10px;
+}
