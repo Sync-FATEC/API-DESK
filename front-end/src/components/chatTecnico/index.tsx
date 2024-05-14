@@ -121,7 +121,12 @@ export const ChatTecnico: React.FC<Props> = ({ selectedTicket }) => {
                 <div ref={messagesEndRef} />
 
             </div>
-
+            
+            { selectedTicket?.status === '4' ? (
+                <div className='containerInputChat'>
+                    <p>Ticket fechado</p>
+                </div>
+            ) : (
             <form onSubmit={handleSubmit}>
                 <div className='containerInputChat'>
                     <span className="material-symbols-outlined" onClick={handleOpenModal}>
@@ -134,7 +139,7 @@ export const ChatTecnico: React.FC<Props> = ({ selectedTicket }) => {
                         </span>
                     </button>
                 </div>
-            </form>
+            </form> )}
             {modalOpen && selectedTicket && (
                 <div className="modal">
                     <div className="modal-content">
