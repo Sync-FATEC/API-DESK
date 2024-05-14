@@ -1,5 +1,5 @@
 
-.containerBase{
+.containerBaseConhecimento{
     width: 800px;
     height: 380px;
     overflow-y: auto;
@@ -18,7 +18,7 @@
 .descricaoBase{
     text-align: left;
 }
-.close1{
+.closeBase{
     top: 8px;
     position: absolute;
     padding: 0 20px;
@@ -28,18 +28,18 @@
     color: var(--blue-color);
 }
 
-.containerBase::-webkit-scrollbar {
+.containerBaseConhecimento::-webkit-scrollbar {
     width: 5px;  
 }
 
-.containerBase::-webkit-scrollbar-track {
+.containerBaseConhecimento::-webkit-scrollbar-track {
     background: #f1f1f1;  
 }
 
-.containerBase::-webkit-scrollbar-thumb {
+.containerBaseConhecimento::-webkit-scrollbar-thumb {
     background: var(--blue-color);
 }
 
-.containerBase::-webkit-scrollbar-thumb:hover {
+.containerBaseConhecimento::-webkit-scrollbar-thumb:hover {
     background: #1e91d6
 }

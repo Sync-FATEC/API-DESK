@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import ITickets from '../../types/ITickets';
-import './visualizarBaseConhecimento.css'
 import IMensagens from '../../types/IMensagens';
 import ICategoria from '../../types/ICategoria';
-
+import './visualizarBaseConhecimento.css'
 interface Props {
     selectedTicket: ITickets | null;
     onClose: () => void;
@@ -22,13 +21,10 @@ const VisualizarBaseConhecimento: React.FC<Props> = ({ selectedTicket, onClose }
         setTitulo(event.target.value);
     };
 
-    const BaseDeConhecimento = baseDeConhecimento.filter((base) => {
-        if (categoriaFiltro === 0) {
-            return true;
-        } else {
-            return base.categoria.categoriaID === categoriaFiltro;
-        }
-    });
+    const filteredBaseDeConhecimento = baseDeConhecimento.filter(base =>
+        !selectedTicket || base.categoria.categoriaID === selectedTicket.categoria.categoriaID
+    );
+
 
 
     useEffect(() => {
@@ -53,10 +49,9 @@ const VisualizarBaseConhecimento: React.FC<Props> = ({ selectedTicket, onClose }
         <div className="modalBaseConhecimento">
             <h1>Base de conhecimento / Soluções </h1>
 
-            <div className='containerBase'>
+            <div className='containerBaseConhecimento'>
 
-
-                {BaseDeConhecimento.map((base, index) => (
+            {filteredBaseDeConhecimento.map((base, index) => (
                     <div className="infoBase" key={base.mensagemID}>
                         <div className="tituloBase"><p>{base.titulo}</p></div>
                         <div className="descricaoBase"> <p>{base.mensagem}</p></div>

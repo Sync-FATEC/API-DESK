@@ -138,7 +138,7 @@ export const ChatTecnico: React.FC<Props> = ({ selectedTicket }) => {
             {modalOpen && selectedTicket && (
                 <div className="modal">
                     <div className="modal-content">
-                        <span className="close1" onClick={handleCloseModal}>&times;</span>
+                        <span className="closeBase" onClick={handleCloseModal}>&times;</span>
                         <VisualizarBaseConhecimento  selectedTicket={selectedTicket} onClose={handleCloseModal}/>
                     </div>
                 </div>
