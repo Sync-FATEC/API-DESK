@@ -19,11 +19,7 @@ const TemplateADM = () => {
     useEffect(() => {
         const fetchSalas = async () => {
             try {
-                const response = await axios.get('http://localhost:5555/mensagens/visualizar', {
-                    params: {
-                        tipoMensagem: 'T'
-                    }
-                });
+                const response = await axios.get('http://localhost:5555/mensagens/visualizar/T');
                 const categoriaResponse = await axios.get('http://localhost:5555/categorias/listar');
                 setCategorias(categoriaResponse.data);
                 setTemplateADM(response.data);
@@ -77,6 +73,7 @@ const TemplateADM = () => {
             erro('Erro ao criar mensagem!');
         }
     };
+    
 
     return (
         <div className="adminContainer">

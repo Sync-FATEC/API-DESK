@@ -1,6 +1,7 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import axios from 'axios';
 import ITickets from '../../types/ITickets';
+import IMensagens from '../../types/IMensagens';
 import EscalamentoTicket from '../EscalamentoTicket';
 import { ChatTecnico } from '../chatTecnico';
 import './visualizarTicketsTecnico.css'
@@ -17,7 +18,8 @@ interface Props {
 const VisualizarTicketTecnico: React.FC<Props> = ({ selectedTicket, onClose }) => {
     const [modalOpen, setModalOpen] = useState(false);
     const [modalOpenFinalizar, setModalOpenFinalizar] = useState(false);
-    
+    const [templateADM, setTemplateADM] = useState<IMensagens[]>([]);
+    const [mensagem, setMensagem] = useState('');
     // Estado para controlar o status atual do ticket
     const [currentStatus, setCurrentStatus] = useState(selectedTicket?.status || '');
     const formatDataSlaTickets = selectedTicket?.dataSla ? new Date(selectedTicket.dataSla).toLocaleString('pt-BR', { hour: 'numeric', minute: 'numeric', day: 'numeric', month: 'numeric', year: 'numeric' }) : '';
@@ -39,6 +41,25 @@ const VisualizarTicketTecnico: React.FC<Props> = ({ selectedTicket, onClose }) =
         setModalOpenFinalizar(false);
     };
 
+    useEffect(() => {
+        if (selectedTicket) {
+            axios.get(`http://localhost:5555/mensagens/visualizar/T`)
+                .then(response => {
+                    setTemplateADM(response.data);
+                })
+                .catch(error => {
+                    console.error('Erro ao buscar templates:', error);
+                    erro('Erro ao carregar templates do ticket!');
+                });
+        }
+    }, [selectedTicket]);  
+
+    if (!selectedTicket) {
+        return null;
+    }
+
+
+    
     const handleUpdateStatus = async (newStatus: string) => {
         try {
             if (currentStatus === '4') {
@@ -205,10 +226,19 @@ const VisualizarTicketTecnico: React.FC<Props> = ({ selectedTicket, onClose }) =
                         <p>{selectedTicket.descricao}</p>
                     </div>
                 </div>
-               
-                <div className='chatCliente'>
+               <div className='containerTicketChatTemplate'>
+
+              
+                <div className='chatClienteFim'>
                     <ChatTecnico selectedTicket={selectedTicket} />
-                </div> 
+                    
+                </div>  
+                <div className='templateFim'>
+                {templateADM.map((template, index) => (
+                <p key={index}>{template.mensagem}</p>
+            ))}
+                </div>
+                </div>
                 </div>
             </div>
         );

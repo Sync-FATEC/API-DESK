@@ -12,6 +12,7 @@ export default interface ITickets {
     usuarioID: number;
     tipoTecnico: string;
     prioridade: string;
+    templateID: string;
     categoria: {
         categoria: string;
         tipoTecnico: string;

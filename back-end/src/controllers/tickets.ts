@@ -2,6 +2,7 @@ import { AppDataSource } from "../data-source"
 import { Tickets } from "../entity/tickets"
 import { categoriaRepositorio } from "./categoria";
 import { equipamentosRepositorio } from "./equipamentos";
+import { mensagensRepositorio } from "./mensagens";
 import { salasRepositorio } from "./sala";
 import { usuariosRepositorio } from "./usuarios";
 
@@ -48,7 +49,7 @@ export const excluirTicket = async (ticketID: number) => {
     }
 }
 
-export const alterarStatusTicket = async (ticketID: number, status: string, tecnicoID: number) => {
+export const alterarStatusTicket = async (ticketID: number, status: string, tecnicoID: number, template?: string) => {
     try {
         const ticket = await ticketsRepositorio.findOneBy({ ticketsID: ticketID });
         const tecnico = await usuariosRepositorio.findOneBy({ usuarioID: tecnicoID });
@@ -62,6 +63,9 @@ export const alterarStatusTicket = async (ticketID: number, status: string, tecn
                 ticket.tecnico = null;
                 console.log('Técnico removido do ticket');
             } else if (status === '4') {
+                if (template) {
+                    ticket.template = template;
+                }
                 ticket.dataFechamento = new Date();
                 ticket.tecnico = null;
                 console.log('Ticket finalizado com sucesso');

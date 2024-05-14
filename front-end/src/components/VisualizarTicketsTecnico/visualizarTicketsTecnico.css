@@ -22,3 +22,32 @@
     align-items: center;
 }
 
+.containerTicketChatTemplate{
+    width: 50%;
+}
+
+.chatClienteFim {
+   
+    padding: 10px;
+    text-align: center;
+    flex-direction: column;
+    border: 1px solid var(--gray-color); 
+    display: flex;
+    font-weight: 600;
+    border-radius: 10px;
+    gap: 5px;
+}
+.templateFim{
+    margin-top: 10px;
+}
+.chatCliente {
+    width: 50%;
+    padding: 10px;
+    text-align: center;
+    flex-direction: column;
+    border: 1px solid var(--gray-color); 
+    display: flex;
+    font-weight: 600;
+    border-radius: 10px;
+    gap: 5px;
+}

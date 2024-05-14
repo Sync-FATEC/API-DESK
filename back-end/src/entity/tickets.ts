@@ -4,6 +4,7 @@ import { Categorias } from "./categorias";
 import { Equipamentos } from "./equipamento";
 import { Salas } from "./salas";
 import { Usuarios } from "./usuarios";
+import { Mensagens } from "./mensagens";
 
 @Entity()
 export class Tickets {
@@ -24,6 +25,9 @@ export class Tickets {
 
     @Column({ length: 255 })
     descricao: string;
+
+    @Column({ length: 255 })
+    template: string;
 
     @Column({ length: 1 })
     status: string;
@@ -53,7 +57,7 @@ export class Tickets {
     @ManyToOne(() => Usuarios)
     @JoinColumn({ name: 'TecnicoID' })
     tecnico: Usuarios;
-
+    
     constructor(dataAbertura: Date, dataSla: Date, titulo: string, descricao: string, status: string, tipoTecnico: string, prioridade: string, categoria: Categorias, equipamentos: Equipamentos, sala: Salas, usuario: Usuarios) {
         this.dataAbertura = dataAbertura;
         this.dataSla = dataSla;

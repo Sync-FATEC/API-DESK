@@ -50,6 +50,7 @@ create table tickets (
     dataSla datetime not null,
     titulo varchar(255) not null,
     descricao varchar(255) not null,
+    template varchar(255) not null,
     status varchar(1) default '1',
     prioridade varchar(50) not null,
     categoriaID int not null,

@@ -111,9 +111,8 @@ export const ChatCliente: React.FC<Props> = ({ selectedTicket }) => {
                 <div ref={messagesEndRef} />
 
             </div>
-            { selectedTicket?.status === '4' ? (
-                <p className='mensagemChat2'>Ticket fechado</p>
-            ) :  ( 
+            { selectedTicket?.status === '4' ? null : (
+                
             <form onSubmit={handleSubmit}>
                 <div className='containerInputChat'>
                     <input value={input} onChange={handleInput} className='inputChat' type="text" placeholder='Digite uma mensagem' />

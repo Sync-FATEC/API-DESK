@@ -28,7 +28,12 @@ router.put('/alterarStatus', async (req: Request, res: Response) => {
         return res.status(400).json({ error: 'Preencha todos os campos' });
     }
 
-    res.json(await alterarStatusTicket(ticketID, status, tecnicoID));
+    if (req.body.template) {
+        return res.json(await alterarStatusTicket(ticketID, status, tecnicoID, req.body.template));
+    } else {
+        return res.json(await alterarStatusTicket(ticketID, status, tecnicoID));
+    }
+    
 });
 
 router.get('/listar/:usuarioID', async (req: Request, res: Response) => {
