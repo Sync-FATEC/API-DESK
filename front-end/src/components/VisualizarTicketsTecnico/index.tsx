@@ -17,12 +17,12 @@ interface Props {
 const VisualizarTicketTecnico: React.FC<Props> = ({ selectedTicket, onClose }) => {
     const [modalOpen, setModalOpen] = useState(false);
     const [modalOpenFinalizar, setModalOpenFinalizar] = useState(false);
-
+    
     // Estado para controlar o status atual do ticket
     const [currentStatus, setCurrentStatus] = useState(selectedTicket?.status || '');
-    const formatDataSlaTickets = selectedTicket?.dataSla ? new Date (selectedTicket.dataSla).toLocaleString ('pt-BR', { hour: 'numeric', minute: 'numeric', day: 'numeric', month: 'numeric', year: 'numeric'}): '';
+    const formatDataSlaTickets = selectedTicket?.dataSla ? new Date(selectedTicket.dataSla).toLocaleString('pt-BR', { hour: 'numeric', minute: 'numeric', day: 'numeric', month: 'numeric', year: 'numeric' }) : '';
     const { user } = useContext(AuthContext);
-    
+
     const handleOpenModal = () => {
         setModalOpen(true);
     };
@@ -87,7 +87,7 @@ const VisualizarTicketTecnico: React.FC<Props> = ({ selectedTicket, onClose }) =
                                         title: 'my-title-class',
                                         confirmButton: 'my-confirm-button-class',
                                         timerProgressBar: 'my-progress-bar-class'
-                            }
+                                    }
                                 }).then(() => {
                                     window.location.reload();
                                 });
@@ -118,7 +118,7 @@ const VisualizarTicketTecnico: React.FC<Props> = ({ selectedTicket, onClose }) =
                                 title: 'my-title-class',
                                 confirmButton: 'my-confirm-button-class',
                                 timerProgressBar: 'my-progress-bar-class'
-                    }
+                            }
                         }).then(() => {
                             window.location.reload();
                         });
@@ -147,7 +147,7 @@ const VisualizarTicketTecnico: React.FC<Props> = ({ selectedTicket, onClose }) =
                                 title: 'my-title-class',
                                 confirmButton: 'my-confirm-button-class',
                                 timerProgressBar: 'my-progress-bar-class'
-                    }
+                            }
                         }).then(() => {
                             window.location.reload();
                         });
@@ -166,6 +166,53 @@ const VisualizarTicketTecnico: React.FC<Props> = ({ selectedTicket, onClose }) =
         return null;
     }
 
+    const isTicketFinalizado = currentStatus === '4';
+    if (isTicketFinalizado) {
+        return (
+            <div className="modalVisualizar">
+            <div className='btnVisualizar'>
+               
+                <div>
+                    <span id='btnSla' className="material-symbols-outlined">bomb</span>
+                </div>
+                <div className='slaInfo'>
+                    <p>Data do estouro SLA</p>
+                    <p>{formatDataSlaTickets}</p>
+                </div>
+            </div>
+
+            <div className='infoContainer'>
+                <div className="infoVisualizarTicket">
+                    <h2>Título: {selectedTicket.titulo}</h2>
+                    <div className="infoPair">
+                        <span className="boldText">Data de abertura:</span>
+                        <p>{new Date(selectedTicket.dataAbertura).toLocaleDateString('pt-BR')}</p>
+                    </div>
+                    <div className="infoPair">
+                        <span className="boldText">Sala: </span>
+                        <p>{selectedTicket.sala.numeroSala}</p>
+                    </div>
+                    <div className="infoPair">
+                        <span className="boldText">Categoria: </span>
+                        <p>{selectedTicket.categoria.categoria}</p>
+                    </div>
+                    <div className="infoPair">
+                        <span className="boldText">Equipamento: </span>
+                        <p>{selectedTicket.equipamentos.equipamento}</p>
+                    </div>
+                    <div className="infoPair">
+                        <span className="boldText">Descrição: </span>
+                        <p>{selectedTicket.descricao}</p>
+                    </div>
+                </div>
+               
+                <div className='chatCliente'>
+                    <ChatTecnico selectedTicket={selectedTicket} />
+                </div> 
+                </div>
+            </div>
+        );
+    }
     return (
         <div className="modalVisualizar">
             <div className='btnVisualizar'>
@@ -175,8 +222,8 @@ const VisualizarTicketTecnico: React.FC<Props> = ({ selectedTicket, onClose }) =
                     </button>
                     <span id='btnAtendendo' className="material-symbols-outlined" onClick={() => handleUpdateStatus('2')}>play_circle</span>
                     <span id='btnPendente' className="material-symbols-outlined" onClick={() => handleUpdateStatus('3')}>pause_circle</span>
-                    <span id='btnFinalizar' className="material-symbols-outlined" onClick={() => { handleUpdateStatus('4'); handleOpenModalFinalizar(); }}>check_circle</span>
-                    
+                    <span id='btnFinalizar' className="material-symbols-outlined" onClick={() => { handleOpenModalFinalizar(); }}>check_circle</span>
+
                     <span className="  statusTicket ">Status : {currentStatus === '1' ? 'A fazer' : currentStatus === '2' ? 'Atendendo' : currentStatus === '3' ? 'Pendente' : currentStatus === '4' ? 'Finalizado' : ''}</span>
                 </div>
                 <div>
@@ -213,7 +260,7 @@ const VisualizarTicketTecnico: React.FC<Props> = ({ selectedTicket, onClose }) =
                     </div>
                 </div>
                 <div className='chatCliente'>
-                <ChatTecnico selectedTicket={selectedTicket}/>
+                    <ChatTecnico selectedTicket={selectedTicket} />
                 </div>
             </div>
 
@@ -226,11 +273,11 @@ const VisualizarTicketTecnico: React.FC<Props> = ({ selectedTicket, onClose }) =
                 </div>
             )}
 
-{modalOpenFinalizar && selectedTicket && (
+            {modalOpenFinalizar && selectedTicket && (
                 <div className="modal">
                     <div className="modal-content">
                         <span className="closeBase" onClick={handleCloseModalFinalizar}>&times;</span>
-                        <FinalizarTicket  selectedTicket={selectedTicket}/>
+                        <FinalizarTicket selectedTicket={selectedTicket} />
                     </div>
                 </div>
             )}

@@ -1,8 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import axios from 'axios';
+import { AuthContext } from '../../contexts/Auth/AuthContext';
 import ITickets from '../../types/ITickets';
 import IMensagens from '../../types/IMensagens';
 import ICategoria from '../../types/ICategoria';
+import { erro, warning } from '../Swal/swal';
+import Swal from 'sweetalert2';
 import './finalizarTicket.css';
 
 
@@ -27,6 +30,8 @@ const FinalizarTicket: React.FC<Props> = ({ selectedTicket }) => {
     );
 
 
+    const [currentStatus, setCurrentStatus] = useState(selectedTicket?.status || '');
+    const { user } = useContext(AuthContext);
 
     useEffect(() => {
         const fetchSalas = async () => {
@@ -46,6 +51,134 @@ const FinalizarTicket: React.FC<Props> = ({ selectedTicket }) => {
 
         fetchSalas();
     }, []);
+    const handleUpdateStatus = async (newStatus: string) => {
+        try {
+            if (currentStatus === '4') {
+                warning('Ticket já finalizado!');
+            } else if (selectedTicket?.status === newStatus) {
+                warning('Ticket já possui esse status!');
+            } else {
+                if (newStatus === '4') {
+                    const confirmMessage = "Deseja realmente finalizar o ticket?";
+                    Swal.fire({
+                        title: confirmMessage,
+                        showDenyButton: true,
+                        confirmButtonText: "Sim",
+                        denyButtonText: "Não",
+                        width: 410,
+                        confirmButtonColor: 'rgb(0,114,187)',
+                        denyButtonColor: 'rgb(255, 0, 53)',
+                        heightAuto: false,
+                        backdrop: false,
+                        customClass: {
+                            confirmButton: 'cButton',
+                            denyButton: 'dButton',
+                        }
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            axios.put(`http://localhost:5555/tickets/alterarStatus`, { ticketID: selectedTicket?.ticketsID, status: newStatus, tecnicoID: user?.usuarioID });
+                            if (selectedTicket) {
+                                selectedTicket.status = newStatus;
+                                setCurrentStatus(newStatus);
+                                Swal.fire({
+                                    title: "Sucesso!",
+                                    text: "Ticket finalizado com sucesso!",
+                                    icon: 'success',
+                                    confirmButtonText: 'OK',
+                                    backdrop: 'rgba(0,0,0,0.7)',
+                                    timer: 2500, // 2.5 segundos
+                                    timerProgressBar: true,
+                                    showClass: {
+                                        popup: 'animate__animated animate__fadeInDown'
+                                    },
+                                    hideClass: {
+                                        popup: 'animate__animated animate__fadeOutUp'
+                                    },
+                                    customClass: {
+                                        popup: 'my-popup-class',
+                                        title: 'my-title-class',
+                                        confirmButton: 'my-confirm-button-class',
+                                        timerProgressBar: 'my-progress-bar-class'
+                            }
+                                }).then(() => {
+                                    window.location.reload();
+                                });
+                            }
+                        }
+                    });
+                } else if (newStatus === '2') {
+                    axios.put(`http://localhost:5555/tickets/alterarStatus`, { ticketID: selectedTicket?.ticketsID, status: newStatus, tecnicoID: user?.usuarioID });
+                    if (selectedTicket) {
+                        selectedTicket.status = newStatus;
+                        setCurrentStatus(newStatus);
+                        Swal.fire({
+                            title: "Sucesso!",
+                            text: "Status do ticket alterado com sucesso!",
+                            icon: 'success',
+                            confirmButtonText: 'OK',
+                            backdrop: 'rgba(0,0,0,0.7)',
+                            timer: 2500, // 2.5 segundos
+                            timerProgressBar: true,
+                            showClass: {
+                                popup: 'animate__animated animate__fadeInDown'
+                            },
+                            hideClass: {
+                                popup: 'animate__animated animate__fadeOutUp'
+                            },
+                            customClass: {
+                                popup: 'my-popup-class',
+                                title: 'my-title-class',
+                                confirmButton: 'my-confirm-button-class',
+                                timerProgressBar: 'my-progress-bar-class'
+                    }
+                        }).then(() => {
+                            window.location.reload();
+                        });
+                    }
+                } else if (newStatus === '3') {
+                    axios.put(`http://localhost:5555/tickets/alterarStatus`, { ticketID: selectedTicket?.ticketsID, status: newStatus, tecnicoID: user?.usuarioID });
+                    if (selectedTicket) {
+                        selectedTicket.status = newStatus;
+                        setCurrentStatus(newStatus);
+                        Swal.fire({
+                            title: "Sucesso!",
+                            text: "Status do ticket alterado com sucesso!",
+                            icon: 'success',
+                            confirmButtonText: 'OK',
+                            backdrop: 'rgba(0,0,0,0.7)',
+                            timer: 2500, // 2.5 segundos
+                            timerProgressBar: true,
+                            showClass: {
+                                popup: 'animate__animated animate__fadeInDown'
+                            },
+                            hideClass: {
+                                popup: 'animate__animated animate__fadeOutUp'
+                            },
+                            customClass: {
+                                popup: 'my-popup-class',
+                                title: 'my-title-class',
+                                confirmButton: 'my-confirm-button-class',
+                                timerProgressBar: 'my-progress-bar-class'
+                    }
+                        }).then(() => {
+                            window.location.reload();
+                        });
+                    }
+                } else {
+                    warning('Status inválido!');
+                };
+            };
+        } catch (error) {
+            console.error("Erro ao atualizar status do ticket:", error);
+            erro('Erro ao atualizar status do ticket!');
+        };
+    };
+
+    if (!selectedTicket) {
+        return null;
+    }
+
+ 
 
     const handleInsertTemplate = (mensagem: string) => {
         setMensagem(mensagem);
@@ -81,7 +214,7 @@ const FinalizarTicket: React.FC<Props> = ({ selectedTicket }) => {
 
 
                         ))} </div>
-                <button className='buttonFinalizarTicket'>Finalizar Ticket</button>
+                <button className='buttonFinalizarTicket' onClick={() => { handleUpdateStatus('4')}}>Finalizar Ticket</button>
                 </div>
             </div>
         </div>
