@@ -234,9 +234,7 @@ const VisualizarTicketTecnico: React.FC<Props> = ({ selectedTicket, onClose }) =
                     
                 </div>  
                 <div className='templateFim'>
-                {templateADM.map((template, index) => (
-                <p key={index}>{template.mensagem}</p>
-            ))}
+                <p>{selectedTicket.template}</p>
                 </div>
                 </div>
                 </div>

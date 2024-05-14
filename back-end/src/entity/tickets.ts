@@ -26,8 +26,8 @@ export class Tickets {
     @Column({ length: 255 })
     descricao: string;
 
-    @Column({ length: 255 })
-    template: string;
+    @Column({ length: 255 , nullable: true})
+    template: string | null;
 
     @Column({ length: 1 })
     status: string;

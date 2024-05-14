@@ -36,11 +36,7 @@ const FinalizarTicket: React.FC<Props> = ({ selectedTicket }) => {
     useEffect(() => {
         const fetchSalas = async () => {
             try {
-                const response = await axios.get('http://localhost:5555/mensagens/visualizar', {
-                    params: {
-                        tipoMensagem: 'T'
-                    }
-                });
+                const response = await axios.get('http://localhost:5555/mensagens/visualizar/T');
                 const categoriaResponse = await axios.get('http://localhost:5555/categorias/listar');
                 setCategorias(categoriaResponse.data);
                 setTemplateADM(response.data);
@@ -76,7 +72,7 @@ const FinalizarTicket: React.FC<Props> = ({ selectedTicket }) => {
                         }
                     }).then((result) => {
                         if (result.isConfirmed) {
-                            axios.put(`http://localhost:5555/tickets/alterarStatus`, { ticketID: selectedTicket?.ticketsID, status: newStatus, tecnicoID: user?.usuarioID });
+                            axios.put(`http://localhost:5555/tickets/alterarStatus`, { ticketID: selectedTicket?.ticketsID, status: newStatus, tecnicoID: user?.usuarioID, template: mensagem });
                             if (selectedTicket) {
                                 selectedTicket.status = newStatus;
                                 setCurrentStatus(newStatus);

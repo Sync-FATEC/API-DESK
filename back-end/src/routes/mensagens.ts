@@ -22,10 +22,10 @@ router.delete('/excluir/:mensagemID', async (req: Request, res: Response) => {
     res.json(await excluirMensagem(Number(mensagemID)));
 });
 
-router.get('/visualizar', async (req: Request, res: Response) => {
-    const tipoMensagem = req.query.tipoMensagem;
+router.get('/visualizar/:tipoMensagem', async (req: Request, res: Response) => {
+    const tipoMensagem = req.params.tipoMensagem;
 
-    if (tipoMensagem === '' || typeof tipoMensagem !== 'string') {
+    if (!tipoMensagem || typeof tipoMensagem !== 'string') {
         return res.status(400).json({ error: 'Tipo de mensagem não informado' });
     }
 
