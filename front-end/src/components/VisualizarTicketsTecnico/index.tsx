@@ -235,6 +235,7 @@ const VisualizarTicketTecnico: React.FC<Props> = ({ selectedTicket, onClose }) =
                 </div>  
                 <div className='templateFim'>
                 <p>{selectedTicket.template}</p>
+
                 </div>
                 </div>
                 </div>
