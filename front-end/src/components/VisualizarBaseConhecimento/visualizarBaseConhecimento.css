@@ -1,20 +1,45 @@
-.modalBaseConhecimento{
+
+.containerBase{
     width: 800px;
-    height: 650px;
-    /* background-color: brown; */
+    height: 380px;
     overflow-y: auto;
 }
-
-.close{
-    top: 8px;
+.InfoBase{
+    padding: 10px 0;
 }
 
 .tituloBase{
     font-weight: 600;
     color: var(--blue-color);
     font-size: 22px;
+    text-align: left;
+    padding: 5px 0;
+}
+.descricaoBase{
+    text-align: left;
+}
+.close1{
+    top: 8px;
+    position: absolute;
+    padding: 0 20px;
+    right: 2px;
+    cursor: pointer;
+    font-size: 50px;
+    color: var(--blue-color);
 }
 
-.basebox{
-    margin-bottom: 10px;
+.containerBase::-webkit-scrollbar {
+    width: 5px;  
+}
+
+.containerBase::-webkit-scrollbar-track {
+    background: #f1f1f1;  
+}
+
+.containerBase::-webkit-scrollbar-thumb {
+    background: var(--blue-color);
+}
+
+.containerBase::-webkit-scrollbar-thumb:hover {
+    background: #1e91d6
 }

@@ -7,7 +7,6 @@ import './visualizarTicketsTecnico.css'
 import { AuthContext } from '../../contexts/Auth/AuthContext';
 import { erro, warning } from '../Swal/swal';
 import Swal from 'sweetalert2';
-import VisualizarBaseConhecimento from '../VisualizarBaseConhecimento';
 
 interface Props {
     selectedTicket: ITickets | null;
@@ -165,7 +164,6 @@ const VisualizarTicketTecnico: React.FC<Props> = ({ selectedTicket, onClose }) =
                     <span id='btnAtendendo' className="material-symbols-outlined" onClick={() => handleUpdateStatus('2')}>play_circle</span>
                     <span id='btnPendente' className="material-symbols-outlined" onClick={() => handleUpdateStatus('3')}>pause_circle</span>
                     <span id='btnFinalizar' className="material-symbols-outlined" onClick={() => handleUpdateStatus('4')}>check_circle</span>
-                    <span id ='btnBaseConhecimento' className="material-symbols-outlined" onClick={handleOpenModal}>menu_open</span>
                     <span className="  statusTicket ">Status : {currentStatus === '1' ? 'A fazer' : currentStatus === '2' ? 'Atendendo' : currentStatus === '3' ? 'Pendente' : currentStatus === '4' ? 'Finalizado' : ''}</span>
                 </div>
                 <div>
@@ -211,16 +209,6 @@ const VisualizarTicketTecnico: React.FC<Props> = ({ selectedTicket, onClose }) =
                     <div className="modalContent">
                         <span className="close" onClick={handleCloseModal}>&times;</span>
                         <EscalamentoTicket selectedTicket={selectedTicket} />
-                    </div>
-                </div>
-            )}
-            {modalOpen && selectedTicket && (
-                <div className="modal">
-                    <div className="modalContent">
-                        <span className="close" onClick={handleCloseModal}>&times;</span>
-                        <VisualizarBaseConhecimento selectedTicket={null} onClose={function (): void {
-                            throw new Error('Function not implemented.');
-                        } } />
                     </div>
                 </div>
             )}
