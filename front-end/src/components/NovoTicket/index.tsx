@@ -259,7 +259,7 @@ export const NovoTicket = () => {
 
 
                 <div className="containerBtnTicket">
-                    <button type='submit' value='Cadastrar' className="btnTicket">Enviar Ticket</button>
+                    <button type='submit' value='Cadastrar' className="btnEnviarTicket">Enviar Ticket</button>
                 </div>
             </form>
 

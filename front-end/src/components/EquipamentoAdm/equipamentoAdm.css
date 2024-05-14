@@ -55,12 +55,6 @@
     width: 95%; 
     font-weight:600;
 }
-.infoContainer {
-    display: flex;
-    align-items: center;
-    margin-bottom: 8px;
-
-}
 
 .infoContainer label {
     margin-right: 8px; 

@@ -7,6 +7,7 @@ import './visualizarTicketsTecnico.css'
 import { AuthContext } from '../../contexts/Auth/AuthContext';
 import { erro, warning } from '../Swal/swal';
 import Swal from 'sweetalert2';
+import FinalizarTicket from '../FinalizarTicket';
 
 interface Props {
     selectedTicket: ITickets | null;
@@ -15,6 +16,9 @@ interface Props {
 
 const VisualizarTicketTecnico: React.FC<Props> = ({ selectedTicket, onClose }) => {
     const [modalOpen, setModalOpen] = useState(false);
+    const [modalOpenFinalizar, setModalOpenFinalizar] = useState(false);
+
+    // Estado para controlar o status atual do ticket
     const [currentStatus, setCurrentStatus] = useState(selectedTicket?.status || '');
     const formatDataSlaTickets = selectedTicket?.dataSla ? new Date (selectedTicket.dataSla).toLocaleString ('pt-BR', { hour: 'numeric', minute: 'numeric', day: 'numeric', month: 'numeric', year: 'numeric'}): '';
     const { user } = useContext(AuthContext);
@@ -25,6 +29,14 @@ const VisualizarTicketTecnico: React.FC<Props> = ({ selectedTicket, onClose }) =
 
     const handleCloseModal = () => {
         setModalOpen(false);
+    };
+
+    const handleOpenModalFinalizar = () => {
+        setModalOpenFinalizar(true);
+    };
+
+    const handleCloseModalFinalizar = () => {
+        setModalOpenFinalizar(false);
     };
 
     const handleUpdateStatus = async (newStatus: string) => {
@@ -163,7 +175,8 @@ const VisualizarTicketTecnico: React.FC<Props> = ({ selectedTicket, onClose }) =
                     </button>
                     <span id='btnAtendendo' className="material-symbols-outlined" onClick={() => handleUpdateStatus('2')}>play_circle</span>
                     <span id='btnPendente' className="material-symbols-outlined" onClick={() => handleUpdateStatus('3')}>pause_circle</span>
-                    <span id='btnFinalizar' className="material-symbols-outlined" onClick={() => handleUpdateStatus('4')}>check_circle</span>
+                    <span id='btnFinalizar' className="material-symbols-outlined" onClick={() => { handleUpdateStatus('4'); handleOpenModalFinalizar(); }}>check_circle</span>
+                    
                     <span className="  statusTicket ">Status : {currentStatus === '1' ? 'A fazer' : currentStatus === '2' ? 'Atendendo' : currentStatus === '3' ? 'Pendente' : currentStatus === '4' ? 'Finalizado' : ''}</span>
                 </div>
                 <div>
@@ -209,6 +222,15 @@ const VisualizarTicketTecnico: React.FC<Props> = ({ selectedTicket, onClose }) =
                     <div className="modalContent">
                         <span className="close" onClick={handleCloseModal}>&times;</span>
                         <EscalamentoTicket selectedTicket={selectedTicket} />
+                    </div>
+                </div>
+            )}
+
+{modalOpenFinalizar && selectedTicket && (
+                <div className="modal">
+                    <div className="modal-content">
+                        <span className="closeBase" onClick={handleCloseModalFinalizar}>&times;</span>
+                        <FinalizarTicket  selectedTicket={selectedTicket}/>
                     </div>
                 </div>
             )}

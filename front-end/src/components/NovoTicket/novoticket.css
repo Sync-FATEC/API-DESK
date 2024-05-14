@@ -13,7 +13,21 @@
     flex-direction: column;
     width: 100%;
 }
-
+.containerBtnTicket{
+    align-self: flex-end;
+}
+.btnEnviarTicket{
+    display: flex;
+    align-items: center;
+    padding: 6px 12px;
+    background-color: var(--blue-color);
+    border-radius: 10px;
+    color: var(--white-color);
+    font-size: 18px;
+    cursor: pointer;
+    border: none;
+    
+}
 .modalTicket h1 {
     border-bottom: 2px solid var(--blue-color);
     padding-bottom: 10px;
