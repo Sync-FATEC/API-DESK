@@ -20,11 +20,7 @@ const BaseDeConhecimento = () => {
     useEffect(() => {
         const fetchSalas = async () => {
             try {
-                const response = await axios.get('http://localhost:5555/mensagens/visualizar', {
-                    params: {
-                        tipoMensagem: 'B'
-                    }
-                });
+                const response = await axios.get('http://localhost:5555/mensagens/visualizar/B');
                 const categoria = await axios.get('http://localhost:5555/categorias/listar');
                 setCategorias(categoria.data);
                 setBaseDeConhecimento(response.data);
@@ -59,10 +55,10 @@ const BaseDeConhecimento = () => {
         }
         try {
             const response = await axios.post('http://localhost:5555/mensagens/criar', {
-                tipoMensagem: 'B',
                 titulo: titulo,
                 mensagem: mensagem,
-                categoriaID: categoria
+                categoriaID: categoria,
+                tipoMensagem: "B"
             });
             setBaseDeConhecimento([...baseDeConhecimento, response.data]);
             setTitulo('');

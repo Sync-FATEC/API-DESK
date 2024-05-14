@@ -17,11 +17,7 @@ const FaqAdm = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const responseFaqs = await axios.get('http://localhost:5555/mensagens/visualizar', {
-                    params: {
-                        tipoMensagem: 'F'
-                    }
-                });
+                const responseFaqs = await axios.get('http://localhost:5555/mensagens/visualizar/F');
                 setFaqAdm(responseFaqs.data);
 
                 const responseCategorias = await axios.get('http://localhost:5555/categorias/listar');

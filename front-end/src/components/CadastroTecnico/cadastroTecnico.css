@@ -8,6 +8,16 @@
     width: 100%;
     
 }
+.selectCategoriaTec {
+    border-radius: 10px;
+    border: 2px solid var(--gray-color);
+    color: var(--black-color);
+    font-size: 18px;
+    background: var(--white-color);
+    padding: 10px;
+    width: 95%;
+    
+}
 
 .formTecnico {
     display: flex;
@@ -18,7 +28,7 @@
 
 .formSelect {
     display: flex;
-    gap: 5%;
+    
 }
 
 .tecnicoBtn {

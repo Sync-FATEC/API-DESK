@@ -225,7 +225,7 @@ export const CadastroTecnico = () => {
                     <div className="formSelect">
                         <div className="formInput">
                             <label className="labelInputTecnico" htmlFor="categoria">Categoria do técnico</label>
-                            <select className="selectCategoria" value={categoria} onChange={(e) => setCategoria(e.target.value)}>
+                            <select className="selectCategoriaTec" value={categoria} onChange={(e) => setCategoria(e.target.value)}>
                                 <option value=""></option>
                                 <option value="1">Suporte N1</option>
                                 <option value="2">Suporte N2</option>
@@ -234,7 +234,7 @@ export const CadastroTecnico = () => {
                         </div>
                         <div className="formInput">
                             <label className="labelInputTecnico" htmlFor="turno">Turno do técnico</label>
-                            <select className="selectCategoria" value={turno} onChange={(e) => setTurno(e.target.value)}>
+                            <select className="selectCategoriaTec" value={turno} onChange={(e) => setTurno(e.target.value)}>
                                 <option value=""></option>
                                 <option value="M">Manhã</option>
                                 <option value="T">Tarde</option>

@@ -30,10 +30,8 @@ const VisualizarBaseConhecimento: React.FC<Props> = ({ selectedTicket, onClose }
     useEffect(() => {
         const fetchSalas = async () => {
             try {
-                const response = await axios.get('http://localhost:5555/mensagens/visualizar', {
-                    params: {
-                        tipoMensagem: 'B'
-                    }
+                const response = await axios.get('http://localhost:5555/mensagens/visualizar/B', {
+                    
                 });
                 const categoria = await axios.get('http://localhost:5555/categorias/listar');
                 setCategorias(categoria.data);

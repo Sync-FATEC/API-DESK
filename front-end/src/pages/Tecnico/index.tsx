@@ -154,13 +154,15 @@ export const Tecnicos = () => {
                             {ticket.titulo}
                           </p>
                         </div>
+                        
                         <div className='containerInfoTicketFim'>
                           <span className='prioridadeTicket'>{ticket.prioridade}</span>
                           <div className='dataAberturaTicket'>
                             {new Date(ticket.dataAbertura).toLocaleDateString('pt-BR')}
                           </div>
-
+                           
                         </div>
+                        
                       </div>
                     </div>
                   )
@@ -219,7 +221,7 @@ export const Tecnicos = () => {
                           <div className='dataAberturaTicket'>
                             {new Date(ticket.dataAbertura).toLocaleDateString('pt-BR')}
                           </div>
-
+                          
                         </div>
                       </div>
                     </div>
