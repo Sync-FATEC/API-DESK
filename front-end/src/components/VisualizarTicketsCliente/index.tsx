@@ -37,7 +37,13 @@ const VisualizarTicketCliente: React.FC<Props> = ({ selectedTicket, onClose }) =
                     </div>
                     <div className="infoPair">
                         <span className="boldText">Tecnico: </span>
-                        <p>{selectedTicket.tecnico?.nome}</p>
+                        {selectedTicket.status === '4' ? (
+                            <p>{selectedTicket.tecnicoFinal}</p>
+                        ) : selectedTicket.tecnico === null ? (
+                            <p>Não atribuído</p>
+                        ) : (
+                            <p>{selectedTicket.tecnico?.nome}</p>
+                        )}
                     </div>
                 </div>
                 <div className='chatCliente'>

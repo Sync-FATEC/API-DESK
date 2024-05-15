@@ -13,6 +13,7 @@ export default interface ITickets {
     tipoTecnico: string;
     prioridade: string;
     template: string;
+    tecnicoFinal: string;
     categoria: {
         categoria: string;
         tipoTecnico: string;

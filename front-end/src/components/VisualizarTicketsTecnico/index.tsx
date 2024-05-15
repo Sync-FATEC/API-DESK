@@ -225,6 +225,10 @@ const VisualizarTicketTecnico: React.FC<Props> = ({ selectedTicket, onClose }) =
                         <span className="boldText">Descrição: </span>
                         <p>{selectedTicket.descricao}</p>
                     </div>
+                    <div className="infoPair">
+                        <span className="boldText">Técnico: </span>
+                        <p>{selectedTicket.tecnicoFinal}</p>
+                    </div>
                 </div>
                <div className='containerTicketChatTemplate'>
 
@@ -286,6 +290,14 @@ const VisualizarTicketTecnico: React.FC<Props> = ({ selectedTicket, onClose }) =
                     <div className="infoPair">
                         <span className="boldText">Descrição: </span>
                         <p>{selectedTicket.descricao}</p>
+                    </div>
+                    <div className="infoPair">
+                        <span className="boldText">Tecnico: </span>
+                        { selectedTicket.tecnico === null ? (
+                            <p>Não atribuído</p>
+                        ) : (
+                            <p>{selectedTicket.tecnico?.nome}</p>
+                        )}
                     </div>
                 </div>
                 <div className='chatCliente'>
