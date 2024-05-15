@@ -68,6 +68,7 @@ export const alterarStatusTicket = async (ticketID: number, status: string, tecn
                 }
                 ticket.dataFechamento = new Date();
                 ticket.tecnico = null;
+                ticket.tecnicoFinal = tecnico.nome;
                 console.log('Ticket finalizado com sucesso');
             } else {
                 ticket.tecnico = tecnico;

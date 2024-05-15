@@ -38,6 +38,9 @@ export class Tickets {
     @Column({ length: 50 })
     prioridade: string;
 
+    @Column({ length: 255 , nullable: true})
+    tecnicoFinal: string | null;
+
     @ManyToOne(() => Categorias)
     @JoinColumn({ name: 'categoriaID' })
     categoria: Categorias;
