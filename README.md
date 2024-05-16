@@ -194,7 +194,7 @@ alt="MVP">
     </tr>
     <tr>
       <td>15</td>
-      <td>BAIXA</td>
+      <td>MÉDIA</td>
       <td>Como administrador, quero poder cadastrar categorias e prioridade de chamados, para que os chamados possam ser organizados de forma eficiente e direcionados para as equipes corretas.</td>
       <td>5</td>
       <td>2</td>
@@ -202,15 +202,15 @@ alt="MVP">
     </tr>
     <tr>
       <td>16</td>
-      <td>ALTA</td>
-      <td>Como técnico, quero poder escalar chamados para um técnico de nível superior, para chamados que requerem mais conhecimento</td>
+      <td>MÉDIA</td>
+      <td>Como técnico, quero poder escalar chamados para um técnico de nível superior ou a um técnico específico, para chamados que requerem mais conhecimento.</td>
       <td>3</td>
       <td>3</td>
       <td>3</td>
     </tr>
     <tr>
       <td>17</td>
-      <td>ALTA</td>
+      <td>MÉDIA</td>
       <td>Como cliente, após abrir um ticket, quero acompanhar seu status na interface do sistema para ver se está "Aberto", "Em atendimento", "Pendente" e "Finalizado", além de quaisquer atualizações feitas pela equipe de suporte, para estar informado sobre o progresso do meu pedido.</td>
       <td>5</td>
       <td>3</td>
@@ -290,13 +290,21 @@ alt="MVP">
     <tr>
       <td>27</td>
       <td>BAIXA</td>
+      <td>Como técnico, quero poder selecionar um ticket para atendimento, para que eu possa assumir a responsabilidade de resolver o problema reportado pelo cliente de forma eficiente e organizada.</td>
+      <td>8</td>
+      <td>3</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>28</td>
+      <td>BAIXA</td>
       <td>Como administrador do sistema, quero ter acesso a gráficos detalhados das avaliações dos usuários, para que eu possa visualizar tendências, identificar áreas de melhoria e tomar decisões baseadas em dados para aprimorar nossos serviços ou produtos.</td>
       <td>8</td>
       <td>4</td>
       <td>3</td>
     </tr>
     <tr>
-      <td>28</td>
+      <td>29</td>
       <td>BAIXA</td>
       <td>Como administrador, quero acessar um dashboard com relatórios detalhados por meio de gráficos, para que eu possa analisar o desempenho do serviço de suporte, a eficiência da equipe e monitorar o SLA.</td>
       <td>5</td>
@@ -304,7 +312,7 @@ alt="MVP">
       <td>6</td>
     </tr>
     <tr>
-      <td>29</td>
+      <td>30</td>
       <td>BAIXA</td>
       <td>Como usuário, caso eu esqueça a minha senha quero que tenha um campo de redefinir a mesma</td>
       <td>5</td>
