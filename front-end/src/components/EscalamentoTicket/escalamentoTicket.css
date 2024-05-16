@@ -11,85 +11,83 @@
     color: var(--blue-color);
 }
 
-.confirmButton {
-    width: 500px;
-}
-
-.dadosPerfil {
-    position: relative;
-    left: 10px; 
-    top: 10px; 
-    background-color: var(--white-color);
-    font-size: 18px; 
-    color: var(--blue-color);
-    padding: 0 5px;
-    font-weight:600;
-}
-
-.infoPerfil {
-    text-align: left;
-    padding: 10px;
-    border: 2px solid rgba(0, 0, 0, 0.2); 
-    display: block;
-    box-shadow: none;
-    font-size: 18px;
-    font-weight: 600;
-    border-radius: 10px;
-}
-
-.imagePerfil {
-    display: flex;
-    justify-content: center;
-    color: var(--blue-color);
-}
-
-#account {
-    font-size: 100px;
-}
-
-.btnPerfilContainer {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px; 
-}
-
-.btnPerfil {
-    padding: 6px 12px;
-    background-color: var(--blue-color);
-    border-radius: 10px;
-    color: var(--white-color);
-    font-size: 18px;
-    cursor: pointer;
-    border: none;
-    width: 150px;
-}
-
-.dButton, .cButton{
-    border: none;
-    border-radius: 10px !important;
-    padding: 10px;
-    color: var(--white-color);
-    font-size: 16px;
-    width: 100px;
-    cursor: pointer;
-}
-
-.escalarTicket{
+.escalarTicket {
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
     gap: 20px;
+
 }
-.btnEscalarTicket{
-    padding: 6px 12px;
-    border: 2px solid var(--blue-color);
-    font-size: 18px;
-    background-color: var(--white-color);
-    color: var(--blue-color);
-    font-size: 24px;
-    font-weight: bold;
-    border-radius: 5px;
+.containerEscalonamento{
+    display: flex;
+    flex-direction: column;
+}
+.summaryEscalonamento {
+    position: relative;
+    list-style: none;
+    padding: 10px 40px;
     cursor: pointer;
-    width: 100%;
+    transition: color 300ms ease-in-out;
+    font-size: 20px;
+    border: 2px solid var(--blue-color);
+    border-radius: 10px;
+    margin: 5px;
+    letter-spacing: 1px;
+    font-weight: 600;
 }
+
+.summaryEscalonamento:before {
+    content: "";
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    height: 2px;
+    margin-top: -1px;
+    width: 16px;
+    background: var(--black-color);
+}
+
+.summaryEscalonamento:after {
+    content: "";
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    height: 16px;
+    margin-top: -8px;
+    width: 2px;
+    margin-left: -1px;
+    background: var(--black-color);
+    transition: all 300ms ease-in-out;
+}
+
+.summaryEscalonamento[open]::after {
+    opacity: 0;
+    transform: translateY(25%);
+}
+
+.detailsEscalonamento {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 95%;
+    font-weight: 600;
+
+}
+
+.btnEscalonameto {
+    cursor: pointer;
+    border: none;
+    background: none;
+    margin-left: 20px;
+    font-weight: 600;
+    font-size: 22px;
+    color: var(--blue-color); 
+    transition: color 0.3s ease; 
+}
+
+.btnEscalonameto:hover {
+    color: lighten(var(--blue-color), 20%);
+    font-size: 24px; 
+}
+

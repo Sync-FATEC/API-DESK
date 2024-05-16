@@ -84,4 +84,5 @@ router.put('/alterarTipoTecnico/:tecnicoID/:tipoTecnico', async (req: Request, r
     }
 })
 
+
 export default router;

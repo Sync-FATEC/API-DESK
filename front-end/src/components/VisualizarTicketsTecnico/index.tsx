@@ -227,7 +227,7 @@ const VisualizarTicketTecnico: React.FC<Props> = ({ selectedTicket, onClose }) =
                     </div>
                     <div className="infoPair">
                         <span className="boldText">Técnico: </span>
-                        <p>{selectedTicket.tecnicoFinal}</p>
+                        <p>{selectedTicket.tecnico?.nome}</p>
                     </div>
                 </div>
                <div className='containerTicketChatTemplate'>

@@ -232,7 +232,7 @@ export const Tecnicos = () => {
                           </p>
                         </div>
                         <div className='containerTituloCard'>
-                        <p>{ticket.tecnico ? ticket.tecnico.nome : 'Sem técnico atribuído'}</p>
+                        <p>{ticket.tecnico ? ticket.tecnicoFinal : 'Sem técnico atribuído'}</p>
                         </div>
                         <div className='containerInfoTicketFim'>
                           <span className='prioridadeTicket'>{ticket.prioridade}</span>
