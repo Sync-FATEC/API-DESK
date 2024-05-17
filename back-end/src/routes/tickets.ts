@@ -67,15 +67,22 @@ router.post('/alterarTipoTecnico', async (req: Request, res: Response) => {
     res.json(await alterarTipoTecnico(ticketID, tipoTecnico));
 });
 
-router.put('/alterarTecnico/:ticketID/:tecnicoID', async (req: Request, res: Response) => {
+router.put('/alterarTecnico/:ticketID/:tecnicoID/:tipoTecnico', async (req: Request, res: Response) => {
     const ticketID = Number(req.params.ticketID);
     const tecnicoID = Number(req.params.tecnicoID);
-    
-    if (!ticketID || !tecnicoID ) {
+    const tipoTecnico = String(req.params.tipoTecnico);
+   
+    if (!ticketID || !tecnicoID || !tipoTecnico) {
         return res.status(400).json({ error: 'Preencha todos os campos' });
     }
-
-    res.json(await alterarTecnico(ticketID, tecnicoID));
+ 
+    try {
+        const resultado = await alterarTecnico(ticketID, tecnicoID, tipoTecnico);
+        res.json(resultado);
+    } catch (error) {
+        console.error('Erro ao tentar alterar o técnico do ticket:', error);
+        res.status(500).json({ error: 'Erro interno ao tentar alterar o técnico do ticket' });
+    }
 });
 
 

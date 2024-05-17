@@ -144,23 +144,26 @@ export const alterarTipoTecnico = async (ticketID: number, tipoTecnico: string) 
     }
 }
 
-export const alterarTecnico = async (ticketID: number, tecnicoID: number) => {
+export const alterarTecnico = async (ticketID: number, tecnicoID: number, tipoTecnico: string) => {
     try {
         const ticket = await ticketsRepositorio.findOneBy({ ticketsID: ticketID });
         const tecnico = await usuariosRepositorio.findOneBy({ usuarioID: tecnicoID });
-        if (ticket && tecnico) {
-            if (ticket.status == '1' || ticket.status == '4') {
+        const tipoTecnicoEncontrado = await usuariosRepositorio.findOneBy({ tipoUsuario: tipoTecnico });
+       
+        if (ticket && tecnico && tipoTecnicoEncontrado) {
+            if (ticket.status === '1' || ticket.status === '4') {
                 console.log('Ticket finalizado ou a fazer, não é possível alterar o técnico');
                 return 'Ticket finalizado ou a fazer, não é possível alterar o técnico';
             } else {
                 ticket.tecnico = tecnico;
+                ticket.tipoTecnico = tipoTecnico;
                 await ticketsRepositorio.save(ticket);
                 console.log('Técnico do ticket alterado com sucesso');
                 return ticket;
             }
         } else {
-            console.log('Ticket inexistente ou técnico inexistente');
-            return 'Ticket inexistente ou técnico inexistente';
+            console.log('Ticket inexistente, técnico inexistente ou tipo de técnico não encontrado');
+            return 'Ticket inexistente, técnico inexistente ou tipo de técnico não encontrado';
         }
     } catch (error) {
         console.error('Erro na alteração do técnico do ticket', error);
