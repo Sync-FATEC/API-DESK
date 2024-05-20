@@ -126,4 +126,12 @@
     
   }
   
- 
+  .inputSla{
+    border-radius: 10px;
+    border: 2px solid var(--gray-color);
+    color: var(--black-color);
+    font-size: 18px;
+    background: var(--white-color);
+    padding: 10px;
+    width: 30%;
+}
