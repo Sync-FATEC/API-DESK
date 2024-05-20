@@ -11,6 +11,7 @@ const TemplateADM = () => {
     const [mensagem, setMensagem] = useState('');
     const [categorias, setCategorias] = useState<ICategoria[]>([]);
     const [categoria, setCategoria] = useState<number>(0);
+    const [categoriaFiltro, setCategoriaFiltro] = useState(0);
 
     const handleTituloChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setTitulo(event.target.value);
@@ -73,7 +74,13 @@ const TemplateADM = () => {
             erro('Erro ao criar mensagem!');
         }
     };
-    
+    const filteredtemplateAdm = templateADM.filter((template) => {
+        if (categoriaFiltro === 0) {
+            return true;
+        } else {
+            return template.categoria.categoriaID === categoriaFiltro;
+        }
+    });
 
     return (
         <div className="adminContainer">
@@ -96,20 +103,28 @@ const TemplateADM = () => {
                 </div>
                 <button type='submit' className='btnAdd'><span className="material-symbols-outlined">Add</span></button>
 
-        </form>
-    
+            </form>
+            <div className='containerFiltroBase'>
 
-        {
-        templateADM.map((template, index) => (
-            <div className="rowInformacoes" key={template.mensagemID}>
-                <p>{template.titulo}</p>
-                <p>{template.mensagem}</p>
-                <button className="excluir" onClick={() => handleDeleteUser(template.mensagemID)}>
-                    <span className="material-symbols-outlined">delete</span>
-                </button>
+                <select value={categoriaFiltro} onChange={(e) => setCategoriaFiltro(Number(e.target.value))} className="filtroBase">
+                    <option value={0}>Filtro categorias</option>
+                    {categorias.map((categoria, index) => (
+                        <option key={index} value={categoria.categoriaID}>{categoria.categoria}</option>
+                    ))}
+                </select>
             </div>
-        ))}
-     </div>
+
+            {
+                filteredtemplateAdm.map((template, index) => (
+                    <div className="rowInformacoes" key={template.mensagemID}>
+                        <p>{template.titulo}</p>
+                        <p>{template.mensagem}</p>
+                        <button className="excluir" onClick={() => handleDeleteUser(template.mensagemID)}>
+                            <span className="material-symbols-outlined">delete</span>
+                        </button>
+                    </div>
+                ))}
+        </div>
 
     );
 };

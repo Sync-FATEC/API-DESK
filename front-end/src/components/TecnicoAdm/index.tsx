@@ -117,12 +117,7 @@ const TecnicosAdm = () => {
                                 <option value="1">N1</option>
                                 <option value="2">N2</option>
                                 <option value="3">N3</option>
-                            </select>
-
-
-
-
-                           
+                            </select>       
                             <select
                                 className="selectCategoriaTecAdm"
                                 value={tecnico.turno}

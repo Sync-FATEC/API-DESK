@@ -137,7 +137,7 @@ export const TicketsAdmin = () => {
                   ticket.status === '1' && (
                     <div key={index} className={`ticket-itemTec ${getStatusClass(ticket.status)}`} onClick={() => handleOpenVisualizarTicketModal(ticket)}>
                       <div className={`ticket-item-info ${getStatusClass(ticket.status)}Info`}>
-                        <div className='containerInfoTicketInicio'>
+                        <div className='containerInfoTicketInicioAdm'>
                         <div>
                             #{ticket.ticketsID}
                           </div>
@@ -153,6 +153,11 @@ export const TicketsAdmin = () => {
                         <div className='containerTituloCard'>
                           <p>
                             {ticket.titulo}
+                          </p>
+                        </div>
+                        <div className='containerTituloCard'>
+                          <p>
+                           Categoria: {ticket.categoria.categoria}
                           </p>
                         </div>
                         <div className='containerInfoTicketFim'>
@@ -177,7 +182,7 @@ export const TicketsAdmin = () => {
                   ticket.status === '2' && (
                     <div key={index} className={`ticket-itemTec ${getStatusClass(ticket.status)}`} onClick={() => handleOpenVisualizarTicketModal(ticket)}>
                       <div className={`ticket-item-info ${getStatusClass(ticket.status)}Info`}>
-                        <div className='containerInfoTicketInicio'>
+                        <div className='containerInfoTicketInicioAdm'>
                           <div>
                             #{ticket.ticketsID}
                           </div>
@@ -191,8 +196,10 @@ export const TicketsAdmin = () => {
                           </div>
                         </div>
                         <div className='containerTituloCard'>
-
                           {ticket.titulo}
+                        </div>
+                        <div className='containerTituloCard'>
+                          <p>Técnico Responsável: {ticket.tecnico ? ticket.tecnico.nome : 'Sem técnico atribuído'}</p>
                         </div>
                         <div className='containerInfoTicketFim'>
                           <span className='prioridadeTicket'>{ticket.prioridade}</span>
@@ -216,7 +223,7 @@ export const TicketsAdmin = () => {
                   ticket.status === '3' && (
                     <div key={index} className={`ticket-itemTec ${getStatusClass(ticket.status)}`} onClick={() => handleOpenVisualizarTicketModal(ticket)}>
                       <div className={`ticket-item-info ${getStatusClass(ticket.status)}Info`}>
-                        <div className='containerInfoTicketInicio'>
+                        <div className='containerInfoTicketInicioAdm'>
                         <div>
                             #{ticket.ticketsID}
                           </div>
@@ -228,11 +235,15 @@ export const TicketsAdmin = () => {
                               <span className="material-symbols-outlined">Delete</span>
                             </button>
                           </div>
+                          
                         </div>
                         <div className='containerTituloCard'>
                           <p className='tituloCardTitulo'>
                             {ticket.titulo}
                           </p>
+                        </div>
+                        <div className='containerTituloCard'>
+                          <p>Técnico Responsável: {ticket.tecnico ? ticket.tecnico.nome : 'Sem técnico atribuído'}</p>
                         </div>
                         <div className='containerInfoTicketFim'>
                           <span className='prioridadeTicket'>{ticket.prioridade}</span>
@@ -256,7 +267,7 @@ export const TicketsAdmin = () => {
                   ticket.status === '4' && (
                     <div key={index} className={`ticket-itemTec ${getStatusClass(ticket.status)}`} onClick={() => handleOpenVisualizarTicketModal(ticket)}>
                       <div className={`ticket-item-info ${getStatusClass(ticket.status)}Info`}>
-                        <div className='containerInfoTicketInicio'>
+                        <div className='containerInfoTicketInicioAdm'>
                         <div>
                             #{ticket.ticketsID}
                           </div>
@@ -273,6 +284,9 @@ export const TicketsAdmin = () => {
                           <p className='tituloCardTitulo'>
                             {ticket.titulo}
                           </p>
+                        </div>
+                        <div className='containerTituloCard'>
+                        <p>{ticket.tecnicoFinal ? ticket.tecnicoFinal : 'Sem técnico atribuído'}</p>
                         </div>
                         <div className='containerInfoTicketFim'>
                           <span className='prioridadeTicket'>{ticket.prioridade}</span>
