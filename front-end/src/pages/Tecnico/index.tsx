@@ -128,7 +128,7 @@ export const Tecnicos = () => {
                         </div>
                         <div className='containerTituloCard'>
                           <p>
-                           Nível do ticket
+                           Categoria: {ticket.categoria.categoria}
                           </p>
                         </div>
                         <div className='containerInfoTicketFim'>
@@ -232,7 +232,7 @@ export const Tecnicos = () => {
                           </p>
                         </div>
                         <div className='containerTituloCard'>
-                        <p>{ticket.tecnico ? ticket.tecnicoFinal : 'Sem técnico atribuído'}</p>
+                        <p>{ticket.tecnicoFinal ? ticket.tecnicoFinal : 'Sem técnico atribuído'}</p>
                         </div>
                         <div className='containerInfoTicketFim'>
                           <span className='prioridadeTicket'>{ticket.prioridade}</span>
