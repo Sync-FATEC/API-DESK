@@ -61,3 +61,21 @@ export const visualizarEquipamentosCatSala = async (numeroSala: number, categori
         return 'Ocorreu um erro para visualizar os equipamentos';
     }
 }
+
+export const alterarSlaEquipamento = async (equipamentoID: number, novoSla: number) => {
+    try {
+        const equipamento = await equipamentosRepositorio.findOneBy({ equipamentosID: equipamentoID })
+        if (equipamento) {
+            equipamento.sla = novoSla
+            await equipamentosRepositorio.save(equipamento)
+            console.log('SLA do equipamento alterado com sucesso');
+            return 'SLA do equipamento alterado com sucesso'
+        } else {
+            console.log('Equipamento inexistente');
+            return 'Equipamento inexistente'
+        }
+    } catch (error) {
+        console.error('Ocorreu um erro para alterar o SLA do equipamento', error);
+        return 'Ocorreu um erro para alterar o SLA do equipamento'
+    }
+}
