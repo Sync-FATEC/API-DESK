@@ -5,6 +5,7 @@ import ITickets from '../../types/ITickets';
 import { AuthContext } from '../../contexts/Auth/AuthContext';
 import VisualizarTicketTecnico from '../../components/VisualizarTicketsTecnico';
 import ICategoria from '../../types/ICategoria';
+import { erro, Toast } from "../../components/Swal/swal";
 
 export const TicketsAdmin = () => {
   const [isVisualizarTicketModalOpen, setIsVisualizarTicketModalOpen] = useState(false);
@@ -75,6 +76,30 @@ export const TicketsAdmin = () => {
     }
 
   };
+  const handleDeleteTicket = async (ticketID: number) => {
+    try {
+      const response = await axios.delete(`http://localhost:5555/tickets/excluir/${ticketID}`);
+      console.log(response);
+
+      if (response.data === 1) {
+        setTickets(tickets.filter((ticket) => ticket.ticketsID !== ticketID));
+        Toast.fire({
+          icon: "success",
+          title: "Excluído com sucesso!"
+        });
+      } else {
+        Toast.fire({
+          icon: "error",
+          title: "Erro ao excluir, técnico possui tickets pendentes"
+        });
+      }
+
+    } catch (error) {
+      console.error('Erro ao excluir técnico:', error);
+      erro('Erro ao excluir técnico');
+    }
+  };
+
 
   return (
     <div className="ticketContainer">
@@ -113,7 +138,17 @@ export const TicketsAdmin = () => {
                     <div key={index} className={`ticket-itemTec ${getStatusClass(ticket.status)}`} onClick={() => handleOpenVisualizarTicketModal(ticket)}>
                       <div className={`ticket-item-info ${getStatusClass(ticket.status)}Info`}>
                         <div className='containerInfoTicketInicio'>
-                          #{ticket.ticketsID}
+                        <div>
+                            #{ticket.ticketsID}
+                          </div>
+                          <div>
+                            <button className="excluir" onClick={(e) => {
+                              e.stopPropagation(); // Evita que o evento de clique se propague para o pai
+                              handleDeleteTicket(ticket.ticketsID);
+                            }}>
+                              <span className="material-symbols-outlined">Delete</span>
+                            </button>
+                          </div>
                         </div>
                         <div className='containerTituloCard'>
                           <p>
@@ -143,7 +178,17 @@ export const TicketsAdmin = () => {
                     <div key={index} className={`ticket-itemTec ${getStatusClass(ticket.status)}`} onClick={() => handleOpenVisualizarTicketModal(ticket)}>
                       <div className={`ticket-item-info ${getStatusClass(ticket.status)}Info`}>
                         <div className='containerInfoTicketInicio'>
-                          #{ticket.ticketsID}
+                          <div>
+                            #{ticket.ticketsID}
+                          </div>
+                          <div>
+                            <button className="excluir" onClick={(e) => {
+                              e.stopPropagation(); // Evita que o evento de clique se propague para o pai
+                              handleDeleteTicket(ticket.ticketsID);
+                            }}>
+                              <span className="material-symbols-outlined">Delete</span>
+                            </button>
+                          </div>
                         </div>
                         <div className='containerTituloCard'>
 
@@ -172,7 +217,17 @@ export const TicketsAdmin = () => {
                     <div key={index} className={`ticket-itemTec ${getStatusClass(ticket.status)}`} onClick={() => handleOpenVisualizarTicketModal(ticket)}>
                       <div className={`ticket-item-info ${getStatusClass(ticket.status)}Info`}>
                         <div className='containerInfoTicketInicio'>
-                          #{ticket.ticketsID}
+                        <div>
+                            #{ticket.ticketsID}
+                          </div>
+                          <div>
+                            <button className="excluir" onClick={(e) => {
+                              e.stopPropagation(); // Evita que o evento de clique se propague para o pai
+                              handleDeleteTicket(ticket.ticketsID);
+                            }}>
+                              <span className="material-symbols-outlined">Delete</span>
+                            </button>
+                          </div>
                         </div>
                         <div className='containerTituloCard'>
                           <p className='tituloCardTitulo'>
@@ -202,7 +257,17 @@ export const TicketsAdmin = () => {
                     <div key={index} className={`ticket-itemTec ${getStatusClass(ticket.status)}`} onClick={() => handleOpenVisualizarTicketModal(ticket)}>
                       <div className={`ticket-item-info ${getStatusClass(ticket.status)}Info`}>
                         <div className='containerInfoTicketInicio'>
-                          #{ticket.ticketsID}
+                        <div>
+                            #{ticket.ticketsID}
+                          </div>
+                          <div>
+                            <button className="excluir" onClick={(e) => {
+                              e.stopPropagation(); // Evita que o evento de clique se propague para o pai
+                              handleDeleteTicket(ticket.ticketsID);
+                            }}>
+                              <span className="material-symbols-outlined">Delete</span>
+                            </button>
+                          </div>
                         </div>
                         <div className='containerTituloCard'>
                           <p className='tituloCardTitulo'>
