@@ -3,6 +3,7 @@ import axios from "axios";
 import './cadastroTecnico.css'
 import { erro, success, warning } from "../Swal/swal";
 
+
 export const CadastroTecnico = () => {
     const [nome, setNome] = useState('');
     const [cpf, setCpf] = useState('');
@@ -15,6 +16,12 @@ export const CadastroTecnico = () => {
     const [cpfError, setCpfError] = useState('');
     const [emailError, setEmailError] = useState('');
     const [senhaError, setSenhaError] = useState('');
+    const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+
+    const togglePasswordVisibility = () => {
+        setIsPasswordVisible(!isPasswordVisible);
+    };
+
 
     const handleNome = (e: React.ChangeEvent<HTMLInputElement>) => {
         const newNome = e.target.value;
@@ -47,13 +54,14 @@ export const CadastroTecnico = () => {
         const newSenha = e.target.value;
         setSenha(newSenha);
 
-        if (!validateSenha(newSenha) && newSenha.length > 20) {
+        if (!validateSenha(newSenha) && newSenha.length < 8) {
             setSenhaError('Por favor, preencha uma senha válida.');
             setIsValid(false);
         } else {
             setSenhaError('');
             setIsValid(true);
         }
+
     };
 
     const handleCpf = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -92,7 +100,7 @@ export const CadastroTecnico = () => {
     };
 
     const validateSenha = (senha: string): boolean => {
-        const senhaRegex = /^[a-zA-Z0-9!@#$%^&*()_+{}[\]:;<>,.?/~`|-]{1,20}$/;
+        const senhaRegex = /^[a-zA-Z0-9!@#$%^&*()_+{}[\]:;<>,.?/~`|-]{8,255}$/;
         return senhaRegex.test(senha);
     };
 
@@ -187,7 +195,7 @@ export const CadastroTecnico = () => {
                             />
                             <div className="">{nomeError}</div>
                         </div>
-    
+
                         <div className="formInput">
                             <label className="labelInput" htmlFor="email">Digite o E-mail do técnico</label>
                             <input
@@ -198,7 +206,7 @@ export const CadastroTecnico = () => {
                             />
                             <div className="">{emailError}</div>
                         </div>
-    
+
                         <div className="formInput">
                             <label className="labelInput" htmlFor="cpf">Digite o CPF do técnico</label>
                             <input
@@ -209,40 +217,53 @@ export const CadastroTecnico = () => {
                             />
                             <div className="">{cpfError}</div>
                         </div>
-    
+
                         <div className="formInput">
                             <label className="labelInput" htmlFor="Password">Digite a senha do técnico</label>
-                            <input
-                                className={senha !== "" ? "has-val input" : "input"}
-                                type="password"
-                                value={senha}
-                                onChange={handleSenha}
-                            />
+                            <div className="password-input-container">
+                                <input
+                                    className={senha !== "" ? "has-val input" : "input"}
+                                    type={isPasswordVisible ? "text" : "password"}
+                                    value={senha}
+                                    onChange={handleSenha}
+                                />
+                                <span
+                                    className="password-toggle-icon"
+                                    onClick={togglePasswordVisibility}
+                                >
+                                    {isPasswordVisible ? <span className="material-symbols-outlined">
+                                        visibility_off
+                                    </span> : <span className="material-symbols-outlined">
+                                        visibility
+                                    </span>}
+                                </span>
+                            </div>
                             <div className="">{senhaError}</div>
                         </div>
 
-    
-                    <div className="formSelect">
-                        <div className="formInput">
-                            <label className="labelInputTecnico" htmlFor="categoria">Categoria do técnico</label>
-                            <select className="selectCategoriaTec" value={categoria} onChange={(e) => setCategoria(e.target.value)}>
-                                <option value=""></option>
-                                <option value="1">Suporte N1</option>
-                                <option value="2">Suporte N2</option>
-                                <option value="3">Suporte N3</option>
-                            </select>
-                        </div>
-                        <div className="formInput">
-                            <label className="labelInputTecnico" htmlFor="turno">Turno do técnico</label>
-                            <select className="selectCategoriaTec" value={turno} onChange={(e) => setTurno(e.target.value)}>
-                                <option value=""></option>
-                                <option value="M">Manhã</option>
-                                <option value="T">Tarde</option>
-                                <option value="N">Noite</option>
-                            </select>
+
+
+                        <div className="formSelect">
+                            <div className="formInput">
+                                <label className="labelInputTecnico" htmlFor="categoria">Categoria do técnico</label>
+                                <select className="selectCategoriaTec" value={categoria} onChange={(e) => setCategoria(e.target.value)}>
+                                    <option value=""></option>
+                                    <option value="1">Suporte N1</option>
+                                    <option value="2">Suporte N2</option>
+                                    <option value="3">Suporte N3</option>
+                                </select>
+                            </div>
+                            <div className="formInput">
+                                <label className="labelInputTecnico" htmlFor="turno">Turno do técnico</label>
+                                <select className="selectCategoriaTec" value={turno} onChange={(e) => setTurno(e.target.value)}>
+                                    <option value=""></option>
+                                    <option value="M">Manhã</option>
+                                    <option value="T">Tarde</option>
+                                    <option value="N">Noite</option>
+                                </select>
+                            </div>
                         </div>
                     </div>
-                </div>
 
                     <div className="tecnicoBtn">
                         <button type="submit" value="Cadastrar" className="formBtn">Cadastrar</button>
@@ -251,5 +272,5 @@ export const CadastroTecnico = () => {
             </div>
         </div>
     );
-    
+
 };

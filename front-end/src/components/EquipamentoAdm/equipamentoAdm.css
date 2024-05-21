@@ -100,7 +100,8 @@
   .sumarioResultado:before {
     left: 12px;
     top: 50%;
-    height: 2px;
+    font-weight: 600;
+    height: 1px;
     margin-top: -1px;
     width: 16px;
     background: var(--black-color);
@@ -113,17 +114,18 @@
     top: 50%;
     height: 16px;
     margin-top: -8px;
-    width: 2px;
+    width: 1px;
     margin-left: -1px;
     background: var(--black-color);
     transition: all 300ms ease-in-out;
 
   }
-  
   .sumarioResultado[open]::after {
     opacity: 0;
     transform: translateY(25%);
-    
+  }
+  details[open] > .sumarioResultado::after {
+    opacity: 0; /* Esconde a linha vertical para formar um '-' */
   }
   
   .inputSla{

@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import { Header } from '../../components/Header';
 import './cliente.css';
 import { NovoTicket } from '../../components/NovoTicket';
-import  VisualizarTicketCliente from '../../components/VisualizarTicketsCliente';
+import VisualizarTicketCliente from '../../components/VisualizarTicketsCliente';
 import axios from 'axios';
 import ITickets from '../../types/ITickets';
 import { AuthContext } from '../../contexts/Auth/AuthContext';
@@ -21,7 +21,7 @@ const Cliente: React.FC = () => {
     const handleCloseVisualizarTicketModal = () => setIsVisualizarTicketModalOpen(false);
 
     const [tickets, setTickets] = useState<ITickets[]>([]);
-    const { user } = useContext(AuthContext); 
+    const { user } = useContext(AuthContext);
 
     useEffect(() => {
         const fetchTickets = async () => {
@@ -54,74 +54,90 @@ const Cliente: React.FC = () => {
         }
         return true;
     });
+    const getStatus = (status: string) => {
+        switch (status) {
+            case '1':
+                return 'Aberto';
+            case '2':
+                return 'Em atendimento';
+            case '3':
+                return 'Pendente';
+            case '4':
+                return 'Finalizado';
+            default:
+                return '';
+        }
+    }
+                return (
+                    <div className="ticketContainer">
+                        <div className="formTicket">
+                            <Header />
+                            <div className="ticket-container">
+                                <h1>Listagem de Tickets</h1>
+                                <div className="ticket-filters">
+                                    <div className="filter-container">
+                                        <select className="selectFilter" value={filter} onChange={handleFilterChange}>
+                                            <option value={0}>Mostrar todos</option>
+                                            <option value={1}>Abertos</option>
+                                            <option value={2}>Em Atendimento</option>
+                                            <option value={3}>Pendentes</option>
+                                            <option value={4}>Finalizados</option>
+                                        </select>
+                                    </div>
 
-    return (
-        <div className="ticketContainer">
-            <div className="formTicket">
-                <Header />
-                <div className="ticket-container">
-                    <h1>Listagem de Tickets</h1>
-                    <div className="ticket-filters">
-                        <div className="filter-container">
-                            <select className="selectFilter" value={filter} onChange={handleFilterChange}>
-                                <option value={0}>Mostrar todos</option>
-                                <option value={1}>Abertos</option>
-                                <option value={2}>Em Atendimento</option>
-                                <option value={3}>Pendentes</option>
-                                <option value={4}>Finalizados</option>
-                            </select>
-                        </div>
-
-                        <button className="btnTicket" onClick={handleOpenNovoTicketModal}>
-                            <span className="material-symbols-outlined">confirmation_number</span>
-                            <p>Novo ticket</p>
-                        </button>
-                        {isNovoTicketModalOpen && (
-                            <div className="modal">
-                                <div className="modal-content">
-                                    <span className="close" onClick={handleCloseNovoTicketModal}>&times;</span>
-                                    <NovoTicket />
+                                    <button className="btnTicket" onClick={handleOpenNovoTicketModal}>
+                                        <span className="material-symbols-outlined">confirmation_number</span>
+                                        <p>Novo ticket</p>
+                                    </button>
+                                    {isNovoTicketModalOpen && (
+                                        <div className="modal">
+                                            <div className="modal-content">
+                                                <span className="close" onClick={handleCloseNovoTicketModal}>&times;</span>
+                                                <NovoTicket />
+                                            </div>
+                                        </div>
+                                    )}
                                 </div>
                             </div>
-                        )}
-                    </div>
-                </div>
-                <div className='ticket-content'>
-                    <div className="ticket-list">
-                        <div className="ticket-types">
-                            <div>ID</div>
-                            <div>Abertura</div>
-                            <div>Titulo</div>
-                            <div>Categoria</div>
-                            <div>Visualizar</div>
-                        </div>
-                        {filteredTickets.map((ticket) => (
-                            <div className="ticket-item" key={ticket.ticketsID}>
-                                <div className='ticket-itemDiv'>{ticket.ticketsID}</div>
-                                <div className='ticket-itemDiv'>{new Date(ticket.dataAbertura).toLocaleDateString('pt-BR')}</div>
-                                <div className='ticket-itemDiv'>{ticket.titulo}</div>
-                                <div className='ticket-itemDiv'>{ticket.categoria.categoria}</div>
-                                <div className='ticket-itemDiv'>
-                                    <span className="material-symbols-outlined" onClick={() => handleOpenVisualizarTicketModal(ticket)}>
-                                        mystery
-                                    </span>
+                            <div className='ticket-content'>
+                                <div className="ticket-list">
+                                    <div className="ticket-types">
+                                        <div>ID</div>
+                                        <div>Abertura</div>
+                                        <div>Titulo</div>
+                                        <div>Categoria</div>
+                                        <div>Status</div>
+                                        <div>Visualizar</div>
+                                    </div>
+                                    {filteredTickets.map((ticket) => (
+                                        <div className="ticket-item" key={ticket.ticketsID}>
+                                            <div className='ticket-itemDiv'>{ticket.ticketsID}</div>
+                                            <div className='ticket-itemDiv'>{new Date(ticket.dataAbertura).toLocaleDateString('pt-BR')}</div>
+                                            <div className='ticket-itemDiv'>{ticket.titulo}</div>
+                                            <div className='ticket-itemDiv'>{ticket.categoria.categoria}</div>
+                                            <div className='ticket-itemDiv'>{getStatus(ticket.status)}
+                                            </div>
+                                            <div className='ticket-itemDiv'>
+                                                <span className="material-symbols-outlined" onClick={() => handleOpenVisualizarTicketModal(ticket)}>
+                                                    mystery
+                                                </span>
+                                            </div>
+                                        </div>
+                                    ))}
                                 </div>
-                            </div>
-                        ))}
-                    </div>
-                    {isVisualizarTicketModalOpen && selectedTicket && (
-                        <div className="modal">
-                            <div className="modal-content">
-                            <span className="close" onClick={handleCloseVisualizarTicketModal}>&times;</span>
-                                <VisualizarTicketCliente selectedTicket={selectedTicket} onClose={handleCloseVisualizarTicketModal} />
-                                
+                                {isVisualizarTicketModalOpen && selectedTicket && (
+                                    <div className="modal">
+                                        <div className="modal-content">
+                                            <span className="close" onClick={handleCloseVisualizarTicketModal}>&times;</span>
+                                            <VisualizarTicketCliente selectedTicket={selectedTicket} onClose={handleCloseVisualizarTicketModal} />
+
+                                        </div>
+                                    </div>
+                                )}
                             </div>
                         </div>
-                    )}
-                </div>
-            </div>
-        </div>
-    );
-};
+                    </div>
+                );
+        };
 
-export default Cliente;
+        export default Cliente;

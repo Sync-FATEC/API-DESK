@@ -165,17 +165,17 @@ const EscalamentoTicket: React.FC<Props> = ({ selectedTicket }) => {
         return (
             <div>
                 <div className="modalPerfil">
-                    <h1>Escalonamento</h1>
+                    <h1>Escalar ticket</h1>
                     <div className="escalarTicket">
                         <div className="containerEscalonamento">
                             <div className="tecnicoItem">
-                                <button className='btnEscalonameto' onClick={() => handleEscalamentoTipoTec('1')}>Técnico N1</button>
+                                <button className='btnEscalonametoCat' onClick={() => handleEscalamentoTipoTec('1')}>Técnico N1</button>
                             </div>
                             <div className="tecnicoItem">
-                                <button className='btnEscalonameto' onClick={() => handleEscalamentoTipoTec('2')}>Técnico N2</button>
+                                <button className='btnEscalonametoCat' onClick={() => handleEscalamentoTipoTec('2')}>Técnico N2</button>
                             </div>
                             <div className="tecnicoItem">
-                                <button className='btnEscalonameto' onClick={() => handleEscalamentoTipoTec('3')}>Técnico N3</button>
+                                <button className='btnEscalonametoCat' onClick={() => handleEscalamentoTipoTec('3')}>Técnico N3</button>
                             </div>
                         </div>
                     </div>

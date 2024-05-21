@@ -128,13 +128,13 @@ export const Tecnicos = () => {
                         </div>
                         <div className='containerTituloCard'>
                           <p>
-                           Categoria: {ticket.categoria.categoria}
+                            Categoria: {ticket.categoria.categoria}
                           </p>
                         </div>
                         <div className='containerInfoTicketFim'>
                           <span className='prioridadeTicket'>{ticket.prioridade}</span>
                           <div className='dataAberturaTicket'>
-                            {new Date(ticket.dataAbertura).toLocaleDateString('pt-BR', { hour: 'numeric', minute: 'numeric', day: 'numeric', month: 'numeric', year: 'numeric' }) }
+                            {new Date(ticket.dataAbertura).toLocaleDateString('pt-BR', { hour: 'numeric', minute: 'numeric', day: 'numeric', month: 'numeric', year: 'numeric' })}
                           </div>
 
                         </div>
@@ -163,14 +163,12 @@ export const Tecnicos = () => {
                           </p>
                         </div>
                         <div className='containerTituloCard'>
-                          <p>Técnico Responsável: {ticket.tecnico ? ticket.tecnico.nome : 'Sem técnico atribuído'}</p>
+                          <p>Técnico: {ticket.tecnico ? ticket.tecnico.nome : 'Sem técnico atribuído'}</p>
                         </div>
-
-
                         <div className='containerInfoTicketFim'>
                           <span className='prioridadeTicket'>{ticket.prioridade}</span>
                           <div className='dataAberturaTicket'>
-                          {new Date(ticket.dataAbertura).toLocaleDateString('pt-BR', { hour: 'numeric', minute: 'numeric', day: 'numeric', month: 'numeric', year: 'numeric' }) }
+                            {new Date(ticket.dataAbertura).toLocaleDateString('pt-BR', { hour: 'numeric', minute: 'numeric', day: 'numeric', month: 'numeric', year: 'numeric' })}
                           </div>
 
                         </div>
@@ -199,12 +197,12 @@ export const Tecnicos = () => {
                           </p>
                         </div>
                         <div className='containerTituloCard'>
-                          <p>Técnico Responsável: {ticket.tecnico ? ticket.tecnico.nome : 'Sem técnico atribuído'}</p>
+                          <p>Técnico: {ticket.tecnico ? ticket.tecnico.nome : 'Sem técnico atribuído'}</p>
                         </div>
                         <div className='containerInfoTicketFim'>
                           <span className='prioridadeTicket'>{ticket.prioridade}</span>
                           <div className='dataAberturaTicket'>
-                          {new Date(ticket.dataAbertura).toLocaleDateString('pt-BR', { hour: 'numeric', minute: 'numeric', day: 'numeric', month: 'numeric', year: 'numeric' }) }
+                            {new Date(ticket.dataAbertura).toLocaleDateString('pt-BR', { hour: 'numeric', minute: 'numeric', day: 'numeric', month: 'numeric', year: 'numeric' })}
                           </div>
 
                         </div>
@@ -232,12 +230,12 @@ export const Tecnicos = () => {
                           </p>
                         </div>
                         <div className='containerTituloCard'>
-                        <p>{ticket.tecnicoFinal ? ticket.tecnicoFinal : 'Sem técnico atribuído'}</p>
+                          <p>Técnico: {ticket.tecnicoFinal ? ticket.tecnicoFinal : 'Sem técnico atribuído'}</p>
                         </div>
                         <div className='containerInfoTicketFim'>
                           <span className='prioridadeTicket'>{ticket.prioridade}</span>
                           <div className='dataAberturaTicket'>
-                          {new Date(ticket.dataAbertura).toLocaleDateString('pt-BR', { hour: 'numeric', minute: 'numeric', day: 'numeric', month: 'numeric', year: 'numeric' }) }
+                            {new Date(ticket.dataAbertura).toLocaleDateString('pt-BR', { hour: 'numeric', minute: 'numeric', day: 'numeric', month: 'numeric', year: 'numeric' })}
                           </div>
 
                         </div>

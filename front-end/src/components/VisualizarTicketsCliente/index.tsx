@@ -46,8 +46,14 @@ const VisualizarTicketCliente: React.FC<Props> = ({ selectedTicket, onClose }) =
                         )}
                     </div>
                 </div>
-                <div className='chatCliente'>
-                <ChatCliente selectedTicket={selectedTicket}/>
+                <div className='containerTicketChatTemplate'>
+                    <div className='chatClienteFim'>
+                        <ChatCliente selectedTicket={selectedTicket} />
+                    </div>
+                    <div className='templateFim'>
+                        <h3>Mensagem finalização:</h3>
+                        <p>{selectedTicket.template}</p>
+                    </div>
                 </div>
             </div>
         </div>

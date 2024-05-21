@@ -14,6 +14,12 @@ export const Login = () => {
   const [emailError, setEmailErrorText] = useState('');
   const [senhaError, setSenhaErrorText] = useState('');
   const navigate = useNavigate();
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+
+    const togglePasswordVisibility = () => {
+        setIsPasswordVisible(!isPasswordVisible);
+    };
+
 
   const handleEmailLogin = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
@@ -122,14 +128,27 @@ export const Login = () => {
                         <label className="labelInput" htmlFor="email">Digite seu e-mail</label>
                     </div>
                     <div className="formInput">
+                    <div className="password-input-container">
                         <input
-                            type="password"
+                            type={isPasswordVisible ? "text" : "password"}
                             value={senha}
                             onChange={handleSenhaLogin}
                             placeholder=" "
                         />
+                         <span
+                                    className="password-toggle-icon"
+                                    onClick={togglePasswordVisibility}
+                                >
+                                    {isPasswordVisible ? <span className="material-symbols-outlined">
+                                        visibility_off
+                                    </span> : <span className="material-symbols-outlined">
+                                        visibility
+                                    </span>}
+                                </span>
+                                </div>
                         <div className="errorMessage">{senhaError}</div>
                         <label className="labelInput" htmlFor="password">Digite sua senha</label>
+                        
                     </div>
                     <button className="formBtn">Entrar</button>
                 </div>

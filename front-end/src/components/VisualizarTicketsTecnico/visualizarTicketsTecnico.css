@@ -36,7 +36,10 @@
     gap: 5px;
 }
 .templateFim{
+    border: 1px solid var(--gray-color); 
     margin-top: 10px;
+    border-radius: 10px;
+    padding: 10px;
 }
 .chatCliente {
     width: 50%;

@@ -16,10 +16,11 @@
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    gap: 20px;
+    gap: 10px;
 
 }
 .containerEscalonamento{
+    width: 100%;
     display: flex;
     flex-direction: column;
 }
@@ -33,7 +34,6 @@
     border: 2px solid var(--blue-color);
     border-radius: 10px;
     margin: 5px;
-    letter-spacing: 1px;
     font-weight: 600;
 }
 
@@ -65,12 +65,16 @@
     opacity: 0;
     transform: translateY(25%);
 }
+details[open] > .summaryEscalonamento::after {
+    opacity: 0; /* Esconde a linha vertical para formar um '-' */
+  }
+  
 
 .detailsEscalonamento {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 95%;
+    width: 100%;
     font-weight: 600;
 
 }
@@ -91,3 +95,14 @@
     font-size: 24px; 
 }
 
+.btnEscalonametoCat {
+    padding: 10px 40px;
+    background-color: transparent;
+    cursor: pointer;
+    font-size: 20px;
+    border: 2px solid var(--blue-color);
+    border-radius: 10px;
+    margin: 5px;
+    width: 100%;
+    font-weight: 600;
+}

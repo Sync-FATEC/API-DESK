@@ -163,7 +163,7 @@ export const TicketsAdmin = () => {
                         <div className='containerInfoTicketFim'>
                           <span className='prioridadeTicket'>{ticket.prioridade}</span>
                           <div className='dataAberturaTicket'>
-                            {new Date(ticket.dataAbertura).toLocaleDateString('pt-BR')}
+                          {new Date(ticket.dataAbertura).toLocaleDateString('pt-BR', { hour: 'numeric', minute: 'numeric', day: 'numeric', month: 'numeric', year: 'numeric' })}
                           </div>
 
                         </div>
@@ -199,12 +199,12 @@ export const TicketsAdmin = () => {
                           {ticket.titulo}
                         </div>
                         <div className='containerTituloCard'>
-                          <p>Técnico Responsável: {ticket.tecnico ? ticket.tecnico.nome : 'Sem técnico atribuído'}</p>
+                          <p>Técnico: {ticket.tecnico ? ticket.tecnico.nome : 'Sem técnico atribuído'}</p>
                         </div>
                         <div className='containerInfoTicketFim'>
                           <span className='prioridadeTicket'>{ticket.prioridade}</span>
                           <div className='dataAberturaTicket'>
-                            {new Date(ticket.dataAbertura).toLocaleDateString('pt-BR')}
+                          {new Date(ticket.dataAbertura).toLocaleDateString('pt-BR', { hour: 'numeric', minute: 'numeric', day: 'numeric', month: 'numeric', year: 'numeric' })}
                           </div>
 
                         </div>
@@ -243,12 +243,12 @@ export const TicketsAdmin = () => {
                           </p>
                         </div>
                         <div className='containerTituloCard'>
-                          <p>Técnico Responsável: {ticket.tecnico ? ticket.tecnico.nome : 'Sem técnico atribuído'}</p>
+                          <p>Técnico: {ticket.tecnico ? ticket.tecnico.nome : 'Sem técnico atribuído'}</p>
                         </div>
                         <div className='containerInfoTicketFim'>
                           <span className='prioridadeTicket'>{ticket.prioridade}</span>
                           <div className='dataAberturaTicket'>
-                            {new Date(ticket.dataAbertura).toLocaleDateString('pt-BR')}
+                          {new Date(ticket.dataAbertura).toLocaleDateString('pt-BR', { hour: 'numeric', minute: 'numeric', day: 'numeric', month: 'numeric', year: 'numeric' })}
                           </div>
 
                         </div>
@@ -273,7 +273,7 @@ export const TicketsAdmin = () => {
                           </div>
                           <div>
                             <button className="excluir" onClick={(e) => {
-                              e.stopPropagation(); // Evita que o evento de clique se propague para o pai
+                              e.stopPropagation();
                               handleDeleteTicket(ticket.ticketsID);
                             }}>
                               <span className="material-symbols-outlined">Delete</span>
@@ -286,12 +286,12 @@ export const TicketsAdmin = () => {
                           </p>
                         </div>
                         <div className='containerTituloCard'>
-                        <p>{ticket.tecnicoFinal ? ticket.tecnicoFinal : 'Sem técnico atribuído'}</p>
+                        <p>Técnico: {ticket.tecnicoFinal ? ticket.tecnicoFinal : 'Sem técnico atribuído'}</p>
                         </div>
                         <div className='containerInfoTicketFim'>
                           <span className='prioridadeTicket'>{ticket.prioridade}</span>
                           <div className='dataAberturaTicket'>
-                            {new Date(ticket.dataAbertura).toLocaleDateString('pt-BR')}
+                          {new Date(ticket.dataAbertura).toLocaleDateString('pt-BR', { hour: 'numeric', minute: 'numeric', day: 'numeric', month: 'numeric', year: 'numeric' })}
                           </div>
 
                         </div>

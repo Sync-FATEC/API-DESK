@@ -44,6 +44,22 @@
     width: 200px;
 
 }
+.password-toggle-icon {
+    color: var(--black-color);
+    position: absolute;
+    right: 15px;
+    cursor: pointer;
+    user-select: none;
+}
+.password-input-container {
+    display: flex;
+    align-items: center;
+}
+
+.password-input-container .input {
+    padding-right: 10px; /* Espaço para o ícone */
+}
+
 
 .labelInputTecnico {
     position: relative;
