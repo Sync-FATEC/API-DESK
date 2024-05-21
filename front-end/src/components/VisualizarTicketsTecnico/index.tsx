@@ -22,8 +22,18 @@ const VisualizarTicketTecnico: React.FC<Props> = ({ selectedTicket, onClose }) =
     const [mensagem, setMensagem] = useState('');
     // Estado para controlar o status atual do ticket
     const [currentStatus, setCurrentStatus] = useState(selectedTicket?.status || '');
-    const formatDataSlaTickets = selectedTicket?.dataSla ? new Date(selectedTicket.dataSla).toLocaleString('pt-BR', { hour: 'numeric', minute: 'numeric', day: 'numeric', month: 'numeric', year: 'numeric' }) : '';
+    const formatDataSlaTickets = selectedTicket?.dataSla
+        ? new Date(selectedTicket.dataSla).toLocaleString('pt-BR', {
+            hour: 'numeric',
+            minute: 'numeric',
+            day: 'numeric',
+            month: 'numeric',
+            year: 'numeric'
+        })
+        : '';
+
     const { user } = useContext(AuthContext);
+    
 
     const handleOpenModal = () => {
         setModalOpen(true);
@@ -194,9 +204,9 @@ const VisualizarTicketTecnico: React.FC<Props> = ({ selectedTicket, onClose }) =
             <div className='btnVisualizar'>
                
                 <div>
-                    <span id='btnSla' className="material-symbols-outlined">bomb</span>
+                    <span className="material-symbols-outlined">bomb</span>
                 </div>
-                <div className='slaInfo'>
+                <div>
                     <p>Data do estouro SLA</p>
                     <p>{formatDataSlaTickets}</p>
                 </div>
@@ -246,6 +256,25 @@ const VisualizarTicketTecnico: React.FC<Props> = ({ selectedTicket, onClose }) =
             </div>
         );
     }
+  
+
+
+
+    const isSlaExpired = selectedTicket?.dataSla
+        ? new Date(selectedTicket.dataSla) < new Date()
+        : false;
+
+    console.log('Data SLA:', selectedTicket?.dataSla);
+    console.log('Data Atual:', new Date());
+    console.log('isSlaExpired:', isSlaExpired);
+
+    let className = '';
+    if (isSlaExpired === false) {
+      className = 'sla-active'; // Se o SLA não estiver expirado, classe verde
+    } else {
+      className = 'sla-expired'; // Se o SLA estiver expirado, classe vermelha
+    }
+
     return (
         <div className="modalVisualizar">
             <div className='btnVisualizar'>
@@ -259,13 +288,18 @@ const VisualizarTicketTecnico: React.FC<Props> = ({ selectedTicket, onClose }) =
 
                     <span className="  statusTicket ">Status : {currentStatus === '1' ? 'A fazer' : currentStatus === '2' ? 'Atendendo' : currentStatus === '3' ? 'Pendente' : currentStatus === '4' ? 'Finalizado' : ''}</span>
                 </div>
-                <div>
-                    <span id='btnSla' className="material-symbols-outlined">bomb</span>
-                </div>
                 <div className='slaInfo'>
+
+               
+                <div>
+                <span className={`material-symbols-outlined ${className}`}>bomb</span>
+
+                </div>
+                <div className={`${className}`}>
                     <p>Data do estouro SLA</p>
                     <p>{formatDataSlaTickets}</p>
                 </div>
+            </div> 
             </div>
 
             <div className='infoContainer'>
