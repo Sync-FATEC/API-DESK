@@ -15,7 +15,7 @@ export const ChatTecnico: React.FC<Props> = ({ selectedTicket }) => {
     const messagesEndRef = useRef<HTMLDivElement | null>(null);
     const socketRef = useRef<Socket | null>(null);
     const [messages, setMessages] = useState<{
-        nome: string | undefined; message: string, tipoUsuario: string
+        nome: string | undefined; message: string, tipoUsuario: string, data: string
     }[]>([]);
     const [anotacoes, setAnotacoes] = useState<IAnotacao[]>([]);
     const [input, setInput] = useState<string>('');
@@ -50,11 +50,12 @@ export const ChatTecnico: React.FC<Props> = ({ selectedTicket }) => {
             message: string;
             nome: string;
             tipoUsuario: string;
+            data: string;
         }
         socketRef.current = io('http://localhost:5555');
         socketRef.current.emit('joinRoom', selectedTicket?.ticketsID);
-        socketRef.current.on('message', async (message: string, tipoUsuario: string, nome: string) => {
-            const messages = new Object({ message, tipoUsuario, nome }) as IMessage;
+        socketRef.current.on('message', async (message: string, tipoUsuario: string, nome: string, data: string) => {
+            const messages = new Object({ message, tipoUsuario, nome, data }) as IMessage;
 
             setMessages((prevMessages) => [...prevMessages, messages]);
             scrollToBottom();
@@ -69,7 +70,7 @@ export const ChatTecnico: React.FC<Props> = ({ selectedTicket }) => {
 
     const sendMessage = async (message: string) => {
         if (socketRef.current) {
-            socketRef.current.emit('sendMessage', message, selectedTicket?.ticketsID, user?.tipoUsuario, user?.nome);
+            socketRef.current.emit('sendMessage', message, selectedTicket?.ticketsID, user?.tipoUsuario, user?.nome, new Date().toLocaleDateString('pt-BR', { hour: 'numeric', minute: 'numeric', day: 'numeric', month: 'numeric', year: 'numeric' }));
 
             setInput('');
         }
@@ -102,18 +103,18 @@ export const ChatTecnico: React.FC<Props> = ({ selectedTicket }) => {
                 {anotacoes.map((message, index) => (
                     <>
                         {message.usuario.tipoUsuario === 'U' ? (
-                            <p key={index} className='mensagemChat2' title={message.usuario.nome}>{message.anotacao}</p>
+                            <p key={index} className='mensagemChat2' title={message.usuario.nome + ' - ' + new Date(message.dataAnotacao).toLocaleDateString('pt-BR', { hour: 'numeric', minute: 'numeric', day: 'numeric', month: 'numeric', year: 'numeric' })}>{message.anotacao}</p>
                         ) : (
-                            <p key={index} className='mensagemChat' title={message.usuario.nome}>{message.anotacao}</p>
+                            <p key={index} className='mensagemChat' title={message.usuario.nome + ' - ' + new Date(message.dataAnotacao).toLocaleDateString('pt-BR', { hour: 'numeric', minute: 'numeric', day: 'numeric', month: 'numeric', year: 'numeric' })}>{message.anotacao}</p>
                         )}
                     </>
                 ))}
                 {messages.map((message, index) => (
                     <>
                         {message.tipoUsuario === 'U' ? (
-                            <p key={index} className='mensagemChat2' title={message.nome}>{message.message}</p>
+                            <p key={index} className='mensagemChat2' title={message.nome + ' - ' + message.data}>{message.message}</p>
                         ) : (
-                            <p key={index} className='mensagemChat' title={message.nome}>{message.message}</p>
+                            <p key={index} className='mensagemChat' title={message.nome + ' - ' + message.data}>{message.message}</p>
                         )}
                     </>
                 ))}
