@@ -17,7 +17,7 @@ const VisualizarTicketCliente: React.FC<Props> = ({ selectedTicket, onClose }) =
                 <div className="infoVisualizarTicket">
                     <div className="infoPair">
                         <span className="boldText">Data de abertura:</span>
-                        <p>{new Date(selectedTicket.dataAbertura).toLocaleDateString('pt-BR')}</p>
+                        <p>{new Date(selectedTicket.dataAbertura).toLocaleDateString('pt-BR', { hour: 'numeric', minute: 'numeric', day: 'numeric', month: 'numeric', year: 'numeric' })}</p>
                     </div>
                     <div className="infoPair">
                         <span className="boldText">Sala: </span>
@@ -50,10 +50,12 @@ const VisualizarTicketCliente: React.FC<Props> = ({ selectedTicket, onClose }) =
                     <div className='chatClienteFim'>
                         <ChatCliente selectedTicket={selectedTicket} />
                     </div>
-                    <div className='templateFim'>
-                        <h3>Mensagem finalização:</h3>
-                        <p>{selectedTicket.template}</p>
-                    </div>
+                    {selectedTicket.status === '4' && (
+                        <div className='templateFim'>
+                            <h3>Mensagem finalização:</h3>
+                            <p>{selectedTicket.template}</p>
+                        </div>
+                    )}
                 </div>
             </div>
         </div>

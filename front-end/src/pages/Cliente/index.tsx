@@ -112,7 +112,7 @@ const Cliente: React.FC = () => {
                                     {filteredTickets.map((ticket) => (
                                         <div className="ticket-item" key={ticket.ticketsID}>
                                             <div className='ticket-itemDiv'>{ticket.ticketsID}</div>
-                                            <div className='ticket-itemDiv'>{new Date(ticket.dataAbertura).toLocaleDateString('pt-BR')}</div>
+                                            <div className='ticket-itemDiv'>{new Date(ticket.dataAbertura).toLocaleDateString('pt-BR', { hour: 'numeric', minute: 'numeric', day: 'numeric', month: 'numeric', year: 'numeric' })}</div>
                                             <div className='ticket-itemDiv'>{ticket.titulo}</div>
                                             <div className='ticket-itemDiv'>{ticket.categoria.categoria}</div>
                                             <div className='ticket-itemDiv'>{getStatus(ticket.status)}

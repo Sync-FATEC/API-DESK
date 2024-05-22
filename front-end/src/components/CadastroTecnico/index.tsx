@@ -25,7 +25,6 @@ export const CadastroTecnico = () => {
 
     const handleNome = (e: React.ChangeEvent<HTMLInputElement>) => {
         const newNome = e.target.value;
-
         if (!newNome || !validateNome(newNome)) {
             setNomeError('Nome inválido! Por favor digite novamente.');
             setNome('');
@@ -37,6 +36,7 @@ export const CadastroTecnico = () => {
         }
     };
 
+    
     const handleEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
         const newEmail = e.target.value;
         setEmail(newEmail);
@@ -138,6 +138,11 @@ export const CadastroTecnico = () => {
         } else {
             setCpfError('');
         };
+
+        if (nome.toString().length > 15) { 
+            warning('Nome técnico muito longo. Limite de 15 caracteres.');
+            return;
+        }
 
         if (formIsValid && isValid) {
             try {

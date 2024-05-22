@@ -33,7 +33,7 @@ const VisualizarTicketTecnico: React.FC<Props> = ({ selectedTicket, onClose }) =
         : '';
 
     const { user } = useContext(AuthContext);
-    
+
 
     const handleOpenModal = () => {
         setModalOpen(true);
@@ -62,26 +62,26 @@ const VisualizarTicketTecnico: React.FC<Props> = ({ selectedTicket, onClose }) =
                     erro('Erro ao carregar templates do ticket!');
                 });
         }
-    }, [selectedTicket]);  
+    }, [selectedTicket]);
 
     if (!selectedTicket) {
         return null;
     }
 
     const isSlaExpiredFim = selectedTicket?.dataSla
-    ? selectedTicket.dataFechamento !== null && new Date(selectedTicket.dataSla) < new Date(selectedTicket.dataFechamento)
-    : false;
+        ? selectedTicket.dataFechamento !== null && new Date(selectedTicket.dataSla) < new Date(selectedTicket.dataFechamento)
+        : false;
 
-let classNameFim = '';
-let statusTextFim = '';
-if (isSlaExpiredFim === false) {
-    classNameFim = 'sla-active'; // Se o SLA não estiver expirado, classe verde
-    statusTextFim = 'Dentro do prazo'; // Texto para o status ativo
-} else {
-    classNameFim = 'sla-expired'; // Se o SLA estiver expirado, classe vermelha
-    statusTextFim = 'Expirado'; // Texto para o status expirado
-}
-    
+    let classNameFim = '';
+    let statusTextFim = '';
+    if (isSlaExpiredFim === false) {
+        classNameFim = 'sla-active'; // Se o SLA não estiver expirado, classe verde
+        statusTextFim = 'Dentro do prazo'; // Texto para o status ativo
+    } else {
+        classNameFim = 'sla-expired'; // Se o SLA estiver expirado, classe vermelha
+        statusTextFim = 'Expirado'; // Texto para o status expirado
+    }
+
     const handleUpdateStatus = async (newStatus: string) => {
         try {
             if (currentStatus === '4') {
@@ -213,65 +213,67 @@ if (isSlaExpiredFim === false) {
     if (isTicketFinalizado) {
         return (
             <div className="modalVisualizar">
-            <div className='btnVisualizar'>
-               
-                <div>
-                    <span className={`material-symbols-outlined ${classNameFim}`}>bomb</span>
-                </div>
-                <div className={`${classNameFim}`}>
-                    <p>{statusTextFim}</p>
-                    <p>{formatDataSlaTickets}</p>
-                </div>
-            </div>
+                <div className='btnVisualizar'>
 
-            <div className='infoContainer'>
-                <div className="infoVisualizarTicket">
-                    <h2>Título: {selectedTicket.titulo}</h2>
-                    <div className="infoPair">
-                        <span className="boldText">Data de abertura:</span>
-                        <p>{new Date(selectedTicket.dataAbertura).toLocaleDateString('pt-BR')}</p>
+                    <div>
+                        <span className={`material-symbols-outlined ${classNameFim}`}>bomb</span>
                     </div>
-                    <div className="infoPair">
-                        <span className="boldText">Sala: </span>
-                        <p>{selectedTicket.sala.numeroSala}</p>
-                    </div>
-                    <div className="infoPair">
-                        <span className="boldText">Categoria: </span>
-                        <p>{selectedTicket.categoria.categoria}</p>
-                    </div>
-                    <div className="infoPair">
-                        <span className="boldText">Equipamento: </span>
-                        <p>{selectedTicket.equipamentos.equipamento}</p>
-                    </div>
-                    <div className="infoPair">
-                        <span className="boldText">Descrição: </span>
-                        <p>{selectedTicket.descricao}</p>
-                    </div>
-                    <div className="infoPair">
-                        <span className="boldText">Técnico: </span>
-                        <p>{selectedTicket.tecnicoFinal}</p>
+                    <div className={`${classNameFim}`}>
+                        <p>{statusTextFim}</p>
+                        <p>{formatDataSlaTickets}</p>
                     </div>
                 </div>
-               <div className='containerTicketChatTemplate'>
 
-              
-                <div className='chatClienteFim'>
-                    <ChatTecnico selectedTicket={selectedTicket} />
-                    
-                </div>  
-                <div className='templateFim'>
-                    <h3>Mensagem finalização:</h3>
-                <p>{selectedTicket.template}</p>
+                <div className='infoContainer'>
+                    <div className="infoVisualizarTicket">
+                        <h2>Título: {selectedTicket.titulo}</h2>
+                        <div className="infoPair">
+                            <span className="boldText">Data de abertura:</span>
+                            <p>
+                                {new Date(selectedTicket.dataAbertura).toLocaleDateString('pt-BR', { hour: 'numeric', minute: 'numeric', day: 'numeric', month: 'numeric', year: 'numeric' })}
+                            </p>
+                        </div>
+                        <div className="infoPair">
+                            <span className="boldText">Sala: </span>
+                            <p>{selectedTicket.sala.numeroSala}</p>
+                        </div>
+                        <div className="infoPair">
+                            <span className="boldText">Categoria: </span>
+                            <p>{selectedTicket.categoria.categoria}</p>
+                        </div>
+                        <div className="infoPair">
+                            <span className="boldText">Equipamento: </span>
+                            <p>{selectedTicket.equipamentos.equipamento}</p>
+                        </div>
+                        <div className="infoPair">
+                            <span className="boldText">Descrição: </span>
+                            <p>{selectedTicket.descricao}</p>
+                        </div>
+                        <div className="infoPair">
+                            <span className="boldText">Técnico: </span>
+                            <p>{selectedTicket.tecnicoFinal}</p>
+                        </div>
+                    </div>
+                    <div className='containerTicketChatTemplate'>
 
-                </div>
-                </div>
+
+                        <div className='chatClienteFim'>
+                            <ChatTecnico selectedTicket={selectedTicket} />
+
+                        </div>
+                        <div className='templateFim'>
+                            <h3>Mensagem finalização:</h3>
+                            <p>{selectedTicket.template}</p>
+
+                        </div>
+                    </div>
                 </div>
             </div>
         );
     }
-  
 
-    
+
+
 
 
 
@@ -287,11 +289,11 @@ if (isSlaExpiredFim === false) {
     let className = '';
     let statusText = '';
     if (isSlaExpired === false) {
-      className = 'sla-active'; // Se o SLA não estiver expirado, classe verde
-      statusText = 'Dentro do prazo'; // Texto para o status ativo
+        className = 'sla-active'; // Se o SLA não estiver expirado, classe verde
+        statusText = 'Dentro do prazo'; // Texto para o status ativo
     } else {
-      className = 'sla-expired'; // Se o SLA estiver expirado, classe vermelha
-      statusText = 'Expirado'; // Texto para o status ativo
+        className = 'sla-expired'; // Se o SLA estiver expirado, classe vermelha
+        statusText = 'Expirado'; // Texto para o status ativo
     }
 
 
@@ -307,20 +309,20 @@ if (isSlaExpiredFim === false) {
                     <span id='btnPendente' className="material-symbols-outlined" onClick={() => handleUpdateStatus('3')}>pause_circle</span>
                     <span id='btnFinalizar' className="material-symbols-outlined" onClick={() => { handleOpenModalFinalizar(); }}>check_circle</span>
 
-                    <span className="  statusTicket ">Status : {currentStatus === '1' ? 'A fazer' : currentStatus === '2' ? 'Atendendo' : currentStatus === '3' ? 'Pendente' : currentStatus === '4' ? 'Finalizado' : ''}</span>
+                    
                 </div>
                 <div className='slaInfo'>
 
-               
-                <div>
-                <span className={`material-symbols-outlined ${className}`}>bomb</span>
 
+                    <div>
+                        <span className={`material-symbols-outlined ${className}`}>bomb</span>
+
+                    </div>
+                    <div className={`${className}`}>
+                        <p>{statusText}</p>
+                        <p>{formatDataSlaTickets}</p>
+                    </div>
                 </div>
-                <div className={`${className}`}>
-                    <p>{statusText}</p>
-                    <p>{formatDataSlaTickets}</p>
-                </div>
-            </div> 
             </div>
 
             <div className='infoContainer'>
@@ -328,7 +330,10 @@ if (isSlaExpiredFim === false) {
                     <h2>Título: {selectedTicket.titulo}</h2>
                     <div className="infoPair">
                         <span className="boldText">Data de abertura:</span>
-                        <p>{new Date(selectedTicket.dataAbertura).toLocaleDateString('pt-BR')}</p>
+                        <p>
+                            {new Date(selectedTicket.dataAbertura).toLocaleDateString('pt-BR', { hour: 'numeric', minute: 'numeric', day: 'numeric', month: 'numeric', year: 'numeric' })}
+                        </p>
+
                     </div>
                     <div className="infoPair">
                         <span className="boldText">Sala: </span>
@@ -348,7 +353,7 @@ if (isSlaExpiredFim === false) {
                     </div>
                     <div className="infoPair">
                         <span className="boldText">Tecnico: </span>
-                        { selectedTicket.tecnico === null ? (
+                        {selectedTicket.tecnico === null ? (
                             <p>Não atribuído</p>
                         ) : (
                             <p>{selectedTicket.tecnico?.nome}</p>
