@@ -1,5 +1,6 @@
 import { AppDataSource } from "../data-source"
 import { Tickets } from "../entity/tickets"
+import { anotacoesRepositorio } from "./anotacoes";
 import { categoriaRepositorio } from "./categoria";
 import { equipamentosRepositorio } from "./equipamentos";
 import { mensagensRepositorio } from "./mensagens";
@@ -36,6 +37,12 @@ export const excluirTicket = async (ticketID: number) => {
     try {
         const ticket = await ticketsRepositorio.findOneBy({ ticketsID: ticketID });
         if (ticket) {
+            
+            const anotacoes = await anotacoesRepositorio.find({ where: { tickets: ticket } });
+            if (anotacoes) {
+                await anotacoesRepositorio.remove(anotacoes);
+            }
+
             await ticketsRepositorio.remove(ticket);
             console.log('Ticket excluido com sucesso');
             return 1;
@@ -129,7 +136,6 @@ export const alterarTipoTecnico = async (ticketID: number, tipoTecnico: string) 
         const ticket = await ticketsRepositorio.findOneBy({ ticketsID: ticketID });
         if (ticket) {
             ticket.tipoTecnico = tipoTecnico;
-            console.log(ticket);
             
             await ticketsRepositorio.save(ticket);
             console.log('Tipo do técnico do ticket alterado com sucesso');
