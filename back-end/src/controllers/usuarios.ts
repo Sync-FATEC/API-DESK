@@ -3,6 +3,7 @@ import { AppDataSource } from "../data-source";
 import { Usuarios } from "../entity/usuarios";
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
+import { log } from 'console';
 
 export const usuariosRepositorio = AppDataSource.getRepository(Usuarios)
 
@@ -76,8 +77,7 @@ export const autenticarUsuario = async (email: string, senha: string) => {
                 const token = jwt.sign({ usuarioID: usuario.usuarioID }, "secret", { expiresIn: '1h' });
 
                 if (usuario.tipoUsuario === '1' || usuario.tipoUsuario === '2' || usuario.tipoUsuario === '3') {
-                    const currentTime = new Date();
-                    const currentHour = currentTime.getHours();
+                    const currentHour = new Date().getHours();
 
                     if (usuario.turno === 'M') {
                         if (currentHour <= 6 || currentHour > 14) {
@@ -86,13 +86,13 @@ export const autenticarUsuario = async (email: string, senha: string) => {
                         }
 
                     } else if (usuario.turno === 'T') {
-                        if (currentHour <= 14 || currentHour > 22) {
+                        if (currentHour <= 14 || currentHour > 21) {
                             console.log('O técnico não pode acessar o sistema nesse horário')
                             return 'O técnico não pode acessar o sistema nesse horário'
                         }
 
                     } else if (usuario.turno === 'N') {
-                        if (currentHour <= 22 || currentHour > 6) {
+                        if (currentHour > 6 && currentHour <= 21) {
                             console.log('O técnico não pode acessar o sistema nesse horário')
                             return 'O técnico não pode acessar o sistema nesse horário'
                     }
