@@ -14,17 +14,17 @@ export const App = () => {
   return (
     <div className="App">
       <Routes>
-        <Route path="/" element={<Login />} />
+        <Route path="/" element={<RequireAuth tipoUsuario={['1', '2', '3', 'U', 'A']} pagina={'home'}><Login /></RequireAuth>} />
         <Route path="/login" element={<Login />} />
         <Route path="/cadastro" element={<Cadastro />} />
-        <Route path="/FAQ" element={<RequireAuth tipoUsuario={['1', '2', '3', 'U', 'A']}><FAQ /></RequireAuth>} />
-        <Route path="/admin" element={<RequireAuth tipoUsuario="A"><Admin /></RequireAuth>} />
-        <Route path="/ticketsAdmin" element={<RequireAuth tipoUsuario="A"><TicketsAdmin /></RequireAuth>} />
-        <Route path="/visualizarTickets" element={<RequireAuth tipoUsuario="U"><VisualizarTickets selectedTicket={null} onClose={function (): void {
+        <Route path="/FAQ" element={<RequireAuth tipoUsuario={['1', '2', '3', 'U', 'A']} pagina={'faq'}><FAQ /></RequireAuth>} />
+        <Route path="/admin" element={<RequireAuth tipoUsuario="A" pagina={'admin'}><Admin /></RequireAuth>} />
+        <Route path="/ticketsAdmin" element={<RequireAuth tipoUsuario="A" pagina={'ticketsadmin'}><TicketsAdmin /></RequireAuth>} />
+        <Route path="/visualizarTickets" element={<RequireAuth tipoUsuario="U" pagina={'visualizartickets'}><VisualizarTickets selectedTicket={null} onClose={function (): void {
           throw new Error('Function not implemented.');
         } } /></RequireAuth>} />
-        <Route path="/cliente" element={<RequireAuth tipoUsuario="U"><Cliente /></RequireAuth>} />
-        <Route path="/tecnico" element={<RequireAuth tipoUsuario={['1', '2', '3']}><Tecnicos /></RequireAuth>} />
+        <Route path="/cliente" element={<RequireAuth tipoUsuario="U" pagina={'cliente'}><Cliente /></RequireAuth>} />
+        <Route path="/tecnico" element={<RequireAuth tipoUsuario={['1', '2', '3']} pagina={'tecnico'}><Tecnicos /></RequireAuth>} />
       </Routes>
     </div>
   );
