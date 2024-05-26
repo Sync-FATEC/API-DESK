@@ -1,99 +1,122 @@
+
+
 .filter-containerTec {
     display: flex;
     gap: 10px;
     flex: 1;
     margin-right: 10px;
-    flex-direction: row;
-    
 }
-
 .ticket-contentTec {
-    
-    background-color: var(--cinza-color);
-    min-width:100vh;
+    background-color: var(--gray-color);
     height: 100%;
     width: 100%;
-    min-height: 100vh
+    min-height: 100vh;
+    min-width: 100vh; 
 }
-
 .ticket-listTec {
     padding: var(--padding-global);
 }
 .ticket-typesTec {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    display: flex;
+    align-items: flex-start;
     gap: 10px;
     font-weight: bold;
-    background-color: var(--cinza-color);
-    justify-content: center;
-    font-size: 24px;
-    padding: 20px 0;
-}
-
-.ticket-typesTec div {
-    display: flex;
-    padding: 10px;
+    background-color: var(--gray-color);
     justify-content: space-between;
+    font-size: 24px;
+    padding: 10px 0;
+    margin-bottom: 10px;
 }
-
-.afazer{
+.containerColunas{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 25%;
+}
+.ticket-itemTec {
+    display: flex;
+    flex-direction: column; 
+    background-color: var(--gray-color);
+    justify-content: space-between;
+    font-size: 20px;
+    padding: 10px 0; 
+}
+.ticket-item-info{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+.containerInfoTicketInicio{
     display: flex;
     flex-direction: row;
-    
-    
-    padding: 6px 12px;
-    border: 1px solid var(--red-error-color);
-    border-radius: 10px;
-}
-
-.atendendo{
-    padding: 6px 12px;
-    border: 1px solid #2F2E41;
-    border-radius: 10px;
-}
-.pendente{
-    padding: 6px 12px;
-    border: 1px solid #FF8A00;
-    border-radius: 10px;
-}
-.finalizado{
-    padding: 6px 12px;
-    border: 1px solid #28C94C;
-    border-radius: 10px;
-}
-
-.ticket-itemTec {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    gap: 10px;
-    
-    background-color: var(--cinza-color);
-    justify-content: center;
-    font-size: 20px;
-    padding: 10px 0;
-}
-
-.ticket-itemTec div {
-    display: flex;
+    padding: 5px 0;
     justify-content: space-between;
-     
+    
 }
-
-.prioridade{
+.containerInfoTicketInicioAdm{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;  
+}
+.containerTituloCard{
+    width: 100%;
+    align-items: center;
+    word-wrap: break-word;
+    padding: 5px 0;
+}
+.containerInfoTicketFim{
+    padding: 10px 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.prioridadeTicket {
     padding: 6px 12px;
     font-weight: bold;
     border: 1px solid var(--blue-color);
     border-radius: 10px;
     color: var(--blue-color);
     font-size: 18px;
+    width: 50px;
+    text-align: center;
     cursor: pointer;
     transition: background-color 0.3s, border-color 0.3s, color 0.3s;
 }
-.afazerInfo{
+
+.containerAfazer{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
     padding: 6px 12px;
-    border: 1px solid var(--red-error-color);
+    border: 1px solid var(--red-color);
     border-radius: 10px;
-    gap: 10px;
+}
+.containerAtendendo{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 12px;
+    border: 1px solid var(--black-color);
+    border-radius: 10px;
+}
+.containerPendente{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 12px;
+    border: 1px solid var(--orange-color);
+    border-radius: 10px;
+}
+.containerFinalizado{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 12px;
+    border: 1px solid var(--green-color);
+    border-radius: 10px;
 }

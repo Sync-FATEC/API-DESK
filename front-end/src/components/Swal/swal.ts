@@ -51,31 +51,6 @@ export const erro = (message: string) => {
     Swal.fire(options);
 };
 
-export const successTicket = (message: string) => {
-    const options: SweetAlertOptions = {
-        title: "Sucesso!",
-        text: message,
-        icon: 'success',
-        confirmButtonText: 'OK',
-        backdrop: 'rgba(0,0,0,0.7)',
-        timer: 1350, // 1.35 segundos
-        timerProgressBar: true,
-        showClass: {
-            popup: 'animate__animated animate__fadeInDown'
-        },
-        hideClass: {
-            popup: 'animate__animated animate__fadeOutUp'
-        },
-        customClass: {
-            popup: 'my-popup-class',
-            title: 'my-title-class',
-            confirmButton: 'my-confirm-button-class',
-            timerProgressBar: 'my-progress-bar-class'
-        }
-    };
-    Swal.fire(options);
-};
-
 export const success = (message: string) => {
     const options: SweetAlertOptions = {
         title: "Sucesso!",
@@ -120,7 +95,6 @@ export const cadastradoEmailSenha = () => {
         title: "E-mail ou senha já existentes!",
         icon: 'question',
         confirmButtonText: 'OK',
-        footer: '<a href="/login">Deseja fazer login?</a>',
         backdrop: 'rgba(0,0,0,0.7)',
         timer: 3000, // 3 segundos
         timerProgressBar: true,
@@ -145,7 +119,31 @@ export const cadastradoCpf = () => {
         title: "CPF já cadastrado!",
         icon: 'question',
         confirmButtonText: 'OK',
-        footer: '<a href="/login">Deseja fazer login?</a>',
+        backdrop: 'rgba(0,0,0,0.7)',
+        timer: 3000, // 3 segundos
+        timerProgressBar: true,
+        showClass: {
+            popup: 'animate__animated animate__fadeInDown'
+        },
+        hideClass: {
+            popup: 'animate__animated animate__fadeOutUp'
+        },
+        customClass: {
+            popup: 'my-popup-class',
+            title: 'my-title-class',
+            confirmButton: 'my-confirm-button-class',
+            timerProgressBar: 'my-progress-bar-class'
+        }
+    };
+    Swal.fire(options);
+};
+
+export const LoginTecnicoHorario = () => {
+    const options: SweetAlertOptions = {
+        title: "Aviso!",
+        text: "Técnico não pode acessar o sistema nesse horário",
+        icon: 'warning',
+        confirmButtonText: 'OK',
         backdrop: 'rgba(0,0,0,0.7)',
         timer: 3000, // 3 segundos
         timerProgressBar: true,
@@ -170,7 +168,6 @@ export const loginSenhaEmail = () => {
         title: "Usuário inexistente ou senha incorreta",
         icon: 'question',
         confirmButtonText: 'OK',
-        footer: '<a href="/cadastro">Deseja se cadastrar?</a>',
         backdrop: 'rgba(0,0,0,0.7)',
         timer: 3000, // 3 segundos
         timerProgressBar: true,
@@ -202,4 +199,3 @@ export const Toast = Swal.mixin({
       toast.onmouseleave = Swal.resumeTimer;
     }
   });
-  

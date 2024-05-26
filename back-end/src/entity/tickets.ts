@@ -4,6 +4,7 @@ import { Categorias } from "./categorias";
 import { Equipamentos } from "./equipamento";
 import { Salas } from "./salas";
 import { Usuarios } from "./usuarios";
+import { Mensagens } from "./mensagens";
 
 @Entity()
 export class Tickets {
@@ -16,17 +17,29 @@ export class Tickets {
     @Column({ type: 'datetime', nullable: true})
     dataFechamento: null | Date;
 
+    @Column({ type: 'datetime'})
+    dataSla: Date;
+
     @Column({ length: 255 })
     titulo: string
 
     @Column({ length: 255 })
     descricao: string;
 
+    @Column({ length: 255 , nullable: true})
+    template: string | null;
+
     @Column({ length: 1 })
     status: string;
 
     @Column({ length: 1 })
     tipoTecnico: string;
+
+    @Column({ length: 50 })
+    prioridade: string;
+
+    @Column({ length: 255 , nullable: true})
+    tecnicoFinal: string | null;
 
     @ManyToOne(() => Categorias)
     @JoinColumn({ name: 'categoriaID' })
@@ -44,15 +57,22 @@ export class Tickets {
     @JoinColumn({ name: 'usuarioID' })
     usuario: Usuarios;
 
-    constructor(dataAbertura: Date, titulo: string, descricao: string, status: string, tipoTecnico: string, categoria: Categorias, equipamentos: Equipamentos, sala: Salas, usuario: Usuarios) {
+    @ManyToOne(() => Usuarios)
+    @JoinColumn({ name: 'TecnicoID' })
+    tecnico: Usuarios;
+    
+    constructor(dataAbertura: Date, dataSla: Date, titulo: string, descricao: string, status: string, tipoTecnico: string, prioridade: string, categoria: Categorias, equipamentos: Equipamentos, sala: Salas, usuario: Usuarios) {
         this.dataAbertura = dataAbertura;
+        this.dataSla = dataSla;
         this.titulo = titulo;
         this.descricao = descricao;
         this.status = status;
         this.tipoTecnico = tipoTecnico;
+        this.prioridade = prioridade;
         this.categoria = categoria;
         this.equipamentos = equipamentos;
         this.sala = sala;
         this.usuario = usuario;
+        this.tecnico = null;
     };
 };

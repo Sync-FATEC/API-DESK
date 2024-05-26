@@ -2,6 +2,8 @@ import { In } from 'typeorm';
 import { AppDataSource } from "../data-source";
 import { Usuarios } from "../entity/usuarios";
 import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
+import { log } from 'console';
 
 export const usuariosRepositorio = AppDataSource.getRepository(Usuarios)
 
@@ -72,8 +74,32 @@ export const autenticarUsuario = async (email: string, senha: string) => {
         const usuario = await usuariosRepositorio.findOneBy({ email: email });
         if (usuario) {
             if (await bcrypt.compare(senha, usuario.senha)) {
+                const token = jwt.sign({ usuarioID: usuario.usuarioID }, "secret", { expiresIn: '1h' });
+
+                if (usuario.tipoUsuario === '1' || usuario.tipoUsuario === '2' || usuario.tipoUsuario === '3') {
+                    const currentHour = new Date().getHours();
+
+                    if (usuario.turno === 'M') {
+                        if (currentHour <= 6 || currentHour > 14) {
+                            console.log('O técnico não pode acessar o sistema nesse horário')
+                            return 'O técnico não pode acessar o sistema nesse horário'
+                        }
+
+                    } else if (usuario.turno === 'T') {
+                        if (currentHour <= 14 || currentHour > 21) {
+                            console.log('O técnico não pode acessar o sistema nesse horário')
+                            return 'O técnico não pode acessar o sistema nesse horário'
+                        }
+
+                    } else if (usuario.turno === 'N') {
+                        if (currentHour > 6 && currentHour <= 21) {
+                            console.log('O técnico não pode acessar o sistema nesse horário')
+                            return 'O técnico não pode acessar o sistema nesse horário'
+                    }
+                }
+            }   
                 console.log('Usuário autenticado com sucesso');
-                return usuario;
+                return { usuario: { ...usuario, token: token }};
             } else {
                 console.log('Senha incorreta');
                 return 'Senha incorreta';
@@ -87,16 +113,17 @@ export const autenticarUsuario = async (email: string, senha: string) => {
     }
 }
 
-export const procurarUsuario = async (email: string) => {
+export const validarToken = async (token: string) => {
     try {
-        const usuario = await usuariosRepositorio.findOne({ where: { email: email }})
-        if (usuario) {
-            return usuario
-        } else {
-            return 0
+        if (!jwt.verify(token, "secret")) {
+            console.log('Token inválido');
+            return false;
         }
+        console.log('Token válido');
+        return true;
     } catch (error) {
         console.error("Erro na hora de procurar um usuario", error);
+        return false;
     }
 }
 
@@ -110,3 +137,35 @@ export const vizualizarTecnicos = async () => {
         throw error;
     }
 };
+
+export const alterarTurnoTecnico = async (tecnicoID: number, turno: string) => {
+    try {
+        const tecnico = await usuariosRepositorio.findOneBy({ usuarioID: tecnicoID });
+        if (tecnico) {
+            tecnico.turno = turno;
+            await usuariosRepositorio.save(tecnico);
+            console.log('Turno alterado com sucesso');
+            return tecnico;
+        } else {
+            return 'Tecnico inexistente'
+        }
+    } catch (error) {
+        console.error('Erro na alteração do turno', error);
+    }
+};
+
+export const alterarTipoTecnico = async (tecnicoID: number, tipoTecnico: string) => {
+    try {
+        const tecnico = await usuariosRepositorio.findOneBy({ usuarioID: tecnicoID });
+        if (tecnico) {
+            tecnico.tipoUsuario = tipoTecnico;
+            await usuariosRepositorio.save(tecnico);
+            console.log('Tipo alterado com sucesso');
+            return tecnico;
+        } else {
+            return 'Tecnico inexistente'
+        }
+    } catch (error) {
+        console.error('Erro na alteração do tipo', error);
+    }
+}

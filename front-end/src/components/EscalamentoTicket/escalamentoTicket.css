@@ -1,7 +1,7 @@
 .modalPerfil {
     padding: 10px;
     width: 350px;
-    background-color: var(--branco-color);
+    background-color: var(--white-color);
 }
 
 .modalPerfil h1 {
@@ -11,83 +11,98 @@
     color: var(--blue-color);
 }
 
-.confirmButton {
-    width: 500px;
-}
-
-.dadosPerfil {
-    position: relative;
-    left: 10px; 
-    top: 10px; 
-    background-color: var(--branco-color);
-    font-size: 18px; 
-    color: var(--blue-color);
-    padding: 0 5px;
-    font-weight:600;
-}
-
-.infoPerfil {
-    text-align: left;
-    padding: 10px;
-    border: 2px solid rgba(0, 0, 0, 0.2); 
-    display: block;
-    box-shadow: none;
-    font-size: 18px;
-    font-weight: 600;
-    border-radius: 10px;
-}
-
-.imagePerfil {
-    display: flex;
-    justify-content: center;
-    color: var(--blue-color);
-}
-
-#account {
-    font-size: 100px;
-}
-
-.btnPerfilContainer {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px; 
-}
-
-.btnPerfil {
-    padding: 6px 12px;
-    background-color: var(--blue-color);
-    border-radius: 10px;
-    color: var(--branco-color);
-    font-size: 18px;
-    cursor: pointer;
-    border: none;
-    width: 150px;
-}
-
-.dButton, .cButton{
-    border: none;
-    border-radius: 10px !important;
-    padding: 10px;
-    color: var(--branco-color);
-    font-size: 16px;
-    width: 100px;
-    cursor: pointer;
-}
-
-.escalarTicket{
+.escalarTicket {
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    gap: 20px;
+    gap: 10px;
+
 }
-.btnEscalarTicket{
-    padding: 6px 12px;
-    background-color: var(--blue-color);
+.containerEscalonamento{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.summaryEscalonamento {
+    position: relative;
+    list-style: none;
+    padding: 10px 40px;
+    cursor: pointer;
+    transition: color 300ms ease-in-out;
+    font-size: 20px;
+    border: 2px solid var(--blue-color);
     border-radius: 10px;
-    color: var(--branco-color);
-    font-size: 18px;
+    margin: 5px;
+    font-weight: 600;
+}
+
+.summaryEscalonamento:before {
+    content: "";
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    height: 2px;
+    margin-top: -1px;
+    width: 16px;
+    background: var(--black-color);
+}
+
+.summaryEscalonamento:after {
+    content: "";
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    height: 16px;
+    margin-top: -8px;
+    width: 2px;
+    margin-left: -1px;
+    background: var(--black-color);
+    transition: all 300ms ease-in-out;
+}
+
+.summaryEscalonamento[open]::after {
+    opacity: 0;
+    transform: translateY(25%);
+}
+details[open] > .summaryEscalonamento::after {
+    opacity: 0; /* Esconde a linha vertical para formar um '-' */
+  }
+  
+
+.detailsEscalonamento {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    font-weight: 600;
+
+}
+
+.btnEscalonameto {
     cursor: pointer;
     border: none;
-    width: 50%;
+    background: none;
+    margin-left: 20px;
+    font-weight: 600;
+    font-size: 22px;
+    color: var(--blue-color); 
+    transition: color 0.3s ease; 
+}
+
+.btnEscalonameto:hover {
+    color: lighten(var(--blue-color), 20%);
+    font-size: 24px; 
+}
+
+.btnEscalonametoCat {
+    padding: 10px 40px;
+    background-color: transparent;
+    cursor: pointer;
+    font-size: 20px;
+    border: 2px solid var(--blue-color);
+    border-radius: 10px;
+    margin: 5px;
+    width: 100%;
+    font-weight: 600;
 }

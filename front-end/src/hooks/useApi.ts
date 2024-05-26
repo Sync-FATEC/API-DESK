@@ -1,13 +1,9 @@
 import axios from 'axios'
 
 export const useApi = () => ({
-    validateToken: async (email: string) => {
+    validateToken: async (token: string) => {
         try {            
-            const response = await axios.get('http://localhost:5555/usuarios/procurar', {
-                params: {
-                    email: email
-                }
-            });
+            const response = await axios.get('http://localhost:5555/usuarios/validar/' + token);
             return response.data;
         } catch (error) {
             console.error(error);
@@ -20,7 +16,7 @@ export const useApi = () => ({
                 email: email,
                 senha: senha
             });    
-            return response.data;
+            return response.data; 
         } catch (error) {
             console.error(error);
             throw error;

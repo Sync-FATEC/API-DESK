@@ -1,11 +1,21 @@
 .selectCategoria {
     border-radius: 10px;
-    border: 2px solid var(--cinza-color);
+    border: 2px solid var(--gray-color);
     color: var(--black-color);
     font-size: 18px;
-    background: var(--branco-color);
+    background: var(--white-color);
     padding: 10px;
     width: 100%;
+    
+}
+.selectCategoriaTec {
+    border-radius: 10px;
+    border: 2px solid var(--gray-color);
+    color: var(--black-color);
+    font-size: 18px;
+    background: var(--white-color);
+    padding: 10px;
+    width: 95%;
     
 }
 
@@ -18,7 +28,7 @@
 
 .formSelect {
     display: flex;
-    gap: 5%;
+    
 }
 
 .tecnicoBtn {
@@ -29,11 +39,27 @@
 
 .formBtn {
     justify-content: center;
-    color: var(--branco-color);
+    color: var(--white-color);
     font-size: 18px;
     width: 200px;
 
 }
+.password-toggle-icon {
+    color: var(--black-color);
+    position: absolute;
+    right: 15px;
+    cursor: pointer;
+    user-select: none;
+}
+.password-input-container {
+    display: flex;
+    align-items: center;
+}
+
+.password-input-container .input {
+    padding-right: 10px; /* Espaço para o ícone */
+}
+
 
 .labelInputTecnico {
     position: relative;
@@ -47,5 +73,5 @@
     font-weight:600;
     width: 100%;
     
-    background-color: var(--branco-color);
+    background-color: var(--white-color);
 }

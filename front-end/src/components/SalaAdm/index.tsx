@@ -1,6 +1,5 @@
 
 import './salaAdm.css';
-import add from '../../assets/img/add.png';
 import axios from 'axios';
 import Sala from '../../types/ISalas';
 import { useEffect, useState } from 'react';
@@ -55,6 +54,14 @@ const SalaAdm = () => {
 
         if (!numeroSala || !identificacao) {
             warning('Preencha todos os campos');
+            return;
+        }
+        if (numeroSala.toString().length > 10) { 
+            warning('Número da sala muito longo. Limite de 10 caracteres.');
+            return;
+        }
+        if (identificacao.toString().length > 30) { 
+            warning('Identificação da sala muito longo. Limite de 30 caracteres.');
             return;
         }
 

@@ -11,11 +11,19 @@
 
 :root {
   --blue-color: #0072bbff;
-  --black-color: #212227;
-  --cinza-color: #D9D9D9;
-  --branco-color: #ffff;
-  --red-error-color: #E3170A;
+  --black-color: #2F2E41;
+  --gray-color: #D9D9D9;
+  --white-color: #ffff;
+  --red-color: #E3170A;
+  --green-color: #28C94C;
+  --orange-color: #FF8A00;
   --padding-global: 0 120px;
+  --fonte-titulo: 32px;
+  --fonte-subTitulo: 28px;
+  --fonte-label: 22px;
+  --fonte-input: 16px;
+  --fonte-button: 16px;
+  --fonte-buttonAside: 20px;
 }
 
 .containerPrincipal {
@@ -39,7 +47,7 @@
 }
 
 .formTitle {
-  font-size: 32px;
+  font-size: var(--fonte-titulo);
   color: var(--black-color);
   margin-bottom: 20px;
   text-align: center;
@@ -48,7 +56,7 @@
 .formTitle2 {
   color: var(--black-color);
   text-align: center;
-  font-size: 28px;
+  font-size: var(--fonte-subTitulo);
   padding: 0 0 24px;
 }
 
@@ -61,7 +69,7 @@
 .formInput input {
   text-align: left;
   outline: none;
-  font-size: 16px;
+  font-size: var(--fonte-input);
   padding: 10px;
   border: 1px solid rgba(0, 0, 0, 0.2); 
   display: block;
@@ -78,15 +86,15 @@
 }
 
 .formInput input::placeholder {
-  color: var(--cinza-color); 
+  color: var(--gray-color); 
 }
 
 .labelInput {
   position: absolute;
   left: 10px; 
   top: -10px; 
-  background: var(--branco-color);
-  font-size: 16px; 
+  background: var(--white-color);
+  font-size: var(--fonte-input); 
   color:var(--black-color);
   padding: 0 5px;
   transition: 200ms ease-in-out;
@@ -100,9 +108,8 @@
   border-radius: 10px;
   padding: 10px;
   background-color: var(--blue-color);
-  color: var(--cinza-color);
-  font-size: 16px;
-  /* width: 200px; */
+  color: var(--gray-color);
+  font-size: var(--fonte-button);
   cursor: pointer;
 }
 
@@ -116,19 +123,19 @@ aside {
 
 .title {
   padding: 20px;
-  color: var(--branco-color);
+  color: var(--white-color);
 }
 .botaoAside {
   margin: 64px 0 0;
   padding: 12px;
-  border: 2px solid var(--branco-color);
+  border: 2px solid var(--white-color);
   background-color: transparent;
   width: 200px;
-  font-size: 20px;
+  font-size: var(--fonte-buttonAside);
   border-radius: 10px;
   justify-content: center;
   cursor: pointer;
-  color: var(--branco-color);
+  color: var(--white-color);
 }
 .botaoAside a {
   color: var(--black-color); 
@@ -153,7 +160,7 @@ aside {
   align-items: center;
   padding: 6px 8px;
   margin: 10px;
-  border: 2px solid var(--cinza-color);
+  border: 2px solid var(--gray-color);
   border-radius: 10px;
   width: 100%; 
   font-weight:600;
@@ -162,41 +169,93 @@ aside {
 
 .afazer{
   padding: 6px 12px;
-  border: 1px solid var(--red-error-color);
+  border: 1px solid var(--red-color);
   border-radius: 10px;
 }
 
 .atendendo{
   padding: 6px 12px;
-  border: 1px solid #2F2E41;
+  border: 1px solid var(--black-color);
   border-radius: 10px;
 }
 .pendente{
   padding: 6px 12px;
-  border: 1px solid #FF8A00;
+  border: 1px solid var(--orange-color);
   border-radius: 10px;
 }
 .finalizado{
   padding: 6px 12px;
-  border: 1px solid #28C94C;
+  border: 1px solid var(--green-color);
   border-radius: 10px;
 }
 #btnAtendendo{
   color: var(--black-color);
+  cursor: pointer;
+
 }
 #btnPendente{
-  color: #FF8A00;
+  color: var(--orange-color);
+  cursor: pointer;
+
 }
 #btnFinalizar{
-  color: #28C94C;
+  color: var(--green-color);
+  cursor: pointer;
+
 }
 #btnSla{
-  color: var(--red-error-color);
   margin-left: 140px;
+  cursor: pointer;
+
+
 }
 #btnAfazer{
-  color: var(--red-error-color);
+  color: var(--red-color);
+  cursor: pointer;
+
 }
 #btnEscalar{
     color: var(--blue-color);
+    cursor: pointer;
+
+}
+#btnBaseConhecimento{
+  cursor: pointer;
+}
+#btnAtendendo:active,
+#btnPendente:active,
+#btnFinalizar:active,
+#btnSla:active,
+#btnAfazer:active,
+#btnEscalar:active {
+  transform: translateY(2px);
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+}
+
+/* Ícone Excluir */
+.excluir {
+  cursor: pointer;
+  color: var(--black-color);
+  transition: color 0.3s;
+  background-color: transparent;
+  border: none;
+  margin-left: 20px; 
+}
+
+.excluir:hover {
+  color: var(--red-color);
+}
+::-webkit-scrollbar {
+  width: 5px;  
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1;  
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;  
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;  
 }

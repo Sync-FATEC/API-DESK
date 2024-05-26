@@ -1,0 +1,45 @@
+
+.containerBaseConhecimento{
+    width: 800px;
+    height: 380px;
+    overflow-y: auto;
+}
+.InfoBase{
+    padding: 10px 0;
+}
+
+.tituloBase{
+    font-weight: 600;
+    color: var(--blue-color);
+    font-size: 22px;
+    text-align: left;
+    padding: 5px 0;
+}
+.descricaoBase{
+    text-align: left;
+}
+.closeBase{
+    top: 8px;
+    position: absolute;
+    padding: 0 20px;
+    right: 2px;
+    cursor: pointer;
+    font-size: 50px;
+    color: var(--blue-color);
+}
+
+.containerBaseConhecimento::-webkit-scrollbar {
+    width: 5px;  
+}
+
+.containerBaseConhecimento::-webkit-scrollbar-track {
+    background: #f1f1f1;  
+}
+
+.containerBaseConhecimento::-webkit-scrollbar-thumb {
+    background: var(--blue-color);
+}
+
+.containerBaseConhecimento::-webkit-scrollbar-thumb:hover {
+    background: #1e91d6
+}

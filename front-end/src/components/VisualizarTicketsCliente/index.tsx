@@ -1,6 +1,7 @@
 import React from 'react';
 import ITickets from '../../types/ITickets';
 import './visualizarTickets.css'
+import { ChatCliente } from '../chatCliente';
 interface Props {
     selectedTicket: ITickets | null;
     onClose: () => void;
@@ -16,7 +17,7 @@ const VisualizarTicketCliente: React.FC<Props> = ({ selectedTicket, onClose }) =
                 <div className="infoVisualizarTicket">
                     <div className="infoPair">
                         <span className="boldText">Data de abertura:</span>
-                        <p>{new Date(selectedTicket.dataAbertura).toLocaleDateString('pt-BR')}</p>
+                        <p>{new Date(selectedTicket.dataAbertura).toLocaleDateString('pt-BR', { hour: 'numeric', minute: 'numeric', day: 'numeric', month: 'numeric', year: 'numeric' })}</p>
                     </div>
                     <div className="infoPair">
                         <span className="boldText">Sala: </span>
@@ -34,8 +35,28 @@ const VisualizarTicketCliente: React.FC<Props> = ({ selectedTicket, onClose }) =
                         <span className="boldText">Descrição: </span>
                         <p>{selectedTicket.descricao}</p>
                     </div>
+                    <div className="infoPair">
+                        <span className="boldText">Tecnico: </span>
+                        {selectedTicket.status === '4' ? (
+                            <p>{selectedTicket.tecnicoFinal}</p>
+                        ) : selectedTicket.tecnico === null ? (
+                            <p>Não atribuído</p>
+                        ) : (
+                            <p>{selectedTicket.tecnico?.nome}</p>
+                        )}
+                    </div>
                 </div>
-                <div className='chatCliente'></div>
+                <div className='containerTicketChatTemplate'>
+                    <div className='chatClienteFim'>
+                        <ChatCliente selectedTicket={selectedTicket} />
+                    </div>
+                    {selectedTicket.status === '4' && (
+                        <div className='templateFim'>
+                            <h3>Mensagem finalização:</h3>
+                            <p>{selectedTicket.template}</p>
+                        </div>
+                    )}
+                </div>
             </div>
         </div>
     );

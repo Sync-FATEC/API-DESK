@@ -4,7 +4,7 @@
     align-items: center;
     padding: 6px 8px;
     margin: 10px;
-    border: 2px solid var(--cinza-color);
+    border: 2px solid var(--gray-color);
     border-radius: 10px;
     width: 100%; 
     font-weight:600;
@@ -19,18 +19,27 @@
 .tecnicoDados{
     display: flex;
     width: 100%;
+    gap: 10px;
 }
 .tecnicoTipo{
-    border: 2px solid var(--cinza-color);
+    border: 2px solid var(--gray-color);
     border-radius: 10px;
     padding: 10px 12px;
     margin: 5px;
 }
 
 .tecnicoTurno{
-    border: 2px solid var(--cinza-color);
+    border: 2px solid var(--gray-color);
     border-radius: 10px;
     padding: 10px 12px;
-    margin: 5px;
-
+}
+.selectCategoriaTecAdm {
+    border-radius: 10px;
+    border: 2px solid var(--gray-color);
+    color: var(--black-color);
+    font-size: 18px;
+    background: var(--white-color);
+    padding: 5px;
+    
+    
 }

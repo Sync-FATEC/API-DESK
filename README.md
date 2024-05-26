@@ -314,8 +314,11 @@ alt="MVP">
   </tbody>
 </table>
 
-<h3>Modelo de Dados</h3>
-<img src="https://github.com/Sync-FATEC/API-DESK/blob/main/doc/docs_sprints/sprint02/BDLogico.jpg">
+<h3>🗃️Modelo de Dados</h3>
+<img src="https://github.com/Sync-FATEC/API-DESK/blob/main/doc/docs_sprints/sprint03/BDLogico.jpg">
+
+<h3>📄Manual do Usuário<h3>
+<td align="center"><a href="https://github.com/Sync-FATEC/API-DESK/blob/main/doc/docs_tecnicos/ManualdoUsuario.pdf">Clique Aqui</a></td>
 
 <h2>DoR (Definition of Ready):</h2>
 
@@ -395,19 +398,19 @@ alt="MVP">
     <td align="center">01</td>
     <td>14/04/2023</td>
     <td align="center"><a href="https://github.com/Sync-FATEC/API-DESK/blob/main/doc/docs_sprints/sprint01/sprint01.md">Relatório</a></td> 
-    <td align="center">🔄</td>
+    <td align="center">✅</td>
   </tr>
   <tr>
     <td align="center">02</td>
     <td>05/05/2023</td>
     <td align="center"><a href="https://github.com/Sync-FATEC/API-DESK/blob/main/doc/docs_sprints/sprint02/sprint02.md">Relatório</a></td> 
-    <td align="center">🔄</td>
+    <td align="center">✅</td>
   </tr>
   <tr>
     <td align="center">03</td>
     <td>26/05/2023</td>
-    <td></td>
-    <td align="center">🔄</td>
+    <td align="center"><a href="https://github.com/Sync-FATEC/API-DESK/blob/main/doc/docs_sprints/sprint03/sprint03.md">Relatório</a></td> 
+    <td align="center">✅</td>
   </tr>
   <tr>
     <td align="center">04</td>

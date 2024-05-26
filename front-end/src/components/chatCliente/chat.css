@@ -1,0 +1,77 @@
+.tituloChat{
+    margin: 0 0 12px;
+}
+.containerMensagemChat{
+    width: 100%;
+    height: 200px;
+    overflow-y: auto;
+    margin: 0 0 20px;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.containerMensagemChat p{
+    word-wrap: break-word;
+}
+
+.mensagemChat{
+    background-color: var(--gray-color);
+    border-radius: 5px;
+    padding: 8px;
+    margin: 0 0 10px;
+    max-width: 70%;
+    align-self: flex-end;
+}
+
+.mensagemChat2:hover::after  .mensagemChat:hover::after {
+    content: attr(title);
+    position: absolute;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 5px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+.mensagemChat2{
+    background-color: var(--gray-color);
+    border-radius: 5px;
+    padding: 8px;
+    margin: 0 0 10px;
+    max-width: 70%;
+    align-self: flex-start;
+}
+
+.containerInputChat{
+    display: flex;
+    justify-content: space-between;
+}
+.inputChat{
+   background-color: var(--gray-color); 
+   border-radius: 5px;
+   border: none;
+   padding: 8px;
+   width: 90%;
+}
+.containerInputChat button{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.containerMensagemChat::-webkit-scrollbar {
+    width: 5px;  
+}
+
+.containerMensagemChat::-webkit-scrollbar-track {
+    background: #f1f1f1;  
+}
+
+.containerMensagemChat::-webkit-scrollbar-thumb {
+    background: #888;  
+}
+
+.containerMensagemChat::-webkit-scrollbar-thumb:hover {
+    background: #555;  
+}

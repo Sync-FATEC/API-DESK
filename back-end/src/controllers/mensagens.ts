@@ -42,7 +42,7 @@ export const excluirMensagem = async (mensagemID: number) => {
 
 export const visualizarMensagens = async (tipoMensagem: string) => {
     try {
-        const mensagens = await mensagensRepositorio.find({ where: { tipoMensagem: tipoMensagem }})
+        const mensagens = await mensagensRepositorio.find({ where: { tipoMensagem: tipoMensagem }, relations: ['categoria']})
         return mensagens
     } catch (error) {
         console.error('Erro na visualização das mensagens', error);

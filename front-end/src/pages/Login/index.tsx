@@ -3,7 +3,7 @@ import { AuthContext } from "../../contexts/Auth/AuthContext";
 import { useApi } from "../../hooks/useApi";
 import logo from '../../assets/img/logo.svg';
 import { useNavigate } from "react-router-dom";
-import { loginSenhaEmail, Toast, warning } from "../../components/Swal/swal";
+import { loginSenhaEmail, LoginTecnicoHorario, Toast, warning } from "../../components/Swal/swal";
 
 
 export const Login = () => {
@@ -14,6 +14,12 @@ export const Login = () => {
   const [emailError, setEmailErrorText] = useState('');
   const [senhaError, setSenhaErrorText] = useState('');
   const navigate = useNavigate();
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+
+    const togglePasswordVisibility = () => {
+        setIsPasswordVisible(!isPasswordVisible);
+    };
+
 
   const handleEmailLogin = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
@@ -45,10 +51,13 @@ export const Login = () => {
   
     try {
       const isLogged = await auth.signin(email, senha);
-      if (isLogged) { 
-        const data = await api.validateToken(email);
-        if (data && data.tipoUsuario) {
-          switch (data.tipoUsuario) {
+      const data = await api.signin(email, senha);
+      if (data === "O técnico não pode acessar o sistema nesse horário") {
+        LoginTecnicoHorario();
+        setSenha('');
+      } else if (isLogged) { 
+        if (data && data.usuario.tipoUsuario) {
+          switch (data.usuario.tipoUsuario) {
             case 'U':
               Toast.fire({
                 icon: "success",
@@ -79,11 +88,11 @@ export const Login = () => {
           loginSenhaEmail();
           setSenha('');
         }
-      } else {
-        loginSenhaEmail();
-        setSenha('');
-      }
-    } catch (error) {
+    } else {
+      loginSenhaEmail();
+      setSenha('');
+    }
+  } catch (error) {
       console.error(error);
       warning('Verifique suas informações.');
       setSenha('');
@@ -119,14 +128,27 @@ export const Login = () => {
                         <label className="labelInput" htmlFor="email">Digite seu e-mail</label>
                     </div>
                     <div className="formInput">
+                    <div className="password-input-container">
                         <input
-                            type="password"
+                            type={isPasswordVisible ? "text" : "password"}
                             value={senha}
                             onChange={handleSenhaLogin}
                             placeholder=" "
                         />
+                         <span
+                                    className="password-toggle-icon"
+                                    onClick={togglePasswordVisibility}
+                                >
+                                    {isPasswordVisible ? <span className="material-symbols-outlined">
+                                        visibility_off
+                                    </span> : <span className="material-symbols-outlined">
+                                        visibility
+                                    </span>}
+                                </span>
+                                </div>
                         <div className="errorMessage">{senhaError}</div>
                         <label className="labelInput" htmlFor="password">Digite sua senha</label>
+                        
                     </div>
                     <button className="formBtn">Entrar</button>
                 </div>

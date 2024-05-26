@@ -1,5 +1,5 @@
 import express, { Request, Response } from 'express';
-import { criarEquipamento, excluirEquipamento, visualizarEquipamentos, visualizarEquipamentosCatSala } from '../controllers/equipamentos';
+import { alterarSlaEquipamento, criarEquipamento, excluirEquipamento, visualizarEquipamentos, visualizarEquipamentosCatSala } from '../controllers/equipamentos';
 
 const router = express.Router();
 
@@ -28,6 +28,11 @@ router.get('/listar', async (req: Request, res: Response) => {
 router.get('/listarCatSala/:numeroSala/:categoriaID', async (req: Request, res: Response) => {
     const { numeroSala, categoriaID } = req.params;
     res.json(await visualizarEquipamentosCatSala(Number(numeroSala), Number(categoriaID)));
+});
+
+router.put('/alterarSla/:equipamentoID/:novaSla', async (req: Request, res: Response) => {
+    const { equipamentoID, novaSla } = req.params;
+    res.json(await alterarSlaEquipamento(Number(equipamentoID), Number(novaSla)));
 });
 
 export default router;

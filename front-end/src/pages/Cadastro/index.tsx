@@ -14,6 +14,11 @@ export const Cadastro = () => {
     const [cpfError, setCpfError] = useState('');
     const [emailError, setEmailError] = useState('');
     const [senhaError, setSenhaError] = useState('');
+    const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+
+    const togglePasswordVisibility = () => {
+        setIsPasswordVisible(!isPasswordVisible);
+    };
 
     const navigate = useNavigate();
 
@@ -48,7 +53,7 @@ export const Cadastro = () => {
         const newSenha = e.target.value;
         setSenha(newSenha);
 
-        if (!validateSenha(newSenha) && newSenha.length > 20) {
+        if (!validateSenha(newSenha) && newSenha.length < 8) {
             setSenhaError('Por favor, preencha uma senha válida.');
             setIsValid(false);
         } else {
@@ -93,7 +98,7 @@ export const Cadastro = () => {
     };
 
     const validateSenha = (senha: string): boolean => {
-        const senhaRegex = /^[a-zA-Z0-9!@#$%^&*()_+{}[\]:;<>,.?/~`|-]{1,20}$/;
+        const senhaRegex = /^[a-zA-Z0-9!@#$%^&*()_+{}[\]:;<>,.?/~`|-]{8,255}$/;
         return senhaRegex.test(senha);
     };
 
@@ -218,14 +223,28 @@ export const Cadastro = () => {
                             <div className="">{cpfError}</div>
                             <label className="labelInput" htmlFor="cpf">Digite seu CPF</label>
                         </div>
+                        
 
+                       
                         <div className="formInput">
+                        <div className="password-input-container">
                             <input
                                 className={senha !== "" ? "has-val input" : "input"}
-                                type="password"
+                                type={isPasswordVisible ? "text" : "password"}
                                 value={senha}
                                 onChange={handleSenha}
                             />
+                             <span
+                                    className="password-toggle-icon"
+                                    onClick={togglePasswordVisibility}
+                                >
+                                    {isPasswordVisible ? <span className="material-symbols-outlined">
+                                        visibility_off
+                                    </span> : <span className="material-symbols-outlined">
+                                        visibility
+                                    </span>}
+                                </span> 
+                                </div>
                             <div className="">{senhaError}</div>
                             <label className="labelInput" htmlFor="Password">Digite sua senha</label>
                         </div>

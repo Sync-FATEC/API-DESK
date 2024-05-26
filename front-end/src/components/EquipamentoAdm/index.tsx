@@ -15,6 +15,8 @@ const EquipamentoAdm = () => {
     const [categorias, setCategorias] = useState<ICategoria[]>([]);
     const [salas, setSalas] = useState<ISalas[]>([]);
     const [equipamentos, setEquipamentos] = useState<IEquipamentos[]>([]);
+    const [novosSlas, setNovosSlas] = useState<{ [key: number]: number }>({});
+
 
     useEffect(() => {
         const fetchSalas = async () => {
@@ -29,6 +31,7 @@ const EquipamentoAdm = () => {
             } catch (error) {
                 console.error(error);
             }
+
         };
 
         fetchSalas();
@@ -39,6 +42,14 @@ const EquipamentoAdm = () => {
 
         if (!equipamento || !categoriaID || !numeroSala || !sla || !prioridade) {
             warning('Preencha todos os campos');
+            return;
+        }
+        if (equipamento.toString().length > 20) {
+            warning('Equipamento muito longo. Limite de 20 caracteres.');
+            return;
+        }
+        if (sla.toString().length > 10) {
+            warning('Número de SLA muito longo. Limite de 10 caracteres.');
             return;
         }
         try {
@@ -115,6 +126,36 @@ const EquipamentoAdm = () => {
             erro('Error!')
         }
     };
+    useEffect(() => {
+        const initialNovosSlas: { [key: number]: number } = {};
+        equipamentos.forEach(equipamento => {
+            initialNovosSlas[equipamento.equipamentosID] = equipamento.sla;
+        });
+        setNovosSlas(initialNovosSlas);
+    }, [equipamentos]);
+
+    const handleAlterarSla = async (equipamentoID: number, novoSla: number) => {
+        try {
+            const response = await axios.put(`http://localhost:5555/equipamentos/alterarSla/${equipamentoID}/${novoSla}`);
+            console.log(response);
+
+            if (response.data === "SLA Inexistente") {
+                Toast.fire({
+                    icon: "error",
+                    title: "Erro ao alterar o SLA"
+                });
+            } else {
+                Toast.fire({
+                    icon: "success",
+                    title: "SLA alterado com sucesso!"
+                });
+            }
+        } catch (error) {
+            console.error('Erro ao alterar o SLA:', error);
+            erro('Erro ao alterar o SLA');
+        }
+    };
+
 
     return (
         <div className="adminContainer">
@@ -155,7 +196,7 @@ const EquipamentoAdm = () => {
                         <input className="inputCategoria" type="text" onChange={handleEquipamento} value={equipamento} />
                     </div>
                     <div className='formCategoria'>
-                        <label className="labelEquipamento" htmlFor="sla">SLA</label>
+                        <label className="labelEquipamento" htmlFor="sla">SLA em horas</label>
                         <input className="inputCategoria" type="number" onChange={handleSla} value={sla} />
 
                     </div>
@@ -173,36 +214,50 @@ const EquipamentoAdm = () => {
                     {categorias.map((categoria, categoriaIndex) => (
                         <details className='detalhesResultado' key={categoriaIndex}>
                             <summary className='sumarioResultado'>
-                                <label>Categoria:</label>{categoria.categoria}
+                                <label>Categoria: </label>{categoria.categoria}
                             </summary>
-                            {equipamentos.map((equipamento, equipamentoIndex) => (
-                                equipamento.sala.salaID === sala.salaID && equipamento.categoria.categoriaID === categoria.categoriaID ? (
-                                    <div className="detalhesEquipamento" key={equipamentoIndex}>
-                                        <div className="infoContainer">
-                                            <label>Equipamento:</label>
-                                            <p>{equipamento.equipamento}</p>
+                            {equipamentos.map((equipamento, equipamentoIndex) => {
+                                if (equipamento.sala.salaID === sala.salaID && equipamento.categoria.categoriaID === categoria.categoriaID) {
+                                    return (
+                                        <div className="detalhesEquipamento" key={equipamentoIndex}>
+                                            <div className="infoContainer">
+                                                <label>Equipamento:</label>
+                                                <p>{equipamento.equipamento}</p>
+                                            </div>
+                                            <div className="infoContainer">
+                                                <label>SLA em horas:</label>
+                                                <input
+                                                    className="inputSla"
+                                                    type="number"
+                                                    onChange={(event) => {
+                                                        const novoSla = parseInt(event.target.value);
+                                                        setNovosSlas(prevState => ({
+                                                            ...prevState,
+                                                            [equipamento.equipamentosID]: novoSla
+                                                        }));
+                                                        handleAlterarSla(equipamento.equipamentosID, novoSla);
+                                                    }}
+                                                    value={novosSlas[equipamento.equipamentosID] ?? equipamento.sla}
+                                                />
+                                            </div>
+                                            <div className="infoContainer">
+                                                <label>Prioridade:</label>
+                                                <p>{equipamento.prioridade}</p>
+                                            </div>
+                                            <button className='excluir' onClick={() => handleDeleteUser(equipamento.equipamentosID)}>
+                                                <span className="material-symbols-outlined">Delete</span>
+                                            </button>
                                         </div>
-                                        <div className="infoContainer">
-                                            <label>SLA:</label>
-                                            <p>{equipamento.sla}</p>
-                                        </div>
-                                        <div className="infoContainer">
-                                            <label>Prioridade:</label>
-                                            <p>{equipamento.prioridade}</p>
-                                        </div>
-                                        <button className='excluir' onClick={() => handleDeleteUser(equipamento.equipamentosID)}>
-                                            <span className="material-symbols-outlined">Delete</span>
-                                        </button>
-                                    </div>
-
-
-
-                                ) : null
-                            ))}
+                                    );
+                                } else {
+                                    return null;
+                                }
+                            })}
                         </details>
                     ))}
                 </details>
             ))}
+
 
 
         </div>

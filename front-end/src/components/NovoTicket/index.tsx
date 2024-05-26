@@ -1,11 +1,12 @@
 import axios from 'axios';
 import './novoticket.css';
 import React, { useContext, useEffect, useState } from 'react';
-import { erro, successTicket, warning } from '../Swal/swal';
+import { erro, warning } from '../Swal/swal';
 import ICategoria from '../../types/ICategoria';
 import IEquipamentos from '../../types/IEquipamentos';
 import ISalas from '../../types/ISalas';
 import { AuthContext } from '../../contexts/Auth/AuthContext';
+import Swal from 'sweetalert2';
 
 export const NovoTicket = () => {
     const [titulo, setTitulo] = useState('');
@@ -164,10 +165,29 @@ export const NovoTicket = () => {
                     setDescricao('');
                     erro('Erro na criação do ticket');
                 } else {
-                    successTicket('Ticket criado com sucesso!');
-                    setTimeout(() => {
-                        window.location.reload();
-                    }, 1350); // Atraso de 1350 milissegundos (1.35 segundo)
+                    Swal.fire({
+                        title: "Sucesso!",
+                        text: "Ticket enviado com sucesso!",
+                        icon: 'success',
+                        confirmButtonText: 'OK',
+                        backdrop: 'rgba(0,0,0,0.7)',
+                        timer: 2500, // 2.5 segundos
+                        timerProgressBar: true,
+                        showClass: {
+                            popup: 'animate__animated animate__fadeInDown'
+                        },
+                        hideClass: {
+                            popup: 'animate__animated animate__fadeOutUp'
+                        },
+                        customClass: {
+                            popup: 'my-popup-class',
+                            title: 'my-title-class',
+                            confirmButton: 'my-confirm-button-class',
+                            timerProgressBar: 'my-progress-bar-class'
+                        }
+                    }).then(() => {
+                        window.location.reload()
+                    })
                 }
             } catch (error) {
                 console.log(error);
@@ -180,6 +200,11 @@ export const NovoTicket = () => {
 
     useEffect(() => {
         const fetchData = async () => {
+            if (numeroSala === 'Sala' || categoriaID === 'Categoria') {
+                setEquipamentos([]);
+                return;
+            }
+            
             if (numeroSala !== '' && categoriaID !== '') {
                 const equip = await axios.get(`http://localhost:5555/equipamentos/listarCatSala/${numeroSala}/${categoriaID}`);
 
@@ -234,7 +259,7 @@ export const NovoTicket = () => {
 
 
                 <div className="containerBtnTicket">
-                    <button type='submit' value='Cadastrar' className="btnTicket">Enviar Ticket</button>
+                    <button type='submit' value='Cadastrar' className="btnEnviarTicket">Enviar Ticket</button>
                 </div>
             </form>
 

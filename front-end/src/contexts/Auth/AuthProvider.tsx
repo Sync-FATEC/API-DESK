@@ -7,25 +7,6 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
     const [user, setUser] = useState<User | null>(null);
     const api = useApi();
 
-    // useEffect(() => {
-    //     const validateToken = async () => {
-    //         try {     
-    //             const storageData = localStorage.getItem('authToken');
-    //             if (storageData) {
-    //                 const userData = await api.validateToken(JSON.parse(storageData).email);
-    //                 if (userData) {
-    //                     setUser(userData);       
-    //                 }
-    //             }
-    //         } catch (error) {
-    //             console.error('Erro ao validar token:', error);
-    //         }
-    //     };
-    
-    //     validateToken();
-    // }, [api]);
-    
-
     const signin = async (email: string, password: string) => {
         const data = await api.signin(email, password);
         if (data === 'Senha incorreta') {
@@ -35,8 +16,8 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
             return false
         }
         
-        setUser(data);
-        setToken(JSON.stringify(data));
+        setUser(data.usuario);
+        setToken(JSON.stringify(data.usuario));
          
         return true;
         }

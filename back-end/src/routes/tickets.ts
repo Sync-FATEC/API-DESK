@@ -1,5 +1,5 @@
 import express, { Request, Response } from 'express';
-import { criarTicket, excluirTicket, alterarStatusTicket, listarTickets, alterarTecnico, procurarTicket } from '../controllers/tickets';
+import { alterarTipoTecnico, criarTicket, excluirTicket, alterarStatusTicket, listarTickets, procurarTicket, alterarTecnico } from '../controllers/tickets';
 
 const router = express.Router();
 
@@ -22,13 +22,18 @@ router.delete('/excluir/:ticketID', async (req: Request, res: Response) => {
 });
 
 router.put('/alterarStatus', async (req: Request, res: Response) => {
-    const { ticketID, status } = req.body;
+    const { ticketID, status, tecnicoID } = req.body;
 
     if (ticketID == '' || status == '') {
         return res.status(400).json({ error: 'Preencha todos os campos' });
     }
 
-    res.json(await alterarStatusTicket(ticketID, status));
+    if (req.body.template) {
+        return res.json(await alterarStatusTicket(ticketID, status, tecnicoID, req.body.template));
+    } else {
+        return res.json(await alterarStatusTicket(ticketID, status, tecnicoID));
+    }
+    
 });
 
 router.get('/listar/:usuarioID', async (req: Request, res: Response) => {
@@ -52,14 +57,33 @@ router.get('/procurar/:ticketID', async (req: Request, res: Response) => {
 
 });
 
-router.post('/alterarTecnico', async (req: Request, res: Response) => {
+router.post('/alterarTipoTecnico', async (req: Request, res: Response) => {
     const { ticketID, tipoTecnico } = req.body;
-
+    
     if (ticketID == '' || tipoTecnico == '') {
         return res.status(400).json({ error: 'Preencha todos os campos' });
     }
 
-    res.json(await alterarTecnico(ticketID, tipoTecnico));
+    res.json(await alterarTipoTecnico(ticketID, tipoTecnico));
 });
+
+router.put('/alterarTecnico/:ticketID/:tecnicoID/:tipoTecnico', async (req: Request, res: Response) => {
+    const ticketID = Number(req.params.ticketID);
+    const tecnicoID = Number(req.params.tecnicoID);
+    const tipoTecnico = String(req.params.tipoTecnico);
+   
+    if (!ticketID || !tecnicoID || !tipoTecnico) {
+        return res.status(400).json({ error: 'Preencha todos os campos' });
+    }
+ 
+    try {
+        const resultado = await alterarTecnico(ticketID, tecnicoID, tipoTecnico);
+        res.json(resultado);
+    } catch (error) {
+        console.error('Erro ao tentar alterar o técnico do ticket:', error);
+        res.status(500).json({ error: 'Erro interno ao tentar alterar o técnico do ticket' });
+    }
+});
+
 
 export default router;
