@@ -298,7 +298,8 @@ alt="MVP">
     <tr>
       <td>28</td>
       <td>BAIXA</td>
-      <td>Como administrador do sistema, quero ter acesso a gráficos detalhados das avaliações dos usuários, para que eu possa visualizar tendências, identificar áreas de melhoria e tomar decisões baseadas em dados para aprimorar nossos serviços ou produtos.</td>
+      <td>Como administrador, quero ter acesso a gráficos detalhados das quantidades de atendimentos por categoria, níveis do técnico e prioridade, para que eu possa visualizar tendências, identificar áreas de melhoria e tomar decisões baseadas em dados para aprimorar 
+       nossos serviços ou produtos.</td></td>
       <td>8</td>
       <td>4</td>
       <td>3</td>
