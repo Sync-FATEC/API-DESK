@@ -194,7 +194,7 @@ alt="MVP">
     </tr>
     <tr>
       <td>15</td>
-      <td>BAIXA</td>
+      <td>MÉDIA</td>
       <td>Como administrador, quero poder cadastrar categorias e prioridade de chamados, para que os chamados possam ser organizados de forma eficiente e direcionados para as equipes corretas.</td>
       <td>5</td>
       <td>2</td>
@@ -202,7 +202,7 @@ alt="MVP">
     </tr>
     <tr>
       <td>16</td>
-      <td>ALTA</td>
+      <td>MÉDIA</td>
       <td>Como técnico, quero poder escalar chamados para um técnico de nível superior, para chamados que requerem mais conhecimento</td>
       <td>3</td>
       <td>3</td>
@@ -210,7 +210,7 @@ alt="MVP">
     </tr>
     <tr>
       <td>17</td>
-      <td>ALTA</td>
+      <td>MÉDIA</td>
       <td>Como cliente, após abrir um ticket, quero acompanhar seu status na interface do sistema para ver se está "Aberto", "Em atendimento", "Pendente" e "Finalizado", além de quaisquer atualizações feitas pela equipe de suporte, para estar informado sobre o progresso do meu pedido.</td>
       <td>5</td>
       <td>3</td>
