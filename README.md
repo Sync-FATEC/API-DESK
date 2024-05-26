@@ -194,7 +194,7 @@ alt="MVP">
     </tr>
     <tr>
       <td>15</td>
-      <td>MÉDIA</td>
+      <td>BAIXA</td>
       <td>Como administrador, quero poder cadastrar categorias e prioridade de chamados, para que os chamados possam ser organizados de forma eficiente e direcionados para as equipes corretas.</td>
       <td>5</td>
       <td>2</td>
@@ -202,15 +202,15 @@ alt="MVP">
     </tr>
     <tr>
       <td>16</td>
-      <td>MÉDIA</td>
-      <td>Como técnico, quero poder escalar chamados para um técnico de nível superior ou a um técnico específico, para chamados que requerem mais conhecimento.</td>
+      <td>ALTA</td>
+      <td>Como técnico, quero poder escalar chamados para um técnico de nível superior, para chamados que requerem mais conhecimento</td>
       <td>3</td>
       <td>3</td>
       <td>3</td>
     </tr>
     <tr>
       <td>17</td>
-      <td>MÉDIA</td>
+      <td>ALTA</td>
       <td>Como cliente, após abrir um ticket, quero acompanhar seu status na interface do sistema para ver se está "Aberto", "Em atendimento", "Pendente" e "Finalizado", além de quaisquer atualizações feitas pela equipe de suporte, para estar informado sobre o progresso do meu pedido.</td>
       <td>5</td>
       <td>3</td>
@@ -290,22 +290,13 @@ alt="MVP">
     <tr>
       <td>27</td>
       <td>BAIXA</td>
-      <td>Como técnico, quero poder selecionar um ticket para atendimento, para que eu possa assumir a responsabilidade de resolver o problema reportado pelo cliente de forma eficiente e organizada.</td>
-      <td>8</td>
-      <td>3</td>
-      <td>3</td>
-    </tr>
-    <tr>
-      <td>28</td>
-      <td>BAIXA</td>
-      <td>Como administrador, quero ter acesso a gráficos detalhados das quantidades de atendimentos por categoria, níveis do técnico e prioridade, para que eu possa visualizar tendências, identificar áreas de melhoria e tomar decisões baseadas em dados para aprimorar 
-       nossos serviços ou produtos.</td></td>
+      <td>Como administrador do sistema, quero ter acesso a gráficos detalhados das avaliações dos usuários, para que eu possa visualizar tendências, identificar áreas de melhoria e tomar decisões baseadas em dados para aprimorar nossos serviços ou produtos.</td>
       <td>8</td>
       <td>4</td>
       <td>3</td>
     </tr>
     <tr>
-      <td>29</td>
+      <td>28</td>
       <td>BAIXA</td>
       <td>Como administrador, quero acessar um dashboard com relatórios detalhados por meio de gráficos, para que eu possa analisar o desempenho do serviço de suporte, a eficiência da equipe e monitorar o SLA.</td>
       <td>5</td>
@@ -313,7 +304,7 @@ alt="MVP">
       <td>6</td>
     </tr>
     <tr>
-      <td>30</td>
+      <td>29</td>
       <td>BAIXA</td>
       <td>Como usuário, caso eu esqueça a minha senha quero que tenha um campo de redefinir a mesma</td>
       <td>5</td>
@@ -323,8 +314,11 @@ alt="MVP">
   </tbody>
 </table>
 
-<h3>Modelo de Dados</h3>
-<img src="https://github.com/Sync-FATEC/API-DESK/blob/main/doc/docs_sprints/sprint02/BDLogico.jpg">
+<h3>🗃️Modelo de Dados</h3>
+<img src="https://github.com/Sync-FATEC/API-DESK/blob/main/doc/docs_sprints/sprint03/BDLogico.jpg">
+
+<h3>📄Manual do Usuário<h3>
+<td align="center"><a href="https://github.com/Sync-FATEC/API-DESK/blob/main/doc/docs_tecnicos/ManualdoUsuario.pdf">Clique Aqui</a></td>
 
 <h2>DoR (Definition of Ready):</h2>
 
@@ -404,19 +398,19 @@ alt="MVP">
     <td align="center">01</td>
     <td>14/04/2023</td>
     <td align="center"><a href="https://github.com/Sync-FATEC/API-DESK/blob/main/doc/docs_sprints/sprint01/sprint01.md">Relatório</a></td> 
-    <td align="center">🔄</td>
+    <td align="center">✅</td>
   </tr>
   <tr>
     <td align="center">02</td>
     <td>05/05/2023</td>
     <td align="center"><a href="https://github.com/Sync-FATEC/API-DESK/blob/main/doc/docs_sprints/sprint02/sprint02.md">Relatório</a></td> 
-    <td align="center">🔄</td>
+    <td align="center">✅</td>
   </tr>
   <tr>
     <td align="center">03</td>
     <td>26/05/2023</td>
-    <td></td>
-    <td align="center">🔄</td>
+    <td align="center"><a href="https://github.com/Sync-FATEC/API-DESK/blob/main/doc/docs_sprints/sprint03/sprint03.md">Relatório</a></td> 
+    <td align="center">✅</td>
   </tr>
   <tr>
     <td align="center">04</td>
