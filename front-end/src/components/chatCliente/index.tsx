@@ -99,7 +99,7 @@ export const ChatCliente: React.FC<Props> = ({ selectedTicket }) => {
 
     return (
         <>
-            <h2 className='tituloChat'>Chat com Cliente</h2>
+            <h2 className='tituloChat'>Chat com técnico</h2>
             <div className='containerMensagemChat'>
                 {anotacoes.map((message, index) => (
                     <>
@@ -128,9 +128,7 @@ export const ChatCliente: React.FC<Props> = ({ selectedTicket }) => {
               
             <form onSubmit={handleSubmit}>
                 <div className='containerInputChat'>
-                    <span className="material-symbols-outlined" onClick={handleOpenModal}>
-                        chat_info
-                    </span>
+                   
                     <input value={input} onChange={handleInput} className='inputChat' type="text" placeholder='Digite uma mensagem' />
                     <button type='submit'>
                         <span className="material-symbols-outlined">
