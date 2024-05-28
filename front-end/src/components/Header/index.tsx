@@ -74,7 +74,7 @@ export const Header = () => {
             <div className="headerRight">
                  
                  {user && user.tipoUsuario === 'A' && (
-                    <button className="btnHeader" onClick={() => navigate('/admin')}>
+                    <button className="btnHeader" onClick={() => navigate('/ConfiguracaoAdmin')}>
                         <span className="material-symbols-outlined">settings</span>
                     </button>
                 )}
