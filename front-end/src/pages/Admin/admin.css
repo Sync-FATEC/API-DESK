@@ -1,0 +1,20 @@
+.containerGraficos{
+    display: flex;
+    padding: var(--padding-global);
+    justify-content: space-around;
+   
+}
+.titleDashoard{
+    padding: 20px;
+    text-align: center;
+    
+    font-size: 40px;
+    color:var(--black-color)
+}
+.containerDash{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 100%;
+    margin: 10px 0;
+  }
