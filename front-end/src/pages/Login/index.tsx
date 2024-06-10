@@ -5,7 +5,6 @@ import logo from '../../assets/img/logo.svg';
 import { useNavigate } from "react-router-dom";
 import { loginSenhaEmail, LoginTecnicoHorario, Toast, warning } from "../../components/Swal/swal";
 
-
 export const Login = () => {
   const api = useApi();
   const auth = useContext(AuthContext);
@@ -16,10 +15,9 @@ export const Login = () => {
   const navigate = useNavigate();
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 
-    const togglePasswordVisibility = () => {
-        setIsPasswordVisible(!isPasswordVisible);
-    };
-
+  const togglePasswordVisibility = () => {
+    setIsPasswordVisible(!isPasswordVisible);
+  };
 
   const handleEmailLogin = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
@@ -43,12 +41,12 @@ export const Login = () => {
 
   const handleSubmitLogin = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-  
+
     if (!email || !senha) {
       warning('Preencha todos os campos');
       return;
     }
-  
+
     try {
       const isLogged = await auth.signin(email, senha);
       const data = await api.signin(email, senha);
@@ -98,7 +96,7 @@ export const Login = () => {
       setSenha('');
     }
   };
-  
+
   return (
     <div className='containerPrincipal'>
         <aside>
@@ -148,12 +146,12 @@ export const Login = () => {
                                 </div>
                         <div className="errorMessage">{senhaError}</div>
                         <label className="labelInput" htmlFor="password">Digite sua senha</label>
-                        
+                        <a href="/esqueceu-senha" className="forgot-password-link">Esqueceu a senha?</a>
                     </div>
                     <button className="formBtn">Entrar</button>
                 </div>
             </form>
         </div>
     </div>
-);
+  );
 }

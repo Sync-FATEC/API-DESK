@@ -10,6 +10,8 @@ import { FAQ } from './components/Faq';
 import VisualizarTickets  from './components/VisualizarTicketsCliente';
 import { TicketsAdmin } from './pages/TicketsAdmin';
 import { Admin } from './pages/Admin';
+import EsqueceuSenha from './components/EsqueceuSenha';
+import { ResetPassword } from './components/ResetPassword';
 
 export const App = () => {
   return (
@@ -27,6 +29,8 @@ export const App = () => {
         } } /></RequireAuth>} />
         <Route path="/cliente" element={<RequireAuth tipoUsuario="U" pagina={'cliente'}><Cliente /></RequireAuth>} />
         <Route path="/tecnico" element={<RequireAuth tipoUsuario={['1', '2', '3']} pagina={'tecnico'}><Tecnicos /></RequireAuth>} />
+        <Route path="/esqueceu-senha" element={<EsqueceuSenha />} />
+        <Route path="/reset-password/:token" element={<ResetPassword />} />
       </Routes>
     </div>
   );

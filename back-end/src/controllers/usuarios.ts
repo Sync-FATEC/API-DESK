@@ -3,9 +3,10 @@ import { AppDataSource } from "../data-source";
 import { Usuarios } from "../entity/usuarios";
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
+import nodemailer from 'nodemailer';
 import { log } from 'console';
 
-export const usuariosRepositorio = AppDataSource.getRepository(Usuarios)
+export const usuariosRepositorio = AppDataSource.getRepository(Usuarios);
 
 const validarCPF = (cpf: string) => {
     let soma = 0;
@@ -169,3 +170,40 @@ export const alterarTipoTecnico = async (tecnicoID: number, tipoTecnico: string)
         console.error('Erro na alteração do tipo', error);
     }
 }
+
+export const mandarToken = async (email: string) => {
+    try {
+        // Gerar o token com 1 hora de expiração
+        const token = jwt.sign({ email }, "oxaz rref jpee vgqy", { expiresIn: '1h' });
+
+        // Configuração do transporte de email
+        const transporter = nodemailer.createTransport({
+            service: 'gmail',
+            auth: {
+                user: 'sync23417@gmail.com',
+                pass: 'oxaz rref jpee vgqy'
+            }
+        });
+
+        // Opções do email
+        const mailOptions = {
+            from: 'sync23417@gmail.com',
+            to: email,
+            subject: 'Redefinição de senha',
+            text: `Você solicitou a redefinição de senha. Clique no link abaixo para redefinir sua senha:\n\nhttp://localhost:3000/reset-password/${token}`
+        };
+
+        // Envio do email
+        transporter.sendMail(mailOptions, (error, info) => {
+            if (error) {
+                console.error('Erro ao enviar email:', error);
+                throw error;
+            } else {
+                console.log('Email enviado:', info.response);
+            }
+        });
+    } catch (error) {
+        console.error('Erro ao mandar token:', error);
+        throw error;
+    }
+};
