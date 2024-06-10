@@ -31,13 +31,4 @@ export const useApi = () => ({
             throw error;
         }
     },
-    resetPassword: async (token: string, novaSenha: string) => {
-        try {
-            const response = await axios.post('http://localhost:5555/usuarios/reset-password', { token, novaSenha });
-            return response.data;
-        } catch (error) {
-            console.error(error);
-            throw error;
-        }
-    }
 });
