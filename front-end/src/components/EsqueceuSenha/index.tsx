@@ -11,8 +11,8 @@ const EsqueceuSenha: React.FC = () => {
     const navigate = useNavigate();
 
     const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setEmail(e.target.value);
         setEmailError(e.target.value ? '' : 'Campo de e-mail obrigatório');
+        setEmail(e.target.value);
     };
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -25,14 +25,16 @@ const EsqueceuSenha: React.FC = () => {
               return;
           }
             const response = await api.mandarToken(email);
-            console.log(response)
-            if (response.message === 'Email enviado com sucesso') {
+            
+            if (response.data === 'Usuário inexistente') {
+                warning('Erro ao enviar e-mail de recuperação, usuário inexistente');
+            } else {
                 Toast.fire({
                     icon: 'success',
                     title: 'E-mail de recuperação enviado com sucesso!',
-                }).then(() => navigate('/login'));
-            } else {
-                warning('Erro ao enviar e-mail de recuperação');
+                }).then(() => {
+                    navigate('/login');
+                });
             }
         } catch (error) {
             console.error(error);
