@@ -76,3 +76,83 @@
     cursor: pointer;
 }
 
+/* Media Queries para tornar responsivo */
+@media (max-width: 768px) {
+    .modal{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+    }
+    .modalContent{
+        padding: 10px;
+    }
+    .close{
+        padding: 0 10px;
+    }
+    .modalPerfil {
+      width: 80%;
+      padding: 10px;
+    }
+  
+    .confirmButton {
+      width: 80%;
+    }
+  
+    .dadosPerfil {
+      font-size: 16px;
+      left: 0;
+      top: 0;
+    }
+  
+    .infoPerfil {
+      font-size: 16px;
+      padding: 8px;
+    }
+  
+    .btnPerfil {
+      width: 80%;
+      font-size: 16px;
+    }
+  
+    .dButton, .cButton {
+      width: 80px;
+      font-size: 14px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .modalPerfil {
+      width: 80%;
+    
+    }
+  
+    .confirmButton {
+      width: 80%;
+    }
+  
+    .dadosPerfil {
+      font-size: 14px;
+      left: 0;
+      top: 0;
+    }
+  
+    .infoPerfil {
+      font-size: 14px;
+      padding: 6px;
+    }
+  
+    .btnPerfil {
+      width: 100%;
+      font-size: 14px;
+    }
+  
+    .dButton, .cButton {
+      width: 80px;
+      font-size: 12px;
+    }
+  
+    #account {
+      font-size: 80px;
+    }
+  }

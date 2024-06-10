@@ -48,4 +48,83 @@
     justify-content: space-around;
     width: 100%;
     margin: 10px 0px;
-}
+}/* Media Queries para tornar responsivo */
+@media (max-width: 1200px) {
+    :root {
+      --padding-global: 0 60px;
+      --fonte-titulo: 28px;
+      --fonte-subTitulo: 24px;
+      --fonte-label: 20px;
+      --fonte-input: 14px;
+      --fonte-button: 14px;
+      --fonte-buttonAside: 18px;
+    }
+  
+    .modal-content {
+      padding: 15px;
+    }
+  
+    .btnEnviarTicket {
+      font-size: 16px;
+      padding: 5px 10px;
+    }
+  
+    .modalTicket h1 {
+      font-size: 24px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    :root {
+      --padding-global: 0 30px;
+      --fonte-titulo: 24px;
+      --fonte-subTitulo: 20px;
+      --fonte-label: 18px;
+      --fonte-input: 12px;
+      --fonte-button: 12px;
+      --fonte-buttonAside: 16px;
+    }
+  
+    .modal-content {
+      padding: 10px;
+    }
+  
+    .btnEnviarTicket {
+      font-size: 14px;
+      padding: 4px 8px;
+    }
+  
+    .modalTicket h1 {
+      font-size: 22px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    :root {
+      --padding-global: 0 10px;
+      --fonte-titulo: 20px;
+      --fonte-subTitulo: 18px;
+      --fonte-label: 16px;
+      --fonte-input: 10px;
+      --fonte-button: 10px;
+      --fonte-buttonAside: 14px;
+    }
+  
+    .modal-content {
+      padding: 5px;
+    }
+  
+    .btnEnviarTicket {
+      font-size: 12px;
+      padding: 3px 6px;
+    }
+  
+    .modalTicket h1 {
+      font-size: 20px;
+    }
+  
+    .containerTickets {
+      flex-direction: column;
+      gap: 5px;
+    }
+  }

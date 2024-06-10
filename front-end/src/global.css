@@ -259,3 +259,84 @@ aside {
 ::-webkit-scrollbar-thumb:hover {
   background: #555;  
 }
+/* Media Queries para tornar responsivo */
+@media (max-width: 1200px) {
+  :root {
+    --padding-global: 0 60px;
+    --fonte-titulo: 28px;
+    --fonte-subTitulo: 24px;
+    --fonte-label: 20px;
+    --fonte-input: 14px;
+    --fonte-button: 14px;
+    --fonte-buttonAside: 18px;
+  }
+}
+
+@media (max-width: 768px) {
+  .containerPrincipal {
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  aside {
+    display: none;
+  }
+
+  .formContainer {
+    width: 100%;
+    
+  }
+  .adminContainer {
+    padding: 0 30px;
+  }
+
+  .formInput input {
+    width: 90%;
+    align-items: center;
+  }
+
+  #btnSla {
+    margin-left: 0;
+  }
+  .formTitle, .formTitle2 {
+    margin-bottom: 20px;
+  }
+}
+
+
+@media (max-width: 480px) {
+  :root {
+    --padding-global: 0 20px;
+    --fonte-titulo: 24px;
+    --fonte-subTitulo: 20px;
+    --fonte-label: 18px;
+    --fonte-input: 12px;
+    --fonte-button: 12px;
+    --fonte-buttonAside: 16px;
+  }
+  .formContainer {
+    padding: 20px;
+  }
+  .formTitle, .formTitle2 {
+    padding: 0 10px;
+  }
+
+  .botaoAside {
+    width: 100%;
+    max-width: 150px;
+  }
+
+  .rowInformacoes {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  #btnSla {
+    margin-left: 0;
+  }
+  /* Adicione este bloco ao final do seu arquivo CSS */
+
+
+}
