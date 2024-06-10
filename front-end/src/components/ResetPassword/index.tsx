@@ -1,23 +1,43 @@
 import React, { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { useApi } from '../../hooks/useApi';
 import { Toast, warning } from '../../components/Swal/swal';
 import './resetPassword.css';
+import axios from 'axios';
 
 export const ResetPassword: React.FC = () => {
   const { token } = useParams<{ token: string }>();
-  const api = useApi();
   const navigate = useNavigate();
   const [novaSenha, setNovaSenha] = useState('');
   const [confirmarSenha, setConfirmarSenha] = useState('');
   const [error, setError] = useState('');
 
+  const validateSenha = (senha: string): boolean => {
+    const senhaRegex = /^[a-zA-Z0-9!@#$%^&*()_+{}[\]:;<>,.?/~`|-]{8,255}$/;
+    return senhaRegex.test(senha);
+};
+
   const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setNovaSenha(e.target.value);
+    const newSenha = e.target.value;
+
+    if (!validateSenha(newSenha) && newSenha.length < 8) {
+      setError('Por favor, preencha uma senha válida.');
+      setNovaSenha('');
+    } else {
+      setNovaSenha(newSenha);
+      setError('');
+    }
   };
 
   const handleConfirmPasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setConfirmarSenha(e.target.value);
+    const newConfirmarSenha = e.target.value;
+    
+    if (novaSenha !== newConfirmarSenha) {
+      setError('As senhas não coincidem');
+      setConfirmarSenha('');
+    } else {
+      setConfirmarSenha(newConfirmarSenha);
+      setError('');
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -34,19 +54,15 @@ export const ResetPassword: React.FC = () => {
     }
 
     try {
-      const response = await api.resetPassword(token, novaSenha);
-      if (response.message === 'Senha redefinida com sucesso') {
+      const response = await axios.put(`http://localhost:5555/usuarios/redefinir-senha/${token}/${novaSenha}`);
+      console.log(response);
         Toast.fire({
           icon: 'success',
           title: 'Senha redefinida com sucesso!',
-        });
-        navigate('/login');  // Redireciona para a página de login após a redefinição bem-sucedida
-      } else {
-        warning('Erro ao redefinir senha');
-      }
+        }).then(() => navigate('/login')); // Redireciona para a página de login após a redefinição bem-sucedida
     } catch (error) {
       console.error(error);
-      warning('Erro ao redefinir senha');
+      warning('Erro ao redefinir senha2');
     }
   };
 
