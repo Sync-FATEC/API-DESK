@@ -1,5 +1,5 @@
 import express, { Request, Response } from 'express';
-import { alterarTipoTecnico, alterarTurnoTecnico, autenticarUsuario, criarUsuario, excluirUsuario, validarToken, vizualizarTecnicos, mandarToken } from '../controllers/usuarios';
+import { alterarTipoTecnico, alterarTurnoTecnico, autenticarUsuario, criarUsuario, excluirUsuario, validarToken, vizualizarTecnicos, mandarToken, redefinirSenha } from '../controllers/usuarios';
 import { error } from 'console';
 
 const router = express.Router();
@@ -100,25 +100,11 @@ router.post('/esqueci-senha', async (req: Request, res: Response) => {
     }
 });
 
-router.post('/reset-password', async (req: Request, res: Response) => {
-    const { token, novaSenha } = req.body;
-    if (!token || !novaSenha) {
-        return res.status(400).json({ error: 'Token ou nova senha não fornecidos' });
-    }
-
-    try {
-        // Chamar a função para redefinir a senha com base no token e nova senha
-        await redefinirSenha(token, novaSenha);
-        return res.status(200).json({ message: 'Senha redefinida com sucesso' });
-    } catch (error) {
-        console.error('Erro ao redefinir senha:', error);
-        return res.status(500).json({ error: 'Erro ao redefinir a senha' });
-    }
+router.put("/redefinir-senha/:token/:novaSenha", async (req: Request, res: Response) => {
+    const token = req.params.token;
+    const novaSenha = req.params.novaSenha;
+    res.json(await redefinirSenha(token, novaSenha));
 });
 
 
 export default router;
-function redefinirSenha(token: any, novaSenha: any) {
-    throw new Error('Function not implemented.');
-}
-
