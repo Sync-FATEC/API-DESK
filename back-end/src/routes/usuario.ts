@@ -91,9 +91,7 @@ router.post('/esqueci-senha', async (req: Request, res: Response) => {
     }
 
     try {
-        // Chamar a função mandarToken
-        await mandarToken(email);
-        return res.status(200).json({ message: 'Email enviado com sucesso' });
+        res.json(await mandarToken(email));
     } catch (error) {
         console.error('Erro ao mandar token:', error);
         return res.status(500).json({ error: 'Erro ao enviar o email' });

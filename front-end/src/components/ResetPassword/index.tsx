@@ -17,27 +17,11 @@ export const ResetPassword: React.FC = () => {
 };
 
   const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const newSenha = e.target.value;
-
-    if (!validateSenha(newSenha) && newSenha.length < 8) {
-      setError('Por favor, preencha uma senha válida.');
-      setNovaSenha('');
-    } else {
-      setNovaSenha(newSenha);
-      setError('');
-    }
+    setNovaSenha(e.target.value);
   };
 
   const handleConfirmPasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const newConfirmarSenha = e.target.value;
-    
-    if (novaSenha !== newConfirmarSenha) {
-      setError('As senhas não coincidem');
-      setConfirmarSenha('');
-    } else {
-      setConfirmarSenha(newConfirmarSenha);
-      setError('');
-    }
+    setConfirmarSenha(e.target.value);
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -53,16 +37,23 @@ export const ResetPassword: React.FC = () => {
       return;
     }
 
+    if (!validateSenha(novaSenha)) {
+      setError('A senha deve conter pelo menos 8 caracteres');
+      return;
+    }
+
+    setError('');
+
     try {
       const response = await axios.put(`http://localhost:5555/usuarios/redefinir-senha/${token}/${novaSenha}`);
       console.log(response);
         Toast.fire({
           icon: 'success',
           title: 'Senha redefinida com sucesso!',
-        }).then(() => navigate('/login')); // Redireciona para a página de login após a redefinição bem-sucedida
+        }).then(() => navigate('/login'));
     } catch (error) {
       console.error(error);
-      warning('Erro ao redefinir senha2');
+      warning('Erro ao redefinir senha, tente novamente.');
     }
   };
 

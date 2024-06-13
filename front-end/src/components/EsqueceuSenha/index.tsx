@@ -25,8 +25,9 @@ const EsqueceuSenha: React.FC = () => {
               return;
           }
             const response = await api.mandarToken(email);
+            console.log(response);
             
-            if (response.data === 'Usuário inexistente') {
+            if (response === 'Usuário inexistente') {
                 warning('Erro ao enviar e-mail de recuperação, usuário inexistente');
             } else {
                 Toast.fire({
@@ -38,7 +39,7 @@ const EsqueceuSenha: React.FC = () => {
             }
         } catch (error) {
             console.error(error);
-            warning('Erro ao enviar e-mail de recuperação1');
+            warning('Erro ao enviar e-mail de recuperação');
         }
     };
 
