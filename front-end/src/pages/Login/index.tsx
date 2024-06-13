@@ -149,6 +149,7 @@ export const Login = () => {
                         <a href="/esqueceu-senha" className="forgot-password-link">Esqueceu a senha?</a>
                     </div>
                     <button className="formBtn">Entrar</button>
+                    <a className="mobile" href="/cadastro">Não tem uma conta? Clique aqui</a>
                 </div>
             </form>
         </div>

@@ -250,6 +250,7 @@ export const Cadastro = () => {
                         </div>
 
                         <button type="submit" value="Cadastrar" className="formBtn">Cadastrar</button>
+                        <a className="mobile" href="/login">Já tem uma conta? Clique aqui!</a>
                     </div>
                 </form>
             </div>
