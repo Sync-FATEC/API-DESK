@@ -292,8 +292,22 @@ aside {
     padding: 0 30px;
   }
 
-  .formInput input {
-    width: 90%;
+  .formInput, .password-input-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .password-input-container .password-toggle-icon {
+    position: absolute;
+    right: -30px;
+    top: 35%;
+    transform: translateY(-50%);
+    cursor: pointer;
+  }
+
+  .formInput  input {
+    width: 150%;
     align-items: center;
   }
 
@@ -316,9 +330,7 @@ aside {
     --fonte-button: 12px;
     --fonte-buttonAside: 16px;
   }
-  .formContainer {
-    padding: 20px;
-  }
+
   .formTitle, .formTitle2 {
     padding: 0 10px;
   }

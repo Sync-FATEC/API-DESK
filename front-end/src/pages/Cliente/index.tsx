@@ -103,19 +103,37 @@ const Cliente: React.FC = () => {
                                 <div className="ticket-list">
                                     <div className="ticket-types">
                                         <div>ID</div>
-                                        <div>Abertura</div>
+                                        {filter === 4 ? <div>Fechamento</div> : ''}
+                                        {filter !== 4 ? <div>Aberto</div> : ''}
                                         <div>Titulo</div>
                                         <div>Categoria</div>
                                         <div>Status</div>
                                         <div>Visualizar</div>
                                     </div>
                                     {filteredTickets.map((ticket) => (
-                                        <div className="ticket-item" key={ticket.ticketsID}>
+                                        <div className="ticket-item desktop" key={ticket.ticketsID}>
                                             <div className='ticket-itemDiv'>{ticket.ticketsID}</div>
-                                            <div className='ticket-itemDiv'>{new Date(ticket.dataAbertura).toLocaleDateString('pt-BR', { hour: 'numeric', minute: 'numeric', day: 'numeric', month: 'numeric', year: 'numeric' })}</div>
+                                            { filter === 4 && ticket.dataFechamento ? <div className='ticket-itemDiv'>{new Date(ticket.dataFechamento).toLocaleDateString('pt-BR', { hour: 'numeric', minute: 'numeric', day: 'numeric', month: 'numeric', year: 'numeric' })}</div> : ''}
+                                            { filter !== 4 && ticket.dataAbertura ? <div className='ticket-itemDiv'>{new Date(ticket.dataAbertura).toLocaleDateString('pt-BR', { hour: 'numeric', minute: 'numeric', day: 'numeric', month: 'numeric', year: 'numeric' })}</div> : ''}
                                             <div className='ticket-itemDiv'>{ticket.titulo}</div>
                                             <div className='ticket-itemDiv'>{ticket.categoria.categoria}</div>
                                             <div className='ticket-itemDiv'>{getStatus(ticket.status)}
+                                            </div>
+                                            <div className='ticket-itemDiv'>
+                                                <span className="material-symbols-outlined" onClick={() => handleOpenVisualizarTicketModal(ticket)}>
+                                                    mystery
+                                                </span>
+                                            </div>
+                                        </div>
+                                    ))}
+                                    {filteredTickets.map((ticket) => (
+                                        <div className="ticket-item mobile" key={ticket.ticketsID}>
+                                            <div className='ticket-itemDiv mobile'>{ticket.ticketsID}</div>
+                                            <div className='ticket-itemDiv'>Titulo: {ticket.titulo}</div>
+                                            <div className='ticket-itemDiv'>Categoria: {ticket.categoria.categoria}</div>
+                                            { filter === 4 && ticket.dataFechamento ? <div className='ticket-itemDiv'>Aberto: {new Date(ticket.dataFechamento).toLocaleDateString('pt-BR', { hour: 'numeric', minute: 'numeric', day: 'numeric', month: 'numeric', year: 'numeric' })}</div> : ''}
+                                            { filter !== 4 && ticket.dataAbertura ? <div className='ticket-itemDiv'>Fechamento: {new Date(ticket.dataAbertura).toLocaleDateString('pt-BR', { hour: 'numeric', minute: 'numeric', day: 'numeric', month: 'numeric', year: 'numeric' })}</div> : ''}
+                                            <div className='ticket-itemDiv'>Status: {getStatus(ticket.status)}
                                             </div>
                                             <div className='ticket-itemDiv'>
                                                 <span className="material-symbols-outlined" onClick={() => handleOpenVisualizarTicketModal(ticket)}>

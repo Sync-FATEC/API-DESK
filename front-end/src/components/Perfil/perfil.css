@@ -1,6 +1,11 @@
+.modalContent {
+  width: 60%;
+  max-width: 500px;
+}
+
 .modalPerfil {
     padding: 10px;
-    width: 350px;
+    width: calc(100% - 20px) !important;
     background-color: var(--white-color);
     z-index: 10000;
 }
@@ -90,10 +95,6 @@
     .close{
         padding: 0 10px;
     }
-    .modalPerfil {
-      width: 80%;
-      padding: 10px;
-    }
   
     .confirmButton {
       width: 80%;
@@ -121,12 +122,8 @@
     }
   }
   
+
   @media (max-width: 480px) {
-    .modalPerfil {
-      width: 80%;
-    
-    }
-  
     .confirmButton {
       width: 80%;
     }

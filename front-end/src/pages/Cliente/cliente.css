@@ -47,10 +47,6 @@
     color: var(--white-color);
 }
 
-.ticket-list {
-    padding: var(--padding-global);
-}
-
 .ticket-types {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
@@ -108,12 +104,10 @@ h1{
     padding: 0 0 20px;
 }
 .ticket-content {
-    
     background-color: var(--gray-color);
-    min-width:100vh;
     height: 100%;
-    width: 100%;
-    min-height: 100vh
+    min-height: 100vh;
+    padding: 20px 10%;
 }
 
 .modal-content {
@@ -122,3 +116,32 @@ h1{
     box-sizing: border-box; /* Isso ajuda a manter padding dentro da caixa */
 }
 
+@media (min-width: 900px) {
+    .mobile {
+        display: none;
+    }
+}
+
+@media (max-width: 900px) {
+    .ticket-types {
+        display: none;
+    }
+
+    .ticket-item {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .ticket-itemDiv:first-child {
+       display: none;
+    }
+
+    .ticket-itemDiv {
+        padding: 5px;
+    }
+
+    .desktop {
+        display: none;
+    }
+    
+}
