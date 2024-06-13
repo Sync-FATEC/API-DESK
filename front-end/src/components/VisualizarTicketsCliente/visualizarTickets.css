@@ -97,6 +97,9 @@
     .containerTicketChatTemplate {
         width: 100% !important;
     }
+}
+
+@media (max-height: 850px) {
     .modal {
         align-items: flex-start;
     }
