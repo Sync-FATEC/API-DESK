@@ -131,8 +131,8 @@ const Cliente: React.FC = () => {
                                             <div className='ticket-itemDiv mobile'>{ticket.ticketsID}</div>
                                             <div className='ticket-itemDiv'>Titulo: {ticket.titulo}</div>
                                             <div className='ticket-itemDiv'>Categoria: {ticket.categoria.categoria}</div>
-                                            { filter === 4 && ticket.dataFechamento ? <div className='ticket-itemDiv'>Aberto: {new Date(ticket.dataFechamento).toLocaleDateString('pt-BR', { hour: 'numeric', minute: 'numeric', day: 'numeric', month: 'numeric', year: 'numeric' })}</div> : ''}
-                                            { filter !== 4 && ticket.dataAbertura ? <div className='ticket-itemDiv'>Fechamento: {new Date(ticket.dataAbertura).toLocaleDateString('pt-BR', { hour: 'numeric', minute: 'numeric', day: 'numeric', month: 'numeric', year: 'numeric' })}</div> : ''}
+                                            { filter === 4 && ticket.dataFechamento ? <div className='ticket-itemDiv'>Fechamento:: {new Date(ticket.dataFechamento).toLocaleDateString('pt-BR', { hour: 'numeric', minute: 'numeric', day: 'numeric', month: 'numeric', year: 'numeric' })}</div> : ''}
+                                            { filter !== 4 && ticket.dataAbertura ? <div className='ticket-itemDiv'>Aberto: {new Date(ticket.dataAbertura).toLocaleDateString('pt-BR', { hour: 'numeric', minute: 'numeric', day: 'numeric', month: 'numeric', year: 'numeric' })}</div> : ''}
                                             <div className='ticket-itemDiv'>Status: {getStatus(ticket.status)}
                                             </div>
                                             <div className='ticket-itemDiv'>
