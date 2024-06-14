@@ -98,7 +98,7 @@ export const ChatTecnico: React.FC<Props> = ({ selectedTicket }) => {
 
     return (
         <>
-            <h2 className='tituloChat'>Chat com Cliente</h2>
+            <h2 className='tituloChat'>Chat com {selectedTicket?.usuario?.nome}</h2>
             <div className='containerMensagemChat'>
                 {anotacoes.map((message, index) => (
                     <>

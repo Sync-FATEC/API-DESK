@@ -100,7 +100,14 @@
 }
 
 @media (max-height: 850px) {
-    .modal {
+    .modalVisualizarTicket {
         align-items: flex-start;
     }
+    .titleMobile{
+        font-size: 20px;
+    }
+    .close{
+        font-size: 40px;
+    }
+
 }

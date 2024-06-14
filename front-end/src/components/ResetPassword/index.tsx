@@ -62,13 +62,15 @@ export const ResetPassword: React.FC = () => {
       <div className="reset-password-formContainer">
         <form onSubmit={handleSubmit}>
           <h2>Redefinir Senha</h2>
-          <div className="reset-password-formInput">
+          <div className="formInput">
             <input
               type="password"
               value={novaSenha}
               onChange={handlePasswordChange}
               placeholder="Nova Senha"
             />
+              </div>
+              <div className="formInput">
             <input
               type="password"
               value={confirmarSenha}
@@ -77,7 +79,7 @@ export const ResetPassword: React.FC = () => {
             />
             <div className="reset-password-errorMessage">{error}</div>
           </div>
-          <button className="reset-password-formBtn" type="submit">
+          <button className="formBtn" type="submit">
             Redefinir
           </button>
         </form>

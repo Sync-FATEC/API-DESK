@@ -2,6 +2,7 @@ import React, { useState, useContext } from "react";
 import { AuthContext } from "../../contexts/Auth/AuthContext";
 import { useApi } from "../../hooks/useApi";
 import logo from '../../assets/img/logo.svg';
+import logoAzul from  "../../assets/img/logo-header.svg";
 import { useNavigate } from "react-router-dom";
 import { loginSenhaEmail, LoginTecnicoHorario, Toast, warning } from "../../components/Swal/swal";
 
@@ -113,6 +114,7 @@ export const Login = () => {
         <div className="formContainer">
             <form onSubmit={handleSubmitLogin}>
                 <div className="form">
+                <img className='mobile' id="logo" src={logoAzul} alt="logo" />
                     <h2 className="formTitle">Entre na sua conta</h2>
                     <h3 className="formTitle2">Insira seus dados</h3>
                     <div className="formInput">
@@ -149,7 +151,7 @@ export const Login = () => {
                         <a href="/esqueceu-senha" className="forgot-password-link">Esqueceu a senha?</a>
                     </div>
                     <button className="formBtn">Entrar</button>
-                    <a className="mobile" href="/cadastro">Não tem uma conta? Clique aqui</a>
+                    <a className="mobile" id="link" href="/cadastro">Não tem uma conta? Clique aqui</a>
                 </div>
             </form>
         </div>

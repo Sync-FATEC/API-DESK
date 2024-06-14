@@ -3,6 +3,7 @@ import { useApi } from '../../hooks/useApi';
 import { Toast, warning } from '../../components/Swal/swal';
 import './esqueceuSenha.css';
 import { useNavigate } from 'react-router-dom';
+import logoAzul from "../../assets/img/logo-header.svg";
 
 const EsqueceuSenha: React.FC = () => {
     const api = useApi();
@@ -47,9 +48,20 @@ const EsqueceuSenha: React.FC = () => {
         <div className="forgot-container">
             <div className="forgot-formContainer">
                 <form onSubmit={handleSubmit}>
+                <div className='containerLogo'>
+                        <button className="btnVoltar" onClick={() => navigate('/login')}>
+                            <span className="material-symbols-outlined">
+                                arrow_back_ios
+                            </span>
+                        </button>
+                        <div>
+                            <img className='logoEsqueciSenha' src={logoAzul} alt="logo" />
+
+                        </div>
+                    </div>
                     <h2>Esqueceu a senha?</h2>
                     <p>Insira seu e-mail para receber um link de recuperação.</p>
-                    <div className="forgot-formInput">
+                    <div className="formInputSenha">
                         <input
                             type="email"
                             value={email}
@@ -58,7 +70,7 @@ const EsqueceuSenha: React.FC = () => {
                         />
                         <div className="forgot-errorMessage">{emailError}</div>
                     </div>
-                    <button className="forgot-formBtn" type="submit">
+                    <button className="formBtn" type="submit">
                         Enviar
                     </button>
                 </form>

@@ -144,7 +144,7 @@ const Cliente: React.FC = () => {
                                     ))}
                                 </div>
                                 {isVisualizarTicketModalOpen && selectedTicket && (
-                                    <div className="modal">
+                                    <div className="modalVisualizarTicket">
                                         <div className="modal-content">
                                             <span className="close" onClick={handleCloseVisualizarTicketModal}>&times;</span>
                                             <VisualizarTicketCliente selectedTicket={selectedTicket} onClose={handleCloseVisualizarTicketModal} />

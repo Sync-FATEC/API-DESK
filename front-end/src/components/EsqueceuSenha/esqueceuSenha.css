@@ -22,34 +22,96 @@
   margin-bottom: 1.5rem;
 }
 
-.forgot-formInput {
-  margin-bottom: 1rem;
-  text-align: left;
-}
 
-.forgot-formInput input {
-  width: 100%;
-  padding: 0.5rem;
-  margin-top: 0.25rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
 
 .forgot-errorMessage {
-  color: red;
+  color: var(--red-color);
   font-size: 0.875rem;
   margin-top: 0.25rem;
 }
 
-.forgot-formBtn {
-  padding: 0.75rem 1.5rem;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
+.formBtn:hover {
+  background-color: #0056b3;
+}
+.containerLogo{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.forgot-formBtn:hover {
-  background-color: #0056b3;
+.logoEsqueciSenha{
+  width: 80px;
+}
+
+.btnVoltar{
+  border: none;
+  background-color: transparent;
+}
+
+.formInputSenha {
+  position: relative;
+  margin-bottom: 20px;
+  
+}
+
+.formInputSenha input {
+  text-align: left;
+  outline: none;
+  font-size: var(--fonte-input);
+  padding: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.2); 
+  display: block;
+  width: 500px;
+  height: 40px;
+  box-shadow: none;
+  transition: 200ms ease-in-out;
+  border-radius: 10px;
+}
+
+
+.formInputSenha input:focus {
+  border-color: var(--blue-color); 
+}
+
+.formInputSenha input::placeholder {
+  color: var(--gray-color); 
+}
+
+@media (max-width: 768px) {
+  .forgot-formContainer{
+    margin: 20px
+  }
+  .formBtn{
+    width: 150px;
+    font-size: 16px;
+  }
+
+  .formInputSenha {
+    display: flex;
+    align-items: center;
+  }
+  .formInputSenha  input {
+    width: 150%;
+    align-items: center;
+  }
+
+
+
+}
+@media (max-width: 480px) {
+  .forgot-formContainer{
+    margin: 20px
+  }
+  .formBtn{
+    width: 150px;
+    font-size: 16px;
+  }
+  .formInputSenha  input {
+    width: 150%;
+    align-items: center;
+  }
+
+
 }

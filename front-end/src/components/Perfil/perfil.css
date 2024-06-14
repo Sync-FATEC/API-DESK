@@ -89,9 +89,10 @@
         align-items: center;
         position: absolute;
     }
-    .modalContent{
-        padding: 10px;
-    }
+    .modalVisualizarTicket{
+      position: absolute;
+  }
+
     .close{
         padding: 0 10px;
     }
