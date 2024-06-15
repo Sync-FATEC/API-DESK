@@ -6,11 +6,14 @@ Desenvolver uma solução completa para aprimorar a Gestão de Chamadas de Servi
 <h2>:movie_camera: MVP </h2>
 
 <h3>Cliente</h3>
-<img src="https://github.com/Sync-FATEC/API-DESK/raw/main/assets/53847691/9d698358-a8b8-48e3-855d-7a27a4322234" 
+<img src="https://github.com/Sync-FATEC/API-DESK/raw/main/assets/127795446/68656ff8-3265-483d-abad-a2ebaadd42f4" 
 alt="MVP">
 
+<h3>Técnico</h3>
+<img src="https://github.com/Sync-FATEC/API-DESK/raw/main/assets/127795446/8b4e6533-004f-4d58-8b6f-b34842f2535c" 
+alt="MVP">
 <h3>Administrador</h3>
-<img src="https://github.com/Sync-FATEC/API-DESK/raw/main/assets/53847691/a064a6e9-9f9c-436d-bc3e-2c5f90f4bc36" 
+<img src="https://github.com/Sync-FATEC/API-DESK/raw/main/assets/127795446/1adff50f-a797-4884-954d-2b44fcadda77" 
 alt="MVP">
 
 <h2>💻Tecnologias: </h2>
@@ -314,9 +317,6 @@ alt="MVP">
   </tbody>
 </table>
 
-<h3>🗃️Modelo de Dados</h3>
-<img src="https://github.com/Sync-FATEC/API-DESK/blob/main/doc/docs_sprints/sprint03/BDLogico.jpg">
-
 <h3>📄Manual do Usuário<h3>
 <td align="center"><a href="https://github.com/Sync-FATEC/API-DESK/blob/main/doc/docs_tecnicos/ManualdoUsuario.pdf">Clique Aqui</a></td>
 
@@ -415,8 +415,8 @@ alt="MVP">
   <tr>
     <td align="center">04</td>
     <td>16/06/2023</td>
-    <td></td>
-    <td align="center">🔄</td>
+    <td align="center"><a href="https://github.com/Sync-FATEC/API-DESK/blob/main/doc/docs_sprints/sprint04/sprint04.md">Relatório</a></td> 
+    <td align="center">✅</td>
   </tr>
 </tbody>
 </table>
@@ -478,82 +478,63 @@ alt="MVP">
         </tr>
     </thead>
     <tbody>
-      <tr>
-    <td>
-        <a href="https://github.com/Ana-Laura-Moratelli">
-            <img src="https://avatars.githubusercontent.com/u/127795446?v=4" alt="fotoperfil" width="45">
-        </a>
-    </td>
-    <td>Product Owner</td>
-    <td>Ana Laura Moratelli</td>
-    <td>
-        <a href="https://www.linkedin.com/in/anamoratelli">
-            <img src='https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white&color=000000' />
-        </a>
-    </td>
-    <td>
-        <a href="https://github.com/Ana-Laura-Moratelli">
-            <img src='https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white&color=000000' />
-        </a>
-    </td>
-</tr>
         <tr>
             <td>
-                <a href="https://github.com/maiconsso">
-                    <img src="https://avatars.githubusercontent.com/u/53847691?s=400&u=f3a98c19b124cc997a5ddcab63ae00f590d81a19&v=4"alt="fotoperfil" width="45">
+                <a href="https://github.com/joaogabgr">
+                    <img src="https://avatars.githubusercontent.com/u/104585766?v=4" alt="fotoperfil" width="45">
                 </a>
             </td>
             <td>Scrum Master</td>
-            <td>Michael Souza</td>
+            <td>João Gabriel Solis</td>
             <td>
-                <a href="https://www.linkedin.com/in/michael-ssouza/">
+                <a href="https://www.linkedin.com/in/joaoggbs/">
                     <img src='https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white&color=000000' />
                 </a>
             </td>
             <td>
-                <a href="https://github.com/maiconsso">
+                <a href="https://github.com/joaogabgr">
                     <img src='https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white&color=000000' />
                 </a>
             </td>
         </tr>
-<tr>
-    <td>
-        <a href="https://github.com/SavioMessias">
-            <img src="https://avatars.githubusercontent.com/u/126280277?v=4" alt="fotoperfil" width="45">
-        </a>
-    </td>
-    <td>Scrum Team</td>
-    <td>Savio Messias</td>
-    <td>
-        <a href="https://www.linkedin.com/in/kayquemessias">
-            <img src='https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white&color=000000' />
-        </a>
-    </td>
-    <td>
-        <a href="https://github.com/SavioMessias">
-            <img src='https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white&color=000000' />
-        </a>
-    </td>
-</tr>
-      <tr>
-    <td>
-        <a href="https://github.com/ClaudioJaymeDiniz">
-            <img src="https://avatars.githubusercontent.com/u/142222453?v=4" alt="fotoperfil" width="45">
-        </a>
-    </td>
-    <td>Scrum Team</td>
-    <td>Claudio Jayme Diniz</td>
-    <td>
-        <a href="https://www.linkedin.com/in/claudio-jayme/">
-            <img src='https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white&color=000000' />
-        </a>
-    </td>
-    <td>
-        <a href="https://github.com/ClaudioJaymeDiniz">
-            <img src='https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white&color=000000' />
-        </a>
-    </td>
-</tr>
+        <tr>
+            <td>
+                <a href="https://github.com/Ana-Laura-Moratelli">
+                    <img src="https://avatars.githubusercontent.com/u/127795446?v=4" alt="fotoperfil" width="45">
+                </a>
+            </td>
+            <td>Product Owner</td>
+            <td>Ana Laura Moratelli</td>
+            <td>
+                <a href="https://www.linkedin.com/in/anamoratelli">
+                    <img src='https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white&color=000000' />
+                </a>
+            </td>
+            <td>
+                <a href="https://github.com/Ana-Laura-Moratelli">
+                    <img src='https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white&color=000000' />
+                </a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a href="https://github.com/ClaudioJaymeDiniz">
+                    <img src="https://avatars.githubusercontent.com/u/142222453?v=4" alt="fotoperfil" width="45">
+                </a>
+            </td>
+            <td>Scrum Team</td>
+            <td>Claudio Jayme Diniz</td>
+            <td>
+                <a href="https://www.linkedin.com/in/claudio-jayme/">
+                    <img src='https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white&color=000000' />
+                </a>
+            </td>
+            <td>
+                <a href="https://github.com/ClaudioJaymeDiniz">
+                    <img src='https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white&color=000000' />
+                </a>
+            </td>
+        </tr>
         <tr>
             <td>
                 <a href="https://github.com/filipecolla">
@@ -594,41 +575,22 @@ alt="MVP">
         </tr>
         <tr>
             <td>
-                <a href="https://github.com/joaogabgr">
-                    <img src="https://avatars.githubusercontent.com/u/104585766?v=4" alt="fotoperfil" width="45">
+                <a href="https://github.com/ZduardoPereira">
+                    <img src="https://avatars.githubusercontent.com/u/127692036?v=4" alt="fotoperfil" width="45">
                 </a>
             </td>
             <td>Scrum Team</td>
-            <td>João Gabriel Solis</td>
+            <td>José Eduardo Fernandes Pereira</td>
             <td>
-                <a href="https://www.linkedin.com/in/joaoggbs/">
+                <a href="https://www.linkedin.com/in/jos%C3%A9-eduardo-fernandes-pereira-b26517284/">
                     <img src='https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white&color=000000' />
                 </a>
             </td>
             <td>
-                <a href="https://github.com/joaogabgr">
+                <a href="https://github.com/ZduardoPereira">
                     <img src='https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white&color=000000' />
                 </a>
             </td>
         </tr>
-<tr>
-    <td>
-        <a href="https://github.com/ZduardoPereira">
-            <img src="https://avatars.githubusercontent.com/u/127692036?v=4" alt="fotoperfil" width="45">
-        </a>
-    </td>
-    <td>Scrum Team</td>
-    <td>José Eduardo Fernandes Pereira</td>
-    <td>
-        <a href="https://www.linkedin.com/in/jos%C3%A9-eduardo-fernandes-pereira-b26517284/">
-            <img src='https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white&color=000000' />
-        </a>
-    </td>
-    <td>
-        <a href="https://github.com/ZduardoPereira">
-            <img src='https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white&color=000000' />
-        </a>
-    </td>
-</tr>
     </tbody>
 </table>
