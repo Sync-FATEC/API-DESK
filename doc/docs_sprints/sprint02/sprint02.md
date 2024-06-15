@@ -67,31 +67,15 @@
             <td>Configurar tabelas para suportar o armazenamento de anotações adicionais por ticket</td>
         </tr>
         <tr>
-            <td>Como técnico, quero poder adicionar mais informações ou fazer perguntas adicionais sobre o ticket por meio de anotações na interface do ticket</td>
-            <td>Permitir que técnicos adicionem informações adicionais ou façam perguntas diretamente através da interface do ticket.</td>
-            <td>8</td>
-            <td>Criar anotação na interface do sistema para adicionar informações e perguntas aos tickets</td>
-            <td>Desenvolver lógica para receber e armazenar as novas anotações nos tickets existentes</td>
-            <td>Configurar tabelas para suportar o armazenamento de anotações adicionais por ticket</td>
-        </tr>
-        <tr>
-<<<<<<< HEAD
-            <td>Como técnico, quero poder escalar chamados para um técnico de nível superior ou a um técnico específico, para chamados que requerem mais conhecimento.</td>
-            <td>Implementar uma funcionalidade de escalonamento de chamados para técnicos de nível superior  ou a um técnico específico para sempre existir um técnico responsável, quando necessário, permitindo a seleção do técnico apropriado com base na área de conhecimento necessária.</td>
-            <td>3</td>
-            <td>Criar botão para mudar o escalamento do nível do chamado</td>
-            <td>Criar função para realizar o escalamento de chamados para outro nível do suporte e a outro técnico</td>
-=======
             <td>Como técnico, quero poder escalar chamados para um técnico de nível superior, para chamados que requerem mais conhecimento</td>
             <td>Implementar uma funcionalidade de escalonamento de chamados para técnicos de nível superior quando necessário, permitindo a seleção do técnico apropriado com base na área de conhecimento necessária.</td>
             <td>3</td>
             <td>Criar botão para mudar o escalamento do nível do chamado</td>
             <td>Criar função para realizar o escalamento de chamados para outro nível do suporte</td>
->>>>>>> sprint03
             <td>Configurar o banco de dados para armazenar os dados do ticket</td>
         </tr>
         <tr>
-            <td>Como técnico, Quero poder filtrar chamados por prioridade, para que eu possa priorizar e resolver primeiro os chamados mais críticos.</td>
+            <td>Como técnico, quero poder filtrar chamados por prioridade, para que eu possa priorizar e resolver primeiro os chamados mais críticos.</td>
             <td>Funcionalidade de Filtragem por Prioridade: O sistema deve permitir que os técnicos filtrem chamados por prioridade (alta, média, baixa) na interface de gerenciamento de chamados.</td>
             <td>8</td>
             <td>Desenvolver filtros na interface de visualização de tickets para selecionar chamados por prioridade.</td>
@@ -154,8 +138,7 @@
             <td>Implementar funcionalidades para armazenar e aplicar os templates criados.</td>
             <td>Configurar tabelas para armazenar os templates de respostas e mensagens de finalização.</td>
         </tr>
-<<<<<<< HEAD
-       <tr>
+        <tr>
             <td>Como técnico, quero poder selecionar um ticket para atendimento, para que eu possa assumir a responsabilidade de resolver o problema reportado pelo cliente de forma eficiente e organizada.</td>
             <td>Ao selecionar um ticket para atendimento, este deve ser automaticamente marcado como "em atendimento" e atribuído a mim como o técnico responsável.</td>
             <td>6</td>
@@ -163,8 +146,6 @@
             <td>Criar função para visualizar o técnico responsável pelo ticket.</td>
             <td>Configurar o banco de dados para armazenar os dados do ticket.</td>
         </tr>
-=======
->>>>>>> sprint03
     </tbody>
 </table>
 
