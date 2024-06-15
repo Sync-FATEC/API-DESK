@@ -42,8 +42,8 @@
 .form {
   padding: 20px;
   display: flex;
-  flex-direction: column; 
-  align-items: center; 
+  flex-direction: column;
+  align-items: center;
 }
 
 .formTitle {
@@ -63,7 +63,7 @@
 .formInput {
   position: relative;
   margin-bottom: 20px;
-  
+
 }
 
 .formInput input {
@@ -71,7 +71,7 @@
   outline: none;
   font-size: var(--fonte-input);
   padding: 10px;
-  border: 1px solid rgba(0, 0, 0, 0.2); 
+  border: 1px solid rgba(0, 0, 0, 0.2);
   display: block;
   width: 500px;
   height: 40px;
@@ -82,24 +82,24 @@
 
 
 .formInput input:focus {
-  border-color: var(--blue-color); 
+  border-color: var(--blue-color);
 }
 
 .formInput input::placeholder {
-  color: var(--gray-color); 
+  color: var(--gray-color);
 }
 
 .labelInput {
   position: absolute;
-  left: 10px; 
-  top: -10px; 
+  left: 10px;
+  top: -10px;
   background: var(--white-color);
-  font-size: var(--fonte-input); 
-  color:var(--black-color);
+  font-size: var(--fonte-input);
+  color: var(--black-color);
   padding: 0 5px;
   transition: 200ms ease-in-out;
   pointer-events: none;
-  font-weight:600;
+  font-weight: 600;
 
 }
 
@@ -125,6 +125,7 @@ aside {
   padding: 20px;
   color: var(--white-color);
 }
+
 .botaoAside {
   margin: 64px 0 0;
   padding: 12px;
@@ -137,11 +138,13 @@ aside {
   cursor: pointer;
   color: var(--white-color);
 }
+
 .botaoAside a {
-  color: var(--black-color); 
+  color: var(--black-color);
 }
-.logo{
-  padding: 64px 64px ;
+
+.logo {
+  padding: 64px 64px;
 }
 
 /* Container para centralizar os componentes da página admin */
@@ -154,7 +157,7 @@ aside {
   flex-direction: column;
 }
 
-.rowInformacoes{
+.rowInformacoes {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -162,66 +165,76 @@ aside {
   margin: 10px;
   border: 2px solid var(--gray-color);
   border-radius: 10px;
-  width: 100%; 
-  font-weight:600;
+  width: 100%;
+  font-weight: 600;
 
 }
 
-.afazer{
+.afazer {
   padding: 6px 12px;
   border: 1px solid var(--red-color);
   border-radius: 10px;
 }
 
-.atendendo{
+.atendendo {
   padding: 6px 12px;
   border: 1px solid var(--black-color);
   border-radius: 10px;
 }
-.pendente{
+
+.pendente {
   padding: 6px 12px;
   border: 1px solid var(--orange-color);
   border-radius: 10px;
 }
-.finalizado{
+
+.finalizado {
   padding: 6px 12px;
   border: 1px solid var(--green-color);
   border-radius: 10px;
 }
-#btnAtendendo{
+
+#btnAtendendo {
   color: var(--black-color);
   cursor: pointer;
 
 }
-#btnPendente{
+
+#btnPendente {
   color: var(--orange-color);
   cursor: pointer;
 
 }
-#btnFinalizar{
+
+#btnFinalizar {
   color: var(--green-color);
   cursor: pointer;
 
 }
-#btnSla{
+
+#btnSla {
   margin-left: 140px;
   cursor: pointer;
 
 
 }
-#btnAfazer{
+
+#btnAfazer {
   color: var(--red-color);
   cursor: pointer;
 
 }
-#btnEscalar{
-    color: var(--blue-color);
-    cursor: pointer;
+
+#btnEscalar {
+  color: var(--blue-color);
+  cursor: pointer;
 
 }
-#btnBaseConhecimento{
+
+#btnBaseConhecimento {
   cursor: pointer;
 }
+
 #btnAtendendo:active,
 #btnPendente:active,
 #btnFinalizar:active,
@@ -239,23 +252,158 @@ aside {
   transition: color 0.3s;
   background-color: transparent;
   border: none;
-  margin-left: 20px; 
+  margin-left: 20px;
 }
 
 .excluir:hover {
   color: var(--red-color);
 }
+
 ::-webkit-scrollbar {
-  width: 5px;  
+  width: 5px;
 }
+
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;  
+  background: #f1f1f1;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #888;  
+  background: #888;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #555;  
+  background: #555;
+}
+
+#logo {
+  width: 150px;
+}
+
+.mobile {
+  margin: 15px;
+  text-decoration: none;
+}
+
+.forgot-password-link,
+#link {
+  margin: 15px;
+  color: var(--blue-color);
+  text-decoration: none;
+}
+
+/* Media Queries para tornar responsivo */
+@media (max-width: 1200px) {
+  :root {
+    --padding-global: 0 60px;
+    --fonte-titulo: 28px;
+    --fonte-subTitulo: 24px;
+    --fonte-label: 20px;
+    --fonte-input: 14px;
+    --fonte-button: 14px;
+    --fonte-buttonAside: 18px;
+  }
+}
+
+@media (max-width: 768px) {
+  .containerPrincipal {
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+
+  aside {
+    display: none;
+  }
+
+  .formContainer {
+    width: 100%;
+
+  }
+
+  .adminContainer {
+    padding: 0 30px;
+  }
+
+  .formInput,
+  .password-input-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .labelInput {
+    font-size: 14px;
+  }
+
+
+  .password-input-container .password-toggle-icon {
+    position: absolute;
+    right: -30px;
+    top: 35%;
+    transform: translateY(-50%);
+    cursor: pointer;
+  }
+
+
+  #btnSla {
+    margin-left: 0;
+  }
+
+  .formTitle,
+  .formTitle2 {
+    margin-bottom: 20px;
+  }
+
+  .password-toggle-icon {
+    display: none;
+  }
+}
+
+
+@media (max-width: 480px) {
+  :root {
+    --padding-global: 0 20px;
+    --fonte-titulo: 24px;
+    --fonte-subTitulo: 20px;
+    --fonte-label: 18px;
+    --fonte-input: 12px;
+    --fonte-button: 12px;
+    --fonte-buttonAside: 16px;
+  }
+
+  .formTitle,
+  .formTitle2 {
+    padding: 0 10px;
+  }
+
+  .botaoAside {
+    width: 100%;
+    max-width: 150px;
+  }
+
+  .rowInformacoes {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  #btnSla {
+    margin-left: 0;
+  }
+
+  .password-toggle-icon {
+    display: none;
+  }
+
+  .formInput input {
+    width: 150%;
+    align-items: center;
+  }
+
+  .labelInput {
+    font-size: 14px;
+  }
+
+
 }

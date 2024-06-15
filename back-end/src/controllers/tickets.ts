@@ -176,3 +176,49 @@ export const alterarTecnico = async (ticketID: number, tecnicoID: number, tipoTe
         return 'Erro na alteração do técnico do ticket';
     }
 }
+
+export const countSLA = async () => {
+    const tickets = await ticketsRepositorio.query(`
+    SELECT 
+        SUM(CASE WHEN COALESCE(dataFechamento, NOW()) > dataSla THEN 1 ELSE 0 END) AS totalAtrasados,
+        SUM(CASE WHEN COALESCE(dataFechamento, NOW()) <= dataSla THEN 1 ELSE 0 END) AS totalNoPrazo
+    FROM tickets
+`);
+    return tickets;
+}
+
+export const countTicketsCategoria = async () => {
+    const tickets = await ticketsRepositorio.query(`
+    SELECT 
+        c.categoria,
+        COUNT(t.ticketsID) AS totalTickets
+    FROM tickets t
+    INNER JOIN categorias c ON t.categoriaID = c.categoriaID
+    GROUP BY c.categoria
+`);
+    return tickets;
+}
+
+export const countTicketsTecnico = async () => {
+    const tickets = await ticketsRepositorio.query(`
+    SELECT 
+        u.nome,
+        COUNT(t.ticketsID) AS totalTickets
+    FROM tickets t
+    INNER JOIN usuarios u ON t.tecnicoID = u.usuarioID
+    GROUP BY u.nome
+`);
+    return tickets;
+}
+
+export const countTicketsPrioridade = async () => {
+    const tickets = await ticketsRepositorio.query(`
+    SELECT 
+        e.prioridade,
+        COUNT(t.ticketsID) AS totalTickets
+    FROM tickets t
+    INNER JOIN equipamentos e ON t.equipamentosID = e.equipamentosID
+    GROUP BY e.prioridade
+`);
+    return tickets;
+}

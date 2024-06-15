@@ -11,7 +11,7 @@
     display: flex;
     flex-direction: column;
     padding: 20px;
-    width: 800px; 
+    width: 800px;
 }
 .containerVisualizarTicket {
     display: flex;
@@ -75,3 +75,39 @@
     margin: 10px 0;
 }
 */
+
+@media (max-width: 900px) {
+    .infoVisualizarTicket {
+        width: 100%;
+    }
+    .containerVisualizarTicket {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+    }
+    .modalVisualizar {
+        width: auto;
+    }
+
+    .modal-content {
+        width: 100%;
+    }
+
+    .containerTicketChatTemplate {
+        width: 100% !important;
+    }
+}
+
+@media (max-height: 850px) {
+    .modalVisualizarTicket {
+        align-items: flex-start;
+    }
+    .titleMobile{
+        font-size: 20px;
+    }
+    .close{
+        font-size: 40px;
+    }
+
+}

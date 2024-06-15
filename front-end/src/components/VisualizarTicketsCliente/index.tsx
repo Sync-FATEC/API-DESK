@@ -12,7 +12,7 @@ const VisualizarTicketCliente: React.FC<Props> = ({ selectedTicket, onClose }) =
 
     return (
         <div className="modalVisualizar">
-            <h1>#{selectedTicket.ticketsID} {selectedTicket.titulo}</h1>
+            <h1 className='titleMobile'>#{selectedTicket.ticketsID} {selectedTicket.titulo}</h1>
             <div className='containerVisualizarTicket'>
                 <div className="infoVisualizarTicket">
                     <div className="infoPair">

@@ -1,5 +1,5 @@
 import express, { Request, Response } from 'express';
-import { alterarTipoTecnico, criarTicket, excluirTicket, alterarStatusTicket, listarTickets, procurarTicket, alterarTecnico } from '../controllers/tickets';
+import { alterarTipoTecnico, criarTicket, excluirTicket, alterarStatusTicket, listarTickets, procurarTicket, alterarTecnico, countSLA, countTicketsCategoria, countTicketsTecnico, countTicketsPrioridade } from '../controllers/tickets';
 
 const router = express.Router();
 
@@ -85,5 +85,21 @@ router.put('/alterarTecnico/:ticketID/:tecnicoID/:tipoTecnico', async (req: Requ
     }
 });
 
+router.get('/countSLA', async (req: Request, res: Response) => {
+    res.json(await countSLA());
+});
+
+router.get('/countTicketsCategoria', async (req: Request, res: Response) => {
+    res.json(await countTicketsCategoria());
+});
+
+router.get('/countTicketsTecnico', async (req: Request, res: Response) => {
+    res.json(await countTicketsTecnico());
+});
+
+
+router.get('/countTicketsPrioridade', async (req: Request, res: Response) => {
+    res.json(await countTicketsPrioridade());
+});
 
 export default router;

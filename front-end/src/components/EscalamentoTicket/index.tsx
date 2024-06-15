@@ -4,21 +4,42 @@ import './escalamentoTicket.css';
 import ITickets from '../../types/ITickets';
 import { erro } from '../Swal/swal';
 import Swal from 'sweetalert2';
- 
+
 interface Props {
     selectedTicket: ITickets;
 }
- 
+
 interface ITecnico {
     usuarioID: number;
-    nome: string;   
+    nome: string;
+    turno: string;
     tipoUsuario: string;
 }
- 
+const getButtonText = (tecnico: ITecnico) => {
+    let buttonText = `${tecnico.nome}`;
+
+    switch (tecnico.turno) {
+        case 'M':
+            buttonText += ' - Manhã';
+            break;
+        case 'T':
+            buttonText += ' - Tarde';
+            break;
+        case 'N':
+            buttonText += ' - Noite';
+            break;
+        default:
+            buttonText += ` - ${tecnico.turno}`;
+            break;
+    }
+
+    return buttonText;
+};
+
 const EscalamentoTicket: React.FC<Props> = ({ selectedTicket }) => {
     const [tecnicos, setTecnicos] = useState<ITecnico[]>([]);
     const [currentStatus] = useState(selectedTicket?.status || '');
- 
+
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -28,10 +49,10 @@ const EscalamentoTicket: React.FC<Props> = ({ selectedTicket }) => {
                 console.error('Erro ao buscar técnicos:', error);
             }
         };
- 
+
         fetchData();
     }, []);
- 
+
     const handleEscalamentoStatusAndamento = async (tecnico: ITecnico) => {
         if (currentStatus !== '1') {
             try {
@@ -76,9 +97,9 @@ const EscalamentoTicket: React.FC<Props> = ({ selectedTicket }) => {
         } else {
             erro('Erro ao escalonar o ticket');
         }
-    }    
- 
- 
+    }
+
+
     const handleEscalamentoTipoTec = async (tecnico: string) => {
         if (currentStatus === '1') {
             if (selectedTicket.tipoTecnico !== tecnico) {
@@ -120,7 +141,7 @@ const EscalamentoTicket: React.FC<Props> = ({ selectedTicket }) => {
             }
         }
     }
- 
+
     if (currentStatus !== '1') {
         return (
             <div>
@@ -132,9 +153,10 @@ const EscalamentoTicket: React.FC<Props> = ({ selectedTicket }) => {
                             <div className="containerEscalonamento">
                                 {tecnicos.filter(tecnico => tecnico.tipoUsuario === '1').map(tecnico => (
                                     <div key={tecnico.usuarioID} className="tecnicoItem">
-                                        <button className='btnEscalonameto' onClick={() => handleEscalamentoStatusAndamento(tecnico)}>{tecnico.nome}</button>
+                                        <button className='btnEscalonameto' onClick={() => handleEscalamentoStatusAndamento(tecnico)}>{getButtonText(tecnico)}</button>
                                     </div>
                                 ))}
+
                             </div>
                         </details>
                         <details className="detailsEscalonamento">
@@ -142,9 +164,10 @@ const EscalamentoTicket: React.FC<Props> = ({ selectedTicket }) => {
                             <div className="containerEscalonamento">
                                 {tecnicos.filter(tecnico => tecnico.tipoUsuario === '2').map(tecnico => (
                                     <div key={tecnico.usuarioID} className="tecnicoItem">
-                                        <button className='btnEscalonameto' onClick={() => handleEscalamentoStatusAndamento(tecnico)}>{tecnico.nome}</button>
+                                        <button className='btnEscalonameto' onClick={() => handleEscalamentoStatusAndamento(tecnico)}>{getButtonText(tecnico)}</button>
                                     </div>
                                 ))}
+
                             </div>
                         </details>
                         <details className="detailsEscalonamento">
@@ -152,9 +175,10 @@ const EscalamentoTicket: React.FC<Props> = ({ selectedTicket }) => {
                             <div className="containerEscalonamento">
                                 {tecnicos.filter(tecnico => tecnico.tipoUsuario === '3').map(tecnico => (
                                     <div key={tecnico.usuarioID} className="tecnicoItem">
-                                        <button className='btnEscalonameto' onClick={() => handleEscalamentoStatusAndamento(tecnico)}>{tecnico.nome}</button>
+                                        <button className='btnEscalonameto' onClick={() => handleEscalamentoStatusAndamento(tecnico)}>{getButtonText(tecnico)}</button>
                                     </div>
                                 ))}
+
                             </div>
                         </details>
                     </div>
@@ -184,5 +208,5 @@ const EscalamentoTicket: React.FC<Props> = ({ selectedTicket }) => {
         );
     }
 };
- 
+
 export default EscalamentoTicket;

@@ -1,14 +1,20 @@
-.containerAdmin{
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  width: 100%;
-  margin: 10px 0;
-}
-.titleAdmin {
+.containerGraficos{
     display: flex;
-    font-size: 40px;
     padding: var(--padding-global);
-    margin: 30px 0px;
+    justify-content: space-around;
+   
+}
+.titleDashoard{
+    padding: 20px;
+    text-align: center;
+    
+    font-size: 40px;
     color:var(--black-color)
+}
+.containerDash{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 100%;
+    margin: 10px 0;
   }

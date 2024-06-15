@@ -3,10 +3,10 @@ import logo from '../../assets/img/logo-header.svg';
 import './header.css';
 import { Perfil } from '../Perfil';
 import { Link, useNavigate } from 'react-router-dom';
-import { AuthContext } from "../../contexts/Auth/AuthContext"; 
+import { AuthContext } from "../../contexts/Auth/AuthContext";
 
 export const Header = () => {
-    const { user } = useContext(AuthContext); 
+    const { user } = useContext(AuthContext);
     const [modalOpen, setModalOpen] = useState(false);
     const navigate = useNavigate();
 
@@ -19,7 +19,7 @@ export const Header = () => {
     };
 
     const handleLogoClick = () => {
-        if (user && user.tipoUsuario) { 
+        if (user && user.tipoUsuario) {
             switch (user.tipoUsuario) {
                 case 'U':
                     navigate('/cliente');
@@ -42,7 +42,7 @@ export const Header = () => {
     };
 
     const handleTicketsClick = () => {
-        if (user && user.tipoUsuario) { 
+        if (user && user.tipoUsuario) {
             switch (user.tipoUsuario) {
                 case 'U':
                     navigate('/cliente');
@@ -66,18 +66,24 @@ export const Header = () => {
 
     return (
         <header className="header">
-        <div className="headerLeft">
-            <button className='logoButton' onClick={handleLogoClick}>
-                <img className='logoHeader' src={logo} alt="logo" />
-            </button>
-        </div>
+            <div className="headerLeft">
+                <button className='logoButton' onClick={handleLogoClick}>
+                    <img className='logoHeader' src={logo} alt="logo" />
+                </button>
+            </div>
             <div className="headerRight">
-                 
-                 {user && user.tipoUsuario === 'A' && (
-                    <button className="btnHeader" onClick={() => navigate('/admin')}>
-                        <span className="material-symbols-outlined">settings</span>
-                    </button>
+
+                {user && user.tipoUsuario === 'A' && (
+                    <>
+                        <button className="btnHeader" onClick={() => navigate('/admin')}>
+                            <span className="material-symbols-outlined">grid_view</span>
+                        </button>
+                        <button className="btnHeader" onClick={() => navigate('/ConfiguracaoAdmin')}>
+                            <span className="material-symbols-outlined">settings</span>
+                        </button>
+                    </>
                 )}
+
                 <button className="btnHeader">
                     <button className="logoButton" onClick={handleTicketsClick}>
                         <span className="material-symbols-outlined">confirmation_number</span>

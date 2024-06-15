@@ -45,7 +45,7 @@
     border-radius: 10px;
     margin-bottom: 5px;
     list-style: none;
-    width: 100%;
+    /* width: 100%; */
 
 }
 .menssagemFAQ{
@@ -94,4 +94,25 @@ details[open] > .sumarioFAQ::after {
     font-size: 16px;
     margin-top: 10px;
     color: var(--black-color);
+}
+
+@media (max-width: 768px) {
+    .banner {
+      
+        justify-content: center;
+        padding: 0 10px;
+        background-color: var(--gray-color);
+    
+    }
+.banner img {
+    width: 80vw;
+    height: auto;
+}
+.sumarioFAQ {
+    font-size: 16px;  
+  }
+
+  .menssagemFAQ {
+    font-size: 16px;  
+  }
 }

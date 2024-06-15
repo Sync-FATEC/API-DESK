@@ -2,9 +2,9 @@ import React, { useState, useContext } from "react";
 import { AuthContext } from "../../contexts/Auth/AuthContext";
 import { useApi } from "../../hooks/useApi";
 import logo from '../../assets/img/logo.svg';
+import logoAzul from  "../../assets/img/logo-header.svg";
 import { useNavigate } from "react-router-dom";
 import { loginSenhaEmail, LoginTecnicoHorario, Toast, warning } from "../../components/Swal/swal";
-
 
 export const Login = () => {
   const api = useApi();
@@ -16,10 +16,9 @@ export const Login = () => {
   const navigate = useNavigate();
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 
-    const togglePasswordVisibility = () => {
-        setIsPasswordVisible(!isPasswordVisible);
-    };
-
+  const togglePasswordVisibility = () => {
+    setIsPasswordVisible(!isPasswordVisible);
+  };
 
   const handleEmailLogin = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
@@ -43,12 +42,12 @@ export const Login = () => {
 
   const handleSubmitLogin = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-  
+
     if (!email || !senha) {
       warning('Preencha todos os campos');
       return;
     }
-  
+
     try {
       const isLogged = await auth.signin(email, senha);
       const data = await api.signin(email, senha);
@@ -98,7 +97,7 @@ export const Login = () => {
       setSenha('');
     }
   };
-  
+
   return (
     <div className='containerPrincipal'>
         <aside>
@@ -115,6 +114,7 @@ export const Login = () => {
         <div className="formContainer">
             <form onSubmit={handleSubmitLogin}>
                 <div className="form">
+                <img className='mobile' id="logo" src={logoAzul} alt="logo" />
                     <h2 className="formTitle">Entre na sua conta</h2>
                     <h3 className="formTitle2">Insira seus dados</h3>
                     <div className="formInput">
@@ -148,12 +148,13 @@ export const Login = () => {
                                 </div>
                         <div className="errorMessage">{senhaError}</div>
                         <label className="labelInput" htmlFor="password">Digite sua senha</label>
-                        
+                        <a href="/esqueceu-senha" className="forgot-password-link">Esqueceu a senha?</a>
                     </div>
                     <button className="formBtn">Entrar</button>
+                    <a className="mobile" id="link" href="/cadastro">Não tem uma conta? Clique aqui</a>
                 </div>
             </form>
         </div>
     </div>
-);
+  );
 }

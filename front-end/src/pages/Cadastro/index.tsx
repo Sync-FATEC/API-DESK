@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import logo from '../../assets/img/logo.svg';
+import logoAzul from  "../../assets/img/logo-header.svg";
 import { useNavigate } from "react-router-dom";
 import { cadastradoCpf, cadastradoEmailSenha, success, warning } from "../../components/Swal/swal";
 
@@ -26,7 +27,7 @@ export const Cadastro = () => {
         const newNome = e.target.value;
 
         if (!newNome || !validateNome(newNome)) {
-            setNomeError('Nome inválido! Por favor digite novamente.');
+            setNomeError('Nome inválido!');
             setNome('');
             setIsValid(false);
         } else {
@@ -41,7 +42,7 @@ export const Cadastro = () => {
         setEmail(newEmail);
 
         if (!validateEmail(newEmail)) {
-            setEmailError('Por favor, preencha um e-mail válido.');
+            setEmailError('Preencha um e-mail válido');
             setIsValid(false);
         } else {
             setEmailError('');
@@ -54,7 +55,7 @@ export const Cadastro = () => {
         setSenha(newSenha);
 
         if (!validateSenha(newSenha) && newSenha.length < 8) {
-            setSenhaError('Por favor, preencha uma senha válida.');
+            setSenhaError('Preencha uma senha válida');
             setIsValid(false);
         } else {
             setSenhaError('');
@@ -66,7 +67,7 @@ export const Cadastro = () => {
         const newCpf = formatCPF(e.target.value);
 
         if (!newCpf) {
-            setCpfError('CPF inválido! Por favor digite novamente.');
+            setCpfError('CPF inválido!');
             setCpf('')
             setIsValid(false);
         } else {
@@ -188,6 +189,7 @@ export const Cadastro = () => {
             <div className="formContainer">
                 <form onSubmit={handleSubmit}>
                     <div className="form">
+                    <img className='mobile' id="logo" src={logoAzul} alt="logo" />
                         <h2 className="formTitle">Crie sua conta</h2>
                         <h3 className='formTitle2'>Cadastre seus dados</h3>
 
@@ -250,6 +252,7 @@ export const Cadastro = () => {
                         </div>
 
                         <button type="submit" value="Cadastrar" className="formBtn">Cadastrar</button>
+                        <a className="mobile" id="link" href="/login">Já tem uma conta? Clique aqui!</a>
                     </div>
                 </form>
             </div>

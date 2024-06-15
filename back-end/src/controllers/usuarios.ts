@@ -3,9 +3,10 @@ import { AppDataSource } from "../data-source";
 import { Usuarios } from "../entity/usuarios";
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
+import nodemailer from 'nodemailer';
 import { log } from 'console';
 
-export const usuariosRepositorio = AppDataSource.getRepository(Usuarios)
+export const usuariosRepositorio = AppDataSource.getRepository(Usuarios);
 
 const validarCPF = (cpf: string) => {
     let soma = 0;
@@ -169,3 +170,71 @@ export const alterarTipoTecnico = async (tecnicoID: number, tipoTecnico: string)
         console.error('Erro na alteração do tipo', error);
     }
 }
+
+export const mandarToken = async (email: string) => {
+
+    try {
+        if (!email) {
+            console.log('Email não fornecido');
+            return 'Email não fornecido';
+        }
+    
+        if (!await usuariosRepositorio.findOneBy({ email: email })) {
+            console.log('Usuário inexistente');
+            return 'Usuário inexistente';
+        }
+        // Gerar o token com 1 hora de expiração
+        const token = jwt.sign({ email }, "oxaz rref jpee vgqy", { expiresIn: '1h' });
+
+        // Configuração do transporte de email
+        const transporter = nodemailer.createTransport({
+            service: 'gmail',
+            auth: {
+                user: 'sync23417@gmail.com',
+                pass: 'oxaz rref jpee vgqy'
+            }
+        });
+
+        // Opções do email
+        const mailOptions = {
+            from: 'sync23417@gmail.com',
+            to: email,
+            subject: 'Redefinição de senha',
+            text: `Você solicitou a redefinição de senha. Clique no link abaixo para redefinir sua senha:\n\nhttp://localhost:3000/reset-password/${token}`
+        };
+
+        // Envio do email
+        transporter.sendMail(mailOptions, (error, info) => {
+            if (error) {
+                console.error('Erro ao enviar email');
+                throw error;
+            } else {
+                console.log('Email enviado com sucesso');
+            }
+        });
+    } catch (error) {
+        console.error('Erro ao mandar token:', error);
+        throw error;
+    }
+};
+
+export const redefinirSenha = async (token: string, novaSenha: string) => {
+    try {
+        const { email } = jwt.verify(token, "oxaz rref jpee vgqy");
+        const usuario = await usuariosRepositorio.findOneBy({ email: email });
+
+        if (usuario) {
+            const senhaCriptografada = await bcrypt.hash(novaSenha, 10);
+            usuario.senha = senhaCriptografada;
+            await usuariosRepositorio.save(usuario);
+            console.log('Senha redefinida com sucesso');
+            return usuario;
+        } else {
+            console.log('Usuário inexistente');
+            return 'Usuário inexistente';
+        }
+    } catch (error) {
+        console.error('Erro na redefinição de senha:', error);
+        throw error;
+    }
+};

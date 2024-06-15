@@ -1,5 +1,5 @@
 import express, { Request, Response } from 'express';
-import { alterarTipoTecnico, alterarTurnoTecnico, autenticarUsuario, criarUsuario, excluirUsuario, validarToken, vizualizarTecnicos } from '../controllers/usuarios';
+import { alterarTipoTecnico, alterarTurnoTecnico, autenticarUsuario, criarUsuario, excluirUsuario, validarToken, vizualizarTecnicos, mandarToken, redefinirSenha } from '../controllers/usuarios';
 import { error } from 'console';
 
 const router = express.Router();
@@ -13,7 +13,7 @@ router.post('/cadastrar', async (req: Request, res: Response) => {
     if (turno === '') {
         turno = null;
     }
-    res.json(await criarUsuario(nome, cpf, email, senha, tipoUsuario, turno))
+    res.json(await criarUsuario(nome, cpf, email, senha, tipoUsuario, turno));
 });
 
 router.delete('/excluir/:usuarioID', async (req: Request, res: Response) => {
@@ -66,7 +66,7 @@ router.put('/alterarTurnoTecnico/:tecnicoID/:turno', async (req: Request, res: R
         console.error('Erro ao alterar turno do técnico:', error);
         res.status(500).json({ error: 'Erro ao alterar turno do técnico' });
     }
-})
+});
 
 router.put('/alterarTipoTecnico/:tecnicoID/:tipoTecnico', async (req: Request, res: Response) => {
     try {
@@ -74,15 +74,35 @@ router.put('/alterarTipoTecnico/:tecnicoID/:tipoTecnico', async (req: Request, r
         const tipoTecnico = req.params.tipoTecnico;
 
         if (tecnicoID === '' || tipoTecnico === '') {
-            return res.status(400).json({ error: 'Preencha todos os campos' })
+            return res.status(400).json({ error: 'Preencha todos os campos' });
         }
 
-        res.json(await alterarTipoTecnico(Number(tecnicoID), tipoTecnico))
+        res.json(await alterarTipoTecnico(Number(tecnicoID), tipoTecnico));
     } catch (error) {
         console.error('Erro ao alterar tipo do técnico:', error);
         res.status(500).json({ error: 'Erro ao alterar tipo do técnico' });
     }
-})
+});
+
+router.post('/esqueci-senha', async (req: Request, res: Response) => {
+    const { email } = req.body;
+    if (!email) {
+        return res.status(400).json({ error: 'Email não fornecido' });
+    }
+
+    try {
+        res.json(await mandarToken(email));
+    } catch (error) {
+        console.error('Erro ao mandar token:', error);
+        return res.status(500).json({ error: 'Erro ao enviar o email' });
+    }
+});
+
+router.put("/redefinir-senha/:token/:novaSenha", async (req: Request, res: Response) => {
+    const token = req.params.token;
+    const novaSenha = req.params.novaSenha;
+    res.json(await redefinirSenha(token, novaSenha));
+});
 
 
 export default router;
