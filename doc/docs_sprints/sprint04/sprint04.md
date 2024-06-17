@@ -34,4 +34,4 @@
 <img src="https://github.com/Sync-FATEC/API-DESK/raw/main/assets/127795446/8b4e6533-004f-4d58-8b6f-b34842f2535c">
 
 <h3>Modelo de Dados</h3>
-<img src="https://github.com/Sync-FATEC/API-DESK/blob/main/doc/docs_sprints/sprint02/BDLogico.jpg">
+<img src="https://github.com/Sync-FATEC/API-DESK/blob/main/doc/docs_sprints/sprint04/BDLogico.jpg">
