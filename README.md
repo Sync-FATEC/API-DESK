@@ -396,25 +396,25 @@ alt="MVP">
  <tbody>
   <tr>
     <td align="center">01</td>
-    <td>14/04/2023</td>
+    <td>14/04/2024</td>
     <td align="center"><a href="https://github.com/Sync-FATEC/API-DESK/blob/main/doc/docs_sprints/sprint01/sprint01.md">Relatório</a></td> 
     <td align="center">✅</td>
   </tr>
   <tr>
     <td align="center">02</td>
-    <td>05/05/2023</td>
+    <td>05/05/2024</td>
     <td align="center"><a href="https://github.com/Sync-FATEC/API-DESK/blob/main/doc/docs_sprints/sprint02/sprint02.md">Relatório</a></td> 
     <td align="center">✅</td>
   </tr>
   <tr>
     <td align="center">03</td>
-    <td>26/05/2023</td>
+    <td>26/05/2024</td>
     <td align="center"><a href="https://github.com/Sync-FATEC/API-DESK/blob/main/doc/docs_sprints/sprint03/sprint03.md">Relatório</a></td> 
     <td align="center">✅</td>
   </tr>
   <tr>
     <td align="center">04</td>
-    <td>16/06/2023</td>
+    <td>16/06/2024</td>
     <td align="center"><a href="https://github.com/Sync-FATEC/API-DESK/blob/main/doc/docs_sprints/sprint04/sprint04.md">Relatório</a></td> 
     <td align="center">✅</td>
   </tr>
